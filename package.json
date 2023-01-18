@@ -1,0 +1,20 @@
+{
+  "name": "y-ui",
+  "version": "1.0.0",
+  "description": "基于 web-components 的拟物风格一个组件库",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/1442916418/y-ui.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/1442916418/y-ui/issues"
+  },
+  "homepage": "https://github.com/1442916418/y-ui#readme"
+}
