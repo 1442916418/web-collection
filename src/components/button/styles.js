@@ -1,5 +1,4 @@
-export default `
-:host {
+export default `:host {
   position: relative;
   display: inline-flex;
   padding: 0.25rem 0.625rem;
@@ -9,13 +8,12 @@ export default `
   overflow: hidden;
   align-items: center;
   justify-content: center;
-  border: 1px solid var(--borderColor, transparent);
-  font-size: 1rem;
-  color: var(--fontColor, #44476a);
-  border-radius: 0.55rem;
-  box-shadow: 3px 3px 6px #b8b9be, -3px -3px 6px #fff;
-  transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out, border-color 0.15s ease-in-out,
-    box-shadow 0.15s ease-in-out;
+  border: 1px solid var(--border-color);
+  font-size: var(--default-size);
+  color: var(--default, #44476a);
+  border-radius: var(--border-radius);
+  box-shadow: 3px 3px 6px #b8b9be, -3px -3px 6px #ffffff;
+  transition: all 0.2s ease;
 }
 .btn {
   background: none;
@@ -36,7 +34,6 @@ export default `
 }
 :host(.focus) :host(:focus) {
   outline: 0;
-  background: red;
   box-shadow: inset 2px 2px 5px #b8b9be, inset -3px -3px 7px #fff;
 }
 
@@ -79,5 +76,4 @@ fieldset:disabled a.btn {
   background-color: #e6e7ee;
   border-color: #e6e7ee;
 }
-
 `

@@ -1,0 +1,39 @@
+/**
+ * = Spacing
+ */
+
+@each $size, $value in $spacers {
+  .top-#{$size} {
+    top: $value;
+  }
+  .right-#{$size} {
+    right: $value;
+  }
+  .bottom-#{$size} {
+    bottom: $value;
+  }
+  .left-#{$size} {
+    left: $value;
+  }
+}
+
+.center-vertical-absolute,
+.center-horizontal-absolute {
+  position: absolute;
+}
+
+.center-vertical-absolute {
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.center-horizontal-absolute {
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+@each $position in $positions {
+  .position-#{$position} {
+    position: $position !important;
+  }
+}
