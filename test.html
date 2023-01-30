@@ -16,11 +16,12 @@
       str.replace(reg, function (match) {
         console.log('---------------------------------------------')
         console.log('match ------>', match)
+
+        match.replace(/\/\*! -([\w]+) \*/i, function (m, p1) {
+          console.log('🚀 ~ file: test.html:21 ~ match.replace ~ m', m)
+          console.log('🚀 ~ file: test.html:21 ~ match.replace ~ m1', p1)
+        })
       })
-
-      const res = str.match(reg)
-
-      console.log(res)
     </script>
   </body>
 </html>
