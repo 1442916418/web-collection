@@ -38,9 +38,11 @@ gulp.task('scss', function () {
     .pipe(sass().on('error', sass.logError))
     .pipe(
       autoprefixer({
+        cascade: true,
         overrideBrowserslist: ['> 1%']
       })
     )
+    .pipe(cleanCss())
     .pipe(gulp.dest(paths.temp.css))
     .pipe(browserSync.stream())
 })

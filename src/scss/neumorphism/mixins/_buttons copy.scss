@@ -1,5 +1,4 @@
 @mixin button-variant(
-  $color,
   $background,
   $border,
   $hover-background: darken($background, 0%),
@@ -7,21 +6,26 @@
   $active-background: $background,
   $active-border: darken($border, 0%)
 ) {
-  :host([type='#{$color}']) {
-    color: color-yiq($background);
-    @include gradient-bg($background);
-  }
+  color: color-yiq($background);
+  @include gradient-bg($background);
 
-  :host([type='#{$color}'].hover),
-  :host([type='#{$color}']:hover) {
+  @include hover {
     color: color-yiq($hover-background);
     background-color: $hover-background;
     border-color: $hover-border;
     @include box-shadow($shadow-inset);
   }
 
-  :host([type='#{$color}'].focus),
-  :host([type='#{$color}']:focus) {
+  &.disabled,
+  &:disabled {
+    color: color-yiq($background);
+    background-color: $background;
+    border-color: $border;
+  }
+
+  &:focus,
+  &.focus {
+    // Avoid using mixin so we can pass custom focus shadow properly
     @if $enable-shadows {
       box-shadow: $shadow-inset;
     } @else {
@@ -29,21 +33,19 @@
     }
   }
 
-  :host([type='#{$color}'].disabled),
-  :host([type='#{$color}']:disabled) {
-    color: color-yiq($background);
-    background-color: $background;
-    border-color: $border;
-  }
+  &:not(:disabled):not(.disabled):active,
+  &:not(:disabled):not(.disabled).active,
+  .show > &.dropdown-toggle {
+    color: color-yiq($active-background);
+    background-color: $active-background;
+    @if $enable-gradients {
+      background-image: none; // Remove the gradient for the pressed/active state
+    }
+    border-color: $active-border;
 
-  :host([type='#{$color}']:not(:disabled):not(.disabled).active),
-  :host([type='#{$color}']:not(:disabled):not(.disabled):active) {
-    @include box-shadow($shadow-inset);
-  }
-
-  :host([type='#{$color}']:not(:disabled):not(.disabled).active:focus),
-  :host([type='#{$color}']:not(:disabled):not(.disabled):active:focus) {
-    @include box-shadow($shadow-inset);
+    &:focus {
+      @include box-shadow($shadow-inset);
+    }
   }
 }
 

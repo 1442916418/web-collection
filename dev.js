@@ -4,7 +4,7 @@ const path = require('path')
 const components = ['button']
 
 const init = () => {
-  components.forEach(item => {
+  components.forEach((item) => {
     handleOpenAndReadFile('./src/components/' + item + '/styles.css', (value) => {
       if (value) {
         handleWriteFile({
