@@ -1,19 +1,51 @@
 const fs = require('fs')
 const path = require('path')
 
-const components = ['button']
-
 const init = () => {
-  components.forEach((item) => {
-    handleOpenAndReadFile('./src/components/' + item + '/styles.css', (value) => {
-      if (value) {
-        handleWriteFile({
-          path: './src/components/' + item + '/styles.js',
-          content: 'export default `' + value + '`'
-        })
+  handleOpenAndReadFile('.temp/css/neumorphism.css', (value) => {
+    if (!value) return
+
+    const componentsCSS = handleComponentsCSS(value)
+
+    if (componentsCSS.size) {
+      for (const [key, value] of componentsCSS) {
+        if (key && value) {
+          handleWriteFile({
+            path: './src/components/' + key + '/styles.js',
+            content: 'export default `' + value + '`'
+          })
+        }
       }
-    })
+    }
   })
+}
+
+const handleComponentsCSS = (str) => {
+  if (!str) return void 0
+
+  const result = new Map()
+
+  try {
+    const reg = /(?<=^|\/)\s*\/\*![\s\S]*?\*\/\s*(?=$|\/)/gi
+
+    const matchStr = str.match(reg)
+
+    matchStr.forEach((item) => {
+      const matchTag = item.match(/\/\*! -([\w]+) \*/i)
+      const tagName = matchTag[1] || 'default'
+
+      item.replace(/\*\/([\s\S]*?)\/\*!/gi, function (con, p1) {
+        if (tagName && p1) {
+          result.set(tagName, p1)
+        }
+      })
+    })
+  } catch (error) {
+    console.log(error)
+    return result
+  }
+
+  return result
 }
 
 const handleOpenAndReadFile = (filePath, callback) => {

@@ -10,6 +10,7 @@ const sass = require('gulp-sass')(require('node-sass'))
 const wait = require('gulp-wait')
 const sourcemaps = require('gulp-sourcemaps')
 const fileinclude = require('gulp-file-include')
+const childProcess = require('child_process')
 
 const paths = {
   base: {
@@ -53,7 +54,7 @@ gulp.task(
     // browserSync.init({
     //   server: paths.temp.base
     // })
-    // gulp.watch([paths.src.scss + '/neumorphism/**/*.scss', paths.src.scss + '/neumorphism.scss'], gulp.series('scss'))
+    gulp.watch([paths.src.scss + '/neumorphism/**/*.scss', paths.src.scss + '/neumorphism.scss'], gulp.series('scss'))
   })
 )
 
