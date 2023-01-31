@@ -1,11 +1,11 @@
 {
   "name": "y-ui",
   "version": "1.0.0",
-  "description": "基于 web-components 的拟物风格一个组件库",
+  "description": "基于 web-components 的拟物风格组件库",
   "main": "index.js",
   "scripts": {
     "serve": "serve src",
-    "build": "nodemon --watch .temp/css/neumorphism.css dev.js"
+    "build": "nodemon --watch .temp/css/neumorphism.css build.js"
   },
   "repository": {
     "type": "git",
@@ -36,6 +36,7 @@
     "gulp-uglify": "^3.0.2",
     "gulp-wait": "^0.0.2",
     "merge-stream": "^2.0.0",
-    "node-sass": "^6.0.1"
+    "node-sass": "^6.0.1",
+    "nodemon": "^2.0.20"
   }
 }

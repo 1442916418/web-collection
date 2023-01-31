@@ -28,36 +28,8 @@
   border-width: $border-width;
   border-style: solid;
   border-radius: $border-radius;
-  border-color: $border-color;
+  border-color: $border-color-transparent;
   transition: $transition-base;
-  @include box-shadow($box-shadow-primary);
-}
-
-:host(:hover) {
-  color: #44476a;
-  text-decoration: none;
-}
-
-:host(.focus),
-:host(:focus) {
-  outline: 0;
-  @include box-shadow($shadow-inset);
-}
-
-:host(.disabled),
-:host(:disabled) {
-  opacity: 0.65;
-  box-shadow: none;
-}
-
-:host(:not(:disabled):not(.disabled).active),
-:host(:not(:disabled):not(.disabled):active) {
-  @include box-shadow($shadow-inset);
-}
-
-:host(not(:disabled):not(.disabled).active:focus),
-:host(not(:disabled):not(.disabled):active:focus) {
-  @include box-shadow($shadow-inset);
 }
 
 a.btn.disabled,
@@ -65,8 +37,53 @@ fieldset:disabled a.btn {
   pointer-events: none;
 }
 
+:host([disabled]),
+:host([loading]) {
+  pointer-events: none;
+  opacity: 0.6;
+}
+
+:host([disabled]:not([type])) {
+  background: rgba(0, 0, 0, 0.1);
+}
+
+:host([disabled]) .btn,
+:host([loading]) .btn {
+  cursor: not-allowed;
+  pointer-events: all;
+}
+
+:host([circle]) {
+  border-radius: $circle-radius;
+}
+
+:host([block]) {
+  display: flex;
+}
+
 @each $color, $value in $theme-colors {
   @include button-variant($color, $value, $value);
+}
+
+@each $type, $value in $theme-sizes {
+  @include button-size($type, $value, $btn-padding-y, $btn-padding-x, $btn-line-height, $border-radius);
+}
+
+iconpark-icon {
+  margin-right: $btn-loading-margin-y;
+}
+
+.loading {
+  animation: loadingAnimation 1s linear infinite;
+}
+
+@keyframes loadingAnimation {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
 }
 
 /*! button- */

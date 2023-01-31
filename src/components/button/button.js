@@ -20,7 +20,9 @@ export default class YButton extends HTMLElement {
     const download = this.download && this.href ? `download="${this.download}"` : ''
     const href = this.href ? `href="${this.href}" target="${this.target}" rel="${this.rel}"` : ''
     const icon =
-      !this.loading && this.icon && this.icon !== 'null' ? '<y-icon id="icon" name=' + this.icon + '></y-icon>' : ''
+      !this.loading && this.icon && this.icon !== 'null'
+        ? `<iconpark-icon name="${this.icon}" id="icon" ></iconpark-icon>`
+        : ''
 
     shadowRoot.innerHTML = `<style>${styles}</style><${tag} ${type} ${download} ${href} class="btn" id="btn"></${tag}>${icon}<slot></slot>`
   }
@@ -33,20 +35,12 @@ export default class YButton extends HTMLElement {
     return this.getAttribute('disabled') !== null
   }
 
-  get toggle() {
-    return this.getAttribute('toggle') !== null
-  }
-
   get type() {
     return this.getAttribute('type')
   }
 
   get name() {
     return this.getAttribute('name')
-  }
-
-  get checked() {
-    return this.getAttribute('checked') !== null
   }
 
   get href() {
@@ -93,14 +87,6 @@ export default class YButton extends HTMLElement {
     }
   }
 
-  set checked(value) {
-    if (value === null || value === false) {
-      this.removeAttribute('checked')
-    } else {
-      this.setAttribute('checked', '')
-    }
-  }
-
   set loading(value) {
     if (value === null || value === false) {
       this.removeAttribute('loading')
@@ -111,25 +97,12 @@ export default class YButton extends HTMLElement {
 
   connectedCallback() {
     this.btn = this.shadowRoot.getElementById('btn')
-    this.ico = this.shadowRoot.getElementById('icon')
-    // this.load = document.createElement('y-loading')
-    // this.load.style.color = 'inherit'
+    this.iconEle = this.shadowRoot.getElementById('icon')
+    this.loadLoadingIcon = document.createElement('iconpark-icon')
 
-    this.btn.addEventListener('mousedown', function (e) {
-      //e.preventDefault();
-      //e.stopPropagation();
-      if (!this.disabled) {
-        const { left, top } = this.getBoundingClientRect()
-        this.style.setProperty('--x', e.clientX - left + 'px')
-        this.style.setProperty('--y', e.clientY - top + 'px')
-      }
-    })
-
-    this.addEventListener('click', function (e) {
-      if (this.toggle) {
-        this.checked = !this.checked
-      }
-    })
+    this.loadLoadingIcon.setAttribute('name', 'loading-four')
+    this.loadLoadingIcon.className = 'loading'
+    this.loadLoadingIcon.style.color = 'inherit'
 
     this.btn.addEventListener('keydown', (e) => {
       if (e.code === 'Enter') {
@@ -145,11 +118,11 @@ export default class YButton extends HTMLElement {
     if (name === 'disabled' && this.btn) {
       if (newValue !== null) {
         this.btn.setAttribute('disabled', 'disabled')
-        if (this.href) {
-          this.btn.removeAttribute('href')
-        }
+
+        this.href && this.btn.removeAttribute('href')
       } else {
         this.btn.removeAttribute('disabled')
+
         if (this.href) {
           this.btn.href = this.href
         }
@@ -157,27 +130,85 @@ export default class YButton extends HTMLElement {
     }
     if (name === 'loading' && this.btn) {
       if (newValue !== null) {
-        this.shadowRoot.prepend(this.load)
+        this.shadowRoot.prepend(this.loadLoadingIcon)
         this.btn.setAttribute('disabled', 'disabled')
       } else {
-        this.shadowRoot.removeChild(this.load)
+        this.shadowRoot.removeChild(this.loadLoadingIcon)
         this.btn.removeAttribute('disabled')
       }
     }
-    if (name === 'icon' && this.ico) {
-      this.ico.name = newValue
+    if (name === 'icon' && this.iconEle) {
+      this.iconEle.name = newValue
     }
     if (name === 'href' && this.btn) {
-      if (!this.disabled) {
+      if (newValue !== 'null' && !this.disabled) {
         this.btn.href = newValue
       }
     }
     if (name === 'type' && this.btn) {
-      this.btn.type = newValue
+      if (newValue !== 'null') {
+        this.btn.type = newValue
+      }
     }
   }
 }
 
 if (!customElements.get('y-button')) {
   customElements.define('y-button', YButton)
+}
+
+class YButtonGroup extends HTMLElement {
+  static get observedAttributes() {
+    return ['disabled']
+  }
+
+  constructor() {
+    super()
+    const shadowRoot = this.attachShadow({ mode: 'open' })
+
+    shadowRoot.innerHTML = `
+      <style>
+      :host {
+          display:inline-flex;
+      }
+      ::slotted(y-button:not(:first-of-type):not(:last-of-type)){
+          border-radius:0;
+      }
+      ::slotted(y-button){
+          margin:0 !important;
+      }
+      ::slotted(y-button:not(:first-of-type)){
+          margin-left:-1px !important;
+      }
+      ::slotted(y-button[type]:not([type="dashed"]):not(:first-of-type)){
+          margin-left:1px !important;
+      }
+      ::slotted(y-button:first-of-type){
+          border-top-right-radius: 0;
+          border-bottom-right-radius: 0px;
+      }
+      ::slotted(y-button:last-of-type){
+          border-top-left-radius: 0;
+          border-bottom-left-radius: 0;
+      }
+      </style>
+      <slot></slot>
+      `
+  }
+
+  get disabled() {
+    return this.getAttribute('disabled') !== null
+  }
+
+  set disabled(value) {
+    if (value === null || value === false) {
+      this.removeAttribute('disabled')
+    } else {
+      this.setAttribute('disabled', '')
+    }
+  }
+}
+
+if (!customElements.get('y-button-group')) {
+  customElements.define('y-button-group', YButtonGroup)
 }

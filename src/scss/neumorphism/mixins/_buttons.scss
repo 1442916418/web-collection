@@ -1,5 +1,5 @@
 @mixin button-variant(
-  $color,
+  $type,
   $background,
   $border,
   $hover-background: darken($background, 0%),
@@ -7,98 +7,75 @@
   $active-background: $background,
   $active-border: darken($border, 0%)
 ) {
-  :host([type='#{$color}']) {
-    color: color-yiq($background);
-    @include gradient-bg($background);
-  }
-
-  :host([type='#{$color}'].hover),
-  :host([type='#{$color}']:hover) {
-    color: color-yiq($hover-background);
-    background-color: $hover-background;
-    border-color: $hover-border;
-    @include box-shadow($shadow-inset);
-  }
-
-  :host([type='#{$color}'].focus),
-  :host([type='#{$color}']:focus) {
-    @if $enable-shadows {
-      box-shadow: $shadow-inset;
-    } @else {
-      box-shadow: $shadow-inset;
+  @if $type == 'primary' {
+    :host {
+      color: color-yiq($background);
+      @include gradient-bg($background);
+      @include box-shadow($box-shadow-primary);
     }
-  }
 
-  :host([type='#{$color}'].disabled),
-  :host([type='#{$color}']:disabled) {
-    color: color-yiq($background);
-    background-color: $background;
-    border-color: $border;
-  }
+    :host(:not([disabled]):hover) {
+      color: color-yiq($hover-background);
+      background-color: $hover-background;
+      border-color: $hover-border;
+      @include box-shadow($shadow-inset);
+    }
 
-  :host([type='#{$color}']:not(:disabled):not(.disabled).active),
-  :host([type='#{$color}']:not(:disabled):not(.disabled):active) {
-    @include box-shadow($shadow-inset);
-  }
-
-  :host([type='#{$color}']:not(:disabled):not(.disabled).active:focus),
-  :host([type='#{$color}']:not(:disabled):not(.disabled):active:focus) {
-    @include box-shadow($shadow-inset);
-  }
-}
-
-@mixin button-outline-variant(
-  $color,
-  $color-hover: color-yiq($color),
-  $active-background: $color,
-  $active-border: $color
-) {
-  color: $color;
-  border-color: $color;
-
-  @include hover {
-    color: $color-hover;
-    background-color: $dark;
-    border-color: $active-border;
-  }
-
-  &:focus,
-  &.focus {
-    box-shadow: none;
-  }
-
-  &.disabled,
-  &:disabled {
-    color: $color;
-    background-color: transparent;
-  }
-
-  &:not(:disabled):not(.disabled):active,
-  &:not(:disabled):not(.disabled).active,
-  .show > &.dropdown-toggle {
-    color: color-yiq($active-background);
-    background-color: $active-background;
-    border-color: $active-border;
-
-    &:focus {
-      // Avoid using mixin so we can pass custom focus shadow properly
-      @if $enable-shadows and $btn-active-box-shadow != none {
-        box-shadow: $btn-active-box-shadow, 0 0 0 $btn-focus-width rgba($color, 0.5);
+    :host(:not([disabled]):focus) {
+      @if $enable-shadows {
+        box-shadow: $shadow-inset;
       } @else {
-        box-shadow: 0 0 0 $btn-focus-width rgba($color, 0.5);
+        box-shadow: $shadow-inset;
       }
+    }
+
+    :host(:not([disabled]):active) {
+      @include box-shadow($shadow-inset);
+    }
+  } @else {
+    :host([type='#{$type}']) {
+      color: color-yiq($background);
+      @include gradient-bg($background);
+      @include box-shadow($box-shadow-dark);
+    }
+
+    :host([type='#{$type}']) {
+      color: color-yiq($background);
+      @include gradient-bg($background);
+    }
+
+    :host([type='#{$type}']:not([disabled]):hover) {
+      color: color-yiq($hover-background);
+      background-color: $hover-background;
+      border-color: $hover-border;
+      @include box-shadow($shadow-dark-inset);
+    }
+
+    :host([type='#{$type}']:not([disabled]):focus) {
+      @if $enable-shadows {
+        box-shadow: $shadow-dark-inset;
+      } @else {
+        box-shadow: $shadow-dark-inset;
+      }
+    }
+
+    :host([type='#{$type}']:not([disabled]):active) {
+      @include box-shadow($shadow-dark-inset);
     }
   }
 }
 
 // Button sizes
-@mixin button-size($padding-y, $padding-x, $font-size, $line-height, $border-radius) {
-  padding: $padding-y $padding-x;
-  font-size: $font-size;
-  line-height: $line-height; // Manually declare to provide an override to the browser default
-  @if $enable-rounded {
-    @include border-radius($border-radius);
-  } @else {
-    border-radius: 0;
+@mixin button-size($type, $font-size, $padding-y, $padding-x, $line-height, $border-radius) {
+  :host([size='#{$type}']) {
+    padding: theme-styles-size($type, $padding-y) theme-styles-size($type, $padding-x);
+    font-size: $font-size;
+    line-height: theme-styles-size($type, $line-height);
+
+    @if $enable-rounded {
+      @include border-radius($border-radius);
+    } @else {
+      border-radius: 0;
+    }
   }
 }

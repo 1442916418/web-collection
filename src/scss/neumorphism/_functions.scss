@@ -109,3 +109,13 @@
 
   @return mix($color-base, $color, $level * $theme-color-interval);
 }
+
+@function theme-styles-size($type, $value) {
+  @if $type == 'large' {
+    @return ($value * 1.25);
+  } @else if $type == 'small' {
+    @return ($value * 0.875);
+  } @else {
+    @return $value;
+  }
+}

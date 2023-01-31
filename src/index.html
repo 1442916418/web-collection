@@ -6,22 +6,89 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>y-ui</title>
     <link rel="stylesheet" href="index.css" />
+
     <style>
+      body {
+        display: flex;
+      }
       main {
-        padding: 2rem;
-        display: grid;
-        grid-template-columns: repeat(5, 20%);
-        grid-template-rows: repeat(auto-fill, auto);
-        gap: 1rem;
+        min-height: 100vh;
+      }
+      article {
+        padding: 0.5rem;
+        margin-bottom: 1rem;
+      }
+      .default {
+        padding: 1rem;
+        width: 50%;
+      }
+      .dark {
+        padding: 1rem;
+        width: 50%;
+        background-color: #262833;
+      }
+      y-button {
+        margin-right: 0.85rem;
+        margin-bottom: 0.85rem;
       }
     </style>
   </head>
   <body>
-    <main>
-      <y-button>Test</y-button>
-      <y-button type="dark">Dark</y-button>
-      <y-button type="primary">Primary</y-button>
+    <main class="default">
+      <article>
+        <y-button>Default</y-button>
+        <y-button disabled>Default</y-button>
+        <y-button href="https://yss.world">链接</y-button>
+        <y-button
+          href="https://kjimg10.360buyimg.com/ott/jfs/t1/124686/11/31072/170103/63bb8037F15537b4b/1e5cf478e1c70f0e.jpg"
+          download="https://kjimg10.360buyimg.com/ott/jfs/t1/124686/11/31072/170103/63bb8037F15537b4b/1e5cf478e1c70f0e.jpg"
+          >下载图片</y-button
+        >
+        <y-button circle>圆</y-button>
+        <y-button block>块</y-button>
+        <y-button loading="true">加载</y-button>
+        <y-button icon="config">图标</y-button>
+        <y-button>图标 <iconpark-icon style="margin-left: 0.55rem" name="config"></iconpark-icon></y-button>
+        <y-button size="large">Size Large</y-button>
+        <y-button>Size default</y-button>
+        <y-button size="small">Size small</y-button>
+
+        <y-button-group>
+          <y-button>Button0</y-button>
+          <y-button>Button1</y-button>
+          <y-button>Button2</y-button>
+        </y-button-group>
+      </article>
     </main>
+    <main class="dark">
+      <article>
+        <y-button type="dark">Dark</y-button>
+        <y-button type="dark" disabled>Dark</y-button>
+        <y-button type="dark" href="https://yss.world">链接</y-button>
+        <y-button
+          type="dark"
+          href="https://kjimg10.360buyimg.com/ott/jfs/t1/124686/11/31072/170103/63bb8037F15537b4b/1e5cf478e1c70f0e.jpg"
+          download="https://kjimg10.360buyimg.com/ott/jfs/t1/124686/11/31072/170103/63bb8037F15537b4b/1e5cf478e1c70f0e.jpg"
+          >下载图片</y-button
+        >
+        <y-button type="dark" circle>圆</y-button>
+        <y-button type="dark" block>块</y-button>
+        <y-button type="dark" loading="true">加载</y-button>
+        <y-button type="dark" icon="config">图标</y-button>
+        <y-button type="dark">图标 <iconpark-icon style="margin-left: 0.55rem" name="config"></iconpark-icon></y-button>
+        <y-button type="dark" size="large">Size Large</y-button>
+        <y-button type="dark">Size default</y-button>
+        <y-button type="dark" size="small">Size small</y-button>
+
+        <y-button-group>
+          <y-button type="dark">Button0</y-button>
+          <y-button type="dark">Button1</y-button>
+          <y-button type="dark">Button2</y-button>
+        </y-button-group>
+      </article>
+    </main>
+    <!-- https://bytedance.feishu.cn/wiki/wikcnJZV45hM71QgI60iwkzvXob -->
+    <script src="https://lf1-cdn-tos.bytegoofy.com/obj/iconpark/icons_22707_2.73f539d3a2597f5121af12af2745d1c3.js"></script>
     <script type="module" src="index.js"></script>
   </body>
 </html>
