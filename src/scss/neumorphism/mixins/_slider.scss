@@ -1,0 +1,86 @@
+@mixin slider-variant($type, $background) {
+  @if $type == 'primary' {
+    input[type='range'] {
+      background: none;
+      box-shadow: box-shadow('#{$type}-inset');
+    }
+    // 轨道
+    input[type='range']::-webkit-slider-runnable-track {
+      height: 100%;
+      // 已滚动轨道 & 未滚动轨道
+      background: linear-gradient(to right, color-yiq($background) calc(100% * var(--percent)), transparent 0%);
+      border-radius: $border-radius;
+    }
+    input[type='range']::-moz-range-progress {
+      background: $background;
+    }
+    // 滑块指示器
+    input[type='range']::-webkit-slider-thumb {
+      border-color: $background;
+      background: $background;
+      box-shadow: box-shadow($type);
+    }
+    input[type='range']::-moz-range-thumb {
+      border-color: $background;
+      background: $background;
+      box-shadow: box-shadow($type);
+    }
+    input[type='range']::-webkit-slider-thumb:active,
+    input[type='range']:focus::-webkit-slider-thumb {
+      background: $background;
+      box-shadow: box-shadow($type);
+    }
+    input[type='range']::-moz-range-thumb:active,
+    input[type='range']:focus::-moz-range-thumb {
+      background: $background;
+      box-shadow: box-shadow($type);
+    }
+  } @else {
+    input[theme-type='#{$type}'] {
+      background: none !important;
+      box-shadow: box-shadow('#{$type}-inset') !important;
+    }
+    // 轨道
+    input[theme-type='#{$type}']::-webkit-slider-runnable-track {
+      height: 100% !important;
+      // 已滚动轨道 & 未滚动轨道
+      background: linear-gradient(
+        to right,
+        color-yiq($background) calc(100% * var(--percent)),
+        transparent 0%
+      ) !important;
+      border-radius: $border-radius !important;
+    }
+    input[theme-type='#{$type}']::-webkit-slider-runnable-track {
+      background: linear-gradient(
+        to right,
+        color-yiq($background) calc(100% * var(--percent)),
+        rgba(0, 0, 0, 0.1) 0%
+      ) !important;
+    }
+    input[theme-type='#{$type}']::-moz-range-progress {
+      background: $background !important;
+    }
+    input[theme-type='#{$type}']::-webkit-slider-thumb {
+      margin-top: -($slider-range-thumb-height / 3.5) !important;
+      border-color: $background !important;
+      background: $background !important;
+      box-shadow: box-shadow($type) !important;
+    }
+    input[theme-type='#{$type}']::-moz-range-thumb {
+      border-color: $background !important;
+      background: $background !important;
+      box-shadow: box-shadow($type) !important;
+    }
+    input[theme-type='#{$type}']::-webkit-slider-thumb:active,
+    input[theme-type='#{$type}']:focus::-webkit-slider-thumb {
+      background: $background !important;
+      box-shadow: box-shadow($type) !important;
+    }
+    input[theme-type='#{$type}']::-moz-range-thumb:active,
+    input[theme-type='#{$type}']:focus::-moz-range-thumb {
+      background: $background !important;
+      box-shadow: box-shadow($type) !important;
+    }
+  }
+}

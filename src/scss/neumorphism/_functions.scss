@@ -119,3 +119,15 @@
     @return $value;
   }
 }
+
+@function box-shadow($key: 'primary') {
+  @return map-get($theme-box-shadow, $key);
+}
+
+// @function select-name($key: 'primary', $beforeValue: '', $afterValue: '') {
+//   @if $key == 'primary' {
+//     @return '#{$beforeValue}#{$afterValue}';
+//   } @else if $key == 'dark' {
+//     @return '#{$beforeValue}#{$key}#{$afterValue}';
+//   }
+// }

@@ -93,6 +93,17 @@ $box-shadow-soft: 6px 6px 12px #b8b9be, -6px -6px 12px #ffffff;
 $box-shadow-primary: 3px 3px 6px #b8b9be, -3px -3px 6px #ffffff;
 $box-shadow-dark: 3px 3px 6px #14151e, -3px -3px 6px #4e5378;
 
+$theme-box-shadow: ();
+$theme-box-shadow: map-merge(
+  (
+    'dark': $box-shadow-dark,
+    'dark-inset': $shadow-dark-inset,
+    'primary': $box-shadow-primary,
+    'primary-inset': $shadow-inset
+  ),
+  $theme-box-shadow
+);
+
 // Sections
 $section-colors: ();
 $section-colors: map-merge(
@@ -345,3 +356,26 @@ $theme-sizes: map-merge(
   ),
   $theme-sizes
 );
+
+// --------------------- 自定义组件 ---------------------
+
+// Tips
+$tip-color: $default;
+$tip-padding-y: $input-btn-padding-y;
+$tip-padding-x: $input-btn-padding-x + 0.2;
+$tip-line-height: $input-btn-line-height;
+$tip-font-size: $font-size-sm;
+$tip-max-width: 200px;
+
+$tip-success: $success;
+$tip-danger: $danger;
+$tip-warning: $warning;
+
+// Slider
+$slider-padding-y: $input-btn-padding-y;
+$slider-padding-x: $input-btn-padding-x + 0.2;
+
+$slider-range-height: 0.3rem;
+
+$slider-range-thumb-width: 1rem;
+$slider-range-thumb-height: 1rem;

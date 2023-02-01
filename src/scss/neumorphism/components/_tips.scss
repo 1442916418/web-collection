@@ -1,0 +1,244 @@
+/*! -tips */
+:host {
+  display: inline-block;
+  position: relative;
+  overflow: visible;
+}
+
+:host::before,
+:host::after {
+  content: '';
+  display: block;
+  position: absolute;
+  z-index: 10;
+  transform: translate(-50%, -20px);
+  opacity: 0;
+  transition: all 0.15s 0.15s, left 0s, top 0s;
+  color: $tip-color;
+  visibility: hidden;
+  pointer-events: none;
+}
+
+:host::before {
+  content: attr(prefix) attr(tips) attr(suffix);
+  padding: $tip-padding-y $tip-padding-x;
+  line-height: $tip-line-height;
+  text-align: left;
+  color: $white;
+  font-size: $tip-font-size;
+  font-style: normal;
+  width: max-content;
+  max-width: $tip-max-width;
+  border-radius: $border-radius;
+}
+
+@each $color, $value in $theme-colors {
+  @include tips-variant($color, $value);
+}
+
+:host([tips]:not([tips='']):hover:not([show='false']))::before,
+:host([tips]:not([tips=''])[show='true'])::before,
+:host([tips]:not([tips='']):focus-within:not([show='false']))::before,
+:host([tips]:not([tips='']):hover:not([show='false']))::after,
+:host([tips]:not([tips=''])[show='true'])::after,
+:host([tips]:not([tips='']):focus-within:not([show='false']))::after {
+  visibility: visible;
+  opacity: 1;
+}
+
+/* top & '' */
+:host([dir='t'])::before,
+:host(:not([dir]))::before,
+:host(:not([dir]))::after,
+:host([dir='t'])::after {
+  left: calc(var(--percent, 0.5) * 100%);
+  bottom: 100%;
+  transform: translate(-50%, -20px);
+}
+:host(:not([dir]):hover:not([show='false']))::before,
+:host(:not([dir])[show='true'])::before,
+:host(:not([dir]):focus-within:not([show='false']))::before,
+:host(:not([dir]):hover:not([show='false']))::after,
+:host(:not([dir])[show='true'])::after,
+:host(:not([dir]):focus-within:not([show='false']))::after,
+:host([dir='t']:hover:not([show='false']))::before,
+:host([dir='t'][show='true'])::before,
+:host([dir='t']:focus-within:not([show='false']))::before,
+:host([dir='t']:hover:not([show='false']))::after,
+:host([dir='t'][show='true'])::after,
+:host([dir='t']:focus-within:not([show='false']))::after {
+  transform: translate(-50%, -10px);
+}
+/* right */
+:host([dir='r'])::before,
+:host([dir='r'])::after {
+  left: 100%;
+  top: 50%;
+  transform: translate(20px, -50%);
+}
+:host([dir='r']:hover:not([show='false']))::before,
+:host([dir='r'][show='true'])::before,
+:host([dir='r']:focus-within:not([show='false']))::before,
+:host([dir='r']:hover:not([show='false']))::after,
+:host([dir='r'][show='true'])::after,
+:host([dir='r']:focus-within:not([show='false']))::after {
+  transform: translate(10px, -50%);
+}
+
+/* bottom */
+:host([dir='b'])::before,
+:host([dir='b'])::after {
+  left: calc(var(--percent, 0.5) * 100%);
+  top: 100%;
+  transform: translate(-50%, 20px);
+}
+:host([dir='b']:hover:not([show='false']))::before,
+:host([dir='b'][show='true'])::before,
+:host([dir='b']:focus-within:not([show='false']))::before,
+:host([dir='b']:hover:not([show='false']))::after,
+:host([dir='b'][show='true'])::after,
+:host([dir='b']:focus-within:not([show='false']))::after {
+  transform: translate(-50%, 10px);
+}
+
+/* left */
+:host([dir='l'])::before,
+:host([dir='l'])::after {
+  right: 100%;
+  top: 50%;
+  transform: translate(-20px, -50%);
+}
+:host([dir='l']:hover:not([show='false']))::before,
+:host([dir='l'][show='true'])::before,
+:host([dir='l']:focus-within:not([show='false']))::before,
+:host([dir='l']:hover:not([show='false']))::after,
+:host([dir='l'][show='true'])::after,
+:host([dir='l']:focus-within:not([show='false']))::after {
+  transform: translate(-10px, -50%);
+}
+
+/* top left */
+:host([dir='tl'])::before,
+:host([dir='tl'])::after {
+  left: 0;
+  bottom: 100%;
+  transform: translate(0, -20px);
+}
+:host([dir='tl']:hover:not([show='false']))::before,
+:host([dir='tl'][show='true'])::before,
+:host([dir='tl']:focus-within:not([show='false']))::before,
+:host([dir='tl']:hover:not([show='false']))::after,
+:host([dir='tl'][show='true'])::after,
+:host([dir='tl']:focus-within:not([show='false']))::after {
+  transform: translate(0, -10px);
+}
+/* top right */
+:host([dir='tr'])::before,
+:host([dir='tr'])::after {
+  right: 0;
+  bottom: 100%;
+  transform: translate(0, -20px);
+}
+:host([dir='tr']:hover:not([show='false']))::before,
+:host([dir='tr'][show='true'])::before,
+:host([dir='tr']:focus-within:not([show='false']))::before,
+:host([dir='tr']:hover:not([show='false']))::after,
+:host([dir='tr'][show='true'])::after,
+:host([dir='tr']:focus-within:not([show='false']))::after {
+  transform: translate(0, -10px);
+}
+/* right top */
+:host([dir='rt'])::before,
+:host([dir='rt'])::after {
+  left: 100%;
+  top: 0;
+  transform: translate(20px, 0);
+}
+:host([dir='rt']:hover:not([show='false']))::before,
+:host([dir='rt'][show='true'])::before,
+:host([dir='rt']:focus-within:not([show='false']))::before,
+:host([dir='rt']:hover:not([show='false']))::after,
+:host([dir='rt'][show='true'])::after,
+:host([dir='rt']:focus-within:not([show='false']))::after {
+  transform: translate(10px, 0);
+}
+/* right bottom */
+:host([dir='rb'])::before,
+:host([dir='rb'])::after {
+  left: 100%;
+  bottom: 0;
+  transform: translate(20px, 0);
+}
+:host([dir='rb']:hover:not([show='false']))::before,
+:host([dir='rb'][show='true'])::before,
+:host([dir='rb']:focus-within:not([show='false']))::before,
+:host([dir='rb']:hover:not([show='false']))::after,
+:host([dir='rb'][show='true'])::after,
+:host([dir='rb']:focus-within:not([show='false']))::after {
+  transform: translate(10px, 0);
+}
+/* bottom left */
+:host([dir='bl'])::before,
+:host([dir='bl'])::after {
+  left: 0;
+  top: 100%;
+  transform: translate(0, 20px);
+}
+:host([dir='bl']:hover:not([show='false']))::before,
+:host([dir='bl'][show='true'])::before,
+:host([dir='bl']:focus-within:not([show='false']))::before,
+:host([dir='bl']:hover:not([show='false']))::after,
+:host([dir='bl'][show='true'])::after,
+:host([dir='bl']:focus-within:not([show='false']))::after {
+  transform: translate(0, 10px);
+}
+/* bottom right */
+:host([dir='br'])::before,
+:host([dir='br'])::after {
+  right: 0;
+  top: 100%;
+  transform: translate(0, 20px);
+}
+:host([dir='br']:hover:not([show='false']))::before,
+:host([dir='br'][show='true'])::before,
+:host([dir='br']:focus-within:not([show='false']))::before,
+:host([dir='br']:hover:not([show='false']))::after,
+:host([dir='br'][show='true'])::after,
+:host([dir='br']:focus-within:not([show='false']))::after {
+  transform: translate(0, 10px);
+}
+/* left top */
+:host([dir='lt'])::before,
+:host([dir='lt'])::after {
+  right: 100%;
+  top: 0;
+  transform: translate(-20px, 0);
+}
+:host([dir='lt']:hover:not([show='false']))::before,
+:host([dir='lt'][show='true'])::before,
+:host([dir='lt']:focus-within:not([show='false']))::before,
+:host([dir='lt']:hover:not([show='false']))::after,
+:host([dir='lt'][show='true'])::after,
+:host([dir='lt']:focus-within:not([show='false']))::after {
+  transform: translate(-10px, 0);
+}
+/* left bottom */
+:host([dir='lb'])::before,
+:host([dir='lb'])::after {
+  right: 100%;
+  bottom: 0;
+  transform: translate(-20px, 0);
+}
+:host([dir='lb']:hover:not([show='false']))::before,
+:host([dir='lb'][show='true'])::before,
+:host([dir='lb']:focus-within:not([show='false']))::before,
+:host([dir='lb']:hover:not([show='false']))::after,
+:host([dir='lb'][show='true'])::after,
+:host([dir='lb']:focus-within:not([show='false']))::after {
+  transform: translate(-10px, 0);
+}
+
+slot {
+  border-radius: inherit;
+}
+/*! tips- */

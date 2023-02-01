@@ -1,94 +1,249 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>y-ui</title>
-    <link rel="stylesheet" href="index.css" />
 
-    <style>
-      body {
-        display: flex;
-      }
-      main {
-        min-height: 100vh;
-      }
-      article {
-        padding: 0.5rem;
-        margin-bottom: 1rem;
-      }
-      .default {
-        padding: 1rem;
-        width: 50%;
-      }
-      .dark {
-        padding: 1rem;
-        width: 50%;
-        background-color: #262833;
-      }
-      y-button {
-        margin-right: 0.85rem;
-        margin-bottom: 0.85rem;
-      }
-    </style>
-  </head>
-  <body>
-    <main class="default">
-      <article>
-        <y-button>Default</y-button>
-        <y-button disabled>Default</y-button>
-        <y-button href="https://yss.world">链接</y-button>
-        <y-button
-          href="https://kjimg10.360buyimg.com/ott/jfs/t1/124686/11/31072/170103/63bb8037F15537b4b/1e5cf478e1c70f0e.jpg"
-          download="https://kjimg10.360buyimg.com/ott/jfs/t1/124686/11/31072/170103/63bb8037F15537b4b/1e5cf478e1c70f0e.jpg"
-          >下载图片</y-button
-        >
-        <y-button circle>圆</y-button>
-        <y-button block>块</y-button>
-        <y-button loading="true">加载</y-button>
-        <y-button icon="config">图标</y-button>
-        <y-button>图标 <iconpark-icon style="margin-left: 0.55rem" name="config"></iconpark-icon></y-button>
-        <y-button size="large">Size Large</y-button>
-        <y-button>Size default</y-button>
-        <y-button size="small">Size small</y-button>
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>y-ui</title>
+  <link rel="stylesheet" href="index.css" />
+  </style>
+</head>
 
-        <y-button-group>
-          <y-button>Button0</y-button>
-          <y-button>Button1</y-button>
-          <y-button>Button2</y-button>
-        </y-button-group>
-      </article>
-    </main>
-    <main class="dark">
-      <article>
-        <y-button type="dark">Dark</y-button>
-        <y-button type="dark" disabled>Dark</y-button>
-        <y-button type="dark" href="https://yss.world">链接</y-button>
-        <y-button
-          type="dark"
-          href="https://kjimg10.360buyimg.com/ott/jfs/t1/124686/11/31072/170103/63bb8037F15537b4b/1e5cf478e1c70f0e.jpg"
-          download="https://kjimg10.360buyimg.com/ott/jfs/t1/124686/11/31072/170103/63bb8037F15537b4b/1e5cf478e1c70f0e.jpg"
-          >下载图片</y-button
-        >
-        <y-button type="dark" circle>圆</y-button>
-        <y-button type="dark" block>块</y-button>
-        <y-button type="dark" loading="true">加载</y-button>
-        <y-button type="dark" icon="config">图标</y-button>
-        <y-button type="dark">图标 <iconpark-icon style="margin-left: 0.55rem" name="config"></iconpark-icon></y-button>
-        <y-button type="dark" size="large">Size Large</y-button>
-        <y-button type="dark">Size default</y-button>
-        <y-button type="dark" size="small">Size small</y-button>
+<body>
+  <main class="default">
+    <article>
+      <h2>Buttons</h2>
+      <y-button>Default</y-button>
+      <y-button disabled>Default</y-button>
+      <y-button href="https://yss.world">链接</y-button>
+      <y-button
+        href="https://kjimg10.360buyimg.com/ott/jfs/t1/124686/11/31072/170103/63bb8037F15537b4b/1e5cf478e1c70f0e.jpg"
+        download="https://kjimg10.360buyimg.com/ott/jfs/t1/124686/11/31072/170103/63bb8037F15537b4b/1e5cf478e1c70f0e.jpg">
+        下载图片</y-button>
+      <y-button circle>圆</y-button>
+      <y-button block>块</y-button>
+      <y-button loading="true">加载</y-button>
+      <y-button icon="config">图标</y-button>
+      <y-button>图标 <iconpark-icon style="margin-left: 0.55rem" name="config"></iconpark-icon>
+      </y-button>
+      <y-button size="large">Size Large</y-button>
+      <y-button>Size default</y-button>
+      <y-button size="small">Size small</y-button>
 
-        <y-button-group>
-          <y-button type="dark">Button0</y-button>
-          <y-button type="dark">Button1</y-button>
-          <y-button type="dark">Button2</y-button>
-        </y-button-group>
-      </article>
-    </main>
-    <!-- https://bytedance.feishu.cn/wiki/wikcnJZV45hM71QgI60iwkzvXob -->
-    <script src="https://lf1-cdn-tos.bytegoofy.com/obj/iconpark/icons_22707_2.73f539d3a2597f5121af12af2745d1c3.js"></script>
-    <script type="module" src="index.js"></script>
-  </body>
+      <y-button-group>
+        <y-button>Button0</y-button>
+        <y-button>Button1</y-button>
+        <y-button>Button2</y-button>
+      </y-button-group>
+    </article>
+
+    <article>
+      <h2>Tips</h2>
+      <y-tips tips="Tips default">
+        <y-button>Tips default</y-button>
+      </y-tips>
+
+      <div class="tips-dir-container">
+        <!-- row0 -->
+        <span></span>
+        <y-tips dir="tl" tips="some tips">
+          <y-button>top left</y-button>
+        </y-tips>
+        <y-tips dir="t" tips="some tips">
+          <y-button>top</y-button>
+        </y-tips>
+        <y-tips dir="tr" tips="some tips">
+          <y-button>top right</y-button>
+        </y-tips>
+        <span></span>
+
+        <!-- row1 -->
+        <y-tips dir="lt" tips="some tips">
+          <y-button>left top</y-button>
+        </y-tips>
+        <span></span>
+        <span></span>
+        <span></span>
+        <y-tips dir="rt" tips="some tips">
+          <y-button>right top</y-button>
+        </y-tips>
+
+        <!-- row2 -->
+        <y-tips dir="l" tips="some tips">
+          <y-button>left</y-button>
+        </y-tips>
+        <span></span>
+        <span></span>
+        <span></span>
+        <y-tips dir="r" tips="some tips">
+          <y-button>right</y-button>
+        </y-tips>
+
+        <!-- row3 -->
+        <y-tips dir="lb" tips="some tips">
+          <y-button>left bottom</y-button>
+        </y-tips>
+        <span></span>
+        <span></span>
+        <span></span>
+        <y-tips dir="rb" tips="some tips">
+          <y-button>right bottom</y-button>
+        </y-tips>
+
+
+        <!-- row4 -->
+        <span></span>
+        <y-tips dir="bl" tips="some tips">
+          <y-button>bottom left</y-button>
+        </y-tips>
+        <y-tips dir="b" tips="some tips">
+          <y-button>bottom</y-button>
+        </y-tips>
+        <y-tips dir="br" tips="some tips">
+          <y-button>bottom right</y-button>
+        </y-tips>
+        <span></span>
+      </div>
+
+      <y-tips tips="11" suffix="km/h">
+        <y-button>Tips 后缀</y-button>
+      </y-tips>
+
+      <y-tips tips="11" prefix="K">
+        <y-button>Tips 前缀</y-button>
+      </y-tips>
+    </article>
+
+    <article>
+      <h2>Slider</h2>
+
+      <y-slider></y-slider>
+      <y-slider is-tips default-value="30"></y-slider>
+      <y-slider disabled default-value="50"></y-slider>
+      <y-slider default-value="50" is-tips min="0" max="100" step="5"></y-slider>
+      <y-slider default-value="30" is-tips vertical></y-slider>
+    </article>
+  </main>
+
+  <main class="dark">
+    <article>
+      <h2>Buttons</h2>
+      <y-button type="dark">Dark</y-button>
+      <y-button type="dark" disabled>Dark</y-button>
+      <y-button type="dark" href="https://yss.world">链接</y-button>
+      <y-button type="dark"
+        href="https://kjimg10.360buyimg.com/ott/jfs/t1/124686/11/31072/170103/63bb8037F15537b4b/1e5cf478e1c70f0e.jpg"
+        download="https://kjimg10.360buyimg.com/ott/jfs/t1/124686/11/31072/170103/63bb8037F15537b4b/1e5cf478e1c70f0e.jpg">
+        下载图片</y-button>
+      <y-button type="dark" circle>圆</y-button>
+      <y-button type="dark" block>块</y-button>
+      <y-button type="dark" loading="true">加载</y-button>
+      <y-button type="dark" icon="config">图标</y-button>
+      <y-button type="dark">图标 <iconpark-icon style="margin-left: 0.55rem" name="config"></iconpark-icon>
+      </y-button>
+      <y-button type="dark" size="large">Size Large</y-button>
+      <y-button type="dark">Size default</y-button>
+      <y-button type="dark" size="small">Size small</y-button>
+
+      <y-button-group>
+        <y-button type="dark">Button0</y-button>
+        <y-button type="dark">Button1</y-button>
+        <y-button type="dark">Button2</y-button>
+      </y-button-group>
+    </article>
+
+    <article>
+      <h2>Tips</h2>
+      <y-tips type="dark" tips="Tips default">
+        <y-button type="dark">Tips default</y-button>
+      </y-tips>
+
+      <div class="tips-dir-container">
+        <!-- row0 -->
+        <span></span>
+        <y-tips type="dark" dir="tl" tips="some tips">
+          <y-button type="dark">top left</y-button>
+        </y-tips>
+        <y-tips type="dark" dir="t" tips="some tips">
+          <y-button type="dark">top</y-button>
+        </y-tips>
+        <y-tips type="dark" dir="tr" tips="some tips">
+          <y-button type="dark">top right</y-button>
+        </y-tips>
+        <span></span>
+
+        <!-- row1 -->
+        <y-tips type="dark" dir="lt" tips="some tips">
+          <y-button type="dark">left top</y-button>
+        </y-tips>
+        <span></span>
+        <span></span>
+        <span></span>
+        <y-tips type="dark" dir="rt" tips="some tips">
+          <y-button type="dark">right top</y-button>
+        </y-tips>
+
+        <!-- row2 -->
+        <y-tips type="dark" dir="l" tips="some tips">
+          <y-button type="dark">left</y-button>
+        </y-tips>
+        <span></span>
+        <span></span>
+        <span></span>
+        <y-tips type="dark" dir="r" tips="some tips">
+          <y-button type="dark">right</y-button>
+        </y-tips>
+
+        <!-- row3 -->
+        <y-tips type="dark" dir="lb" tips="some tips">
+          <y-button type="dark">left bottom</y-button>
+        </y-tips>
+        <span></span>
+        <span></span>
+        <span></span>
+        <y-tips type="dark" dir="rb" tips="some tips">
+          <y-button type="dark">right bottom</y-button>
+        </y-tips>
+
+
+        <!-- row4 -->
+        <span></span>
+        <y-tips type="dark" dir="bl" tips="some tips">
+          <y-button type="dark">bottom left</y-button>
+        </y-tips>
+        <y-tips type="dark" dir="b" tips="some tips">
+          <y-button type="dark">bottom</y-button>
+        </y-tips>
+        <y-tips type="dark" dir="br" tips="some tips">
+          <y-button type="dark">bottom right</y-button>
+        </y-tips>
+        <span></span>
+      </div>
+
+      <y-tips type="dark" tips="11" suffix="km/h">
+        <y-button type="dark">Tips 后缀</y-button>
+      </y-tips>
+
+      <y-tips type="dark" tips="11" prefix="K">
+        <y-button type="dark">Tips 前缀</y-button>
+      </y-tips>
+    </article>
+
+    <article>
+      <h2>Slider</h2>
+
+      <y-slider theme-type="dark"></y-slider>
+      <y-slider theme-type="dark" is-tips default-value="30"></y-slider>
+      <y-slider theme-type="dark" disabled default-value="50"></y-slider>
+      <y-slider theme-type="dark" is-tips default-value="50" min="0" max="100" step="5"></y-slider>
+      <y-slider theme-type="dark" is-tips default-value="30" vertical></y-slider>
+    </article>
+  </main>
+  <!-- https://bytedance.feishu.cn/wiki/wikcnJZV45hM71QgI60iwkzvXob -->
+  <script
+    src="https://lf1-cdn-tos.bytegoofy.com/obj/iconpark/icons_22707_2.73f539d3a2597f5121af12af2745d1c3.js"></script>
+  <script type="module" src="index.js"></script>
+</body>
+
 </html>

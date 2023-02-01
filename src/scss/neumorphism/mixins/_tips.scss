@@ -1,0 +1,15 @@
+@mixin tips-variant($type, $background) {
+  @if $type == 'primary' {
+    :host::before {
+      color: color-yiq($background);
+      box-shadow: box-shadow('#{$type}-inset');
+      @include gradient-bg($background);
+    }
+  } @else {
+    :host([type='#{$type}'])::before {
+      color: color-yiq($background);
+      box-shadow: box-shadow('#{$type}-inset');
+      @include gradient-bg($background);
+    }
+  }
+}

@@ -285,3 +285,40 @@ template {
 [hidden] {
   display: none !important;
 }
+
+/* ----------------------- */
+body {
+  display: flex;
+}
+main {
+  min-height: 100vh;
+}
+article {
+  padding: 0.5rem;
+  margin-bottom: 1rem;
+}
+.dark article h2 {
+  color: #ecf0f3;
+}
+.default {
+  padding: 1rem;
+  width: 50%;
+}
+.dark {
+  padding: 1rem;
+  width: 50%;
+  background-color: #262833;
+}
+.tips-dir-container {
+  padding: 50px;
+  display: grid;
+  grid-template-columns: repeat(5, auto);
+  grid-template-rows: repeat(5, auto);
+}
+.tips-dir-container y-button {
+  width: 150px;
+}
+y-button {
+  margin-right: 0.85rem;
+  margin-bottom: 0.85rem;
+}
