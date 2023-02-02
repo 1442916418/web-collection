@@ -1,0 +1,76 @@
+@mixin option-variant(
+  $type,
+  $background,
+  $border,
+  $hover-background: darken($background, 0%),
+  $hover-border: darken($border, 0%),
+  $active-background: $background,
+  $active-border: darken($border, 0%)
+) {
+  // BUG: Styles
+  :host[selected='true'] {
+    color: color-yiq($background);
+    background-color: $hover-background;
+    box-shadow: box-shadow('#{$type}-inset');
+  }
+
+  @if $type == 'primary' {
+    :host {
+      color: color-yiq($background);
+      @include gradient-bg($background);
+    }
+
+    :host(:not([disabled]):hover) {
+      color: color-yiq($hover-background);
+      background-color: $hover-background;
+      border-color: $hover-border;
+      box-shadow: box-shadow('#{$type}-inset');
+    }
+
+    :host(:not([disabled]):focus) {
+      box-shadow: box-shadow('#{$type}-inset');
+    }
+
+    :host(:not([disabled]):active) {
+      box-shadow: box-shadow('#{$type}-inset');
+    }
+  } @else {
+    :host([type='#{$type}']) {
+      color: color-yiq($background);
+      @include gradient-bg($background);
+    }
+    s :host([type='#{$type}']) {
+      color: color-yiq($background);
+      @include gradient-bg($background);
+    }
+
+    :host([type='#{$type}']:not([disabled]):hover) {
+      color: color-yiq($hover-background);
+      background-color: $hover-background;
+      border-color: $hover-border;
+      box-shadow: box-shadow('#{$type}-inset');
+    }
+
+    :host([type='#{$type}']:not([disabled]):focus) {
+      box-shadow: box-shadow('#{$type}-inset');
+    }
+
+    :host([type='#{$type}']:not([disabled]):active) {
+      box-shadow: box-shadow('#{$type}-inset');
+    }
+  }
+}
+
+@mixin option-size($type, $font-size, $padding-y, $padding-x, $line-height, $border-radius) {
+  :host([size='#{$type}']) {
+    padding: theme-styles-size($type, $padding-y) theme-styles-size($type, $padding-x);
+    font-size: $font-size;
+    line-height: theme-styles-size($type, $line-height);
+
+    @if $enable-rounded {
+      @include border-radius($border-radius);
+    } @else {
+      border-radius: 0;
+    }
+  }
+}

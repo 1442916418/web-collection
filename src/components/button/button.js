@@ -1,8 +1,3 @@
-// import './y-loading.js'
-// import './y-icon.js'
-
-// https://www.zhangxinxu.com/wordpress/2021/02/web-components-import-css/
-
 import styles from './styles.js'
 
 export default class YButton extends HTMLElement {
@@ -31,12 +26,16 @@ export default class YButton extends HTMLElement {
     this.btn.focus()
   }
 
+  get htmlThemeType() {
+    return document.querySelector('html')?.getAttribute('theme-type') ?? ''
+  }
+
   get disabled() {
     return this.getAttribute('disabled') !== null
   }
 
   get type() {
-    return this.getAttribute('type')
+    return this.getAttribute('type') || this.htmlThemeType
   }
 
   get name() {

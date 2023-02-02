@@ -367,10 +367,6 @@ $tip-line-height: $input-btn-line-height;
 $tip-font-size: $font-size-sm;
 $tip-max-width: 200px;
 
-$tip-success: $success;
-$tip-danger: $danger;
-$tip-warning: $warning;
-
 // Slider
 $slider-padding-y: $input-btn-padding-y;
 $slider-padding-x: $input-btn-padding-x + 0.2;
@@ -379,3 +375,23 @@ $slider-range-height: 0.3rem;
 
 $slider-range-thumb-width: 1rem;
 $slider-range-thumb-height: 1rem;
+
+// Selects
+$select-color: $default;
+$select-padding-y: $input-btn-padding-y;
+$select-padding-x: $input-btn-padding-x + 0.2;
+$select-line-height: $input-btn-line-height;
+$select-font-size: $font-size-sm;
+
+$select-arrow-width: 1rem;
+$select-arrow-height: 1rem;
+$select-arrow-ml: 0.25rem;
+
+$select-placeholder-font-size: $font-size-xs;
+
+// Selects option
+$select-option-color: $default;
+$select-option-padding-y: $input-btn-padding-y;
+$select-option-padding-x: $input-btn-padding-x + 0.2;
+$select-option-line-height: $input-btn-line-height;
+$select-option-font-size: $font-size-xs;

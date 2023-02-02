@@ -1,0 +1,77 @@
+/*! -select */
+.select {
+  background: none;
+  user-select: none;
+  cursor: unset;
+}
+
+:host {
+  position: relative;
+  padding: $select-padding-y $select-padding-x;
+  padding-right: ($select-padding-x * 2);
+  display: inline-flex;
+  box-sizing: border-box;
+  vertical-align: middle;
+  line-height: $select-line-height;
+  align-items: center;
+  justify-content: center;
+  font-size: $select-font-size;
+  letter-spacing: $btn-letter-spacing;
+  border-width: $border-width;
+  border-style: solid;
+  border-radius: $border-radius;
+  border-color: $border-color-transparent;
+  transition: $transition-base;
+}
+
+:host([disabled]) {
+  pointer-events: none;
+  opacity: 0.6;
+  background: rgba(0, 0, 0, 0.1);
+}
+
+:host([disabled]) .select {
+  cursor: not-allowed;
+  pointer-events: all;
+}
+
+@each $color, $value in $theme-colors {
+  @include select-variant($color, $value, $value);
+}
+
+@each $type, $value in $theme-sizes {
+  @include select-size($type, $value, $btn-padding-y, $btn-padding-x, $btn-line-height, $border-radius);
+}
+
+.arrow {
+  width: $select-arrow-width;
+  position: absolute;
+  right: ($select-padding-x / 2);
+  height: $select-arrow-height;
+  margin-left: $select-arrow-height;
+  transition: $transition-base;
+}
+
+.arrow[open] {
+  transform: scaleY(-1);
+}
+
+.options {
+  visibility: hidden;
+  position: absolute;
+  top: 0;
+  right: 0;
+  left: 0;
+  border-width: $border-width;
+  border-style: solid;
+  border-radius: $border-radius;
+  border-color: $border-color-transparent;
+  overflow: auto;
+  max-height: 50vh;
+  scroll-behavior: smooth;
+}
+
+.placeholder {
+  font-size: $select-placeholder-font-size;
+}
+/*! select- */
