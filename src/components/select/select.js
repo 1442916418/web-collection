@@ -12,10 +12,12 @@ export default class YSelect extends HTMLElement {
     const name = this.name ? `name="${this.name}"` : ''
     const multiple = this.multiple ? `multiple="${this.multiple}"` : ''
     const disabled = this.disabled ? `disabled="${this.disabled}"` : ''
+    let defaultValue = `<span class="placeholder">${this.placeholder}</span>`
 
+    // TODO: defaultValue
     shadowRoot.innerHTML = `<style>${styles}</style>
-                            <div class="select" id="select" ${name} ${multiple} ${disabled}>
-                              <span class="placeholder">${this.placeholder}</span>
+                            <div class="select" id="select" tabindex="0" hidefocus="true" ${name} ${multiple} ${disabled}>
+                              <div class="select-value">${defaultValue}</div>
                               <div class="options" id="options"><slot id="slot"></slot></div>
                             </div>
                             <iconpark-icon class="arrow" name="down"></iconpark-icon>
@@ -23,11 +25,11 @@ export default class YSelect extends HTMLElement {
   }
 
   get disabled() {
-    return this.getAttribute('disabled')
+    return this.getAttribute('disabled') !== null
   }
 
   get multiple() {
-    return this.getAttribute('multiple')
+    return this.getAttribute('multiple') !== null
   }
 
   get name() {
@@ -47,33 +49,65 @@ export default class YSelect extends HTMLElement {
   }
 
   set value(value) {
-    console.log('🚀 ~ file: select.js:50 ~ YSelect ~ set value ~ value', value, this.slotNodes)
+    const isMultiple = this.multiple
+    console.log('value: %s, isMultiple: %s', value, isMultiple)
 
-    if (!value) {
-      this.selectValue = value
-
-      if (this.focusIndex >= 0) {
-        const curNode = this.slotNodes[this.focusIndex]
-
-        if (curNode) {
-          this.focusIndex = -1
-          curNode.selected = false
-        }
+    // TODO: focusIndex
+    if (isMultiple) {
+      if (!Array.isArray(this.selectValue)) {
+        this.selectValue = []
       }
-      return
-    }
 
-    if (value !== this.value) {
-      this.selectValue = value
+      const isSelected = this.selectValue.find((v) => v === value)
 
-      const curIndex = this.slotNodes.findIndex((v) => v.value === value)
+      let list = this.selectValue.length ? [value, ...this.selectValue] : [value]
 
-      this.slotNodes.forEach((item, i) => {
-        item.selected = curIndex === i
+      if (isSelected) {
+        list = list.filter((v) => v !== value)
+      }
+
+      this.selectValue = list
+
+      this.slotNodes.forEach((item) => {
+        if (list.find((v) => v === item.value)) {
+          item.setAttribute('selected', '')
+        } else {
+          item.removeAttribute('selected')
+        }
       })
+    } else {
+      this.checkOptionsVisible(false)
 
-      this.focusIndex = curIndex
-      console.log(this.slotNodes, this.focusIndex)
+      if (!value) {
+        this.selectValue = value
+
+        if (this.focusIndex) {
+          const curNode = this.slotNodes[this.focusIndex]
+
+          if (curNode) {
+            curNode.removeAttribute('selected')
+
+            this.focusIndex = -1
+          }
+        }
+        return
+      }
+
+      if (value !== this.value) {
+        this.selectValue = value
+
+        const curIndex = this.slotNodes.findIndex((v) => v.value === value)
+
+        this.slotNodes.forEach((item, i) => {
+          if (curIndex === i) {
+            item.setAttribute('selected', '')
+          } else {
+            item.removeAttribute('selected')
+          }
+        })
+
+        this.focusIndex = curIndex
+      }
     }
   }
 
@@ -90,7 +124,11 @@ export default class YSelect extends HTMLElement {
   }
 
   set multiple(value) {
-    this.setAttribute('multiple', value)
+    if (value === null || value === false) {
+      this.removeAttribute('multiple')
+    } else {
+      this.setAttribute('multiple', '')
+    }
   }
 
   set name(value) {
@@ -114,9 +152,17 @@ export default class YSelect extends HTMLElement {
       e.stopPropagation()
       this.checkOptionsVisible(true)
     })
-    this.options.addEventListener('click', (ev) => {
+    this.select.addEventListener('blur', (e) => {
+      e.stopPropagation()
+
+      // TODO: multiple
+      // !this.multiple && this.checkOptionsVisible(false)
+      this.checkOptionsVisible(false)
+    })
+    this.options.addEventListener('click', (e) => {
+      e.stopPropagation()
       this.focus()
-      const target = ev.target
+      const target = e.target
 
       if (target) {
         this.value = target.value
@@ -142,7 +188,7 @@ export default class YSelect extends HTMLElement {
   }
 
   checkOptionsVisible(value) {
-    this.options.style.visibility = value ? 'visible' : 'hidden'
+    this.options.style.display = value ? 'block' : 'none'
   }
 
   setOptionsStyles() {

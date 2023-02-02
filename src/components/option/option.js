@@ -66,7 +66,6 @@ export default class YSelectOption extends HTMLElement {
       this.option.disabled = !!newValue
     }
     if (name === 'selected' && this.option) {
-      console.log(name, newValue)
       this.option.selected = newValue
     }
   }

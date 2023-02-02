@@ -7,13 +7,6 @@
   $active-background: $background,
   $active-border: darken($border, 0%)
 ) {
-  // BUG: Styles
-  :host[selected='true'] {
-    color: color-yiq($background);
-    background-color: $hover-background;
-    box-shadow: box-shadow('#{$type}-inset');
-  }
-
   @if $type == 'primary' {
     :host {
       color: color-yiq($background);
@@ -32,6 +25,12 @@
     }
 
     :host(:not([disabled]):active) {
+      box-shadow: box-shadow('#{$type}-inset');
+    }
+
+    :host([selected]) {
+      color: color-yiq($background);
+      background-color: $hover-background;
       box-shadow: box-shadow('#{$type}-inset');
     }
   } @else {
@@ -56,6 +55,12 @@
     }
 
     :host([type='#{$type}']:not([disabled]):active) {
+      box-shadow: box-shadow('#{$type}-inset');
+    }
+
+    :host([type='#{$type}']) :host([selected]) {
+      color: color-yiq($background);
+      background-color: $hover-background;
       box-shadow: box-shadow('#{$type}-inset');
     }
   }

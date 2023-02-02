@@ -2,6 +2,7 @@
 .select {
   background: none;
   user-select: none;
+  outline: 0;
   cursor: unset;
 }
 
@@ -57,7 +58,7 @@
 }
 
 .options {
-  visibility: hidden;
+  display: none;
   position: absolute;
   top: 0;
   right: 0;
@@ -73,5 +74,10 @@
 
 .placeholder {
   font-size: $select-placeholder-font-size;
+}
+
+y-button {
+  margin-right: $select-padding-x;
+  margin-bottom: ($select-padding-y / 2);
 }
 /*! select- */
