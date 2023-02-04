@@ -23,12 +23,8 @@ export default class YSlider extends HTMLElement {
     shadowRoot.innerHTML = `<style>${styles}</style>${tipsEle}`
   }
 
-  focus() {
-    this.slider.focus()
-  }
-
   get value() {
-    return Number(this.slider.value)
+    return Number(this.sliderEle.value)
   }
 
   get defaultValue() {
@@ -88,13 +84,13 @@ export default class YSlider extends HTMLElement {
   }
 
   set value(value) {
-    this.slider.value = value
-    this.sliderContainer.style.setProperty('--percent', (this.value - this.min) / (this.max - this.min))
+    this.sliderEle.value = value
+    this.sliderContainerEle.style.setProperty('--percent', (this.value - this.min) / (this.max - this.min))
 
     if (this.isTips && !this.disabled) {
-      this.sliderContainer.tips = this.value
+      this.sliderContainerEle.tips = this.value
     } else {
-      this.sliderContainer.tips = ''
+      this.sliderContainerEle.tips = ''
     }
   }
 
@@ -119,99 +115,116 @@ export default class YSlider extends HTMLElement {
   }
 
   connectedCallback() {
-    this.slider = this.shadowRoot.getElementById('slider')
-    this.sliderContainer = this.shadowRoot.getElementById('slider-container')
+    this.sliderEle = this.shadowRoot.getElementById('slider')
+    this.sliderContainerEle = this.shadowRoot.getElementById('slider-container')
 
     if (this.themeType) {
-      this.slider.setAttribute('theme-type', this.themeType)
-      this.sliderContainer.setAttribute('type', this.themeType)
+      this.sliderEle.setAttribute('theme-type', this.themeType)
+      this.sliderContainerEle.setAttribute('type', this.themeType)
     } else {
-      this.slider.removeAttribute('theme-type')
-      this.sliderContainer.removeAttribute('type')
+      this.sliderEle.removeAttribute('theme-type')
+      this.sliderContainerEle.removeAttribute('type')
     }
 
+    this.handleVerticalStyles()
+
+    this.sliderInput = (e) => this.handleSliderClickEvent(e)
+    this.sliderClick = () => handleSliderChangeEvent()
+    this.shadowRootWheel = (e) => this.handleShadowRootWheelEvent(e)
+
+    this.sliderEle.addEventListener('input', this.sliderInput)
+    this.sliderEle.addEventListener('change', this.sliderClick)
+    this.addEventListener('wheel', this.shadowRootWheel, true)
+  }
+
+  disconnectedCallback() {
+    this.vertical && this.resizeObserver.unobserve(this)
+
+    this.sliderEle.removeEventListener('input', this.sliderInput)
+    this.sliderEle.removeEventListener('change', this.sliderClick)
+    this.removeEventListener('wheel', this.shadowRootWheel, true)
+  }
+
+  attributeChangedCallback(name, oldValue, newValue) {
+    if (this.sliderEle && oldValue !== newValue && !this._oninput) {
+      if (name == 'disabled') {
+        if (newValue !== null) {
+          this.sliderEle.setAttribute('disabled', 'disabled')
+        } else {
+          this.sliderEle.removeAttribute('disabled')
+        }
+      } else {
+        this.sliderEle[name] = newValue
+        this[name] = newValue
+        this.sliderContainerEle.style.setProperty('--percent', (this.value - this.min) / (this.max - this.min))
+        if (name === 'suffix') {
+          this.sliderContainerEle.suffix = newValue
+        }
+      }
+    }
+  }
+
+  focus() {
+    this.sliderEle.focus()
+  }
+
+  handleVerticalStyles() {
     if (this.vertical) {
       this.style = 'height: var(--h, 300px)'
 
       this.resizeObserver = new ResizeObserver((entries) => {
         for (let entry of entries) {
           const { height } = entry.contentRect
-          this.sliderContainer.style.setProperty('--h', height + 'px')
+          this.sliderContainerEle.style.setProperty('--h', height + 'px')
         }
       })
       this.resizeObserver.observe(this)
     }
+  }
 
-    this.slider.addEventListener('input', (ev) => {
-      this.value = this.slider.value
-      this._oninput = true
-      ev.stopPropagation()
-      this.dispatchEvent(
-        new CustomEvent('input', {
-          detail: {
-            value: this.slider.value
-          }
-        })
-      )
-    })
+  handleSliderClickEvent(e) {
+    this.value = this.sliderEle.value
+    this._oninput = true
 
-    this.slider.addEventListener('change', (ev) => {
-      this.value = this.slider.value
-      this._oninput = false
-      this.dispatchEvent(
-        new CustomEvent('change', {
-          detail: {
-            value: this.slider.value
-          }
-        })
-      )
-    })
+    e.stopPropagation()
 
-    this.addEventListener(
-      'wheel',
-      (ev) => {
-        if (getComputedStyle(this.slider).zIndex == 2) {
-          ev.preventDefault()
-          if ((ev.deltaY < 0 && !this.vertical) || (ev.deltaY > 0 && this.vertical)) {
-            this.value -= this.step * 5
-          } else {
-            this.value += this.step * 5
-          }
-          this.dispatchEvent(
-            new CustomEvent('change', {
-              detail: {
-                value: this.value
-              }
-            })
-          )
+    this.dispatchEvent(
+      new CustomEvent('input', {
+        detail: {
+          value: this.sliderEle.value
         }
-      },
-      true
+      })
     )
   }
 
-  disconnectedCallback() {
-    if (this.vertical) {
-      this.resizeObserver.unobserve(this)
-    }
+  handleSliderChangeEvent() {
+    this.value = this.sliderEle.value
+    this._oninput = false
+
+    this.dispatchEvent(
+      new CustomEvent('change', {
+        detail: {
+          value: this.sliderEle.value
+        }
+      })
+    )
   }
 
-  attributeChangedCallback(name, oldValue, newValue) {
-    if (this.slider && oldValue !== newValue && !this._oninput) {
-      if (name == 'disabled') {
-        if (newValue !== null) {
-          this.slider.setAttribute('disabled', 'disabled')
-        } else {
-          this.slider.removeAttribute('disabled')
-        }
+  handleShadowRootWheelEvent(e) {
+    if (getComputedStyle(this.sliderEle).zIndex == 2) {
+      e.preventDefault()
+      if ((e.deltaY < 0 && !this.vertical) || (e.deltaY > 0 && this.vertical)) {
+        this.value -= this.step * 5
       } else {
-        this.slider[name] = newValue
-        this[name] = newValue
-        this.sliderContainer.style.setProperty('--percent', (this.value - this.min) / (this.max - this.min))
-        if (name === 'suffix') {
-          this.sliderContainer.suffix = newValue
-        }
+        this.value += this.step * 5
       }
+      this.dispatchEvent(
+        new CustomEvent('change', {
+          detail: {
+            value: this.value
+          }
+        })
+      )
     }
   }
 }

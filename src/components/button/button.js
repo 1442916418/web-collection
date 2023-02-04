@@ -23,7 +23,7 @@ export default class YButton extends HTMLElement {
   }
 
   focus() {
-    this.btn.focus()
+    this.btnEle.focus()
   }
 
   get htmlThemeType() {
@@ -95,60 +95,72 @@ export default class YButton extends HTMLElement {
   }
 
   connectedCallback() {
-    this.btn = this.shadowRoot.getElementById('btn')
+    this.btnEle = this.shadowRoot.getElementById('btn')
     this.iconEle = this.shadowRoot.getElementById('icon')
-    this.loadLoadingIcon = document.createElement('iconpark-icon')
+    this.loadLoadingIconEle = document.createElement('iconpark-icon')
 
-    this.loadLoadingIcon.setAttribute('name', 'loading-four')
-    this.loadLoadingIcon.className = 'loading'
-    this.loadLoadingIcon.style.color = 'inherit'
+    this.btnKeydown = (e) => this.handleBtnKeydown(e)
 
-    this.btn.addEventListener('keydown', (e) => {
-      if (e.code === 'Enter') {
-        e.stopPropagation()
-      }
-    })
+    this.btnEle.addEventListener('keydown', this.btnKeydown)
+
+    this.handleLoadingIcon()
 
     this.disabled = this.disabled
     this.loading = this.loading
   }
 
-  attributeChangedCallback(name, oldValue, newValue) {
-    if (name === 'disabled' && this.btn) {
-      if (newValue !== null) {
-        this.btn.setAttribute('disabled', 'disabled')
+  disconnectedCallback() {
+    this.btnEle.removeEventListener('keydown', this.btnKeydown)
+  }
 
-        this.href && this.btn.removeAttribute('href')
+  attributeChangedCallback(name, oldValue, newValue) {
+    if (name === 'disabled' && this.btnEle) {
+      if (newValue !== null) {
+        this.btnEle.setAttribute('disabled', 'disabled')
+
+        this.href && this.btnEle.removeAttribute('href')
       } else {
-        this.btn.removeAttribute('disabled')
+        this.btnEle.removeAttribute('disabled')
 
         if (this.href) {
-          this.btn.href = this.href
+          this.btnEle.href = this.href
         }
       }
     }
-    if (name === 'loading' && this.btn) {
+    if (name === 'loading' && this.btnEle) {
       if (newValue !== null) {
-        this.shadowRoot.prepend(this.loadLoadingIcon)
-        this.btn.setAttribute('disabled', 'disabled')
+        this.shadowRoot.prepend(this.loadLoadingIconEle)
+        this.btnEle.setAttribute('disabled', 'disabled')
       } else {
-        this.shadowRoot.removeChild(this.loadLoadingIcon)
-        this.btn.removeAttribute('disabled')
+        this.shadowRoot.removeChild(this.loadLoadingIconEle)
+        this.btnEle.removeAttribute('disabled')
       }
     }
     if (name === 'icon' && this.iconEle) {
       this.iconEle.name = newValue
     }
-    if (name === 'href' && this.btn) {
+    if (name === 'href' && this.btnEle) {
       if (newValue !== 'null' && !this.disabled) {
-        this.btn.href = newValue
+        this.btnEle.href = newValue
       }
     }
-    if (name === 'type' && this.btn) {
+    if (name === 'type' && this.btnEle) {
       if (newValue !== 'null') {
-        this.btn.type = newValue
+        this.btnEle.type = newValue
       }
     }
+  }
+
+  handleBtnKeydown(e) {
+    if (e.code === 'Enter') {
+      e.stopPropagation()
+    }
+  }
+
+  handleLoadingIcon() {
+    this.loadLoadingIconEle.setAttribute('spin', '')
+    this.loadLoadingIconEle.setAttribute('name', 'loading-four')
+    this.loadLoadingIconEle.style.color = 'inherit'
   }
 }
 

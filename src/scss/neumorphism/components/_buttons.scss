@@ -72,18 +72,4 @@ fieldset:disabled a.btn {
 iconpark-icon {
   margin-right: $btn-loading-margin-y;
 }
-
-.loading {
-  animation: loadingAnimation 1s linear infinite;
-}
-
-@keyframes loadingAnimation {
-  0% {
-    transform: rotate(0deg);
-  }
-  100% {
-    transform: rotate(360deg);
-  }
-}
-
 /*! button- */

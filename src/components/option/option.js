@@ -67,20 +67,20 @@ export default class YSelectOption extends HTMLElement {
   }
 
   connectedCallback() {
-    this.option = this.shadowRoot.getElementById('option')
+    this.optionEle = this.shadowRoot.getElementById('option')
   }
 
   attributeChangedCallback(name, oldValue, newValue) {
-    if (name == 'disabled' && this.option) {
-      this.option.disabled = !!newValue
+    if (name == 'disabled' && this.optionEle) {
+      this.optionEle.disabled = !!newValue
     }
-    if (name === 'selected' && this.option) {
-      this.option.selected = newValue
+    if (name === 'selected' && this.optionEle) {
+      this.optionEle.selected = newValue
     }
   }
 
   focus() {
-    this.option.focus()
+    this.optionEle.focus()
   }
 }
 
