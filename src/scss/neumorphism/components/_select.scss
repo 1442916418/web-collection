@@ -26,14 +26,15 @@
 }
 
 :host([disabled]) {
-  pointer-events: none;
   opacity: 0.6;
   background: rgba(0, 0, 0, 0.1);
+  pointer-events: none;
+  cursor: not-allowed;
 }
 
 :host([disabled]) .select {
   cursor: not-allowed;
-  pointer-events: all;
+  pointer-events: none;
 }
 
 @each $color, $value in $theme-colors {
@@ -60,7 +61,7 @@
 .options {
   display: none;
   position: absolute;
-  top: 0;
+  top: calc(100% + #{$select-padding-y});
   right: 0;
   left: 0;
   border-width: $border-width;
@@ -73,6 +74,10 @@
 }
 
 .placeholder {
+  font-size: $select-placeholder-font-size;
+}
+
+.select-value {
   font-size: $select-placeholder-font-size;
 }
 

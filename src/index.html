@@ -128,14 +128,37 @@
     <article>
       <h2>Select</h2>
 
+      <y-select size="large" placeholder="请选择水果">
+        <y-select-option label="苹果" value="apple"></y-select-option>
+        <y-select-option label="香蕉" value="banana"></y-select-option>
+        <y-select-option label="枣子" value="jujube"></y-select-option>
+      </y-select>
+
       <y-select>
         <y-select-option label="苹果" value="apple"></y-select-option>
         <y-select-option label="香蕉" value="banana"></y-select-option>
         <y-select-option label="枣子" value="jujube"></y-select-option>
       </y-select>
 
+      <y-select size="small">
+        <y-select-option label="苹果" value="apple"></y-select-option>
+        <y-select-option label="香蕉" value="banana"></y-select-option>
+        <y-select-option label="枣子" value="jujube"></y-select-option>
+      </y-select>
 
-      <y-select multiple>
+      <y-select multiple placeholder="支持多选">
+        <y-select-option label="苹果" value="apple"></y-select-option>
+        <y-select-option label="香蕉" value="banana"></y-select-option>
+        <y-select-option label="枣子" value="jujube"></y-select-option>
+      </y-select>
+
+      <y-select multiple disabled placeholder="支持多选">
+        <y-select-option label="苹果" value="apple"></y-select-option>
+        <y-select-option label="香蕉" value="banana"></y-select-option>
+        <y-select-option label="枣子" value="jujube"></y-select-option>
+      </y-select>
+
+      <y-select default-value="apple" placeholder="支持多选">
         <y-select-option label="苹果" value="apple"></y-select-option>
         <y-select-option label="香蕉" value="banana"></y-select-option>
         <y-select-option label="枣子" value="jujube"></y-select-option>
@@ -259,6 +282,50 @@
       <y-slider theme-type="dark" disabled default-value="50"></y-slider>
       <y-slider theme-type="dark" is-tips default-value="50" min="0" max="100" step="5"></y-slider>
       <y-slider theme-type="dark" is-tips default-value="30" vertical></y-slider>
+    </article>
+
+    <article>
+      <h2>Select</h2>
+
+      <y-select type="dark" size="large" placeholder="请选择水果">
+        <y-select-option label="苹果" value="apple"></y-select-option>
+        <y-select-option label="香蕉" value="banana"></y-select-option>
+        <y-select-option label="枣子" value="jujube"></y-select-option>
+      </y-select>
+
+      <y-select type="dark">
+        <y-select-option label="苹果" value="apple"></y-select-option>
+        <y-select-option label="香蕉" value="banana"></y-select-option>
+        <y-select-option label="枣子" value="jujube"></y-select-option>
+      </y-select>
+
+      <y-select type="dark" size="small">
+        <y-select-option label="苹果" value="apple"></y-select-option>
+        <y-select-option label="香蕉" value="banana"></y-select-option>
+        <y-select-option label="枣子" value="jujube"></y-select-option>
+      </y-select>
+
+      <y-select type="dark" multiple placeholder="支持多选">
+        <y-select-option label="苹果" value="apple"></y-select-option>
+        <y-select-option label="香蕉" value="banana"></y-select-option>
+        <y-select-option label="枣子" value="jujube"></y-select-option>
+      </y-select>
+
+      <y-select type="dark" multiple disabled placeholder="支持多选">
+        <y-select-option label="苹果" value="apple"></y-select-option>
+        <y-select-option label="香蕉" value="banana"></y-select-option>
+        <y-select-option label="枣子" value="jujube"></y-select-option>
+      </y-select>
+
+      <y-select type="dark" default-value="apple" placeholder="支持多选">
+        <y-select-option label="苹果" value="apple"></y-select-option>
+        <y-select-option label="香蕉" value="banana"></y-select-option>
+        <y-select-option label="枣子" value="jujube"></y-select-option>
+      </y-select>
+    </article>
+
+    <article style="height: 400px;">
+      <h2>Test</h2>
     </article>
   </main>
 

@@ -2,7 +2,7 @@ import styles from './styles.js'
 
 export default class YSelect extends HTMLElement {
   static get observedAttributes() {
-    return ['disabled', 'multiple', 'name', 'size', 'placeholder', 'value']
+    return ['disabled', 'multiple', 'name', 'size', 'placeholder', 'default-value', 'type']
   }
 
   constructor() {
@@ -12,16 +12,18 @@ export default class YSelect extends HTMLElement {
     const name = this.name ? `name="${this.name}"` : ''
     const multiple = this.multiple ? `multiple="${this.multiple}"` : ''
     const disabled = this.disabled ? `disabled="${this.disabled}"` : ''
-    let defaultValue = `<span class="placeholder">${this.placeholder}</span>`
 
-    // TODO: defaultValue
     shadowRoot.innerHTML = `<style>${styles}</style>
-                            <div class="select" id="select" tabindex="0" hidefocus="true" ${name} ${multiple} ${disabled}>
-                              <div class="select-value">${defaultValue}</div>
+                            <div class="select" id="select" tabindex="0" ${name} ${multiple} ${disabled}>
+                              <div class="select-value" id="select-value">${this.defaultPlaceholder}</div>
                               <div class="options" id="options"><slot id="slot"></slot></div>
                             </div>
-                            <iconpark-icon class="arrow" name="down"></iconpark-icon>
+                            <iconpark-icon class="arrow" id="arrow" name="down"></iconpark-icon>
                             `
+  }
+
+  get defaultPlaceholder() {
+    return `<span class="placeholder">${this.placeholder}</span>`
   }
 
   get disabled() {
@@ -41,35 +43,47 @@ export default class YSelect extends HTMLElement {
   }
 
   get placeholder() {
-    return this.selectValue || this.getAttribute('placeholder') || '请选择'
+    return this.getAttribute('placeholder') || '请选择'
   }
 
   get value() {
     return this.selectValue || ''
   }
 
-  set value(value) {
-    const isMultiple = this.multiple
-    console.log('value: %s, isMultiple: %s', value, isMultiple)
+  get type() {
+    return this.getAttribute('type')
+  }
 
-    // TODO: focusIndex
+  set type(value) {
+    this.setAttribute('type', value)
+  }
+
+  get defaultValue() {
+    return this.getAttribute('default-value') || ''
+  }
+
+  set value(targetValue) {
+    const isMultiple = this.multiple
+
     if (isMultiple) {
       if (!Array.isArray(this.selectValue)) {
         this.selectValue = []
       }
 
-      const isSelected = this.selectValue.find((v) => v === value)
+      const isSelected = this.selectValue.find((v) => v.value === targetValue.value)
 
-      let list = this.selectValue.length ? [value, ...this.selectValue] : [value]
+      let list = this.selectValue.length ? [targetValue, ...this.selectValue] : [targetValue]
 
       if (isSelected) {
-        list = list.filter((v) => v !== value)
+        list = list.filter((v) => v.value !== targetValue.value)
       }
 
       this.selectValue = list
 
       this.slotNodes.forEach((item) => {
-        if (list.find((v) => v === item.value)) {
+        item.removeAttribute('focus')
+
+        if (list.find((v) => v.value === item.value)) {
           item.setAttribute('selected', '')
         } else {
           item.removeAttribute('selected')
@@ -78,27 +92,32 @@ export default class YSelect extends HTMLElement {
     } else {
       this.checkOptionsVisible(false)
 
-      if (!value) {
-        this.selectValue = value
+      if (!targetValue) {
+        this.selectValue = targetValue
 
         if (this.focusIndex) {
           const curNode = this.slotNodes[this.focusIndex]
 
           if (curNode) {
             curNode.removeAttribute('selected')
+            curNode.removeAttribute('focus')
 
             this.focusIndex = -1
           }
         }
+
+        this.setSelectedValue()
         return
       }
 
-      if (value !== this.value) {
-        this.selectValue = value
+      if (JSON.stringify(targetValue) !== JSON.stringify(this.value)) {
+        this.selectValue = targetValue
 
-        const curIndex = this.slotNodes.findIndex((v) => v.value === value)
+        const curIndex = this.slotNodes.findIndex((v) => v.value === targetValue.value)
 
         this.slotNodes.forEach((item, i) => {
+          item.removeAttribute('focus')
+
           if (curIndex === i) {
             item.setAttribute('selected', '')
           } else {
@@ -109,6 +128,8 @@ export default class YSelect extends HTMLElement {
         this.focusIndex = curIndex
       }
     }
+
+    this.setSelectedValue()
   }
 
   set size(value) {
@@ -136,66 +157,191 @@ export default class YSelect extends HTMLElement {
   }
 
   connectedCallback() {
-    this.select = this.shadowRoot.getElementById('select')
-    this.options = this.shadowRoot.getElementById('options')
-    this.slots = this.shadowRoot.getElementById('slot')
+    this.selectEle = this.shadowRoot.getElementById('select')
+    this.optionsEle = this.shadowRoot.getElementById('options')
+    this.slotsEle = this.shadowRoot.getElementById('slot')
+    this.selectValueEle = this.shadowRoot.getElementById('select-value')
+    this.arrowEle = this.shadowRoot.getElementById('arrow')
 
     this.slotNodes = []
-    this.selectValue = ''
+    this.selectValue = {} // 单选是对象，多选是对象数组
     this.focusIndex = -1
 
-    this.addEventListener('click', (e) => {
-      e.stopPropagation()
-      this.checkOptionsVisible(true)
-    })
-    this.select.addEventListener('click', (e) => {
-      e.stopPropagation()
-      this.checkOptionsVisible(true)
-    })
-    this.select.addEventListener('blur', (e) => {
-      e.stopPropagation()
+    this.documentClick = (e) => this.handleDocumentClickEvent(e)
+    this.shadowRootClick = (e) => this.handleShadowRootClickEvent(e)
+    this.shadowRootKeydown = (e) => this.handleShadowRootKeydownEvent(e)
+    this.selectClick = (e) => this.handleSelectClickEvent(e)
+    this.selectOptionClick = (e) => this.handleSelectOptionClickEvent(e)
+    this.slotChange = () => this.handleSlotsChangeEvent()
 
-      // TODO: multiple
-      // !this.multiple && this.checkOptionsVisible(false)
-      this.checkOptionsVisible(false)
-    })
-    this.options.addEventListener('click', (e) => {
-      e.stopPropagation()
-      this.focus()
-      const target = e.target
+    document.addEventListener('click', this.documentClick)
 
-      if (target) {
-        this.value = target.value
-      }
-    })
-    this.slots.addEventListener('slotchange', (e) => {
-      const querySlots = this.querySelectorAll('y-select-option:not([disabled])')
+    this.addEventListener('keydown', this.shadowRootKeydown)
+    this.addEventListener('click', this.shadowRootClick)
+    this.selectEle.addEventListener('click', this.selectClick)
+    this.optionsEle.addEventListener('click', this.selectOptionClick)
+    this.slotsEle.addEventListener('slotchange', this.slotChange)
 
-      this.slotNodes = querySlots.length ? [...querySlots] : []
-    })
+    this.handleDefaultValue(this.defaultValue)
+  }
 
-    this.setOptionsStyles()
+  disconnectedCallback() {
+    document.removeEventListener('click', this.documentClick)
+
+    this.removeEventListener('click', this.shadowRootClick)
+    this.removeEventListener('keydown', this.shadowRootKeydown)
+    this.selectEle.removeEventListener('click', this.selectClick)
+    this.optionsEle.removeEventListener('click', this.selectOptionClick)
+    this.slotsEle.removeEventListener('slotchange', this.slotChange)
   }
 
   attributeChangedCallback(name, oldValue, newValue) {
-    if (name == 'disabled' && this.select) {
-      this.select.disabled = !!newValue
+    if (name === 'disabled' && this.selectEle) {
+      this.selectEle.disabled = !!newValue
+    }
+    if (name === 'default-value' && this.slotNodes) {
+      this.handleDefaultValue(newValue)
+    }
+    if (name === 'type' && this.slotNodes) {
+      this.slotNodes.forEach((v) => v.setAttribute('type', newValue))
+    }
+  }
+
+  handleDocumentClickEvent(e) {
+    e.stopPropagation()
+    this.checkOptionsVisible(false)
+  }
+
+  handleShadowRootClickEvent(e) {
+    e.stopPropagation()
+    this.checkOptionsVisible(true)
+  }
+
+  handleSelectClickEvent(e) {
+    e.stopPropagation()
+    this.checkOptionsVisible(true)
+  }
+
+  handleSelectOptionClickEvent(e) {
+    e.stopPropagation()
+    this.focus()
+    const target = e.target
+
+    if (target) {
+      this.value = { label: target.label, value: target.value }
+    }
+  }
+
+  handleSlotsChangeEvent() {
+    const querySlots = this.querySelectorAll('y-select-option:not([disabled])')
+
+    this.slotNodes = querySlots.length ? [...querySlots] : []
+
+    if (this.type) {
+      this.slotNodes.forEach((v) => (v.type = this.type))
+    }
+
+    this.handleDefaultValue(this.defaultValue)
+  }
+
+  handleShadowRootKeydownEvent(e) {
+    switch (e.code) {
+      case 'Tab':
+        e.preventDefault()
+        break
+      case 'ArrowUp':
+        e.preventDefault()
+        this.handleMove(-1)
+        break
+      case 'ArrowDown':
+        e.preventDefault()
+        this.handleMove(1)
+        break
+      case 'Escape':
+        e.preventDefault()
+        this.checkOptionsVisible(false)
+        break
+      case 'Enter':
+        e.preventDefault()
+        const target = this.slotNodes[this.focusIndex]
+
+        if (target) {
+          this.value = { label: target.label, value: target.value }
+        }
+        break
     }
   }
 
   focus() {
-    this.select.focus()
+    this.selectEle.focus()
   }
 
+  // TODO: 关闭单个组件
   checkOptionsVisible(value) {
-    this.options.style.display = value ? 'block' : 'none'
+    this.optionsEle.style.display = value ? 'block' : 'none'
+
+    if (value) {
+      this.arrowEle.setAttribute('open', '')
+    } else {
+      this.arrowEle.removeAttribute('open')
+    }
   }
 
-  setOptionsStyles() {
-    if (this.select && this.options) {
-      const { height } = this.getBoundingClientRect()
-      const { height: selectHeight } = this.select.getBoundingClientRect()
-      this.options.style.top = `${height + selectHeight + 6}px`
+  setSelectedValue() {
+    let result = this.defaultPlaceholder
+    const value = this.selectValue
+
+    if (this.multiple) {
+      if (Array.isArray(value) && this.selectValueEle) {
+        if (value.length) {
+          const disabled = this.disabled ? `disabled="${this.disabled}"` : ''
+          const type = this.type ? `type="${this.type}"` : ''
+
+          result = value.map((v) => `<y-button size="small" ${disabled} ${type}>${v.label}</y-button>`).join(' ')
+        }
+      }
+    } else {
+      if (value) {
+        result = `<span>${value.label}</span>`
+      }
+    }
+
+    this.selectValueEle.innerHTML = result
+  }
+
+  handleMove(dir) {
+    this.focusIndex += dir
+
+    if (this.focusIndex < 0) {
+      this.focusIndex = this.slotNodes.length - 1
+    }
+
+    if (this.focusIndex === this.slotNodes.length) {
+      this.focusIndex = 0
+    }
+
+    this.handleMoveOptionStyles()
+  }
+
+  handleMoveOptionStyles() {
+    const target = this.slotNodes[this.focusIndex]
+
+    this.slotNodes.forEach((item) => {
+      if (item.value === target.value) {
+        item.setAttribute('focus', '')
+      } else {
+        item.removeAttribute('focus')
+      }
+    })
+  }
+
+  handleDefaultValue(value) {
+    if (!value || !this.slotNodes.length) return
+
+    const find = this.slotNodes.find((v) => v.value === value)
+
+    if (find) {
+      this.value = { label: find.label, value: find.value }
     }
   }
 }

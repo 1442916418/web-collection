@@ -2,7 +2,7 @@ import styles from './styles.js'
 
 export default class YSelectOption extends HTMLElement {
   static get observedAttributes() {
-    return ['disabled', 'size', 'label', 'selected', 'value']
+    return ['disabled', 'size', 'label', 'selected', 'value', 'type']
   }
 
   constructor() {
@@ -13,12 +13,13 @@ export default class YSelectOption extends HTMLElement {
     const label = this.label ? `label="${this.label}"` : ''
     const selected = this.selected ? `selected="${this.selected}"` : ''
     const value = this.value ? `value="${this.value}"` : ''
+    const type = this.type ? `type="${this.type}"` : ''
 
-    shadowRoot.innerHTML = `<style>${styles}</style><option class="option" id="option" ${disabled} ${label} ${selected} ${value}></option>`
+    shadowRoot.innerHTML = `<style>${styles}</style><option class="option" id="option" ${disabled} ${label} ${selected} ${value} ${type}></option>`
   }
 
   get disabled() {
-    return this.getAttribute('disabled')
+    return this.getAttribute('disabled') !== null
   }
 
   get size() {
@@ -30,11 +31,19 @@ export default class YSelectOption extends HTMLElement {
   }
 
   get selected() {
-    return this.getAttribute('selected')
+    return this.getAttribute('selected') !== null
   }
 
   get value() {
     return this.getAttribute('value')
+  }
+
+  get type() {
+    return this.getAttribute('type')
+  }
+
+  set type(value) {
+    this.setAttribute('type', value)
   }
 
   set disabled(value) {
