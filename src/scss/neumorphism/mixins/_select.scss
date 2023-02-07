@@ -42,42 +42,42 @@
       box-shadow: box-shadow($type);
     }
   } @else {
-    :host([type='#{$type}']) {
+    :host([theme='#{$type}']) {
       color: color-yiq($background);
       box-shadow: box-shadow('#{$type}-inset');
       @include gradient-bg($background);
     }
 
-    :host([type='#{$type}']) {
+    :host([theme='#{$type}']) {
       color: color-yiq($background);
       @include gradient-bg($background);
     }
 
-    :host([type='#{$type}']:not([disabled]):hover) {
+    :host([theme='#{$type}']:not([disabled]):hover) {
       color: color-yiq($hover-background);
       background-color: $hover-background;
       border-color: $hover-border;
       box-shadow: box-shadow('#{$type}-inset');
     }
 
-    :host([type='#{$type}']:not([disabled]):focus) {
+    :host([theme='#{$type}']:not([disabled]):focus) {
       box-shadow: box-shadow('#{$type}-inset');
     }
 
-    :host([type='#{$type}']:not([disabled]):active) {
+    :host([theme='#{$type}']:not([disabled]):active) {
       box-shadow: box-shadow('#{$type}-inset');
     }
 
-    :host([type='#{$type}']) .arrow {
+    :host([theme='#{$type}']) .arrow {
       color: color-yiq($background);
     }
 
-    :host([type='#{$type}']) .placeholder,
-    :host([type='#{$type}']) .select-value {
+    :host([theme='#{$type}']) .placeholder,
+    :host([theme='#{$type}']) .select-value {
       color: color-yiq($background);
     }
 
-    :host([type='#{$type}']) .options {
+    :host([theme='#{$type}']) .options {
       box-shadow: box-shadow($type);
     }
   }

@@ -112,3 +112,6 @@ uConfig
 server/environment
 
 .temp
+
+# Styles
+src/components/**/styles.js

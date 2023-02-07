@@ -135,6 +135,8 @@ export default class YSlider extends HTMLElement {
     this.sliderEle.addEventListener('input', this.sliderInput)
     this.sliderEle.addEventListener('change', this.sliderClick)
     this.addEventListener('wheel', this.shadowRootWheel, true)
+
+    this.setAttribute('sign', 'query')
   }
 
   disconnectedCallback() {

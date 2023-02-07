@@ -1,0 +1,47 @@
+@mixin theme-variant(
+  $type,
+  $background,
+  $border,
+  $hover-background: darken($background, 5%),
+  $hover-border: darken($border, 5%),
+  $active-background: $background,
+  $active-border: darken($border, 10%)
+) {
+  @if $type == 'primary' {
+    :host {
+      color: color-yiq($background);
+      @include gradient-bg($background);
+    }
+
+    :host(:hover) {
+      color: color-yiq($hover-background);
+      background-color: $hover-background;
+      border-color: $hover-border;
+      cursor: pointer;
+    }
+
+    :host(:active) {
+      background-color: $active-background;
+    }
+  } @else {
+    :host([theme='#{$type}']) {
+      color: color-yiq($background);
+      @include gradient-bg($background);
+    }
+    :host([theme='#{$type}']) {
+      color: color-yiq($background);
+      @include gradient-bg($background);
+    }
+
+    :host([theme='#{$type}']:hover) {
+      color: color-yiq($hover-background);
+      background-color: $hover-background;
+      border-color: $hover-border;
+      cursor: pointer;
+    }
+
+    :host([theme='#{$type}']:active) {
+      background-color: $active-background;
+    }
+  }
+}

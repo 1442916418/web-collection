@@ -68,6 +68,8 @@ export default class YSelectOption extends HTMLElement {
 
   connectedCallback() {
     this.optionEle = this.shadowRoot.getElementById('option')
+
+    this.setAttribute('sign', 'query')
   }
 
   attributeChangedCallback(name, oldValue, newValue) {

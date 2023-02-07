@@ -40,36 +40,36 @@
       box-shadow: box-shadow('#{$type}-inset');
     }
   } @else {
-    :host([type='#{$type}']) {
+    :host([theme='#{$type}']) {
       color: color-yiq($background);
       @include gradient-bg($background);
     }
-    :host([type='#{$type}']) {
+    :host([theme='#{$type}']) {
       color: color-yiq($background);
       @include gradient-bg($background);
     }
 
-    :host([type='#{$type}']:not([disabled]):hover) {
+    :host([theme='#{$type}']:not([disabled]):hover) {
       color: color-yiq($hover-background);
       background-color: $hover-background;
       border-color: $hover-border;
       box-shadow: box-shadow('#{$type}-inset');
     }
 
-    :host([type='#{$type}']:not([disabled]):focus) {
+    :host([theme='#{$type}']:not([disabled]):focus) {
       box-shadow: box-shadow('#{$type}-inset');
     }
 
-    :host([type='#{$type}']:not([disabled]):active) {
+    :host([theme='#{$type}']:not([disabled]):active) {
       box-shadow: box-shadow('#{$type}-inset');
     }
 
-    :host([type='#{$type}']):host([selected]) {
+    :host([theme='#{$type}']):host([selected]) {
       color: color-yiq($background);
       background-color: $hover-background;
       box-shadow: box-shadow('#{$type}-inset');
     }
-    :host([type='#{$type}']):host([focus]) {
+    :host([theme='#{$type}']):host([focus]) {
       color: color-yiq($background);
       background-color: $hover-background;
       box-shadow: box-shadow('#{$type}-inset');

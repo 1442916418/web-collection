@@ -183,6 +183,7 @@ export default class YSelect extends HTMLElement {
     this.slotsEle.addEventListener('slotchange', this.slotChange)
 
     this.handleDefaultValue(this.defaultValue)
+    this.setAttribute('sign', 'query')
   }
 
   disconnectedCallback() {

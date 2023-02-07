@@ -1,0 +1,21 @@
+/*! -theme */
+:host {
+  position: relative;
+  display: inline-flex;
+  padding: $btn-padding-y;
+  box-sizing: border-box;
+  vertical-align: middle;
+  line-height: $btn-line-height;
+  overflow: hidden;
+  align-items: center;
+  justify-content: center;
+  border-width: $border-width;
+  border-style: solid;
+  border-radius: $circle-radius;
+  border-color: $border-color-transparent;
+}
+
+@each $color, $value in $theme-colors {
+  @include theme-variant($color, $value, $value);
+}
+/*! theme- */

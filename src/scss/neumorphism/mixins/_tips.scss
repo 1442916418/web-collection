@@ -6,7 +6,7 @@
       @include gradient-bg($background);
     }
   } @else {
-    :host([type='#{$type}'])::before {
+    :host([theme='#{$type}'])::before {
       color: color-yiq($background);
       box-shadow: box-shadow('#{$type}-inset');
       @include gradient-bg($background);

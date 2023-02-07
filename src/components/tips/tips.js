@@ -80,6 +80,8 @@ export default class YTips extends HTMLElement {
         this.dir = 'l'
       }
     }
+
+    this.setAttribute('sign', 'query')
   }
 }
 

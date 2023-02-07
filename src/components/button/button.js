@@ -26,16 +26,12 @@ export default class YButton extends HTMLElement {
     this.btnEle.focus()
   }
 
-  get htmlThemeType() {
-    return document.querySelector('html')?.getAttribute('theme-type') ?? ''
-  }
-
   get disabled() {
     return this.getAttribute('disabled') !== null
   }
 
   get type() {
-    return this.getAttribute('type') || this.htmlThemeType
+    return this.getAttribute('type')
   }
 
   get name() {
@@ -107,6 +103,8 @@ export default class YButton extends HTMLElement {
 
     this.disabled = this.disabled
     this.loading = this.loading
+
+    this.setAttribute('sign', 'query')
   }
 
   disconnectedCallback() {

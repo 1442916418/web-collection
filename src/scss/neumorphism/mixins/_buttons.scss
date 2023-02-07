@@ -33,25 +33,25 @@
       @include box-shadow($shadow-inset);
     }
   } @else {
-    :host([type='#{$type}']) {
+    :host([theme='#{$type}']) {
       color: color-yiq($background);
       @include gradient-bg($background);
       @include box-shadow($box-shadow-dark);
     }
 
-    :host([type='#{$type}']) {
+    :host([theme='#{$type}']) {
       color: color-yiq($background);
       @include gradient-bg($background);
     }
 
-    :host([type='#{$type}']:not([disabled]):hover) {
+    :host([theme='#{$type}']:not([disabled]):hover) {
       color: color-yiq($hover-background);
       background-color: $hover-background;
       border-color: $hover-border;
       @include box-shadow($shadow-dark-inset);
     }
 
-    :host([type='#{$type}']:not([disabled]):focus) {
+    :host([theme='#{$type}']:not([disabled]):focus) {
       @if $enable-shadows {
         box-shadow: $shadow-dark-inset;
       } @else {
@@ -59,7 +59,7 @@
       }
     }
 
-    :host([type='#{$type}']:not([disabled]):active) {
+    :host([theme='#{$type}']:not([disabled]):active) {
       @include box-shadow($shadow-dark-inset);
     }
   }
