@@ -58,6 +58,16 @@ class Utils {
       }
     )
   }
+
+  /**
+   * 同步地创建目录
+   * @param {String} path path
+   */
+  static mkdir(path) {
+    if (path && !fs.existsSync(path)) {
+      fs.mkdirSync(path)
+    }
+  }
 }
 
 class Build {
@@ -125,45 +135,54 @@ class NewComponent {
 
   init() {
     this.handleTemplate()
-    this.handleNewComponent()
+
+    setTimeout(() => {
+      this.handleNewComponent()
+    }, 1000)
   }
 
   handleNewComponent() {
     const name = this.name
     const newName = name.toLocaleLowerCase()
 
-    // 1. 新建 `src/components/${name}/${name}.js` 并写入默认代码
+    // 1. 新建组件，并写入默认代码
+    Utils.mkdir(`src/components/${newName}`)
     Utils.handleWriteFile({
       path: `src/components/${newName}/${newName}.js`,
       content: this.componentsTemplateCode
     })
-    // 2. 新建 `src/components/${name}/styles.js` 并写入默认代码，正则匹配替换代码片段变量
+
+    // 2. 新建组件样式，并写入默认代码，正则匹配替换代码片段变量
     Utils.handleWriteFile({
       path: `src/components/${newName}/styles.js`,
       content: 'export default ``'
     })
-    // 3. 新建 `src/scss/neumorphism/components/_${name}.scss` 并写入默认代码，正则匹配替换代码片段变量
+
+    // 3. 新建 scss 组件，并写入默认代码，正则匹配替换代码片段变量
     Utils.handleWriteFile({
       path: `src/scss/neumorphism/components/_${newName}.scss`,
       content: this.scssComponentsTemplateCode
     })
-    // 4. 新建 `src/scss/neumorphism/mixins/_${name}.scss` 并写入默认代码，正则匹配替换代码片段变量
+
+    // 4. 新建 scss 组件 mixin，并写入默认代码，正则匹配替换代码片段变量
     Utils.handleWriteFile({
       path: `src/scss/neumorphism/mixins/_${newName}.scss`,
       content: this.scssMixinTemplateCode
     })
-    // 5. `src\scss\neumorphism\_components.scss` 追加新建文件路径
+
+    // 5. scss 组件，追加新建文件路径
     Utils.handleOpenAndReadFile('src/scss/neumorphism/_components.scss', (data) => {
       Utils.handleWriteFile({
         path: 'src/scss/neumorphism/_components.scss',
-        content: `${data};\n@import 'components/${newName}';`
+        content: `${data}\n@import 'components/${newName}';`
       })
     })
-    // 6. `src\scss\neumorphism\_mixins.scss` 追加新建文件路径1
+
+    // 5. scss mixin，追加新建文件路径
     Utils.handleOpenAndReadFile('src/scss/neumorphism/_mixins.scss', (data) => {
       Utils.handleWriteFile({
         path: 'src/scss/neumorphism/_mixins.scss',
-        content: `${data};\n@import 'mixins/${newName}';`
+        content: `${data}\n@import 'mixins/${newName}';`
       })
     })
   }
@@ -183,12 +202,13 @@ class NewComponent {
   handleComponentsTemplateCode(snippets) {
     if (!snippets) return ''
 
-    let data = snippets.body.join(' ')
+    let data = snippets.body.join('\n')
 
     data = data
       .replace(/\$1/gi, `Y${this.name}`)
       .replace(/\$2/gi, `y-${this.name.toLocaleLowerCase()}`)
-      .replace(/\$0/gi, '')
+      .replace(/\\\$0/gi, '')
+      .replace(/\\(?=\$)/gi, '')
 
     return data
   }
@@ -196,9 +216,12 @@ class NewComponent {
   handleScssComponentsTemplateCode(snippets) {
     if (!snippets) return ''
 
-    let data = snippets.body.join(' ')
+    let data = snippets.body.join('\n')
 
-    data = data.replace(/\\\$/gi, '').replace(/\$1/gi, this.name.toLocaleLowerCase()).replace(/\$0/gi, '')
+    data = data
+      .replace(/\$1/gi, this.name.toLocaleLowerCase())
+      .replace(/\$0/gi, '')
+      .replace(/\\(?=\$)/gi, '')
 
     return data
   }
@@ -206,9 +229,13 @@ class NewComponent {
   handleScssMixinTemplateCode(snippets) {
     if (!snippets) return ''
 
-    let data = snippets.body.join(' ')
+    let data = snippets.body.join('\n')
 
-    data = data.replace(/\\$/gi, '').replace(/\$1/gi, this.name.toLocaleLowerCase()).replace(/\$0/gi, '')
+    data = data
+      .replace(/\\$/gi, '')
+      .replace(/\$1/gi, this.name.toLocaleLowerCase())
+      .replace(/\$0/gi, '')
+      .replace(/\\(?=\$)/gi, '')
 
     return data
   }
@@ -216,8 +243,6 @@ class NewComponent {
 
 const runType = process.env.RUN_TYPE
 const name = process.env.FILE_NAME
-
-console.log('🚀 ~ file:', runType, name)
 
 if (runType === 'BUILD') {
   new Build()
