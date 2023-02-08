@@ -5,7 +5,8 @@
   "main": "index.js",
   "scripts": {
     "serve": "serve src",
-    "build": "nodemon --watch .temp/css/neumorphism.css build.js"
+    "build": "cross-env RUN_TYPE=BUILD nodemon --watch .temp/css/neumorphism.css run.js",
+    "new": "cross-env RUN_TYPE=NEW RUN_TYPE_NAME=test nodemon --watch .temp/css/neumorphism.css run.js"
   },
   "repository": {
     "type": "git",
@@ -20,6 +21,7 @@
   "homepage": "https://github.com/1442916418/y-ui#readme",
   "devDependencies": {
     "browser-sync": "^2.27.4",
+    "cross-env": "^7.0.3",
     "del": "^6.0.0",
     "gulp": "^4.0.2",
     "gulp-autoprefixer": "^8.0.0",
