@@ -309,7 +309,10 @@ article {
 .tips-dir-container y-button {
   width: 150px;
 }
-y-button {
+y-button,
+y-select,
+y-switch,
+y-checkbox {
   margin-right: 0.85rem;
   margin-bottom: 0.85rem;
 }

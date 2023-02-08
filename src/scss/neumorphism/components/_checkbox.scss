@@ -1,0 +1,64 @@
+/*! -checkbox */
+
+:host {
+  display: inline-flex;
+  -webkit-tap-highlight-color: transparent;
+}
+:host([disabled]) {
+  pointer-events: none;
+  opacity: 0.6;
+}
+:host([disabled]) label {
+  pointer-events: all;
+  cursor: not-allowed;
+}
+.checkbox {
+  position: absolute;
+  clip: rect(0, 0, 0, 0);
+}
+label {
+  display: inline-block;
+  position: relative;
+  width: $checkbox-label-width;
+  height: $checkbox-label-width;
+  box-sizing: border-box;
+  transition: $transition-base;
+  cursor: pointer;
+
+  &::before,
+  &::after {
+    content: '';
+    position: absolute;
+    width: $checkbox-label-width;
+    height: $checkbox-label-width;
+    line-height: $btn-line-height;
+    border-width: $border-width;
+    border-style: solid;
+    transition: $transition-base;
+  }
+}
+
+label[circle] {
+  border-radius: $checkbox-border-radius;
+
+  &::before,
+  &::after {
+    border-radius: $checkbox-border-radius;
+  }
+}
+
+.checkbox:checked + label::after {
+  content: '\\2714';
+  font-size: $checkbox-icon-size;
+  text-align: center;
+  z-index: 1;
+}
+
+@each $color, $value in $theme-colors {
+  @include checkbox-variant($color, $value);
+}
+
+@each $type, $value in $theme-sizes {
+  @include checkbox-size($type, $value, $checkbox-label-width, $checkbox-label-height, $checkbox-icon-size);
+}
+/*! checkbox- */

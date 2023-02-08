@@ -403,3 +403,9 @@ $switch-margin-x: 0.4rem;
 $switch-label-width: 1rem;
 $switch-label-height: 1rem;
 $switch-border-radius: $switch-padding + $switch-label-height;
+
+// Checkbox
+$checkbox-label-width: 1rem;
+$checkbox-label-height: 1rem;
+$checkbox-border-radius: $checkbox-label-height;
+$checkbox-icon-size: $font-size-xs;

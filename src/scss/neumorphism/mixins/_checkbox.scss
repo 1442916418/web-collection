@@ -1,0 +1,45 @@
+@mixin checkbox-variant($type, $background) {
+  @if $type == 'primary' {
+    label {
+      @include gradient-bg($background);
+    }
+
+    label::after,
+    label::before {
+      color: color-yiq($background);
+      background: $background;
+      border-color: $background;
+      box-shadow: box-shadow('#{$type}-inset');
+    }
+  } @else {
+    label[theme='#{$type}'] {
+      @include gradient-bg($background);
+    }
+
+    label[theme='#{$type}']::after,
+    label[theme='#{$type}']::before {
+      color: color-yiq($background);
+      background: $background;
+      border-color: $background;
+      box-shadow: box-shadow('#{$type}-inset');
+    }
+  }
+}
+
+@mixin checkbox-size($type, $font-size, $checkbox-label-width, $checkbox-label-height, $checkbox-icon-size) {
+  $_label-width: theme-styles-size($type, $checkbox-label-width);
+  $_label-height: theme-styles-size($type, $checkbox-label-height);
+
+  label[size='#{$type}'] {
+    width: $_label-width;
+    height: $_label-height;
+    border-radius: $_label-height;
+  }
+
+  label[size='#{$type}']::before,
+  label[size='#{$type}']::after {
+    width: $_label-width;
+    height: $_label-height;
+    font-size: theme-styles-size($type, $checkbox-icon-size) !important;
+  }
+}
