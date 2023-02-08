@@ -1,5 +1,6 @@
 import styles from './styles.js'
 
+// TODO: 主题！！！
 export default class YTheme extends HTMLElement {
   darkBgColor = '#262833'
   defaultBgColor = '#e6e7ee'
@@ -57,22 +58,25 @@ export default class YTheme extends HTMLElement {
     }
 
     this.iconEle.setAttribute('name', this.iconName)
-    this.handleBodyStyles(value)
     this.handleAllCustomElements(value)
+    this.handleHeaderStyles(value)
+    this.handleBodyStyles(value)
   }
 
   handleAllCustomElements(value) {
-    const list = this.allCustomElements
+    setTimeout(() => {
+      const list = this.allCustomElements
 
-    if (list.length) {
-      list.forEach((ele) => {
-        if (value === 'null') {
-          ele.removeAttribute('theme')
-        } else {
-          ele.setAttribute('theme', value)
-        }
-      })
-    }
+      if (list.length) {
+        list.forEach((ele) => {
+          if (value === 'null') {
+            ele.removeAttribute('theme')
+          } else {
+            ele.setAttribute('theme', value)
+          }
+        })
+      }
+    }, 300)
   }
 
   handleBodyStyles(value) {
@@ -80,6 +84,16 @@ export default class YTheme extends HTMLElement {
     const bgColor = value === 'dark' ? this.darkBgColor : this.defaultBgColor
 
     body.style.backgroundColor = bgColor
+  }
+
+  handleHeaderStyles(value) {
+    const h2 = document.querySelectorAll('h2')
+
+    if (h2.length) {
+      const color = value === 'dark' ? this.defaultBgColor : this.darkBgColor
+
+      h2.forEach((item) => (item.style.color = color))
+    }
   }
 }
 

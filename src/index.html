@@ -7,7 +7,6 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>y-ui</title>
   <link rel="stylesheet" href="index.css" />
-  </style>
 </head>
 
 <body>
@@ -165,8 +164,18 @@
       </y-select>
     </article>
 
-    <article style="height: 400px;">
-      <h2>Test</h2>
+    <article>
+      <h2>Switch</h2>
+
+      <y-switch></y-switch>
+      <y-switch disabled></y-switch>
+      <y-switch size="large"></y-switch>
+      <y-switch></y-switch>
+      <y-switch size="small"></y-switch>
+      <y-switch>
+        <span slot="active">active text</span>
+        <span slot="inactive">inactive text</span>
+      </y-switch>
     </article>
   </main>
 

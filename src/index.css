@@ -292,6 +292,7 @@ body {
 }
 main {
   margin: 0 auto;
+  padding-bottom: 10rem;
   width: 50vw;
   min-height: 100vh;
 }

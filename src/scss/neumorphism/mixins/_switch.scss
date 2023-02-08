@@ -1,0 +1,62 @@
+@mixin switch-variant($type, $background) {
+  @if $type == 'primary' {
+    label {
+      box-shadow: box-shadow('#{$type}-inset');
+      @include gradient-bg($background);
+    }
+
+    label::after {
+      background: darken($background, 20%);
+    }
+
+    .switch:checked ~ label::after {
+      background: color-yiq($background);
+    }
+
+    slot {
+      color: darken($background, 50%);
+    }
+
+    .switch:checked ~ slot:last-child {
+      color: darken($background, 100%);
+    }
+  } @else {
+    label[theme='#{$type}'] {
+      box-shadow: box-shadow('#{$type}-inset');
+      @include gradient-bg($background);
+    }
+
+    label[theme='#{$type}']::after {
+      background: darken($background, 20%);
+    }
+
+    .switch:checked ~ label[theme='#{$type}']::after {
+      background: color-yiq($background);
+    }
+
+    :host([theme='#{$type}']) slot {
+      color: lighten($background, 40%);
+    }
+
+    :host([theme='#{$type}']) .switch:checked ~ slot:last-child {
+      color: lighten($background, 80%);
+    }
+  }
+}
+
+@mixin switch-size($type, $font-size, $padding, $switch-width, $switch-label-width, $switch-label-height) {
+  $_padding: theme-styles-size($type, $padding);
+  $_label-width: theme-styles-size($type, $switch-label-width);
+  $_label-height: theme-styles-size($type, $switch-label-height);
+
+  label[size='#{$type}'] {
+    width: theme-styles-size($type, $switch-width);
+    padding: $_padding;
+    border-radius: ($_padding + $_label-height);
+  }
+
+  label[size='#{$type}']::after {
+    width: $_label-width;
+    height: $_label-height;
+  }
+}

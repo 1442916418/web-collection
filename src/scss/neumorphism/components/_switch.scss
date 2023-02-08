@@ -1,0 +1,56 @@
+/*! -switch */
+
+:host {
+  display: inline-flex;
+  -webkit-tap-highlight-color: transparent;
+}
+:host([disabled]) {
+  pointer-events: none;
+  opacity: 0.6;
+}
+:host([disabled]) label {
+  pointer-events: all;
+  cursor: not-allowed;
+}
+.switch {
+  position: absolute;
+  clip: rect(0, 0, 0, 0);
+}
+label {
+  display: flex;
+  width: $switch-width;
+  padding: $switch-padding;
+  margin-left: $switch-margin-x;
+  margin-right: $switch-margin-x;
+  border-radius: $switch-border-radius;
+  transition: $transition-base;
+  cursor: pointer;
+}
+label::before {
+  content: '';
+  flex: 0;
+  transition: $transition-base;
+}
+label::after {
+  content: '';
+  width: $switch-label-width;
+  height: $switch-label-width;
+  border-width: $border-width;
+  border-style: solid;
+  border-radius: $switch-border-radius;
+  border-color: $border-color-transparent;
+  transition: $transition-base;
+}
+
+.switch:checked + slot + label::before {
+  flex: 1;
+}
+
+@each $color, $value in $theme-colors {
+  @include switch-variant($color, $value);
+}
+
+@each $type, $value in $theme-sizes {
+  @include switch-size($type, $value, $switch-padding, $switch-width, $switch-label-width, $switch-label-height);
+}
+/*! switch- */
