@@ -1,206 +1,233 @@
 <!DOCTYPE html>
 <html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>y-ui</title>
+    <link rel="stylesheet" href="index.css" />
+  </head>
 
-<head>
-  <meta charset="UTF-8" />
-  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>y-ui</title>
-  <link rel="stylesheet" href="index.css" />
-</head>
+  <body>
+    <main class="default">
+      <article>
+        <h2>主题</h2>
 
-<body>
-  <main class="default">
-    <article>
-      <h2>主题</h2>
+        <y-theme></y-theme>
+      </article>
 
-      <y-theme></y-theme>
-    </article>
+      <article>
+        <h2>Buttons</h2>
 
-    <article>
-      <h2>Buttons</h2>
-      <y-button>Default</y-button>
-      <y-button disabled>Default</y-button>
-      <y-button href="https://yss.world">链接</y-button>
-      <y-button
-        href="https://kjimg10.360buyimg.com/ott/jfs/t1/124686/11/31072/170103/63bb8037F15537b4b/1e5cf478e1c70f0e.jpg"
-        download="https://kjimg10.360buyimg.com/ott/jfs/t1/124686/11/31072/170103/63bb8037F15537b4b/1e5cf478e1c70f0e.jpg">
-        下载图片</y-button>
-      <y-button circle>圆</y-button>
-      <y-button block>块</y-button>
-      <y-button loading="true">加载</y-button>
-      <y-button icon="config">图标</y-button>
-      <y-button>图标 <iconpark-icon style="margin-left: 0.55rem" name="config"></iconpark-icon>
-      </y-button>
-      <y-button size="large">Size Large</y-button>
-      <y-button>Size default</y-button>
-      <y-button size="small">Size small</y-button>
+        <div class="fragment">
+          <y-button>Default</y-button>
+          <y-button disabled>Default</y-button>
+          <y-button href="https://yss.world">链接</y-button>
+          <y-button
+            href="https://kjimg10.360buyimg.com/ott/jfs/t1/124686/11/31072/170103/63bb8037F15537b4b/1e5cf478e1c70f0e.jpg"
+            download="https://kjimg10.360buyimg.com/ott/jfs/t1/124686/11/31072/170103/63bb8037F15537b4b/1e5cf478e1c70f0e.jpg"
+          >
+            下载图片</y-button
+          >
+          <y-button circle>圆</y-button>
+        </div>
 
-      <y-button-group>
-        <y-button>Button0</y-button>
-        <y-button>Button1</y-button>
-        <y-button>Button2</y-button>
-      </y-button-group>
-    </article>
+        <div class="fragment">
+          <y-button block>块</y-button>
+        </div>
 
-    <article>
-      <h2>Tips</h2>
-      <y-tips tips="Tips default">
-        <y-button>Tips default</y-button>
-      </y-tips>
+        <div class="fragment">
+          <y-button loading="true">加载</y-button>
+          <y-button icon="config">图标</y-button>
+          <y-button>图标 <iconpark-icon style="margin-left: 0.55rem" name="config"></iconpark-icon> </y-button>
+        </div>
 
-      <div class="tips-dir-container">
-        <span></span>
-        <y-tips dir="tl" tips="some tips">
-          <y-button>top left</y-button>
-        </y-tips>
-        <y-tips dir="t" tips="some tips">
-          <y-button>top</y-button>
-        </y-tips>
-        <y-tips dir="tr" tips="some tips">
-          <y-button>top right</y-button>
-        </y-tips>
-        <span></span>
+        <div class="fragment">
+          <y-button size="large">Size Large</y-button>
+          <y-button>Size default</y-button>
+          <y-button size="small">Size small</y-button>
+        </div>
 
-        <y-tips dir="lt" tips="some tips">
-          <y-button>left top</y-button>
-        </y-tips>
-        <span></span>
-        <span></span>
-        <span></span>
-        <y-tips dir="rt" tips="some tips">
-          <y-button>right top</y-button>
-        </y-tips>
+        <div class="fragment">
+          <y-button-group>
+            <y-button>Button0</y-button>
+            <y-button>Button1</y-button>
+            <y-button>Button2</y-button>
+          </y-button-group>
+        </div>
+      </article>
 
-        <y-tips dir="l" tips="some tips">
-          <y-button>left</y-button>
-        </y-tips>
-        <span></span>
-        <span></span>
-        <span></span>
-        <y-tips dir="r" tips="some tips">
-          <y-button>right</y-button>
-        </y-tips>
+      <article>
+        <h2>Tips</h2>
 
-        <y-tips dir="lb" tips="some tips">
-          <y-button>left bottom</y-button>
-        </y-tips>
-        <span></span>
-        <span></span>
-        <span></span>
-        <y-tips dir="rb" tips="some tips">
-          <y-button>right bottom</y-button>
-        </y-tips>
+        <div class="fragment">
+          <y-tips tips="Tips default">
+            <y-button>Tips default</y-button>
+          </y-tips>
+        </div>
 
-        <span></span>
-        <y-tips dir="bl" tips="some tips">
-          <y-button>bottom left</y-button>
-        </y-tips>
-        <y-tips dir="b" tips="some tips">
-          <y-button>bottom</y-button>
-        </y-tips>
-        <y-tips dir="br" tips="some tips">
-          <y-button>bottom right</y-button>
-        </y-tips>
-        <span></span>
-      </div>
+        <div class="fragment">
+          <div class="tips-dir-container">
+            <span></span>
+            <y-tips dir="tl" tips="some tips">
+              <y-button>top left</y-button>
+            </y-tips>
+            <y-tips dir="t" tips="some tips">
+              <y-button>top</y-button>
+            </y-tips>
+            <y-tips dir="tr" tips="some tips">
+              <y-button>top right</y-button>
+            </y-tips>
+            <span></span>
 
-      <y-tips tips="11" suffix="km/h">
-        <y-button>Tips 后缀</y-button>
-      </y-tips>
+            <y-tips dir="lt" tips="some tips">
+              <y-button>left top</y-button>
+            </y-tips>
+            <span></span>
+            <span></span>
+            <span></span>
+            <y-tips dir="rt" tips="some tips">
+              <y-button>right top</y-button>
+            </y-tips>
 
-      <y-tips tips="11" prefix="K">
-        <y-button>Tips 前缀</y-button>
-      </y-tips>
-    </article>
+            <y-tips dir="l" tips="some tips">
+              <y-button>left</y-button>
+            </y-tips>
+            <span></span>
+            <span></span>
+            <span></span>
+            <y-tips dir="r" tips="some tips">
+              <y-button>right</y-button>
+            </y-tips>
 
-    <article>
-      <h2>Slider</h2>
+            <y-tips dir="lb" tips="some tips">
+              <y-button>left bottom</y-button>
+            </y-tips>
+            <span></span>
+            <span></span>
+            <span></span>
+            <y-tips dir="rb" tips="some tips">
+              <y-button>right bottom</y-button>
+            </y-tips>
 
-      <y-slider></y-slider>
-      <y-slider is-tips default-value="30"></y-slider>
-      <y-slider disabled default-value="50"></y-slider>
-      <y-slider default-value="50" is-tips min="0" max="100" step="5"></y-slider>
-      <y-slider default-value="30" is-tips vertical></y-slider>
-    </article>
+            <span></span>
+            <y-tips dir="bl" tips="some tips">
+              <y-button>bottom left</y-button>
+            </y-tips>
+            <y-tips dir="b" tips="some tips">
+              <y-button>bottom</y-button>
+            </y-tips>
+            <y-tips dir="br" tips="some tips">
+              <y-button>bottom right</y-button>
+            </y-tips>
+            <span></span>
+          </div>
+        </div>
 
-    <article>
-      <h2>Select</h2>
+        <div class="fragment">
+          <y-tips tips="11" suffix="km/h">
+            <y-button>Tips 后缀</y-button>
+          </y-tips>
 
-      <y-select size="large" placeholder="请选择水果">
-        <y-select-option label="苹果" value="apple"></y-select-option>
-        <y-select-option label="香蕉" value="banana"></y-select-option>
-        <y-select-option label="枣子" value="jujube"></y-select-option>
-      </y-select>
+          <y-tips tips="11" prefix="K">
+            <y-button>Tips 前缀</y-button>
+          </y-tips>
+        </div>
+      </article>
 
-      <y-select>
-        <y-select-option label="苹果" value="apple"></y-select-option>
-        <y-select-option label="香蕉" value="banana"></y-select-option>
-        <y-select-option label="枣子" value="jujube"></y-select-option>
-      </y-select>
+      <article>
+        <h2>Slider</h2>
 
-      <y-select size="small">
-        <y-select-option label="苹果" value="apple"></y-select-option>
-        <y-select-option label="香蕉" value="banana"></y-select-option>
-        <y-select-option label="枣子" value="jujube"></y-select-option>
-      </y-select>
+        <div class="fragment">
+          <y-slider></y-slider>
+          <y-slider is-tips default-value="30"></y-slider>
+          <y-slider disabled default-value="50"></y-slider>
+          <y-slider default-value="50" is-tips min="0" max="100" step="5"></y-slider>
+          <y-slider default-value="30" is-tips vertical></y-slider>
+        </div>
+      </article>
 
-      <y-select multiple placeholder="支持多选">
-        <y-select-option label="苹果" value="apple"></y-select-option>
-        <y-select-option label="香蕉" value="banana"></y-select-option>
-        <y-select-option label="枣子" value="jujube"></y-select-option>
-      </y-select>
+      <article>
+        <h2>Select</h2>
 
-      <y-select multiple disabled placeholder="支持多选">
-        <y-select-option label="苹果" value="apple"></y-select-option>
-        <y-select-option label="香蕉" value="banana"></y-select-option>
-        <y-select-option label="枣子" value="jujube"></y-select-option>
-      </y-select>
+        <div class="fragment">
+          <y-select size="large" placeholder="请选择水果">
+            <y-select-option label="苹果" value="apple"></y-select-option>
+            <y-select-option label="香蕉" value="banana"></y-select-option>
+            <y-select-option label="枣子" value="jujube"></y-select-option>
+          </y-select>
 
-      <y-select default-value="apple" placeholder="支持多选">
-        <y-select-option label="苹果" value="apple"></y-select-option>
-        <y-select-option label="香蕉" value="banana"></y-select-option>
-        <y-select-option label="枣子" value="jujube"></y-select-option>
-      </y-select>
-    </article>
+          <y-select>
+            <y-select-option label="苹果" value="apple"></y-select-option>
+            <y-select-option label="香蕉" value="banana"></y-select-option>
+            <y-select-option label="枣子" value="jujube"></y-select-option>
+          </y-select>
 
-    <article>
-      <h2>Switch</h2>
+          <y-select size="small">
+            <y-select-option label="苹果" value="apple"></y-select-option>
+            <y-select-option label="香蕉" value="banana"></y-select-option>
+            <y-select-option label="枣子" value="jujube"></y-select-option>
+          </y-select>
 
-      <y-switch></y-switch>
-      <y-switch disabled></y-switch>
-      <y-switch size="large"></y-switch>
-      <y-switch></y-switch>
-      <y-switch size="small"></y-switch>
-      <y-switch>
-        <span slot="active">active text</span>
-        <span slot="inactive">inactive text</span>
-      </y-switch>
-    </article>
+          <y-select multiple placeholder="支持多选">
+            <y-select-option label="苹果" value="apple"></y-select-option>
+            <y-select-option label="香蕉" value="banana"></y-select-option>
+            <y-select-option label="枣子" value="jujube"></y-select-option>
+          </y-select>
 
-    <article>
-      <h2>Checkbox</h2>
+          <y-select multiple disabled placeholder="支持多选">
+            <y-select-option label="苹果" value="apple"></y-select-option>
+            <y-select-option label="香蕉" value="banana"></y-select-option>
+            <y-select-option label="枣子" value="jujube"></y-select-option>
+          </y-select>
 
-      <y-checkbox></y-checkbox>
-      <y-checkbox disabled></y-checkbox>
-      <y-checkbox size="large"></y-checkbox>
-      <y-checkbox></y-checkbox>
-      <y-checkbox size="small"></y-checkbox>
+          <y-select default-value="apple" placeholder="支持多选">
+            <y-select-option label="苹果" value="apple"></y-select-option>
+            <y-select-option label="香蕉" value="banana"></y-select-option>
+            <y-select-option label="枣子" value="jujube"></y-select-option>
+          </y-select>
+        </div>
+      </article>
 
-      <div>
-        <y-checkbox circle></y-checkbox>
-        <y-checkbox circle disabled></y-checkbox>
-        <y-checkbox circle size="large"></y-checkbox>
-        <y-checkbox circle></y-checkbox>
-        <y-checkbox circle size="small"></y-checkbox>
-      </div>
-    </article>
-  </main>
+      <article>
+        <h2>Switch</h2>
 
-  <!-- https://bytedance.feishu.cn/wiki/wikcnJZV45hM71QgI60iwkzvXob -->
-  <script
-    src="https://lf1-cdn-tos.bytegoofy.com/obj/iconpark/icons_22707_5.a53e9aec580bdf50158f1f2ab44d2a87.js"></script>
-  <script type="module" src="index.js"></script>
-</body>
+        <div class="fragment">
+          <y-switch></y-switch>
+          <y-switch disabled></y-switch>
+          <y-switch size="large"></y-switch>
+          <y-switch></y-switch>
+          <y-switch size="small"></y-switch>
+          <y-switch>
+            <span slot="active">active text</span>
+            <span slot="inactive">inactive text</span>
+          </y-switch>
+        </div>
+      </article>
 
+      <article>
+        <h2>Checkbox</h2>
+
+        <div class="fragment">
+          <y-checkbox>checkbox</y-checkbox>
+          <y-checkbox disabled></y-checkbox>
+          <y-checkbox size="large"></y-checkbox>
+          <y-checkbox></y-checkbox>
+          <y-checkbox size="small"></y-checkbox>
+        </div>
+
+        <div class="fragment">
+          <y-checkbox circle>checkbox circle</y-checkbox>
+          <y-checkbox circle disabled>checkbox disabled</y-checkbox>
+          <y-checkbox circle size="large"></y-checkbox>
+          <y-checkbox circle></y-checkbox>
+          <y-checkbox circle size="small"></y-checkbox>
+        </div>
+      </article>
+    </main>
+
+    <!-- https://bytedance.feishu.cn/wiki/wikcnJZV45hM71QgI60iwkzvXob -->
+    <script src="https://lf1-cdn-tos.bytegoofy.com/obj/iconpark/icons_22707_5.a53e9aec580bdf50158f1f2ab44d2a87.js"></script>
+    <script type="module" src="index.js"></script>
+  </body>
 </html>

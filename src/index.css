@@ -300,6 +300,9 @@ article {
   padding: 0.5rem;
   margin-bottom: 1rem;
 }
+article .fragment {
+  margin-bottom: 1rem;
+}
 .tips-dir-container {
   padding: 50px;
   display: grid;
@@ -313,6 +316,5 @@ y-button,
 y-select,
 y-switch,
 y-checkbox {
-  margin-right: 0.85rem;
-  margin-bottom: 0.85rem;
+  margin-right: 0.75rem;
 }

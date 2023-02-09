@@ -17,10 +17,11 @@
   clip: rect(0, 0, 0, 0);
 }
 label {
-  display: inline-block;
   position: relative;
-  width: $checkbox-label-width;
-  height: $checkbox-label-width;
+  padding-left: $checkbox-label-pl;
+  display: inline-block;
+  vertical-align: middle;
+  line-height: $checkbox-label-height;
   box-sizing: border-box;
   transition: $transition-base;
   cursor: pointer;
@@ -28,10 +29,12 @@ label {
   &::before,
   &::after {
     content: '';
+    display: inline-block;
     position: absolute;
+    top: 0;
+    left: 0;
     width: $checkbox-label-width;
-    height: $checkbox-label-width;
-    line-height: $btn-line-height;
+    height: $checkbox-label-height;
     border-width: $border-width;
     border-style: solid;
     transition: $transition-base;

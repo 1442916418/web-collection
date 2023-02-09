@@ -79,7 +79,7 @@ class Build {
     Utils.handleOpenAndReadFile('.temp/css/neumorphism.css', (value) => {
       if (!value) return
 
-      const componentsCSS = Build.handleComponentsCSS(value)
+      const componentsCSS = this.handleComponentsCSS(value)
 
       if (componentsCSS.size) {
         for (const [key, value] of componentsCSS) {

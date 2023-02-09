@@ -1,7 +1,7 @@
 @mixin checkbox-variant($type, $background) {
   @if $type == 'primary' {
     label {
-      @include gradient-bg($background);
+      color: color-yiq($background);
     }
 
     label::after,
@@ -13,7 +13,7 @@
     }
   } @else {
     label[theme='#{$type}'] {
-      @include gradient-bg($background);
+      color: color-yiq($background);
     }
 
     label[theme='#{$type}']::after,
@@ -31,8 +31,8 @@
   $_label-height: theme-styles-size($type, $checkbox-label-height);
 
   label[size='#{$type}'] {
-    width: $_label-width;
-    height: $_label-height;
+    line-height: $_label-height;
+    padding-left: ($_label-width + 0.4);
     border-radius: $_label-height;
   }
 

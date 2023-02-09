@@ -13,7 +13,9 @@ export default class YCheckbox extends HTMLElement {
 
     shadowRoot.innerHTML = `<style>${styles}</style>
                             <input type="checkbox" class="checkbox" id="checkbox">
-                            <label id="label" for="checkbox" ${size} ${circle}></label>
+                            <label id="label" for="checkbox" ${size} ${circle}>
+                              <slot>&nbsp;</slot>
+                            </label>
                             `
   }
 

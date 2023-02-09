@@ -407,5 +407,6 @@ $switch-border-radius: $switch-padding + $switch-label-height;
 // Checkbox
 $checkbox-label-width: 1rem;
 $checkbox-label-height: 1rem;
+$checkbox-label-pl: ($checkbox-label-width + 0.4);
 $checkbox-border-radius: $checkbox-label-height;
 $checkbox-icon-size: $font-size-xs;
