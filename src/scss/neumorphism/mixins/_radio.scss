@@ -1,0 +1,45 @@
+@mixin radio-variant($type, $background) {
+  @if $type == 'primary' {
+    label {
+      color: color-yiq($background);
+    }
+
+    label::after,
+    label::before {
+      color: color-yiq($background);
+      background: $background;
+      border-color: $background;
+      box-shadow: box-shadow('#{$type}-inset');
+    }
+  } @else {
+    label[theme='#{$type}'] {
+      color: color-yiq($background);
+    }
+
+    label[theme='#{$type}']::after,
+    label[theme='#{$type}']::before {
+      color: color-yiq($background);
+      background: $background;
+      border-color: $background;
+      box-shadow: box-shadow('#{$type}-inset');
+    }
+  }
+}
+
+@mixin radio-size($type, $font-size, $radio-label-width, $radio-label-height, $radio-icon-size) {
+  $_label-width: theme-styles-size($type, $radio-label-width);
+  $_label-height: theme-styles-size($type, $radio-label-height);
+
+  label[size='#{$type}'] {
+    line-height: $_label-height;
+    padding-left: ($_label-width + 0.4);
+    border-radius: $_label-height;
+  }
+
+  label[size='#{$type}']::before,
+  label[size='#{$type}']::after {
+    width: $_label-width;
+    height: $_label-height;
+    font-size: theme-styles-size($type, $radio-icon-size) !important;
+  }
+}

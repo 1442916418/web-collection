@@ -1,4 +1,4 @@
-/*! -checkbox */
+/*! -radio */
 
 :host {
   display: inline-flex;
@@ -12,17 +12,18 @@
   pointer-events: all;
   cursor: not-allowed;
 }
-.checkbox {
+.radio {
   position: absolute;
   opacity: 0;
   visibility: hidden;
 }
 label {
   position: relative;
-  padding-left: $checkbox-label-pl;
+  padding-left: $radio-label-pl;
   display: inline-block;
   vertical-align: middle;
-  line-height: $checkbox-label-height;
+  line-height: $radio-label-height;
+  border-radius: $radio-border-radius;
   box-sizing: border-box;
   transition: $transition-base;
   cursor: pointer;
@@ -34,35 +35,27 @@ label {
     position: absolute;
     top: 0;
     left: 0;
-    width: $checkbox-label-width;
-    height: $checkbox-label-height;
+    width: $radio-label-width;
+    height: $radio-label-height;
     border-width: $border-width;
     border-style: solid;
+    border-radius: $radio-border-radius;
     transition: $transition-base;
   }
 }
 
-label[circle] {
-  border-radius: $checkbox-border-radius;
-
-  &::before,
-  &::after {
-    border-radius: $checkbox-border-radius;
-  }
-}
-
-.checkbox:checked + label::after {
+.radio:checked + label::after {
   content: '\\2714';
-  font-size: $checkbox-icon-size;
+  font-size: $radio-icon-size;
   text-align: center;
   z-index: 1;
 }
 
 @each $color, $value in $theme-colors {
-  @include checkbox-variant($color, $value);
+  @include radio-variant($color, $value);
 }
 
 @each $type, $value in $theme-sizes {
-  @include checkbox-size($type, $value, $checkbox-label-width, $checkbox-label-height, $checkbox-icon-size);
+  @include radio-size($type, $value, $radio-label-width, $radio-label-height, $radio-icon-size);
 }
-/*! checkbox- */
+/*! radio- */

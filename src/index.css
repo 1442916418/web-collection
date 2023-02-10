@@ -308,6 +308,7 @@ article .fragment {
   display: grid;
   grid-template-columns: repeat(5, auto);
   grid-template-rows: repeat(5, auto);
+  row-gap: 1rem;
 }
 .tips-dir-container y-button {
   width: 150px;

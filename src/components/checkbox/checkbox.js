@@ -71,10 +71,10 @@ export default class YCheckbox extends HTMLElement {
     this.checkboxEle = this.shadowRoot.getElementById('checkbox')
     this.labelEle = this.shadowRoot.getElementById('label')
 
-    this.checkboxChange = (e) => this.handleSwitchChangeEvent(e)
-    this.checkboxKeydown = (e) => this.handleSwitchKeydownEvent(e)
-    this.checkboxFocus = (e) => this.handleSwitchFocusEvent(e)
-    this.checkboxBlur = (e) => this.handleBlurFocusEvent(e)
+    this.checkboxChange = (e) => this.handleCheckboxChangeEvent(e)
+    this.checkboxKeydown = (e) => this.handleCheckboxKeydownEvent(e)
+    this.checkboxFocus = (e) => this.handleCheckboxFocusEvent(e)
+    this.checkboxBlur = (e) => this.handleCheckboxBlurFocusEvent(e)
 
     this.checkboxEle.addEventListener('change', this.checkboxChange)
     this.checkboxEle.addEventListener('keydown', this.checkboxKeydown)
@@ -134,7 +134,7 @@ export default class YCheckbox extends HTMLElement {
     this.checkboxEle.focus()
   }
 
-  handleSwitchChangeEvent() {
+  handleCheckboxChangeEvent() {
     this.checked = this.checkboxEle.checked
 
     this.dispatchEvent(
@@ -146,13 +146,13 @@ export default class YCheckbox extends HTMLElement {
     )
   }
 
-  handleSwitchKeydownEvent(e) {
+  handleCheckboxKeydownEvent(e) {
     if (e.code === 'Enter') {
       this.checked = !this.checked
     }
   }
 
-  handleSwitchFocusEvent(e) {
+  handleCheckboxFocusEvent(e) {
     e.stopPropagation()
 
     if (!this.isFocus) {
@@ -166,7 +166,7 @@ export default class YCheckbox extends HTMLElement {
     }
   }
 
-  handleBlurFocusEvent(e) {
+  handleCheckboxBlurFocusEvent(e) {
     e.stopPropagation()
 
     if (getComputedStyle(this.checkboxEle).zIndex == 2) {
