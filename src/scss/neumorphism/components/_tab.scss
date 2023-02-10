@@ -1,0 +1,65 @@
+/*! -tab */
+:host {
+  display: block;
+  text-align: unset;
+}
+
+.tab {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+.tab-nav-container {
+  position: relative;
+  scroll-behavior: smooth;
+  overflow: hidden;
+}
+
+.tab-nav {
+  display: flex;
+}
+
+.nav-item {
+  margin: $tab-nav-item-m;
+  flex-shrink: 0;
+  font-size: inherit;
+
+  &:first-child {
+    margin-left: 0;
+  }
+
+  &:last-child {
+    margin-right: 0;
+  }
+}
+
+.tab-content {
+  margin-top: $tab-content-mt;
+  flex: 1;
+  border-radius: $border-radius;
+  transition: 0.2s;
+  overflow: hidden;
+}
+
+.tab-content-wrap {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  transition: 0.2s;
+}
+
+::slotted(y-tab-pane) {
+  flex-shrink: 0;
+  padding: $tab-pane-p;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  box-sizing: border-box;
+}
+
+@each $color, $value in $theme-colors {
+  @include tab-variant($color, $value, $value);
+}
+/*! tab- */

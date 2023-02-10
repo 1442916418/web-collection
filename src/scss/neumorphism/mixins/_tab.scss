@@ -1,0 +1,26 @@
+@mixin tab-variant(
+  $type,
+  $background,
+  $border,
+  $hover-background: darken($background, 0%),
+  $hover-border: darken($border, 0%),
+  $active-background: $background,
+  $active-border: darken($border, 0%)
+) {
+  @if $type == 'primary' {
+    .tab-content {
+      box-shadow: box-shadow('#{$type}-inset');
+    }
+
+    .nav-item.active {
+      box-shadow: box-shadow('#{$type}-inset');
+    }
+  } @else {
+    :host([theme='#{$type}']) .tab-content {
+      box-shadow: box-shadow('#{$type}-inset');
+    }
+    :host([theme='#{$type}']) .nav-item.active {
+      box-shadow: box-shadow('#{$type}-inset');
+    }
+  }
+}
