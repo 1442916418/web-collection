@@ -133,7 +133,7 @@ class Build {
       const matchStr = str.match(reg)
 
       matchStr.forEach((item) => {
-        const matchTag = item.match(/\/\*! -([\w]+) \*/i)
+        const matchTag = item.match(/\/\*! -([\w-]+) \*/i)
         const tagName = matchTag[1] || 'default'
 
         item.replace(/\*\/([\s\S]*?)\/\*!/gi, function (con, p1) {

@@ -1,0 +1,15 @@
+/*! -radio-group */
+:host {
+  display: inline-block;
+}
+:host([disabled]) {
+  pointer-events: none;
+}
+::slotted(y-radio) {
+  transition: opacity 0.3s;
+}
+:host([disabled]) ::slotted(y-radio) {
+  pointer-events: none;
+  opacity: 0.6;
+}
+/*! radio-group- */
