@@ -68,6 +68,34 @@ class Utils {
       fs.mkdirSync(path)
     }
   }
+
+  /**
+   * 首字母大写
+   * @param {String} value 单词
+   * @example
+   *   upper => Upper
+   * @returns 首字母大写单词
+   */
+  static capitalized(value) {
+    return value.charAt(0).toLocaleUpperCase() + value.slice(1)
+  }
+
+  /**
+   * 大驼峰命名法
+   * @param {String} value 单词
+   * @param {String} separator 分隔符
+   * @example
+   *   upper-camel-case => UpperCamelCase
+   * @returns 大驼峰
+   */
+  static handleUpperCamelCase(value, separator) {
+    separator = separator || '-'
+
+    return value
+      .split(separator)
+      .map((val) => Utils.capitalized(val))
+      .join('')
+  }
 }
 
 class Build {
@@ -174,15 +202,23 @@ class NewComponent {
     Utils.handleOpenAndReadFile('src/scss/neumorphism/_components.scss', (data) => {
       Utils.handleWriteFile({
         path: 'src/scss/neumorphism/_components.scss',
-        content: `${data}\n@import 'components/${newName}';`
+        content: `${data}@import 'components/${newName}';\n`
       })
     })
 
-    // 5. scss mixin，追加新建文件路径
+    // 6. scss mixin，追加新建文件路径
     Utils.handleOpenAndReadFile('src/scss/neumorphism/_mixins.scss', (data) => {
       Utils.handleWriteFile({
         path: 'src/scss/neumorphism/_mixins.scss',
-        content: `${data}\n@import 'mixins/${newName}';`
+        content: `${data}@import 'mixins/${newName}';\n`
+      })
+    })
+
+    // 7. src/index.js，追加新建组件路径
+    Utils.handleOpenAndReadFile('src/index.js', (data) => {
+      Utils.handleWriteFile({
+        path: 'src/index.js',
+        content: `${data}import './components/${newName}/${newName}.js'\n`
       })
     })
   }
@@ -204,8 +240,10 @@ class NewComponent {
 
     let data = snippets.body.join('\n')
 
+    const newName = Utils.handleUpperCamelCase(this.name)
+
     data = data
-      .replace(/\$1/gi, `Y${this.name}`)
+      .replace(/\$1/gi, `Y${newName}`)
       .replace(/\$2/gi, `y-${this.name.toLocaleLowerCase()}`)
       .replace(/\\\$0/gi, '')
       .replace(/\\(?=\$)/gi, '')
