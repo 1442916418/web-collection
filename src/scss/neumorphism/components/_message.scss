@@ -1,0 +1,46 @@
+/*! -message */
+:host {
+  display: flex;
+  visibility: hidden;
+  opacity: 0;
+  transition: 0.3s;
+  z-index: 10;
+}
+
+:host([show]) {
+  opacity: 1;
+  visibility: visible;
+}
+
+.message {
+  padding: $message-py $message-px;
+  margin: auto;
+  margin-top: $message-mt;
+  display: flex;
+  align-items: center;
+  font-size: $message-font-size;
+  border-radius: $border-radius;
+  border-width: $border-width;
+  border-style: solid;
+  transform: translateY(-100%);
+  transition: $transition-base;
+  pointer-events: all;
+}
+
+:host([show]) .message {
+  transform: translateY(0);
+}
+
+.message > * {
+  margin-right: 0.5rem;
+}
+
+@each $type, $color in $message-types {
+  @include message-variant($type, $color);
+}
+
+@each $type, $value in $theme-sizes {
+  @include message-size($type, $value, $message-py, $message-px);
+}
+
+/*! message- */

@@ -286,10 +286,34 @@
           </y-tab>
         </div>
       </article>
+
+      <article>
+        <h2>Message</h2>
+
+        <div class="fragment msg">
+          <y-message type="info" show>info</y-message>
+          <y-message type="success" show>success</y-message>
+          <y-message type="danger" show>danger</y-message>
+          <y-message type="warning" show>warning</y-message>
+        </div>
+
+        <div class="fragment msg">
+          <y-message type="info" show size="small">info small</y-message>
+          <y-message type="info" show>info default</y-message>
+          <y-message type="info" show size="large">info large</y-message>
+        </div>
+
+        <div class="fragment">
+          <y-button onclick="window.$message.info('info')">info</y-button>
+          <y-button onclick="window.$message.success('success')">success</y-button>
+          <y-button onclick="window.$message.danger('danger')">danger</y-button>
+          <y-button onclick="window.$message.warning('warning')">warning</y-button>
+        </div>
+      </article>
     </main>
 
     <!-- https://bytedance.feishu.cn/wiki/wikcnJZV45hM71QgI60iwkzvXob -->
-    <script src="https://lf1-cdn-tos.bytegoofy.com/obj/iconpark/icons_22707_9.c97930b3ac83ec506fa01458afa5f9eb.js"></script>
+    <script src="https://lf1-cdn-tos.bytegoofy.com/obj/iconpark/icons_22707_14.2cd1a41618ee3d6b62be9c002215da55.js"></script>
     <script type="module" src="index.js"></script>
   </body>
 </html>

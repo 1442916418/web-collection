@@ -303,6 +303,12 @@ article {
 article .fragment {
   margin-bottom: 1rem;
 }
+article .fragment.msg {
+  display: flex;
+}
+article .fragment.msg y-message {
+  margin-right: 0.75rem;
+}
 .tips-dir-container {
   padding: 50px;
   display: grid;

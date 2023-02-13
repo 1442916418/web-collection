@@ -1,0 +1,15 @@
+@mixin message-variant($type, $color) {
+  :host([type='#{$type}']) .message {
+    color: $color;
+    border-color: $color;
+    background: rgba($color, 0.15);
+    box-shadow: 6px 6px 12px rgba($color, 0.3), -6px -6px 12px rgba($color, 0.3);
+  }
+}
+
+@mixin message-size($type, $font-size, $message-py, $message-px) {
+  :host([size='#{$type}']) .message {
+    padding: theme-styles-size($type, $message-py) theme-styles-size($type, $message-px);
+    font-size: $font-size;
+  }
+}

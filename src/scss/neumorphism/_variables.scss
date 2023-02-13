@@ -428,3 +428,19 @@ $tab-content-mx: 0.75rem;
 $tab-content-font-size: $font-size-base;
 
 $tab-pane-p: 1rem;
+
+// Message
+$message-px: 1rem;
+$message-py: 0.75rem;
+$message-mt: 1rem;
+$message-font-size: $font-size-sm;
+$message-types: ();
+$message-types: map-merge(
+  (
+    'info': #909399,
+    'success': #67c23a,
+    'danger': #f56c6c,
+    'warning': #e6a23c
+  ),
+  $message-types
+);

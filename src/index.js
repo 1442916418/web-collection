@@ -10,3 +10,5 @@ import './components/radio/radio.js'
 import './components/radio-group/radio-group.js'
 import './components/tab-pane/tab-pane.js'
 import './components/tab/tab.js'
+import YMessage from './components/message/message.js'
+window.$message = YMessage
