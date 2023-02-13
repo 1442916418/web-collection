@@ -28,6 +28,18 @@ export default class YTab extends HTMLElement {
     return this.getAttribute('active-key')
   }
 
+  get theme() {
+    return this.getAttribute('theme')
+  }
+
+  get size() {
+    return this.getAttribute('size')
+  }
+
+  set size(value) {
+    this.setAttribute('size', value)
+  }
+
   set activeKey(value) {
     this.setAttribute('active-key', value)
   }
@@ -51,8 +63,21 @@ export default class YTab extends HTMLElement {
     this.navEle.addEventListener('keydown', this.navKeydown)
   }
 
-  // TODO: theme...
   attributeChangedCallback(name, oldValue, newValue) {
+    if (name === 'theme' && this.navEle) {
+      const navItems = this.navEle.querySelectorAll('y-button')
+
+      if (navItems.length) {
+        navItems.forEach((item) => {
+          if (newValue === null) {
+            item.removeAttribute('theme')
+          } else {
+            item.setAttribute('theme', newValue)
+          }
+        })
+      }
+    }
+
     if (name == 'active-key' && this.tabContentEle) {
       let active = this.tabNavItemInfo[newValue]
 
@@ -103,6 +128,8 @@ export default class YTab extends HTMLElement {
 
     let html = ''
 
+    const size = this.size ? `size="${this.size}"` : ''
+
     slots.forEach((item, index) => {
       if (item.tagName === 'Y-TAB-PANE') {
         if (item.key === null) {
@@ -113,7 +140,7 @@ export default class YTab extends HTMLElement {
         const disabled = item.disabled !== null ? 'disabled' : ''
         const active = item.key === this.activeKey ? 'active' : ''
 
-        html += `<y-button class="nav-item ${active}" ${icon} ${disabled} data-key=${item.key}>${item.label}</y-button>`
+        html += `<y-button class="nav-item ${active}" ${size} ${icon} ${disabled} data-key=${item.key}>${item.label}</y-button>`
       }
     })
 

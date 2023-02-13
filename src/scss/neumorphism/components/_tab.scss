@@ -13,8 +13,9 @@
 
 .tab-nav-container {
   position: relative;
+  padding-left: $tab-nav-container-px;
+  padding-right: $tab-nav-container-px;
   scroll-behavior: smooth;
-  overflow: hidden;
 }
 
 .tab-nav {
@@ -24,7 +25,6 @@
 .nav-item {
   margin: $tab-nav-item-m;
   flex-shrink: 0;
-  font-size: inherit;
 
   &:first-child {
     margin-left: 0;
@@ -37,7 +37,10 @@
 
 .tab-content {
   margin-top: $tab-content-mt;
+  margin-right: $tab-content-mx;
+  margin-left: $tab-content-mx;
   flex: 1;
+  font-size: $tab-content-font-size;
   border-radius: $border-radius;
   transition: 0.2s;
   overflow: hidden;
@@ -61,5 +64,18 @@
 
 @each $color, $value in $theme-colors {
   @include tab-variant($color, $value, $value);
+}
+
+@each $type, $value in $theme-sizes {
+  @include tab-size(
+    $type,
+    $value,
+    $tab-nav-item-m,
+    $tab-content-mt,
+    $tab-content-mx,
+    $tab-content-font-size,
+    $tab-pane-p,
+    $tab-nav-container-px
+  );
 }
 /*! tab- */

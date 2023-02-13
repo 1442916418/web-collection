@@ -9,6 +9,7 @@
 ) {
   @if $type == 'primary' {
     .tab-content {
+      color: color-yiq($background);
       box-shadow: box-shadow('#{$type}-inset');
     }
 
@@ -17,10 +18,50 @@
     }
   } @else {
     :host([theme='#{$type}']) .tab-content {
+      color: color-yiq($background);
       box-shadow: box-shadow('#{$type}-inset');
     }
     :host([theme='#{$type}']) .nav-item.active {
       box-shadow: box-shadow('#{$type}-inset');
     }
+  }
+}
+
+@mixin tab-size(
+  $type,
+  $font-size,
+  $tab-nav-item-m,
+  $tab-content-mt,
+  $tab-content-mx,
+  $tab-content-font-size,
+  $tab-pane-p,
+  $tab-nav-container-px
+) {
+  :host([size='#{$type}']) .tab-nav-container {
+    padding-left: theme-styles-size($type, $tab-nav-container-px);
+    padding-right: theme-styles-size($type, $tab-nav-container-px);
+  }
+
+  :host([size='#{$type}']) .nav-item {
+    margin: theme-styles-size($type, $tab-nav-item-m);
+
+    &:first-child {
+      margin-left: 0;
+    }
+
+    &:last-child {
+      margin-right: 0;
+    }
+  }
+
+  :host([size='#{$type}']) .tab-content {
+    margin-top: theme-styles-size($type, $tab-content-mt);
+    margin-right: theme-styles-size($type, $tab-content-mx);
+    margin-left: theme-styles-size($type, $tab-content-mx);
+    font-size: theme-styles-size($type, $tab-content-font-size);
+  }
+
+  :host([size='#{$type}'])::slotted(y-tab-pane) {
+    padding: theme-styles-size($type, $tab-pane-p);
   }
 }
