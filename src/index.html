@@ -29,7 +29,13 @@
           >
             下载图片</y-button
           >
+        </div>
+
+        <div class="fragment">
+          <y-button circle size="large">圆</y-button>
           <y-button circle>圆</y-button>
+          <y-button circle size="small">圆</y-button>
+          <y-button circle icon="close"></y-button>
         </div>
 
         <div class="fragment">
@@ -39,7 +45,7 @@
         <div class="fragment">
           <y-button loading="true">加载</y-button>
           <y-button icon="config">图标</y-button>
-          <y-button>图标 <iconpark-icon style="margin-left: 0.55rem" name="config"></iconpark-icon> </y-button>
+          <y-button>图标 <iconpark-icon name="config"></iconpark-icon> </y-button>
         </div>
 
         <div class="fragment">
@@ -310,10 +316,31 @@
           <y-button onclick="window.$message.warning('warning')">warning</y-button>
         </div>
       </article>
+
+      <article>
+        <h2>Dialog</h2>
+
+        <div class="fragment">
+          <y-button onclick="window.$dialog.alert('alert' )">alert</y-button>
+          <y-button onclick="window.$dialog.info('info')">info</y-button>
+          <y-button onclick="window.$dialog.success('success')">success</y-button>
+          <y-button onclick="window.$dialog.danger('danger')">danger</y-button>
+          <y-button onclick="window.$dialog.warning('warning')">warning</y-button>
+          <y-button onclick="window.$dialog.confirm('confirm')">confirm</y-button>
+        </div>
+
+        <div class="fragment">
+          <y-button size="small" onclick="window.$dialog.alert('alert', null, 'small' )">alert small</y-button>
+        </div>
+
+        <div class="fragment">
+          <y-button onclick="window.$dialog.alert('alert', null, null, 'dark' )">alert theme dark</y-button>
+        </div>
+      </article>
     </main>
 
     <!-- https://bytedance.feishu.cn/wiki/wikcnJZV45hM71QgI60iwkzvXob -->
-    <script src="https://lf1-cdn-tos.bytegoofy.com/obj/iconpark/icons_22707_14.2cd1a41618ee3d6b62be9c002215da55.js"></script>
+    <script src="https://lf1-cdn-tos.bytegoofy.com/obj/iconpark/icons_22707_15.d1c63dee57f22c6513cb709f0e7250e1.js"></script>
     <script type="module" src="index.js"></script>
   </body>
 </html>

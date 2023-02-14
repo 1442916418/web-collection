@@ -74,6 +74,18 @@ $theme-colors: map-merge(
   $theme-colors
 );
 
+$icon-types: ();
+$icon-types: map-merge(
+  (
+    'info': #909399,
+    'success': #67c23a,
+    'danger': #f56c6c,
+    'warning': #e6a23c,
+    'confirm': #409eff
+  ),
+  $icon-types
+);
+
 $yiq-contrasted-threshold: 200;
 $yiq-text-dark: $dark;
 
@@ -313,6 +325,8 @@ $input-font-size-lg: 1.25rem;
 $input-bg: $primary;
 
 // Buttons
+$btn-gap: 0.25rem;
+
 $btn-loading-margin-y: $input-btn-padding-y;
 
 $btn-padding-y: $input-btn-padding-y;
@@ -434,13 +448,21 @@ $message-px: 1rem;
 $message-py: 0.75rem;
 $message-mt: 1rem;
 $message-font-size: $font-size-sm;
-$message-types: ();
-$message-types: map-merge(
-  (
-    'info': #909399,
-    'success': #67c23a,
-    'danger': #f56c6c,
-    'warning': #e6a23c
-  ),
-  $message-types
-);
+
+// Dialog
+$dialog-max-width: calc(100vw - 1rem);
+$dialog-max-height: calc(100vh - 1rem);
+$dialog-min-width: 30rem;
+
+$dialog-content-py: 1rem;
+$dialog-content-px: 1.25rem;
+
+$dialog-body-py: 0.75rem;
+$dialog-body-min-height: 5rem;
+
+$dialog-type-mt: 1rem;
+$dialog-type-mr: -0.75rem;
+$dialog-type-ml: 1.5rem;
+$dialog-type-width: 1.5rem;
+$dialog-type-height: 1.5rem;
+$dialog-type-font-size: $font-size-xl;

@@ -1,9 +1,13 @@
-@mixin message-variant($type, $color) {
+@mixin message-types($type, $color) {
   :host([type='#{$type}']) .message {
     color: $color;
     border-color: $color;
     background: rgba($color, 0.15);
     box-shadow: 6px 6px 12px rgba($color, 0.3), -6px -6px 12px rgba($color, 0.3);
+
+    iconpark-icon {
+      color: $color !important;
+    }
   }
 }
 

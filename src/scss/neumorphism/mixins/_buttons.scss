@@ -78,4 +78,10 @@
       border-radius: 0;
     }
   }
+
+  :host([size='#{$type}']):host([circle]) {
+    padding: theme-styles-size($type, $padding-y) !important;
+    line-height: 1 !important;
+    border-radius: $circle-radius !important;
+  }
 }

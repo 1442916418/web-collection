@@ -1,0 +1,124 @@
+/*! -dialog */
+:host {
+  position: fixed;
+  display: flex;
+  left: 0;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  z-index: -1;
+  visibility: hidden;
+  opacity: 0;
+  transition: $transition-base;
+}
+
+.dialog {
+  position: relative;
+  min-width: $dialog-min-width;
+  max-width: $dialog-max-width;
+  max-height: $dialog-max-height;
+  display: flex;
+  margin: auto;
+  border-width: $border-width;
+  border-style: solid;
+  border-color: $border-color-transparent;
+  border-radius: $border-radius;
+  opacity: 0;
+  box-sizing: border-box;
+  transform: scale(0.5);
+  transition: 0.3s cubic-bezier(0.645, 0.045, 0.355, 1);
+
+  &-content {
+    padding: $dialog-content-py $dialog-content-px;
+    width: 100%;
+    display: flex;
+    flex: 1;
+    flex-direction: column;
+    box-sizing: border-box;
+  }
+
+  &-title {
+    line-height: $line-height-base;
+    font-weight: $font-weight-bolder;
+    font-size: $font-size-base;
+    user-select: none;
+    cursor: default;
+  }
+
+  &-body {
+    padding: $dialog-body-py 0;
+    min-height: $dialog-body-min-height;
+    flex: 1;
+    overflow: auto;
+  }
+
+  &-footer {
+    text-align: right;
+
+    y-button {
+      margin-left: 0.75rem;
+    }
+  }
+
+  &-type {
+    display: none;
+    margin: $dialog-type-mt $dialog-type-mr 0 $dialog-type-ml;
+    margin-top: $dialog-type-mt;
+    margin-left: $dialog-type-ml;
+    width: $dialog-type-width;
+    height: $dialog-type-height;
+    font-size: $dialog-type-font-size;
+  }
+
+  .btn-close {
+    position: absolute;
+    top: $dialog-content-py;
+    right: $dialog-content-px;
+    border: 0;
+  }
+}
+
+.dialog-type[name] {
+  display: flex;
+}
+
+#btn-cancel {
+  visibility: hidden;
+}
+
+:host(:not([type])) .dialog-type {
+  display: none;
+}
+
+:host([type='confirm']) #btn-cancel {
+  visibility: visible;
+}
+
+:host(:empty) .dialog-body {
+  min-height: 0;
+}
+
+:host([open]) {
+  opacity: 1;
+  z-index: 50;
+  visibility: visible;
+}
+
+:host([open]) .dialog {
+  opacity: 1;
+  transform: scale(1);
+}
+
+@each $color, $value in $theme-colors {
+  @include dialog-variant($color, $value);
+}
+
+@each $type, $value in $theme-sizes {
+  @include dialog-size($type, $value, $dialog-content-py, $dialog-content-px, $dialog-body-py);
+}
+
+@each $type, $color in $icon-types {
+  @include dialog-types($type, $color);
+}
+
+/*! dialog- */

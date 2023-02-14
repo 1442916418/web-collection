@@ -16,6 +16,7 @@
 :host {
   position: relative;
   display: inline-flex;
+  gap: $btn-gap;
   padding: $btn-padding-y $btn-padding-x;
   box-sizing: border-box;
   vertical-align: middle;
@@ -54,6 +55,8 @@ fieldset:disabled a.btn {
 }
 
 :host([circle]) {
+  padding: $btn-padding-y;
+  line-height: 1;
   border-radius: $circle-radius;
 }
 
@@ -69,7 +72,4 @@ fieldset:disabled a.btn {
   @include button-size($type, $value, $btn-padding-y, $btn-padding-x, $btn-line-height, $border-radius);
 }
 
-iconpark-icon {
-  margin-right: $btn-loading-margin-y;
-}
 /*! button- */

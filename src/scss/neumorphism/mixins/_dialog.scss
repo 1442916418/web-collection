@@ -1,0 +1,51 @@
+@mixin dialog-variant($type, $background) {
+  @if $type == 'primary' {
+    .dialog {
+      color: color-yiq($background);
+      border-color: saturate($background, 50%);
+      box-shadow: box-shadow($type);
+      @include gradient-bg($background);
+
+      &-title,
+      &-body {
+        color: color-yiq($background);
+      }
+    }
+  } @else {
+    :host([theme='#{$type}']) .dialog {
+      color: color-yiq($background);
+      border-color: $background;
+      box-shadow: box-shadow($type);
+      @include gradient-bg($background);
+
+      &-title,
+      &-body {
+        color: color-yiq($background);
+      }
+    }
+  }
+}
+
+@mixin dialog-size($type, $font-size, $dialog-content-py, $dialog-content-px, $dialog-body-py) {
+  :host([size='#{$type}']) .dialog {
+    &-type,
+    &-title {
+      font-size: $font-size;
+    }
+
+    &-content {
+      padding: theme-styles-size($type, $dialog-content-py) theme-styles-size($type, $dialog-content-px);
+    }
+
+    &-body {
+      padding-left: theme-styles-size($type, $dialog-body-py);
+      padding-right: theme-styles-size($type, $dialog-body-py);
+    }
+  }
+}
+
+@mixin dialog-types($type, $color) {
+  :host([type='#{$type}']) .dialog .dialog-type {
+    color: $color !important;
+  }
+}

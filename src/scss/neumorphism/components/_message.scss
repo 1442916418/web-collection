@@ -35,8 +35,8 @@
   margin-right: 0.5rem;
 }
 
-@each $type, $color in $message-types {
-  @include message-variant($type, $color);
+@each $type, $color in $icon-types {
+  @include message-types($type, $color);
 }
 
 @each $type, $value in $theme-sizes {

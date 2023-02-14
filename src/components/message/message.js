@@ -12,7 +12,7 @@ class YMessage extends HTMLElement {
 
     shadowRoot.innerHTML = `<style>${styles}</style>
                             <div class="message" ${type}>
-                              <iconpark-icon id="icon" class="icon" name="attention" color="#fff"></iconpark-icon>
+                              <iconpark-icon id="icon" class="icon" ></iconpark-icon>
                               <slot></slot>
                             </div>                        
                            `
@@ -86,7 +86,6 @@ class YMessage extends HTMLElement {
     if (name == 'type' && this.iconEle) {
       if (newValue !== null && newValue !== 'null') {
         this.iconEle.name = this.getIcon(newValue).name
-        this.iconEle.color = this.getIcon(newValue).color
       }
     }
     if (name == 'icon' && this.iconEle) {
@@ -107,10 +106,10 @@ class YMessage extends HTMLElement {
     if (!type) return
 
     const icons = {
-      info: { name: 'info', color: '#66799e' },
-      success: { name: 'success', color: '#18634b' },
-      danger: { name: 'close-one', color: '#a91e2c' },
-      warning: { name: 'attention', color: '#f0b400' }
+      info: { name: 'info' },
+      success: { name: 'success' },
+      danger: { name: 'close-one' },
+      warning: { name: 'attention' }
     }
 
     return icons[type]

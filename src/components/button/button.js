@@ -16,7 +16,7 @@ export default class YButton extends HTMLElement {
     const href = this.href ? `href="${this.href}" target="${this.target}" rel="${this.rel}"` : ''
     const icon =
       !this.loading && this.icon && this.icon !== 'null'
-        ? `<iconpark-icon name="${this.icon}" id="icon" ></iconpark-icon>`
+        ? `<iconpark-icon name="${this.icon}" id="icon" class="icon" ></iconpark-icon>`
         : ''
 
     shadowRoot.innerHTML = `<style>${styles}</style><${tag} ${type} ${download} ${href} class="btn" id="btn"></${tag}>${icon}<slot></slot>`
@@ -159,6 +159,7 @@ export default class YButton extends HTMLElement {
     this.loadLoadingIconEle.setAttribute('spin', '')
     this.loadLoadingIconEle.setAttribute('name', 'loading-four')
     this.loadLoadingIconEle.style.color = 'inherit'
+    this.loadLoadingIconEle.style.marginRight = '0.55rem'
   }
 }
 

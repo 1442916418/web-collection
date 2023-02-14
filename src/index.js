@@ -12,3 +12,5 @@ import './components/tab-pane/tab-pane.js'
 import './components/tab/tab.js'
 import YMessage from './components/message/message.js'
 window.$message = YMessage
+import YDialog from './components/dialog/dialog.js'
+window.$dialog = YDialog
