@@ -17,62 +17,117 @@
       </article>
 
       <article>
-        <h2>Buttons</h2>
+        <h2>图标</h2>
 
-        <div class="fragment">
+        <section>
+          <a href="https://iconpark.oceanengine.com/home" target="_blank">
+            <h3>IconPark</h3>
+          </a>
+
+          <div class="icons">
+            <iconpark-icon name="loading-four" size="32"></iconpark-icon>
+            <iconpark-icon name="config" size="32"></iconpark-icon>
+            <iconpark-icon name="down" size="32"></iconpark-icon>
+            <iconpark-icon name="moon" size="32"></iconpark-icon>
+            <iconpark-icon name="sun-one" size="32"></iconpark-icon>
+            <iconpark-icon name="area-map" size="32"></iconpark-icon>
+            <iconpark-icon name="chart-line-area" size="32"></iconpark-icon>
+            <iconpark-icon name="chart-histogram" size="32"></iconpark-icon>
+            <iconpark-icon name="chart-graph" size="32"></iconpark-icon>
+            <iconpark-icon name="close" size="32"></iconpark-icon>
+            <iconpark-icon name="attention" size="32"></iconpark-icon>
+            <iconpark-icon name="close-one" size="32"></iconpark-icon>
+            <iconpark-icon name="success" size="32"></iconpark-icon>
+            <iconpark-icon name="info" size="32"></iconpark-icon>
+            <iconpark-icon name="check-one" size="32"></iconpark-icon>
+          </div>
+        </section>
+      </article>
+
+      <article>
+        <h2>按钮</h2>
+
+        <section>
+          <h3>展示</h3>
           <y-button>Default</y-button>
+        </section>
+
+        <section>
+          <h3>禁用</h3>
           <y-button disabled>Default</y-button>
-          <y-button href="https://yss.world">链接</y-button>
+        </section>
+
+        <section>
+          <h3>链接</h3>
+
+          <y-button href="https://yss.world">博客</y-button>
+        </section>
+
+        <!-- <section>
+          <h3>下载图片</h3>
           <y-button
             href="https://kjimg10.360buyimg.com/ott/jfs/t1/124686/11/31072/170103/63bb8037F15537b4b/1e5cf478e1c70f0e.jpg"
             download="https://kjimg10.360buyimg.com/ott/jfs/t1/124686/11/31072/170103/63bb8037F15537b4b/1e5cf478e1c70f0e.jpg"
           >
             下载图片</y-button
           >
-        </div>
+        </section> -->
 
-        <div class="fragment">
+        <section>
+          <h3>尺寸</h3>
           <y-button circle size="large">圆</y-button>
           <y-button circle>圆</y-button>
           <y-button circle size="small">圆</y-button>
+        </section>
+
+        <section>
+          <h3>图标</h3>
           <y-button circle icon="close"></y-button>
-        </div>
-
-        <div class="fragment">
-          <y-button block>块</y-button>
-        </div>
-
-        <div class="fragment">
-          <y-button loading="true">加载</y-button>
+          <y-button circle icon="close-one"></y-button>
+          <y-button circle icon="config"></y-button>
           <y-button icon="config">图标</y-button>
-          <y-button>图标 <iconpark-icon name="config"></iconpark-icon> </y-button>
-        </div>
+          <y-button>图标 <iconpark-icon name="config" size="32"></iconpark-icon> </y-button>
+        </section>
 
-        <div class="fragment">
+        <section>
+          <h3>块状</h3>
+          <y-button block>default</y-button>
+        </section>
+
+        <section>
+          <h3>加载</h3>
+          <y-button loading="true">Loading</y-button>
+        </section>
+
+        <section>
+          <h3>尺寸</h3>
           <y-button size="large">Size Large</y-button>
           <y-button>Size default</y-button>
           <y-button size="small">Size small</y-button>
-        </div>
+        </section>
 
-        <div class="fragment">
+        <section>
+          <h3>按钮组</h3>
           <y-button-group>
-            <y-button>Button0</y-button>
-            <y-button>Button1</y-button>
-            <y-button>Button2</y-button>
+            <y-button>Button</y-button>
+            <y-button>Button</y-button>
+            <y-button>Button</y-button>
           </y-button-group>
-        </div>
+        </section>
       </article>
 
       <article>
-        <h2>Tips</h2>
+        <h2>气泡提示框</h2>
 
-        <div class="fragment">
+        <section>
+          <h3>展示</h3>
           <y-tips tips="Tips default">
             <y-button>Tips default</y-button>
           </y-tips>
-        </div>
+        </section>
 
-        <div class="fragment">
+        <section>
+          <h3>方向</h3>
           <div class="tips-dir-container">
             <span></span>
             <y-tips dir="tl" tips="some tips">
@@ -128,9 +183,9 @@
             </y-tips>
             <span></span>
           </div>
-        </div>
+        </section>
 
-        <div class="fragment">
+        <section>
           <y-tips tips="11" suffix="km/h">
             <y-button>Tips 后缀</y-button>
           </y-tips>
@@ -138,25 +193,58 @@
           <y-tips tips="11" prefix="K">
             <y-button>Tips 前缀</y-button>
           </y-tips>
-        </div>
+        </section>
       </article>
 
       <article>
         <h2>Slider</h2>
 
-        <div class="fragment">
+        <section>
+          <h3>展示</h3>
           <y-slider></y-slider>
-          <y-slider is-tips default-value="30"></y-slider>
-          <y-slider disabled default-value="50"></y-slider>
+        </section>
+
+        <section>
+          <h3>气泡提示</h3>
+          <y-slider is-tips></y-slider>
+        </section>
+
+        <section>
+          <h3>禁用</h3>
+          <y-slider disabled></y-slider>
+        </section>
+
+        <section>
+          <h3>默认值</h3>
+          <y-slider default-value="50"></y-slider>
+        </section>
+
+        <section>
+          <h3>最大值、最小值与步长</h3>
           <y-slider default-value="50" is-tips min="0" max="100" step="5"></y-slider>
           <y-slider default-value="30" is-tips vertical></y-slider>
-        </div>
+        </section>
+
+        <section>
+          <h3>垂直</h3>
+          <y-slider default-value="30" is-tips vertical></y-slider>
+        </section>
       </article>
 
       <article>
-        <h2>Select</h2>
+        <h2>选择器</h2>
 
-        <div class="fragment">
+        <section>
+          <h3>展示</h3>
+          <y-select>
+            <y-select-option label="苹果" value="apple"></y-select-option>
+            <y-select-option label="香蕉" value="banana"></y-select-option>
+            <y-select-option label="枣子" value="jujube"></y-select-option>
+          </y-select>
+        </section>
+
+        <section>
+          <h3>尺寸</h3>
           <y-select size="large" placeholder="请选择水果">
             <y-select-option label="苹果" value="apple"></y-select-option>
             <y-select-option label="香蕉" value="banana"></y-select-option>
@@ -174,31 +262,41 @@
             <y-select-option label="香蕉" value="banana"></y-select-option>
             <y-select-option label="枣子" value="jujube"></y-select-option>
           </y-select>
+        </section>
 
+        <section>
+          <h3>多选</h3>
           <y-select multiple placeholder="支持多选">
             <y-select-option label="苹果" value="apple"></y-select-option>
             <y-select-option label="香蕉" value="banana"></y-select-option>
             <y-select-option label="枣子" value="jujube"></y-select-option>
           </y-select>
+        </section>
 
-          <y-select multiple disabled placeholder="支持多选">
+        <section>
+          <h3>禁用</h3>
+          <y-select disabled>
             <y-select-option label="苹果" value="apple"></y-select-option>
             <y-select-option label="香蕉" value="banana"></y-select-option>
             <y-select-option label="枣子" value="jujube"></y-select-option>
           </y-select>
+        </section>
 
-          <y-select default-value="apple" placeholder="支持多选">
+        <section>
+          <h3>默认值</h3>
+          <y-select default-value="apple">
             <y-select-option label="苹果" value="apple"></y-select-option>
             <y-select-option label="香蕉" value="banana"></y-select-option>
             <y-select-option label="枣子" value="jujube"></y-select-option>
           </y-select>
-        </div>
+        </section>
       </article>
 
       <article>
-        <h2>Switch</h2>
+        <h2>开关</h2>
 
-        <div class="fragment">
+        <section>
+          <h3>展示</h3>
           <y-switch></y-switch>
           <y-switch disabled></y-switch>
           <y-switch size="large"></y-switch>
@@ -208,134 +306,217 @@
             <span slot="active">active text</span>
             <span slot="inactive">inactive text</span>
           </y-switch>
-        </div>
+        </section>
+
+        <section>
+          <h3>禁用</h3>
+          <y-switch disabled></y-switch>
+          <y-switch size="large"></y-switch>
+          <y-switch></y-switch>
+          <y-switch size="small"></y-switch>
+          <y-switch>
+            <span slot="active">active text</span>
+            <span slot="inactive">inactive text</span>
+          </y-switch>
+        </section>
+
+        <section>
+          <h3>尺寸</h3>
+          <y-switch size="large"></y-switch>
+          <y-switch></y-switch>
+          <y-switch size="small"></y-switch>
+          <y-switch>
+            <span slot="active">active text</span>
+            <span slot="inactive">inactive text</span>
+          </y-switch>
+        </section>
+
+        <section>
+          <h3>文字描述</h3>
+          <y-switch>
+            <span slot="active">active text</span>
+            <span slot="inactive">inactive text</span>
+          </y-switch>
+        </section>
       </article>
 
       <article>
-        <h2>Checkbox</h2>
+        <h2>复选框</h2>
 
-        <div class="fragment">
+        <section>
+          <h3>展示</h3>
           <y-checkbox>checkbox</y-checkbox>
           <y-checkbox disabled></y-checkbox>
           <y-checkbox size="large"></y-checkbox>
           <y-checkbox></y-checkbox>
           <y-checkbox size="small"></y-checkbox>
-        </div>
+        </section>
 
-        <div class="fragment">
+        <section>
+          <h3>禁用</h3>
+          <y-checkbox disabled></y-checkbox>
+          <y-checkbox size="large"></y-checkbox>
+          <y-checkbox></y-checkbox>
+          <y-checkbox size="small"></y-checkbox>
+        </section>
+
+        <section>
+          <h3>尺寸</h3>
+          <y-checkbox size="large"></y-checkbox>
+          <y-checkbox></y-checkbox>
+          <y-checkbox size="small"></y-checkbox>
+        </section>
+
+        <section>
+          <h3>圆形复选框</h3>
           <y-checkbox circle>checkbox circle</y-checkbox>
           <y-checkbox circle disabled>checkbox disabled</y-checkbox>
           <y-checkbox circle size="large"></y-checkbox>
           <y-checkbox circle></y-checkbox>
           <y-checkbox circle size="small"></y-checkbox>
-        </div>
+        </section>
       </article>
 
       <article>
-        <h2>Radio</h2>
+        <h2>单选框</h2>
 
-        <div class="fragment">
+        <section>
+          <h3>展示</h3>
           <y-radio>radio</y-radio>
           <y-radio disabled></y-radio>
           <y-radio size="large"></y-radio>
           <y-radio></y-radio>
           <y-radio size="small"></y-radio>
-        </div>
+        </section>
 
-        <div class="fragment">
+        <section>
+          <h3>禁用</h3>
+          <y-radio disabled></y-radio>
+          <y-radio size="large"></y-radio>
+          <y-radio></y-radio>
+          <y-radio size="small"></y-radio>
+        </section>
+
+        <section>
+          <h3>尺寸</h3>
+          <y-radio size="large"></y-radio>
+          <y-radio></y-radio>
+          <y-radio size="small"></y-radio>
+        </section>
+
+        <section>
+          <h3>组</h3>
           <y-radio name="frame">Vue</y-radio>
           <y-radio name="frame">React</y-radio>
           <y-radio name="frame">Svelte</y-radio>
-        </div>
+        </section>
 
-        <div class="fragment">
+        <section>
+          <h3>组 & 默认值</h3>
           <y-radio-group name="frame" default-value="Vue">
             <y-radio>Vue</y-radio>
             <y-radio>React</y-radio>
             <y-radio>Svelte</y-radio>
           </y-radio-group>
-        </div>
+        </section>
       </article>
 
       <article>
-        <h2>Tabs</h2>
+        <h2>标签页</h2>
 
-        <div class="fragment">
+        <section>
+          <h3>尺寸</h3>
           <y-tab size="small" active-key="三">
             <y-tab-pane label="一" key="一">窗口一 small</y-tab-pane>
-            <y-tab-pane label="二" key="二" disabled>窗口二 small</y-tab-pane>
+            <y-tab-pane label="二" key="二">窗口二 small</y-tab-pane>
             <y-tab-pane label="三" key="三">窗口三 small</y-tab-pane>
           </y-tab>
-        </div>
+        </section>
 
-        <div class="fragment">
+        <section>
+          <h3>默认</h3>
           <y-tab>
             <y-tab-pane label="一">窗口一</y-tab-pane>
             <y-tab-pane label="二">窗口二</y-tab-pane>
             <y-tab-pane label="三">窗口三</y-tab-pane>
           </y-tab>
-        </div>
+        </section>
 
-        <div class="fragment">
+        <section>
+          <h3>禁用</h3>
           <y-tab size="large">
             <y-tab-pane label="一">窗口一 large</y-tab-pane>
             <y-tab-pane label="二" disabled>窗口二 large</y-tab-pane>
             <y-tab-pane label="三">窗口三 large</y-tab-pane>
           </y-tab>
-        </div>
+        </section>
 
-        <div class="fragment">
+        <section>
+          <h3>图标</h3>
           <y-tab>
             <y-tab-pane icon="area-map" label="区域图">区域图</y-tab-pane>
             <y-tab-pane icon="chart-line-area" label="折线图">折线图</y-tab-pane>
             <y-tab-pane icon="chart-histogram" label="柱状图">柱状图</y-tab-pane>
           </y-tab>
-        </div>
+        </section>
       </article>
 
       <article>
-        <h2>Message</h2>
+        <h2>消息提示</h2>
 
-        <div class="fragment msg">
-          <y-message type="info" show>info</y-message>
-          <y-message type="success" show>success</y-message>
-          <y-message type="danger" show>danger</y-message>
-          <y-message type="warning" show>warning</y-message>
-        </div>
+        <section>
+          <h3>组件 show</h3>
 
-        <div class="fragment msg">
-          <y-message type="info" show size="small">info small</y-message>
-          <y-message type="info" show>info default</y-message>
-          <y-message type="info" show size="large">info large</y-message>
-        </div>
+          <div class="msg">
+            <y-message type="info" show>info</y-message>
+            <y-message type="success" show>success</y-message>
+            <y-message type="danger" show>danger</y-message>
+            <y-message type="warning" show>warning</y-message>
+          </div>
+        </section>
 
-        <div class="fragment">
+        <section>
+          <h3>尺寸</h3>
+
+          <div class="msg">
+            <y-message type="info" show size="small">info small</y-message>
+            <y-message type="info" show>info default</y-message>
+            <y-message type="info" show size="large">info large</y-message>
+          </div>
+        </section>
+
+        <section>
+          <h3>原型调用</h3>
           <y-button onclick="window.$message.info('info')">info</y-button>
           <y-button onclick="window.$message.success('success')">success</y-button>
           <y-button onclick="window.$message.danger('danger')">danger</y-button>
           <y-button onclick="window.$message.warning('warning')">warning</y-button>
-        </div>
+        </section>
       </article>
 
       <article>
-        <h2>Dialog</h2>
+        <h2>对话框</h2>
 
-        <div class="fragment">
+        <section>
+          <h3>原型调用</h3>
           <y-button onclick="window.$dialog.alert('alert' )">alert</y-button>
           <y-button onclick="window.$dialog.info('info')">info</y-button>
           <y-button onclick="window.$dialog.success('success')">success</y-button>
           <y-button onclick="window.$dialog.danger('danger')">danger</y-button>
           <y-button onclick="window.$dialog.warning('warning')">warning</y-button>
           <y-button onclick="window.$dialog.confirm('confirm')">confirm</y-button>
-        </div>
+        </section>
 
-        <div class="fragment">
-          <y-button size="small" onclick="window.$dialog.alert('alert', null, 'small' )">alert small</y-button>
-        </div>
+        <section>
+          <h3>尺寸</h3>
+          <y-button onclick="window.$dialog.alert('alert', null, 'small' )">alert small</y-button>
+          <y-button onclick="window.$dialog.alert('alert', null, 'large' )">alert large</y-button>
+        </section>
 
-        <div class="fragment">
+        <section>
+          <h3>主题</h3>
           <y-button onclick="window.$dialog.alert('alert', null, null, 'dark' )">alert theme dark</y-button>
-        </div>
+        </section>
       </article>
     </main>
 

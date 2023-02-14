@@ -286,7 +286,10 @@ template {
   display: none !important;
 }
 
-/* ----------------------- */
+/* ====================================================================================== */
+/* =================================== index.html CSS =================================== */
+/* ====================================================================================== */
+
 body {
   display: flex;
 }
@@ -298,15 +301,24 @@ main {
 }
 article {
   padding: 0.5rem;
+  margin-bottom: 3rem;
+}
+article h2 {
+  margin-bottom: 2rem;
+}
+article section {
   margin-bottom: 1rem;
 }
-article .fragment {
+article section h3 {
   margin-bottom: 1rem;
 }
-article .fragment.msg {
+article section .msg {
   display: flex;
 }
-article .fragment.msg y-message {
+article section .msg y-message {
+  margin-right: 0.75rem;
+}
+article section .icons iconpark-icon {
   margin-right: 0.75rem;
 }
 .tips-dir-container {

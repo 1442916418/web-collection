@@ -76,7 +76,7 @@ export default class YTheme extends HTMLElement {
           }
         })
       }
-    }, 300)
+    }, 150)
   }
 
   handleBodyStyles(value) {
@@ -87,12 +87,12 @@ export default class YTheme extends HTMLElement {
   }
 
   handleHeaderStyles(value) {
-    const h2 = document.querySelectorAll('h2')
+    const headers = document.querySelectorAll('h1, h2, h3, h4, h5, h6')
 
-    if (h2.length) {
+    if (headers.length) {
       const color = value === 'dark' ? this.defaultBgColor : this.darkBgColor
 
-      h2.forEach((item) => (item.style.color = color))
+      headers.forEach((item) => (item.style.color = color))
     }
   }
 }
