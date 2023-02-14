@@ -68,31 +68,11 @@ class YDialog extends HTMLElement {
   }
 
   set theme(value) {
-    if (!value || value === null) {
-      this.removeAttribute('theme')
-      this.btnCloseEle && this.btnCloseEle.removeAttribute('theme')
-      this.btnCancelEle && this.btnCancelEle.removeAttribute('theme')
-      this.btnSubmitEle && this.btnSubmitEle.removeAttribute('theme')
-    } else {
-      this.setAttribute('theme', value)
-      this.btnCloseEle && this.btnCloseEle.setAttribute('theme', value)
-      this.btnCancelEle && this.btnCancelEle.setAttribute('theme', value)
-      this.btnSubmitEle && this.btnSubmitEle.setAttribute('theme', value)
-    }
+    this.handleTheme(value)
   }
 
   set size(value) {
-    if (!value || value === null) {
-      this.removeAttribute('size')
-      this.btnCloseEle && this.btnCloseEle.removeAttribute('size')
-      this.btnCancelEle && this.btnCancelEle.removeAttribute('size')
-      this.btnSubmitEle && this.btnSubmitEle.removeAttribute('size')
-    } else {
-      this.setAttribute('size', value)
-      this.btnCloseEle && this.btnCloseEle.setAttribute('size', value)
-      this.btnCancelEle && this.btnCancelEle.setAttribute('size', value)
-      this.btnSubmitEle && this.btnSubmitEle.setAttribute('size', value)
-    }
+    this.handleSize(value)
   }
 
   set title(value) {
@@ -247,6 +227,34 @@ class YDialog extends HTMLElement {
 
     return icons[type]
   }
+
+  handleSize(value) {
+    if (!value || value === 'null') {
+      this.removeAttribute('size')
+      this.btnCloseEle && this.btnCloseEle.removeAttribute('size')
+      this.btnCancelEle && this.btnCancelEle.removeAttribute('size')
+      this.btnSubmitEle && this.btnSubmitEle.removeAttribute('size')
+    } else {
+      this.setAttribute('size', value)
+      this.btnCloseEle && this.btnCloseEle.setAttribute('size', value)
+      this.btnCancelEle && this.btnCancelEle.setAttribute('size', value)
+      this.btnSubmitEle && this.btnSubmitEle.setAttribute('size', value)
+    }
+  }
+
+  handleTheme(value) {
+    if (!value || value === 'null') {
+      this.removeAttribute('theme')
+      this.btnCloseEle && this.btnCloseEle.removeAttribute('theme')
+      this.btnCancelEle && this.btnCancelEle.removeAttribute('theme')
+      this.btnSubmitEle && this.btnSubmitEle.removeAttribute('theme')
+    } else {
+      this.setAttribute('theme', value)
+      this.btnCloseEle && this.btnCloseEle.setAttribute('theme', value)
+      this.btnCancelEle && this.btnCancelEle.setAttribute('theme', value)
+      this.btnSubmitEle && this.btnSubmitEle.setAttribute('theme', value)
+    }
+  }
 }
 
 if (!customElements.get('y-dialog')) {
@@ -259,10 +267,12 @@ export default {
     document.body.appendChild(dialog)
     dialog.remove = true
 
+    const storeTheme = window.localStorage.getItem('theme')
+
     if (typeof arguments[0] === 'object') {
       const { title, confirmText, content, ok, size, theme } = arguments[0]
       dialog.size = size || ''
-      dialog.theme = theme || ''
+      dialog.theme = theme ? theme : !storeTheme || storeTheme === 'null' ? '' : storeTheme
       dialog.title = title || 'Alert'
       dialog['confirm-text'] = confirmText || '确 定'
       dialog.onsubmit = ok || null
@@ -273,7 +283,7 @@ export default {
       dialog.innerHTML = arguments[0] || ''
       dialog.onsubmit = arguments[1] || null
       dialog.size = arguments[2] || ''
-      dialog.theme = arguments[3] || ''
+      dialog.theme = arguments[3] ? arguments[3] : !storeTheme || storeTheme === 'null' ? '' : storeTheme
     }
 
     dialog.open = true
@@ -286,10 +296,12 @@ export default {
     dialog.type = 'info'
     dialog.remove = true
 
+    const storeTheme = window.localStorage.getItem('theme')
+
     if (typeof arguments[0] === 'object') {
       const { title, confirmText, content, ok, size, theme } = arguments[0]
       dialog.size = size || ''
-      dialog.theme = theme || ''
+      dialog.theme = theme ? theme : !storeTheme || storeTheme === 'null' ? '' : storeTheme
       dialog.title = title || 'Info'
       dialog['confirm-text'] = confirmText || '知道了'
       dialog.onsubmit = ok || null
@@ -300,7 +312,7 @@ export default {
       dialog.innerHTML = arguments[0] || ''
       dialog.onsubmit = arguments[1] || null
       dialog.size = arguments[2] || ''
-      dialog.theme = arguments[3] || ''
+      dialog.theme = arguments[3] ? arguments[3] : !storeTheme || storeTheme === 'null' ? '' : storeTheme
     }
 
     dialog.open = true
@@ -313,10 +325,12 @@ export default {
     dialog.type = 'success'
     dialog.remove = true
 
+    const storeTheme = window.localStorage.getItem('theme')
+
     if (typeof arguments[0] === 'object') {
       const { title, confirmText, content, ok, size, theme } = arguments[0]
       dialog.size = size || ''
-      dialog.theme = theme || ''
+      dialog.theme = theme ? theme : !storeTheme || storeTheme === 'null' ? '' : storeTheme
       dialog.title = title || 'Success'
       dialog['confirm-text'] = confirmText || '知道了'
       dialog.onsubmit = ok || null
@@ -327,7 +341,7 @@ export default {
       dialog.innerHTML = arguments[0] || ''
       dialog.onsubmit = arguments[1] || null
       dialog.size = arguments[2] || ''
-      dialog.theme = arguments[3] || ''
+      dialog.theme = arguments[3] ? arguments[3] : !storeTheme || storeTheme === 'null' ? '' : storeTheme
     }
 
     dialog.open = true
@@ -340,10 +354,12 @@ export default {
     dialog.type = 'danger'
     dialog.remove = true
 
+    const storeTheme = window.localStorage.getItem('theme')
+
     if (typeof arguments[0] === 'object') {
       const { title, confirmText, content, ok, size, theme } = arguments[0]
       dialog.size = size || ''
-      dialog.theme = theme || ''
+      dialog.theme = theme ? theme : !storeTheme || storeTheme === 'null' ? '' : storeTheme
       dialog.title = title || 'Danger'
       dialog['confirm-text'] = confirmText || '知道了'
       dialog.onsubmit = ok || null
@@ -354,7 +370,7 @@ export default {
       dialog.innerHTML = arguments[0] || ''
       dialog.onsubmit = arguments[1] || null
       dialog.size = arguments[2] || ''
-      dialog.theme = arguments[3] || ''
+      dialog.theme = arguments[3] ? arguments[3] : !storeTheme || storeTheme === 'null' ? '' : storeTheme
     }
     dialog.open = true
 
@@ -366,10 +382,12 @@ export default {
     dialog.type = 'warning'
     dialog.remove = true
 
+    const storeTheme = window.localStorage.getItem('theme')
+
     if (typeof arguments[0] === 'object') {
       const { title, confirmText, content, ok, size, theme } = arguments[0]
       dialog.size = size || ''
-      dialog.theme = theme || ''
+      dialog.theme = theme ? theme : !storeTheme || storeTheme === 'null' ? '' : storeTheme
       dialog.title = title || 'Warning'
       dialog['confirm-text'] = confirmText || '知道了'
       dialog.onsubmit = ok || null
@@ -380,7 +398,7 @@ export default {
       dialog.innerHTML = arguments[0] || ''
       dialog.onsubmit = arguments[1] || null
       dialog.size = arguments[2] || ''
-      dialog.theme = arguments[3] || ''
+      dialog.theme = arguments[3] ? arguments[3] : !storeTheme || storeTheme === 'null' ? '' : storeTheme
     }
 
     dialog.open = true
@@ -393,10 +411,12 @@ export default {
     dialog.remove = true
     dialog.btnCancelEle.style.visibility = 'visible'
 
+    const storeTheme = window.localStorage.getItem('theme')
+
     if (typeof arguments[0] === 'object') {
       const { type, title, content, confirmText, cancelText, ok, cancel, size, theme } = arguments[0]
       dialog.size = size || ''
-      dialog.theme = theme || ''
+      dialog.theme = theme ? theme : !storeTheme || storeTheme === 'null' ? '' : storeTheme
       dialog.type = type || 'confirm'
       dialog.title = title || 'Confirm'
       dialog['confirm-text'] = confirmText || '确 定'
@@ -413,7 +433,7 @@ export default {
       dialog.onsubmit = arguments[1] || null
       dialog.oncancel = arguments[2] || null
       dialog.size = arguments[2] || ''
-      dialog.theme = arguments[3] || ''
+      dialog.theme = arguments[3] ? arguments[3] : !storeTheme || storeTheme === 'null' ? '' : storeTheme
     }
 
     dialog.open = true
