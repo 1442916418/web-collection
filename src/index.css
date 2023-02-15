@@ -312,6 +312,9 @@ article section {
 article section h3 {
   margin-bottom: 1rem;
 }
+article section .row {
+  margin-bottom: 1rem;
+}
 article section .msg {
   display: flex;
 }

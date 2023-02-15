@@ -185,9 +185,9 @@ export default class YInput extends HTMLElement {
   attributeChangedCallback(name, oldValue, newValue) {
     if (name === 'disabled' && this.inputEle) {
       if (newValue !== null) {
-        this.inputEle.parentNode.setAttribute('tabindex', '-1')
+        this.inputEle.setAttribute('disabled', '')
       } else {
-        this.inputEle.parentNode.removeAttribute('tabindex')
+        this.inputEle.removeAttribute('disabled')
       }
     }
     if (name === 'pattern' && this.inputEle) {

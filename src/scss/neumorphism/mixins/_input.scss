@@ -1,68 +1,65 @@
-@mixin input-variant(
-  $type,
-  $background,
-  $hover-background: darken($background, 0%),
-  $hover-border: darken($border, 0%),
-  $active-background: $background,
-  $active-border: darken($border, 0%)
-) {
+@mixin input-variant($type, $background, $border-radius, $input-px, $input-font-size) {
   $--color: color-yiq($background);
+  $--border-color: darken($background, 5%);
 
   @if $type == 'primary' {
     .input {
       color: $--color;
+      border-color: $--border-color;
+      background: $background;
       box-shadow: box-shadow('#{$type}-inset');
-      @include gradient-bg($background);
     }
 
-    :host {
-      color: $--color;
-    }
-
-    :host(:focus-within:not([disabled])),
-    :host(:not([disabled]):hover) {
-      border-color: $hover-border;
+    .input:focus-within:not([disabled]),
+    .input:not([disabled]):hover {
+      border-color: $--border-color;
     }
 
     :host .input::placeholder {
-      color: $--color;
+      color: darken($background, 40%);
     }
 
     .prefix,
     .suffix {
       color: $--color;
+      font-size: $input-font-size;
+    }
+
+    :host([prefix-icon]) {
+      border-color: $--border-color;
+      background-color: $background;
+    }
+
+    :host([prefix-icon]) .input {
+      border-width: 0;
+      border-top-left-radius: 0;
+      border-bottom-left-radius: 0;
     }
   } @else {
-    $--theme: '[theme=#{$type}]';
-
-    :host($--theme) .input {
+    :host([theme='#{$type}']) .input {
       color: $--color;
       box-shadow: box-shadow('#{$type}-inset');
-      @include gradient-bg($background);
+      background: $background;
     }
 
-    :host($--theme) {
-      color: $--color;
+    :host([theme='#{$type}']:focus-within:not([disabled])),
+    :host([theme='#{$type}']:not([disabled]):hover) {
+      border-color: $--border-color;
     }
 
-    :host($--theme:focus-within:not([disabled])),
-    :host($--theme:not([disabled]):hover) {
-      border-color: $hover-border;
+    :host([theme='#{$type}']) .input::placeholder {
+      color: darken($background, 40%);
     }
 
-    :host($--theme) .input::placeholder {
-      color: $--color;
-    }
-
-    :host($--theme) .prefix,
-    :host($--theme) .suffix {
+    :host([theme='#{$type}']) .prefix,
+    :host([theme='#{$type}']) .suffix {
       color: $--color;
     }
   }
 }
 
 @mixin input-size($type, $font-size, $input-py, $input-px, $input-font-size, $line-height-base, $border-radius) {
-  :host([size='#{$type}']) {
+  :host([size='#{$type}']) .input {
     padding: theme-styles-size($type, $input-py) theme-styles-size($type, $input-py);
     font-size: theme-styles-size($type, $input-font-size);
     line-height: theme-styles-size($type, $line-height-base);

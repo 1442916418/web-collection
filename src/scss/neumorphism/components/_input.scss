@@ -1,34 +1,30 @@
 /*! -input */
 
 .input {
-  min-width: 0;
-  padding: 0;
-  line-height: inherit;
-  font-size: inherit;
-  font-family: inherit;
   flex: 1;
-  color: currentColor;
-  border: 0;
-  outline: 0;
-  text-align: inherit;
-  -webkit-appearance: none;
-  -moz-appearance: textfield;
-  overflow-x: hidden;
-  transition: $transition-base;
-}
-
-:host {
   padding: $input-py $input-px;
-  display: inline-block;
+  font-family: inherit;
+  outline: 0;
   font-size: $input-font-size;
   line-height: $line-height-base;
-  border-radius: $border-radius;
   border-width: $border-width;
   border-style: solid;
   border-radius: $border-radius;
   border-color: $border-color-transparent;
   transition: $transition-base;
+  -webkit-appearance: none;
+  -moz-appearance: textfield;
+  overflow-x: hidden;
+}
+
+:host {
+  display: inline-block;
+  border-width: $border-width;
+  border-style: solid;
+  border-radius: $border-radius;
+  border-color: $border-color-transparent;
   box-sizing: border-box;
+  transition: $transition-base;
 }
 
 :host([block]) {
@@ -69,16 +65,13 @@ input[type='search'] {
   display: none;
 }
 
-.prefix {
-  margin-right: $input-icon-mx;
-}
-
+.prefix,
 .suffix {
-  margin-left: $input-icon-mx;
+  margin: 0 $input-icon-mx;
 }
 
 @each $color, $value in $theme-colors {
-  @include input-variant($color, $value);
+  @include input-variant($color, $value, $border-radius, $input-px, $input-font-size);
 }
 
 @each $type, $value in $theme-sizes {
