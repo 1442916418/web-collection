@@ -1,0 +1,88 @@
+/*! -input */
+
+.input {
+  min-width: 0;
+  padding: 0;
+  line-height: inherit;
+  font-size: inherit;
+  font-family: inherit;
+  flex: 1;
+  color: currentColor;
+  border: 0;
+  outline: 0;
+  text-align: inherit;
+  -webkit-appearance: none;
+  -moz-appearance: textfield;
+  overflow-x: hidden;
+  transition: $transition-base;
+}
+
+:host {
+  padding: $input-py $input-px;
+  display: inline-block;
+  font-size: $input-font-size;
+  line-height: $line-height-base;
+  border-radius: $border-radius;
+  border-width: $border-width;
+  border-style: solid;
+  border-radius: $border-radius;
+  border-color: $border-color-transparent;
+  transition: $transition-base;
+  box-sizing: border-box;
+}
+
+:host([block]) {
+  display: block;
+}
+
+:host([disabled]) {
+  opacity: 0.8;
+  cursor: not-allowed;
+}
+
+/* 去除圆角 */
+input[type='search'] {
+  -webkit-appearance: none;
+}
+
+/* 隐藏取消按钮 */
+::-webkit-search-cancel-button {
+  -webkit-appearance: none;
+}
+
+/* 隐藏放大镜 */
+::-webkit-search-results-button {
+  -webkit-appearance: none;
+}
+
+::-moz-focus-inner,
+::-moz-focus-outer {
+  border: 0;
+  outline: 0;
+}
+
+.input:-moz-ui-invalid {
+  box-shadow: none;
+}
+
+.input::-ms-reveal {
+  display: none;
+}
+
+.prefix {
+  margin-right: $input-icon-mx;
+}
+
+.suffix {
+  margin-left: $input-icon-mx;
+}
+
+@each $color, $value in $theme-colors {
+  @include input-variant($color, $value);
+}
+
+@each $type, $value in $theme-sizes {
+  @include input-size($type, $value, $input-py, $input-px, $input-font-size, $line-height-base, $border-radius);
+}
+
+/*! input- */

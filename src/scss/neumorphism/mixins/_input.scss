@@ -1,0 +1,76 @@
+@mixin input-variant(
+  $type,
+  $background,
+  $hover-background: darken($background, 0%),
+  $hover-border: darken($border, 0%),
+  $active-background: $background,
+  $active-border: darken($border, 0%)
+) {
+  $--color: color-yiq($background);
+
+  @if $type == 'primary' {
+    .input {
+      color: $--color;
+      box-shadow: box-shadow('#{$type}-inset');
+      @include gradient-bg($background);
+    }
+
+    :host {
+      color: $--color;
+    }
+
+    :host(:focus-within:not([disabled])),
+    :host(:not([disabled]):hover) {
+      border-color: $hover-border;
+    }
+
+    :host .input::placeholder {
+      color: $--color;
+    }
+
+    .prefix,
+    .suffix {
+      color: $--color;
+    }
+  } @else {
+    $--theme: '[theme=#{$type}]';
+
+    :host($--theme) .input {
+      color: $--color;
+      box-shadow: box-shadow('#{$type}-inset');
+      @include gradient-bg($background);
+    }
+
+    :host($--theme) {
+      color: $--color;
+    }
+
+    :host($--theme:focus-within:not([disabled])),
+    :host($--theme:not([disabled]):hover) {
+      border-color: $hover-border;
+    }
+
+    :host($--theme) .input::placeholder {
+      color: $--color;
+    }
+
+    :host($--theme) .prefix,
+    :host($--theme) .suffix {
+      color: $--color;
+    }
+  }
+}
+
+@mixin input-size($type, $font-size, $input-py, $input-px, $input-font-size, $line-height-base, $border-radius) {
+  :host([size='#{$type}']) {
+    padding: theme-styles-size($type, $input-py) theme-styles-size($type, $input-py);
+    font-size: theme-styles-size($type, $input-font-size);
+    line-height: theme-styles-size($type, $line-height-base);
+
+    @if $enable-rounded {
+      @include border-radius($border-radius);
+    } @else {
+      border-radius: 0;
+    }
+  }
+}

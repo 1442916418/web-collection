@@ -56,6 +56,38 @@
 		],
 		"description": "Components template"
 	},
+	"Components get() and set()": {
+		"prefix": "y-components-set-attr",
+		"body": [
+			"  get $1() {",
+			"    return this.getAttribute('$1') !== null",
+			"  }",
+			"",
+			"  set $1(value) {",
+			"    if (value === null || value === false) {",
+			"      this.removeAttribute('$1')",
+			"    } else {",
+			"      this.setAttribute('$1', '')",
+			"    }",
+			"  }",
+			"$0"
+		],
+		"description": "Components get() and set()"
+	},
+	"Components get() and set(value)": {
+		"prefix": "y-components-set-attr-value",
+		"body": [
+			"  get $1() {",
+			"    return this.getAttribute('$1')",
+			"  }",
+			"",
+			"  set $1(value) {",
+			"    this.setAttribute('rows', value)",
+			"  }",
+			"$0"
+		],
+		"description": "Components get() and set(value)"
+	},
 	"SCSS Components template": {
 		"prefix": "y-scss-components-template",
 		"body": [
@@ -91,11 +123,11 @@
 			"}",
 			"",
 			"@each \\$color, \\$value in \\$theme-colors {",
-			"  @include $1-variant(\\$color, \\$value, \\$value);",
+			"  @include $1-variant(\\$color, \\$value);",
 			"}",
 			"",
 			"@each \\$type, \\$value in \\$theme-sizes {",
-			"  @include $1-size(\\$type, \\$value, \\$btn-padding-y, \\$btn-padding-x, \\$btn-line-height, \\$border-radius);",
+			"  @include $1-size(\\$type, \\$value);",
 			"}",
 			"",
 			"/*! $1- */",

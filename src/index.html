@@ -13,7 +13,11 @@
       <article>
         <h2>主题</h2>
 
-        <y-theme></y-theme>
+        <section>
+          <h3>白天/黑夜</h3>
+
+          <y-theme></y-theme>
+        </section>
       </article>
 
       <article>
@@ -40,6 +44,9 @@
             <iconpark-icon name="success" size="32"></iconpark-icon>
             <iconpark-icon name="info" size="32"></iconpark-icon>
             <iconpark-icon name="check-one" size="32"></iconpark-icon>
+            <iconpark-icon name="preview-close-one" size="32"></iconpark-icon>
+            <iconpark-icon name="preview-open" size="32"></iconpark-icon>
+            <iconpark-icon name="search" size="32"></iconpark-icon>
           </div>
         </section>
       </article>
@@ -518,10 +525,98 @@
           <y-button onclick="window.$dialog.alert('alert', null, null, 'dark' )">alert theme dark</y-button>
         </section>
       </article>
+
+      <article>
+        <h2>输入框</h2>
+
+        <section>
+          <h3>展示</h3>
+
+          <y-input></y-input>
+        </section>
+
+        <section>
+          <h3>默认值</h3>
+
+          <y-input default-value="default"></y-input>
+        </section>
+
+        <section>
+          <h3>占位</h3>
+
+          <y-input placeholder="请输入"></y-input>
+        </section>
+
+        <section>
+          <h3>图标</h3>
+
+          <y-input prefix-icon="chart-graph"></y-input>
+          <y-input suffix-icon="chart-histogram"></y-input>
+
+          <y-input prefix-icon="chart-graph" suffix-icon="chart-histogram"></y-input>
+
+          <y-input>
+            <iconpark-icon slot="prefix" name="chart-graph" size="32"></iconpark-icon>
+          </y-input>
+
+          <y-input>
+            <iconpark-icon slot="suffix" name="chart-histogram" size="32"></iconpark-icon>
+          </y-input>
+        </section>
+
+        <section>
+          <h3>禁用</h3>
+
+          <y-input disabled></y-input>
+        </section>
+
+        <section>
+          <h3>只读</h3>
+
+          <y-input default-value="Tom" readonly></y-input>
+        </section>
+
+        <section>
+          <h3>块状</h3>
+
+          <y-input default-value="Tom" block></y-input>
+        </section>
+
+        <section>
+          <h3>密码框 类型(password)</h3>
+
+          <y-input type="password"></y-input>
+        </section>
+
+        <section>
+          <h3>搜索框 类型(search)</h3>
+
+          <y-input type="search"></y-input>
+        </section>
+
+        <section>
+          <h3>数字框 类型(number)</h3>
+
+          <y-input type="number"></y-input>
+        </section>
+
+        <section>
+          <h3>最小长度与最大长度</h3>
+
+          <y-input prefix-icon="info" min-length="5" max-length="10"></y-input>
+        </section>
+
+        <section>
+          <h3>校验</h3>
+
+          <y-input pattern="^1(3|4|5|6|7|8|9)\d{9}$" placeholder="请输入手机号"></y-input>
+        </section>
+      </article>
     </main>
 
+    <!-- https://iconpark.oceanengine.com/home -->
     <!-- https://bytedance.feishu.cn/wiki/wikcnJZV45hM71QgI60iwkzvXob -->
-    <script src="https://lf1-cdn-tos.bytegoofy.com/obj/iconpark/icons_22707_15.d1c63dee57f22c6513cb709f0e7250e1.js"></script>
+    <script src="https://lf1-cdn-tos.bytegoofy.com/obj/iconpark/icons_22707_19.50e2c1f2f7ca6d0f04627420c434faaf.js"></script>
     <script type="module" src="index.js"></script>
   </body>
 </html>
