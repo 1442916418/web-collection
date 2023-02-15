@@ -130,6 +130,8 @@ class Build {
     try {
       const reg = /(?<=^|\/)\s*\/\*![\s\S]*?\*\/\s*(?=$|\/)/gi
 
+      str = str.replace('@charset "UTF-8";', '')
+
       const matchStr = str.match(reg)
 
       matchStr.forEach((item) => {

@@ -310,13 +310,13 @@ export default class YInput extends HTMLElement {
   }
 
   getIconElement(name, selector) {
-    return `<iconpark-icon name="${name}" id="${selector}" class="${selector}"></iconpark-icon>`
+    return `<span class="${selector}"><iconpark-icon name="${name}" id="${selector}"></iconpark-icon></span>`
   }
 
   getPrefixIconElement() {
     let icon = this.prefixIcon
       ? this.getIconElement(this.prefixIcon, 'prefix')
-      : '<slot id="prefix" name="prefix"></slot>'
+      : '<span class="prefix"><slot name="prefix" id="prefix"></slot></span>'
 
     if (this.type === 'password') {
       icon = this.getIconElement('lock', this.suffixId)
@@ -328,7 +328,7 @@ export default class YInput extends HTMLElement {
   getSuffixIconElement() {
     let icon = this.suffixIcon
       ? this.getIconElement(this.suffixIcon, this.suffixId)
-      : `<slot name="suffix" id="${this.suffixId}"></slot>`
+      : `<span class="${this.suffixId}"><slot name="suffix" id="${this.suffixId}"></slot></span>`
 
     if (this.type === 'password') {
       icon = this.getIconElement('preview-close-one', this.suffixId)

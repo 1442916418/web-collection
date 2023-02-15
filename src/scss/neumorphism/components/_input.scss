@@ -36,6 +36,23 @@
   cursor: not-allowed;
 }
 
+.prefix {
+  margin-left: $input-icon-x;
+  margin-right: $input-icon-x / 2;
+}
+
+.prefix:has(+ :first-child),
+.prefix:has(+ iconpark-icon:empty),
+.prefix:has(+ ::slotted(*):empty),
+.prefix:has(+ slot:empty) {
+  margin: 0;
+}
+
+.suffix {
+  margin-left: $input-icon-x / 2;
+  margin-right: $input-icon-x;
+}
+
 /* 去除圆角 */
 input[type='search'] {
   -webkit-appearance: none;
@@ -63,11 +80,6 @@ input[type='search'] {
 
 .input::-ms-reveal {
   display: none;
-}
-
-.prefix,
-.suffix {
-  margin: 0 $input-icon-mx;
 }
 
 @each $color, $value in $theme-colors {

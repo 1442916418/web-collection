@@ -19,13 +19,15 @@
       color: darken($background, 40%);
     }
 
+    // BUG: 左右边距
     .prefix,
     .suffix {
       color: $--color;
       font-size: $input-font-size;
     }
 
-    :host([prefix-icon]) {
+    :host([prefix-icon]),
+    :host([suffix-icon]) {
       border-color: $--border-color;
       background-color: $background;
     }
@@ -34,6 +36,12 @@
       border-width: 0;
       border-top-left-radius: 0;
       border-bottom-left-radius: 0;
+    }
+
+    :host([suffix-icon]) .input {
+      border-width: 0;
+      border-top-right-radius: 0;
+      border-bottom-right-radius: 0;
     }
   } @else {
     :host([theme='#{$type}']) .input {
