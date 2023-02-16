@@ -16,8 +16,9 @@ export default class YInput extends HTMLElement {
     const placeholder = this.placeholder ? `placeholder="${this.placeholder}"` : ''
     const minlength = this.minlength ? `minlength="${this.minlength}"` : ''
     const maxlength = this.maxlength ? `maxlength="${this.maxlength}"` : ''
+    const rows = this.rows ? `rows="${this.rows}"` : ''
 
-    const defaultAttr = `id="input" class="input" value="${this.defaultValue}" ${name} ${type} ${placeholder} ${minlength} ${maxlength}`
+    const defaultAttr = `id="input" class="input" value="${this.defaultValue}" ${name} ${type} ${placeholder} ${minlength} ${maxlength} ${rows}`
     const numberAttr = this.type === 'number' ? `min="${this.min}" max="${this.max}" step="${this.step}"` : ''
 
     const prefixIcon = this.getPrefixIconElement()
@@ -145,6 +146,7 @@ export default class YInput extends HTMLElement {
     this.isShowPassword = false
 
     this.inputEle = this.shadowRoot.getElementById('input')
+    this.slotsEle = this.shadowRoot.querySelectorAll('slot')
 
     this.inputEleInput = (e) => this.handleInputEleInputEvent(e)
     this.inputEleChange = () => this.handleInputEleChangeEvent()
@@ -165,6 +167,8 @@ export default class YInput extends HTMLElement {
       this.suffixEle.addEventListener('click', this.suffixEleClick)
       this.suffixEle.addEventListener('change', this.suffixEleChange)
     }
+
+    this.handleSlots()
 
     this.disabled = this.disabled
     this.pattern = this.pattern
@@ -227,6 +231,27 @@ export default class YInput extends HTMLElement {
     }
   }
 
+  handleSlots() {
+    if (this.slotsEle.length) {
+      this.slotsEle.forEach((slot) => {
+        const nodes = slot.assignedNodes()
+
+        if (nodes.length && slot.name) {
+          if (slot.name === 'prefix') {
+            this.setAttribute('slot-prefix', '')
+          } else {
+            this.removeAttribute('slot-prefix')
+          }
+          if (slot.name === 'suffix') {
+            this.setAttribute('slot-suffix', '')
+          } else {
+            this.removeAttribute('slot-suffix')
+          }
+        }
+      })
+    }
+  }
+
   handleInputEleInputEvent(e) {
     e.stopPropagation()
 
@@ -283,7 +308,7 @@ export default class YInput extends HTMLElement {
         this.isShowPassword = pass
 
         this.suffixEle.name = pass ? 'preview-open' : 'preview-close-one'
-        this.suffixEle.setAttribute('type', pass ? 'text' : 'password')
+        this.inputEle.setAttribute('type', pass ? 'text' : 'password')
 
         this.inputEle.focus()
         break
@@ -319,7 +344,7 @@ export default class YInput extends HTMLElement {
       : '<span class="prefix"><slot name="prefix" id="prefix"></slot></span>'
 
     if (this.type === 'password') {
-      icon = this.getIconElement('lock', this.suffixId)
+      icon = this.getIconElement('lock', 'prefix')
     }
 
     return icon

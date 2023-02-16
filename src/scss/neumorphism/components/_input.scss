@@ -1,7 +1,6 @@
 /*! -input */
 
 .input {
-  flex: 1;
   padding: $input-py $input-px;
   font-family: inherit;
   outline: 0;
@@ -31,26 +30,35 @@
   display: block;
 }
 
+:host([block]) .input {
+  width: 100%;
+}
+
 :host([disabled]) {
   opacity: 0.8;
   cursor: not-allowed;
 }
 
-.prefix {
+.prefix,
+::slotted(iconpark-icon[slot='prefix']) {
   margin-left: $input-icon-x;
   margin-right: $input-icon-x / 2;
+  vertical-align: middle;
 }
 
-.prefix:has(+ :first-child),
-.prefix:has(+ iconpark-icon:empty),
-.prefix:has(+ ::slotted(*):empty),
-.prefix:has(+ slot:empty) {
+.prefix:has(> slot:empty) {
   margin: 0;
 }
 
-.suffix {
+.suffix,
+::slotted(iconpark-icon[slot='suffix']) {
   margin-left: $input-icon-x / 2;
   margin-right: $input-icon-x;
+  vertical-align: middle;
+}
+
+.suffix:has(> slot:empty) {
+  margin: 0;
 }
 
 /* 去除圆角 */

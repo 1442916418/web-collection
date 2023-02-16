@@ -1,11 +1,10 @@
 @mixin input-variant($type, $background, $border-radius, $input-px, $input-font-size) {
   $--color: color-yiq($background);
-  $--border-color: darken($background, 5%);
 
   @if $type == 'primary' {
+    $--border-color: darken($background, 5%);
     .input {
       color: $--color;
-      border-color: $--border-color;
       background: $background;
       box-shadow: box-shadow('#{$type}-inset');
     }
@@ -27,41 +26,81 @@
     }
 
     :host([prefix-icon]),
-    :host([suffix-icon]) {
+    :host([suffix-icon]),
+    :host([slot-prefix]),
+    :host([slot-suffix]),
+    :host([type='password']),
+    :host([type='search']) {
       border-color: $--border-color;
       background-color: $background;
     }
 
-    :host([prefix-icon]) .input {
+    :host([prefix-icon]) .input,
+    :host([slot-prefix]) .input,
+    :host([type='password']) .input {
       border-width: 0;
       border-top-left-radius: 0;
       border-bottom-left-radius: 0;
     }
 
-    :host([suffix-icon]) .input {
+    :host([suffix-icon]) .input,
+    :host([slot-suffix]) .input,
+    :host([type='password']) .input,
+    :host([type='search']) .input {
       border-width: 0;
       border-top-right-radius: 0;
       border-bottom-right-radius: 0;
     }
   } @else {
+    $--border-color: darken($background, 10%);
+
     :host([theme='#{$type}']) .input {
       color: $--color;
-      box-shadow: box-shadow('#{$type}-inset');
       background: $background;
+      box-shadow: box-shadow('#{$type}-inset');
     }
 
-    :host([theme='#{$type}']:focus-within:not([disabled])),
-    :host([theme='#{$type}']:not([disabled]):hover) {
+    :host([theme='#{$type}']) .input:focus-within:not([disabled]),
+    :host([theme='#{$type}']) .input:not([disabled]):hover {
       border-color: $--border-color;
     }
 
     :host([theme='#{$type}']) .input::placeholder {
-      color: darken($background, 40%);
+      color: darken($--color, 20%);
     }
 
+    // BUG: 左右边距
     :host([theme='#{$type}']) .prefix,
     :host([theme='#{$type}']) .suffix {
       color: $--color;
+      font-size: $input-font-size;
+    }
+
+    :host([theme='#{$type}']):host([prefix-icon]),
+    :host([theme='#{$type}']):host([suffix-icon]),
+    :host([theme='#{$type}']):host([slot-prefix]),
+    :host([theme='#{$type}']):host([slot-suffix]),
+    :host([theme='#{$type}']):host([type='password']),
+    :host([theme='#{$type}']):host([type='search']) {
+      border-color: $--border-color;
+      background-color: $background;
+    }
+
+    :host([theme='#{$type}']):host([prefix-icon]) .input,
+    :host([theme='#{$type}']):host([slot-prefix]) .input,
+    :host([theme='#{$type}']):host([type='password']) .input {
+      border-width: 0;
+      border-top-left-radius: 0;
+      border-bottom-left-radius: 0;
+    }
+
+    :host([theme='#{$type}']):host([suffix-icon]) .input,
+    :host([theme='#{$type}']):host([slot-suffix]) .input,
+    :host([theme='#{$type}']):host([type='password']) .input,
+    :host([theme='#{$type}']):host([type='search']) .input {
+      border-width: 0;
+      border-top-right-radius: 0;
+      border-bottom-right-radius: 0;
     }
   }
 }
