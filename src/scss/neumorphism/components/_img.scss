@@ -1,0 +1,150 @@
+/*! -img */
+
+:host {
+  position: relative;
+  display: inline-block;
+  font-size: $font-size-base;
+  background: #eee;
+  vertical-align: top;
+  overflow: hidden;
+}
+
+:host::before {
+  content: '';
+  display: block;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+  transition: $transition-base;
+  visibility: hidden;
+}
+
+:host([alt]:not([default]))::after {
+  content: attr(alt);
+  padding: 0.5rem 0.75rem;
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  color: $img-color;
+  font-size: $font-size-xs;
+  line-height: $line-height-base;
+  background: linear-gradient(to bottom, transparent, rgba(0, 0, 0, 0.5));
+  transform: translateY(100%);
+  transition: $transition-base;
+  z-index: 1;
+}
+
+:host([alt]:hover)::after {
+  transform: translateY(0);
+}
+
+:host([ratio*='/']) {
+  width: 100%;
+  height: auto !important;
+}
+
+:host([ratio*='/']) img {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+}
+
+:host([ratio*='/'])::before {
+  position: relative;
+  padding-top: var(--padding-top, 100%);
+}
+
+img {
+  display: inline-block;
+  width: inherit;
+  height: inherit;
+  border: 0;
+  opacity: 0;
+  color: transparent;
+  background: inherit;
+  transform: scale(0);
+  vertical-align: top;
+  object-fit: cover;
+  transition: $transition-base;
+  box-sizing: border-box;
+}
+
+img::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background: inherit;
+  z-index: 1;
+}
+
+:host img[src] {
+  opacity: 1;
+  transform: scale(1);
+}
+
+:host(:not([error]):not([default]):hover) img[src],
+:host(:focus-within) img[src] {
+  transform: scale(1.1);
+}
+
+:host([fit='cover']) img {
+  object-fit: cover;
+}
+
+:host([fit='fill']) img {
+  object-fit: fill;
+}
+
+:host([fit='contain']) img {
+  object-fit: contain;
+}
+
+slot[name] * {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  color: $img-slot-color;
+  font-size: $img-slot-font-size;
+  z-index: 3;
+  opacity: 0;
+  transform: translate(-50%, -50%);
+  pointer-events: none;
+  transition: $transition-base;
+}
+
+slot[name='loading'] * {
+  opacity: 1;
+}
+
+slot[name='error'] * {
+  opacity: 0;
+}
+
+slot[name='view'] * {
+  opacity: 0;
+  transform: translate(-50%, -50%) scale(2) !important;
+}
+
+img[src] ~ slot[name='loading'] *,
+:host([error]) img:not([src]) ~ slot[name='loading'] * {
+  opacity: 0 !important;
+  visibility: hidden !important;
+}
+
+:host([error]) img:not([src]) ~ slot[name='error'] * {
+  opacity: 1 !important;
+}
+
+:host([view]:not([error]):not([default])) img:hover ~ slot[name='view'] *,
+:host(:focus-within) ~ slot[name='view'] * {
+  opacity: 1 !important;
+  transform: translate(-50%, -50%) scale(1) !important;
+}
+/*! img- */

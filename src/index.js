@@ -15,3 +15,4 @@ window.$message = YMessage
 import YDialog from './components/dialog/dialog.js'
 window.$dialog = YDialog
 import './components/input/input.js'
+import './components/img/img.js'

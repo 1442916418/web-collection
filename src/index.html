@@ -630,11 +630,118 @@
           <y-input type="textarea" rows="6" block></y-input>
         </section>
       </article>
+
+      <article>
+        <h2>图片</h2>
+
+        <section>
+          <h3>展示</h3>
+
+          <y-img
+            src="https://kjimg10.360buyimg.com/ott/jfs/t1/124686/11/31072/170103/63bb8037F15537b4b/1e5cf478e1c70f0e.jpg"
+          ></y-img>
+        </section>
+
+        <section>
+          <h3>加载错误</h3>
+
+          <y-img src="https://images.jpg"></y-img>
+        </section>
+
+        <section>
+          <h3>加载错误时，使用默认链接</h3>
+
+          <y-img
+            src="https://images.jpg"
+            default-src="https://kjimg10.360buyimg.com/ott/jfs/t1/124686/11/31072/170103/63bb8037F15537b4b/1e5cf478e1c70f0e.jpg"
+          ></y-img>
+        </section>
+
+        <section>
+          <h3>alt</h3>
+
+          <y-img
+            src="https://kjimg10.360buyimg.com/ott/jfs/t1/124686/11/31072/170103/63bb8037F15537b4b/1e5cf478e1c70f0e.jpg"
+            alt="色彩绚丽的电子调音机器"
+          ></y-img>
+        </section>
+
+        <section>
+          <!-- TODO: -->
+          <h3>查看大图</h3>
+
+          <y-img
+            src="https://kjimg10.360buyimg.com/ott/jfs/t1/124686/11/31072/170103/63bb8037F15537b4b/1e5cf478e1c70f0e.jpg"
+            alt="色彩绚丽的电子调音机器"
+            view
+          ></y-img>
+        </section>
+
+        <section>
+          <h3>自适应</h3>
+
+          <p>
+            <y-radio name="img-fit" value="cover" checked onchange="document.getElementById('img-fit').fit = this.value"
+              >cover</y-radio
+            >
+            <y-radio name="img-fit" value="fill" onchange="document.getElementById('img-fit').fit = this.value"
+              >fill</y-radio
+            >
+            <y-radio name="img-fit" value="contain" onchange="document.getElementById('img-fit').fit = this.value"
+              >contain</y-radio
+            >
+          </p>
+
+          <y-img
+            src="https://kjimg10.360buyimg.com/ott/jfs/t1/124686/11/31072/170103/63bb8037F15537b4b/1e5cf478e1c70f0e.jpg"
+            alt="色彩绚丽的电子调音机器"
+            fit="cover"
+            id="img-fit"
+          ></y-img>
+        </section>
+
+        <section>
+          <h3>比例</h3>
+
+          <p>
+            <y-radio
+              name="img-ratio"
+              value="16/9"
+              checked
+              onchange="document.getElementById('img-ratio').ratio = this.value"
+              >16/9</y-radio
+            >
+            <y-radio name="img-ratio" value="3/2" onchange="document.getElementById('img-ratio').ratio = this.value"
+              >3/2</y-radio
+            >
+            <y-radio name="img-ratio" value="1/1" onchange="document.getElementById('img-ratio').ratio = this.value"
+              >1/1</y-radio
+            >
+          </p>
+
+          <y-img
+            src="https://kjimg10.360buyimg.com/ott/jfs/t1/124686/11/31072/170103/63bb8037F15537b4b/1e5cf478e1c70f0e.jpg"
+            alt="色彩绚丽的电子调音机器"
+            ratio="16/9"
+            id="img-ratio"
+          ></y-img>
+        </section>
+
+        <section>
+          <h3>懒加载</h3>
+
+          <y-img
+            lazy
+            src="https://kjimg10.360buyimg.com/ott/jfs/t1/124686/11/31072/170103/63bb8037F15537b4b/1e5cf478e1c70f0e.jpg"
+            alt="色彩绚丽的电子调音机器"
+          ></y-img>
+        </section>
+      </article>
     </main>
 
     <!-- https://iconpark.oceanengine.com/home -->
     <!-- https://bytedance.feishu.cn/wiki/wikcnJZV45hM71QgI60iwkzvXob -->
-    <script src="https://lf1-cdn-tos.bytegoofy.com/obj/iconpark/icons_22707_19.50e2c1f2f7ca6d0f04627420c434faaf.js"></script>
+    <script src="https://lf1-cdn-tos.bytegoofy.com/obj/iconpark/icons_22707_20.73a3fee259df7696b59a1ce51c2d8d64.js"></script>
     <script type="module" src="index.js"></script>
   </body>
 </html>
