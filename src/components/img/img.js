@@ -13,7 +13,7 @@ export default class YImg extends HTMLElement {
 
     shadowRoot.innerHTML = `<style>${styles}</style>
                             <img />
-                            ${this.getSlotElement('view', 'preview-open')}
+                            ${this.getSlotElement('preview', 'preview-open')}
                             ${this.getSlotElement('error', 'error-picture')}
                             ${this.getSlotElement('loading', 'loading-four', 'spin')}`
   }
@@ -27,7 +27,7 @@ export default class YImg extends HTMLElement {
   }
 
   get ratio() {
-    //16/9
+    // 16/9
     const ratio = this.getAttribute('ratio')
     if (ratio && ratio.includes('/')) {
       const r = ratio.split('/')
@@ -56,8 +56,8 @@ export default class YImg extends HTMLElement {
     return this.getAttribute('default') !== null
   }
 
-  get view() {
-    return this.getAttribute('view')
+  get preview() {
+    return this.getAttribute('preview')
   }
 
   set default(value) {
@@ -160,9 +160,9 @@ export default class YImg extends HTMLElement {
   }
 
   handlePreview() {
-    if (this.view === null) return
+    if (this.preview === null) return
 
-    const componentName = 'YImgPreview' + this.view
+    const componentName = 'YImgPreview' + this.preview
 
     this.imgPreviewComponentName = componentName
 

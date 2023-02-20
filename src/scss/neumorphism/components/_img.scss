@@ -127,7 +127,7 @@ slot[name='error'] * {
   opacity: 0;
 }
 
-slot[name='view'] * {
+slot[name='preview'] * {
   opacity: 0;
   transform: translate(-50%, -50%) scale(2) !important;
 }
@@ -142,8 +142,8 @@ img[src] ~ slot[name='loading'] *,
   opacity: 1 !important;
 }
 
-:host([view]:not([error]):not([default])) img:hover ~ slot[name='view'] *,
-:host(:focus-within) ~ slot[name='view'] * {
+:host([preview]:not([error]):not([default])) img:hover ~ slot[name='preview'] *,
+:host(:focus-within) ~ slot[name='preview'] * {
   opacity: 1 !important;
   transform: translate(-50%, -50%) scale(1) !important;
 }

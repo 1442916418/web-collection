@@ -14,7 +14,7 @@ export default class YImgPreview extends HTMLElement {
                             <slot id="slot"></slot>
                             <a id="operation" class="operation">
                               <span class="left">&lt;</span>
-                              <div id="dots"></div>
+                              <div id="dots" class="dots"></div>
                               <span class="right">&gt;</span>
                             </a>`
   }
@@ -88,7 +88,7 @@ export default class YImgPreview extends HTMLElement {
       this.operationEle.querySelector('#dots').innerHTML = html
       this.indexList = list
     } else {
-      this.operationEle.classList.handleAdd('only')
+      this.operationEle.classList.add('only')
     }
   }
 

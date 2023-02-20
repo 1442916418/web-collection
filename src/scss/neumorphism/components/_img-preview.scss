@@ -27,7 +27,6 @@
   max-height: 80%;
   width: auto !important;
   height: auto !important;
-  outline: 10px solid #fff;
   transform: scale(0.5);
   opacity: 0;
   visibility: hidden;
@@ -65,7 +64,8 @@
 }
 
 .operation span {
-  font-size: 20px;
+  font-size: 1rem;
+  font-weight: 600;
   cursor: pointer;
 }
 
@@ -83,7 +83,7 @@
 }
 
 .dots i:hover {
-  color: $gray-500;
+  color: $gray-600;
 }
 
 .dots i.current {
@@ -91,7 +91,7 @@
 }
 
 :host(:focus) i.current {
-  color: $gray-500;
+  color: $gray-600;
 }
 
 .operation.only {
@@ -101,17 +101,32 @@
 .close {
   position: absolute;
   top: 1rem;
-  right: 1rem;
+  right: 1.5rem;
+  width: 2rem;
+  height: 2rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: $circle-radius;
+  background-color: $gray-400;
+  transition: $transition-base;
+
+  &:hover {
+    background-color: $black;
+  }
+
+  &:hover::before,
+  &:hover::after {
+    background-color: $gray-600;
+  }
 }
 
 .close::before,
 .close::after {
-  content: ' ';
-  position: absolute;
-  left: 20px;
+  content: '';
   width: 1px;
   height: 20px;
-  background-color: white;
+  background-color: $black;
 }
 
 .close::before {
@@ -121,4 +136,5 @@
 .close::after {
   transform: rotate(-45deg);
 }
+
 /*! img-preview- */
