@@ -106,7 +106,8 @@ img::before {
   object-fit: contain;
 }
 
-slot[name] * {
+slot[name] *,
+::slotted(*) {
   position: absolute;
   left: 50%;
   top: 50%;
@@ -119,31 +120,39 @@ slot[name] * {
   transition: $transition-base;
 }
 
-slot[name='loading'] * {
+slot[name='loading'] *,
+::slotted([slot='loading']) {
   opacity: 1;
 }
 
-slot[name='error'] * {
+slot[name='error'] *,
+::slotted([slot='error']) {
   opacity: 0;
 }
 
-slot[name='preview'] * {
+slot[name='preview'] *,
+::slotted([slot='preview']) {
   opacity: 0;
   transform: translate(-50%, -50%) scale(2) !important;
 }
 
 img[src] ~ slot[name='loading'] *,
-:host([error]) img:not([src]) ~ slot[name='loading'] * {
+:host([error]) img:not([src]) ~ slot[name='loading'] *,
+img[src] ~ ::slotted([slot='loading']),
+:host([error]) img:not([src]) ~ ::slotted([slot='loading']) {
   opacity: 0 !important;
   visibility: hidden !important;
 }
 
-:host([error]) img:not([src]) ~ slot[name='error'] * {
+:host([error]) img:not([src]) ~ slot[name='error'] *,
+:host([error]) img:not([src]) ~ ::slotted([slot='error']) {
   opacity: 1 !important;
 }
 
 :host([preview]:not([error]):not([default])) img:hover ~ slot[name='preview'] *,
-:host(:focus-within) ~ slot[name='preview'] * {
+:host(:focus-within) ~ slot[name='preview'] *,
+:host([preview]:not([error]):not([default])) img:hover ~ ::slotted([slot='preview']),
+:host(:focus-within) ~ ::slotted([slot='preview']) {
   opacity: 1 !important;
   transform: translate(-50%, -50%) scale(1) !important;
 }

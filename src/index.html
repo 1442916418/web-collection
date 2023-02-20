@@ -771,6 +771,41 @@
             lazy
           ></y-img>
         </section>
+
+        <section>
+          <h3>自定义 slot - loading</h3>
+
+          <y-img
+            lazy
+            src="https://kjimg10.360buyimg.com/ott/jfs/t1/124686/11/31072/170103/63bb8037F15537b4b/1e5cf478e1c70f0e.jpg"
+            alt="色彩绚丽的电子调音机器"
+          >
+            <iconpark-icon slot="loading" name="config" spin></iconpark-icon>
+            <iconpark-icon slot="preview" name="area-map"></iconpark-icon>
+            <iconpark-icon slot="error" name="moon"></iconpark-icon>
+          </y-img>
+        </section>
+
+        <section>
+          <h3>自定义 slot - preview</h3>
+
+          <y-img
+            lazy
+            preview="test"
+            src="https://kjimg10.360buyimg.com/ott/jfs/t1/124686/11/31072/170103/63bb8037F15537b4b/1e5cf478e1c70f0e.jpg"
+            alt="色彩绚丽的电子调音机器"
+          >
+            <iconpark-icon slot="preview" name="area-map"></iconpark-icon>
+          </y-img>
+        </section>
+
+        <section>
+          <h3>自定义 slot - error</h3>
+
+          <y-img lazy src="https://images.jpg" alt="加载错误">
+            <iconpark-icon slot="error" name="moon"></iconpark-icon>
+          </y-img>
+        </section>
       </article>
     </main>
 
