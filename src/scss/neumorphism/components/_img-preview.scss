@@ -1,0 +1,124 @@
+/*! -img-preview */
+:host {
+  position: fixed;
+  display: flex;
+  left: 0;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  z-index: -1;
+  background: rgba(0, 0, 0, 0.5);
+  visibility: hidden;
+  opacity: 0;
+  transition: 0.31s;
+  justify-content: center;
+  align-items: center;
+}
+
+:host([open]) {
+  opacity: 1;
+  z-index: 10;
+  visibility: visible;
+}
+
+::slotted(img) {
+  position: absolute;
+  max-width: 80%;
+  max-height: 80%;
+  width: auto !important;
+  height: auto !important;
+  outline: 10px solid #fff;
+  transform: scale(0.5);
+  opacity: 0;
+  visibility: hidden;
+  box-shadow: 0 11px 15px -7px rgba(0, 0, 0, 0.2), 0 24px 38px 3px rgba(0, 0, 0, 0.14),
+    0 9px 46px 8px rgba(0, 0, 0, 0.12);
+  transition: 0.3s cubic-bezier(0.645, 0.045, 0.355, 1);
+}
+
+:host([open]) ::slotted(img) {
+  visibility: visible;
+}
+
+:host([open]) ::slotted(img.current) {
+  z-index: 2;
+  opacity: 1;
+  transform: scale(1);
+}
+
+.operation {
+  position: absolute;
+  bottom: $operation-position-bottom;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: $operation-p;
+  color: $operation-color;
+  border-radius: $border-radius;
+  background: $operation-bg;
+  outline: 0;
+  z-index: 10;
+}
+
+.dots {
+  display: flex;
+}
+
+.operation span {
+  font-size: 20px;
+  cursor: pointer;
+}
+
+.dots i {
+  width: $operation-dot-width;
+  height: $operation-dot-height;
+  border-radius: $circle-radius;
+  margin: 0 $operation-dot-mx;
+  padding: $operation-dot-p;
+  background-color: currentColor;
+  background-clip: content-box;
+  transition: $transition-base;
+  opacity: 0.5;
+  cursor: pointer;
+}
+
+.dots i:hover {
+  color: $gray-500;
+}
+
+.dots i.current {
+  opacity: 1;
+}
+
+:host(:focus) i.current {
+  color: $gray-500;
+}
+
+.operation.only {
+  visibility: hidden;
+}
+
+.close {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+}
+
+.close::before,
+.close::after {
+  content: ' ';
+  position: absolute;
+  left: 20px;
+  width: 1px;
+  height: 20px;
+  background-color: white;
+}
+
+.close::before {
+  transform: rotate(45deg);
+}
+
+.close::after {
+  transform: rotate(-45deg);
+}
+/*! img-preview- */
