@@ -24,8 +24,8 @@
   },
   "homepage": "https://github.com/1442916418/y-ui#readme",
   "files": [
-    "./src/index.js",
-    "./src/components"
+    "src/index.js",
+    "src/components"
   ],
   "devDependencies": {
     "browser-sync": "^2.27.4",
