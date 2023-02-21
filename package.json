@@ -2,24 +2,31 @@
   "name": "y-ui",
   "version": "1.0.0",
   "description": "基于 web-components 的拟物风格组件库",
-  "main": "index.js",
+  "main": "./src/index.js",
   "scripts": {
     "serve": "serve src",
     "docs": "docsify serve docs",
     "build": "cross-env RUN_TYPE=BUILD nodemon --watch .temp/css/neumorphism.css run.js",
-    "new": "cross-env RUN_TYPE=NEW FILE_NAME=rate node run.js"
+    "new": "cross-env RUN_TYPE=NEW FILE_NAME=rate node run.js",
+    "release:patch": "npm version patch && npm publish",
+    "release:minor": "npm version minor && npm publish",
+    "release:major": "npm version major && npm publish"
   },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/1442916418/y-ui.git"
   },
   "keywords": [],
-  "author": "",
+  "author": "yushuisheng",
   "license": "ISC",
   "bugs": {
     "url": "https://github.com/1442916418/y-ui/issues"
   },
   "homepage": "https://github.com/1442916418/y-ui#readme",
+  "files": [
+    "./src/index.js",
+    "./src/components"
+  ],
   "devDependencies": {
     "browser-sync": "^2.27.4",
     "cross-env": "^7.0.3",
