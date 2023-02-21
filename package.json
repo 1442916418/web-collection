@@ -6,7 +6,7 @@
   "scripts": {
     "serve": "serve src",
     "build": "cross-env RUN_TYPE=BUILD nodemon --watch .temp/css/neumorphism.css run.js",
-    "new": "cross-env RUN_TYPE=NEW FILE_NAME=img-preview node run.js"
+    "new": "cross-env RUN_TYPE=NEW FILE_NAME=rate node run.js"
   },
   "repository": {
     "type": "git",

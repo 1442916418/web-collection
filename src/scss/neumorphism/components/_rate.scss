@@ -1,0 +1,54 @@
+/*! -rate */
+$icon-void-color: var(--icon-void-color, $gray-400);
+$icon-fill-color: var(--icon-fill-color, $pink);
+
+:host {
+  display: inline-flex;
+  flex-direction: row-reverse;
+  color: $icon-void-color;
+}
+
+label {
+  display: block;
+  line-height: 0;
+  -webkit-tap-highlight-color: transparent;
+  cursor: pointer;
+}
+
+input[type='radio'] {
+  position: absolute;
+  opacity: 0;
+  visibility: hidden;
+}
+
+.icon {
+  margin-right: $rate-icon-mr;
+  transition: $transition-base;
+}
+
+input[type='radio']:checked ~ .item .icon {
+  color: $icon-fill-color;
+}
+
+.item:hover .icon {
+  transform: scale(1.2);
+}
+
+:host(:not([disabled]):hover) .item .icon {
+  color: inherit;
+}
+
+:host(:not([disabled])) .item:hover .icon,
+:host(:not([disabled])) .item:hover ~ .item .icon {
+  color: $icon-fill-color;
+}
+
+:host([disabled]) input[type='radio'] {
+  visibility: hidden;
+}
+
+:host([disabled]) label {
+  pointer-events: none;
+}
+
+/*! rate- */

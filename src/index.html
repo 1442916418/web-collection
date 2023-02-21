@@ -47,6 +47,7 @@
             <iconpark-icon name="preview-close-one" size="32"></iconpark-icon>
             <iconpark-icon name="preview-open" size="32"></iconpark-icon>
             <iconpark-icon name="search" size="32"></iconpark-icon>
+            <iconpark-icon name="star" size="32"></iconpark-icon>
           </div>
         </section>
       </article>
@@ -639,7 +640,8 @@
 
           <y-img
             src="https://kjimg10.360buyimg.com/ott/jfs/t1/124686/11/31072/170103/63bb8037F15537b4b/1e5cf478e1c70f0e.jpg"
-          ></y-img>
+          >
+          </y-img>
         </section>
 
         <section>
@@ -654,7 +656,8 @@
           <y-img
             src="https://images.jpg"
             default-src="https://kjimg10.360buyimg.com/ott/jfs/t1/124686/11/31072/170103/63bb8037F15537b4b/1e5cf478e1c70f0e.jpg"
-          ></y-img>
+          >
+          </y-img>
         </section>
 
         <section>
@@ -670,15 +673,20 @@
           <h3>自适应</h3>
 
           <p>
-            <y-radio name="img-fit" value="cover" checked onchange="document.getElementById('img-fit').fit = this.value"
-              >cover</y-radio
+            <y-radio
+              name="img-fit"
+              value="cover"
+              checked
+              onchange="document.getElementById('img-fit').fit = this.value"
+            >
+              cover</y-radio
             >
             <y-radio name="img-fit" value="fill" onchange="document.getElementById('img-fit').fit = this.value"
-              >fill</y-radio
-            >
+              >fill
+            </y-radio>
             <y-radio name="img-fit" value="contain" onchange="document.getElementById('img-fit').fit = this.value"
-              >contain</y-radio
-            >
+              >contain
+            </y-radio>
           </p>
 
           <y-img
@@ -701,11 +709,11 @@
               >16/9</y-radio
             >
             <y-radio name="img-ratio" value="3/2" onchange="document.getElementById('img-ratio').ratio = this.value"
-              >3/2</y-radio
-            >
+              >3/2
+            </y-radio>
             <y-radio name="img-ratio" value="1/1" onchange="document.getElementById('img-ratio').ratio = this.value"
-              >1/1</y-radio
-            >
+              >1/1
+            </y-radio>
           </p>
 
           <y-img
@@ -807,11 +815,84 @@
           </y-img>
         </section>
       </article>
+
+      <article>
+        <h2>评分</h2>
+
+        <section>
+          <h3>展示</h3>
+
+          <y-rate></y-rate>
+        </section>
+
+        <section>
+          <h3>默认值</h3>
+
+          <y-rate default-value="3"></y-rate>
+        </section>
+
+        <section>
+          <h3>任意长度</h3>
+
+          <y-rate default-value="3" length="10"></y-rate>
+        </section>
+
+        <section>
+          <h3>禁用</h3>
+
+          <y-rate disabled default-value="3"></y-rate>
+        </section>
+
+        <section>
+          <h3>图标</h3>
+
+          <p>
+            <y-rate default-value="3" icon="moon"></y-rate>
+          </p>
+          <p>
+            <y-rate default-value="3" icon="attention"></y-rate>
+          </p>
+          <p>
+            <y-rate default-value="3" icon="info"></y-rate>
+          </p>
+        </section>
+
+        <section>
+          <h3>尺寸</h3>
+
+          <p>
+            <y-rate default-value="3" icon="moon" size="20"></y-rate>
+          </p>
+          <p>
+            <y-rate default-value="3" icon="moon" size="30"></y-rate>
+          </p>
+          <p>
+            <y-rate default-value="3" icon="moon" size="40"></y-rate>
+          </p>
+        </section>
+
+        <section>
+          <h3>颜色</h3>
+
+          <p>
+            <y-rate default-value="3" fill-color="red"></y-rate>
+          </p>
+          <p>
+            <y-rate default-value="3" fill-color="yellow"></y-rate>
+          </p>
+          <p>
+            <y-rate default-value="3" fill-color="blue"></y-rate>
+          </p>
+          <p>
+            <y-rate default-value="3" fill-color="#409EFF" void-color="#606266"></y-rate>
+          </p>
+        </section>
+      </article>
     </main>
 
     <!-- https://iconpark.oceanengine.com/home -->
     <!-- https://bytedance.feishu.cn/wiki/wikcnJZV45hM71QgI60iwkzvXob -->
-    <script src="https://lf1-cdn-tos.bytegoofy.com/obj/iconpark/icons_22707_20.73a3fee259df7696b59a1ce51c2d8d64.js"></script>
+    <script src="https://lf1-cdn-tos.bytegoofy.com/obj/iconpark/icons_22707_21.830162fd16961ad209912974a2a2e92b.js"></script>
     <script type="module" src="index.js"></script>
   </body>
 </html>
