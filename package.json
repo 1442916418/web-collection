@@ -2,7 +2,7 @@
   "name": "@yushuisheng/y-ui",
   "version": "1.0.1",
   "description": "基于 web-components 的拟物风格组件库",
-  "main": "./src/index.js",
+  "main": "src/index.js",
   "scripts": {
     "serve": "serve src",
     "docs": "docsify serve docs",
