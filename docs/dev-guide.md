@@ -19,7 +19,7 @@ npm run serve
 或使用 `docsify` 启动，需要全局安装 [docsify](https://docsify.js.org)(推荐)
 
 ```shell
-docsify serve docs
+npm run docs
 ```
 
 ## 本地开发
