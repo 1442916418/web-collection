@@ -5,6 +5,7 @@
   "main": "index.js",
   "scripts": {
     "serve": "serve src",
+    "docs": "docsify serve docs",
     "build": "cross-env RUN_TYPE=BUILD nodemon --watch .temp/css/neumorphism.css run.js",
     "new": "cross-env RUN_TYPE=NEW FILE_NAME=rate node run.js"
   },

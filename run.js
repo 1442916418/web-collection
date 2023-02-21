@@ -156,6 +156,7 @@ class Build {
 class NewComponent {
   constructor(name) {
     this.name = name
+    this.newName = name.toLocaleLowerCase()
     this.componentsTemplateCode = ''
     this.scssComponentsTemplateCode = ''
     this.scssMixinTemplateCode = ''
@@ -164,6 +165,13 @@ class NewComponent {
   }
 
   init() {
+    const path = `src/components/${this.newName}`
+
+    if (fs.existsSync(path)) {
+      console.log(`🚀 ~ ${path} => 组件/路径已存在 \n`)
+      process.exit(1)
+    }
+
     this.handleTemplate()
 
     setTimeout(() => {
@@ -172,8 +180,7 @@ class NewComponent {
   }
 
   handleNewComponent() {
-    const name = this.name
-    const newName = name.toLocaleLowerCase()
+    const newName = this.newName
 
     // 1. 新建组件，并写入默认代码
     Utils.mkdir(`src/components/${newName}`)
