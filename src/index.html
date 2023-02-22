@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>y-ui</title>
-    <link rel="stylesheet" href="index.css" />
+    <link rel="stylesheet" href="index.css" id="light" link />
   </head>
 
   <body>
@@ -16,7 +16,7 @@
         <section>
           <h3>白天/黑夜</h3>
 
-          <y-theme></y-theme>
+          <y-theme dev id="theme"></y-theme>
         </section>
       </article>
 
@@ -894,5 +894,35 @@
     <!-- https://bytedance.feishu.cn/wiki/wikcnJZV45hM71QgI60iwkzvXob -->
     <script src="https://lf1-cdn-tos.bytegoofy.com/obj/iconpark/icons_22707_21.830162fd16961ad209912974a2a2e92b.js"></script>
     <script type="module" src="index.js"></script>
+    <script>
+      document.querySelector('#theme').addEventListener('change', function (e) {
+        console.log('theme', e.detail.value)
+        changeTheme(e.detail.value)
+      })
+
+      function changeTheme(type) {
+        if (!type) return
+
+        var headEle = document.querySelector('head')
+        var ele = headEle.querySelector('#' + type)
+
+        if (ele) {
+          var cloneTypeEle = ele.cloneNode(true)
+          headEle.removeChild(ele)
+
+          headEle.appendChild(cloneTypeEle)
+          return
+        }
+
+        var css = 'https://1442916418.github.io/y-ui/css/' + type + '.css'
+        var linkEle = document.createElement('link')
+        linkEle.id = type
+        linkEle.href = css
+        linkEle.rel = 'stylesheet'
+        linkEle.type = 'text/css'
+
+        headEle.appendChild(linkEle)
+      }
+    </script>
   </body>
 </html>

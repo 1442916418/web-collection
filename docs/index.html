@@ -6,14 +6,13 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
     <meta name="description" content="Description" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0" />
-    <link rel="stylesheet" href="css/light.css" />
+    <link rel="stylesheet" href="css/light.css" id="light" />
     <link rel="stylesheet" href="css/index.css" />
   </head>
 
   <body>
     <nav>
-      <a href="javascript:void(0);" onclick="changeTheme('light')">默认主题</a>
-      <a href="javascript:void(0);" onclick="changeTheme('dark')">暗黑主题</a>
+      <y-theme id="theme"></y-theme>
     </nav>
     <div id="app" data-app>加载中...</div>
     <script>
@@ -35,8 +34,36 @@
     <!-- TODO: ? -->
     <!-- <script type="module" src="https://cdn.jsdelivr.net/npm/@yushuisheng/y-ui"></script> -->
     <script>
+      var themeEle = document.querySelector('#theme')
+
+      if (themeEle) {
+        themeEle.addEventListener('change', function (e) {
+          changeTheme(e.detail.value)
+        })
+      }
+
       function changeTheme(type) {
-        var theme = { light: '#e6e7ee', dark: '#262833' }
+        if (!type) return
+
+        var headEle = document.querySelector('head')
+        var ele = headEle.querySelector('#' + type)
+
+        if (ele) {
+          var cloneTypeEle = ele.cloneNode(true)
+          headEle.removeChild(ele)
+
+          headEle.appendChild(cloneTypeEle)
+          return
+        }
+
+        var css = 'https://1442916418.github.io/y-ui/css/' + type + '.css'
+        var linkEle = document.createElement('link')
+        linkEle.id = type
+        linkEle.href = css
+        linkEle.rel = 'stylesheet'
+        linkEle.type = 'text/css'
+
+        headEle.appendChild(linkEle)
       }
     </script>
   </body>

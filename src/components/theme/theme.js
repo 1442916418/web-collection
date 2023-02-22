@@ -2,6 +2,10 @@ import styles from './styles.js'
 
 // TODO: 主题！！！
 export default class YTheme extends HTMLElement {
+  static get observedAttributes() {
+    return ['dev']
+  }
+
   darkBgColor = '#262833'
   defaultBgColor = '#e6e7ee'
 
@@ -12,12 +16,16 @@ export default class YTheme extends HTMLElement {
     shadowRoot.innerHTML = `<style>${styles}</style><iconpark-icon name="${this.iconName}" id="icon"></iconpark-icon>`
   }
 
+  get dev() {
+    return this.getAttribute('dev') !== null
+  }
+
   get storeTheme() {
     return window.localStorage.getItem('theme')
   }
 
   get iconName() {
-    return this.storeTheme === null || this.storeTheme === 'null' ? 'moon' : 'sun-one'
+    return this.storeTheme === null || this.storeTheme === 'light' ? 'moon' : 'sun-one'
   }
 
   get allCustomElements() {
@@ -47,10 +55,10 @@ export default class YTheme extends HTMLElement {
   }
 
   handleIconClickEvent(isInit) {
-    let value = this.storeTheme === null || this.storeTheme === 'null' ? 'dark' : 'null'
+    let value = this.storeTheme === null || this.storeTheme === 'light' ? 'dark' : 'light'
 
     if (isInit) {
-      value = this.storeTheme || 'null'
+      value = this.storeTheme || 'light'
     }
 
     if (!isInit) {
@@ -59,8 +67,13 @@ export default class YTheme extends HTMLElement {
 
     this.iconEle.setAttribute('name', this.iconName)
     this.handleAllCustomElements(value)
-    this.handleHeaderStyles(value)
-    this.handleBodyStyles(value)
+
+    if (this.dev) {
+      this.handleHeaderStyles(value)
+      this.handleBodyStyles(value)
+    }
+
+    this.dispatchEvent(new CustomEvent('change', { detail: { value: value } }))
   }
 
   handleAllCustomElements(value) {
@@ -69,7 +82,7 @@ export default class YTheme extends HTMLElement {
 
       if (list.length) {
         list.forEach((ele) => {
-          if (value === 'null') {
+          if (value === 'light') {
             ele.removeAttribute('theme')
           } else {
             ele.setAttribute('theme', value)
