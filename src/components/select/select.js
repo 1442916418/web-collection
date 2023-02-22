@@ -47,19 +47,72 @@ export default class YSelect extends HTMLElement {
   }
 
   get value() {
-    return this.selectValue || ''
+    return this.selectValue || {}
   }
 
   get type() {
     return this.getAttribute('type')
   }
 
+  get defaultValue() {
+    return this.getAttribute('default-value') || ''
+  }
+
+  get validity() {
+    // TODO: 校验 && checkbox
+    if (this.required) {
+      return Array.isArray(this.value) ? this.value.length : JSON.stringify(this.value) === '{}'
+    }
+
+    return true
+  }
+
+  get noValidate() {
+    return this.getAttribute('no-validate') !== null
+  }
+
+  get invalid() {
+    return this.getAttribute('invalid') !== null
+  }
+
+  get invalidMessage() {
+    return this.getAttribute('invalid-message') || '请选择一项'
+  }
+
+  get required() {
+    return this.getAttribute('required') !== null
+  }
+
   set type(value) {
     this.setAttribute('type', value)
   }
 
-  get defaultValue() {
-    return this.getAttribute('default-value') || ''
+  set required(value) {
+    if (value === null || value === false) {
+      this.removeAttribute('required')
+    } else {
+      this.setAttribute('required', '')
+    }
+  }
+
+  set invalidMessage(value) {
+    this.setAttribute('msg', value)
+  }
+
+  set invalid(value) {
+    if (value === null || value === false) {
+      this.removeAttribute('invalid')
+    } else {
+      this.setAttribute('invalid', '')
+    }
+  }
+
+  set noValidate(value) {
+    if (value === null || value === false) {
+      this.removeAttribute('novalidate')
+    } else {
+      this.setAttribute('novalidate', '')
+    }
   }
 
   set value(targetValue) {
@@ -89,6 +142,8 @@ export default class YSelect extends HTMLElement {
           item.removeAttribute('selected')
         }
       })
+
+      this.checkValidity()
     } else {
       this.checkOptionsVisible(false)
 
@@ -106,6 +161,7 @@ export default class YSelect extends HTMLElement {
           }
         }
 
+        this.checkValidity()
         this.setSelectedValue()
         return
       }
@@ -126,6 +182,7 @@ export default class YSelect extends HTMLElement {
         })
 
         this.focusIndex = curIndex
+        this.checkValidity()
       }
     }
 
@@ -157,6 +214,7 @@ export default class YSelect extends HTMLElement {
   }
 
   connectedCallback() {
+    this.formEle = this.closest('y-form')
     this.selectEle = this.shadowRoot.getElementById('select')
     this.optionsEle = this.shadowRoot.getElementById('options')
     this.slotsEle = this.shadowRoot.getElementById('slot')
@@ -171,6 +229,7 @@ export default class YSelect extends HTMLElement {
     this.shadowRootClick = (e) => this.handleShadowRootClickEvent(e)
     this.shadowRootKeydown = (e) => this.handleShadowRootKeydownEvent(e)
     this.selectClick = (e) => this.handleSelectClickEvent(e)
+    this.selectFocus = (e) => this.handleSelectFocusEvent(e)
     this.selectOptionClick = (e) => this.handleSelectOptionClickEvent(e)
     this.slotChange = () => this.handleSlotsChangeEvent()
 
@@ -179,6 +238,7 @@ export default class YSelect extends HTMLElement {
     this.addEventListener('keydown', this.shadowRootKeydown)
     this.addEventListener('click', this.shadowRootClick)
     this.selectEle.addEventListener('click', this.selectClick)
+    this.selectEle.addEventListener('focus', this.selectFocus)
     this.optionsEle.addEventListener('click', this.selectOptionClick)
     this.slotsEle.addEventListener('slotchange', this.slotChange)
 
@@ -206,6 +266,39 @@ export default class YSelect extends HTMLElement {
     if (name === 'type' && this.slotNodes) {
       this.slotNodes.forEach((v) => v.setAttribute('type', newValue))
     }
+  }
+
+  reset() {
+    this.invalid = false
+    this.invalidMessage = ''
+    this.handleDefaultValue(this.defaultValue)
+  }
+
+  checkValidity() {
+    this.invalidMessage = ''
+
+    console.log(this.value, this.validity)
+
+    if (this.noValidate || this.disabled || (this.formEle && this.formEle.noValidate)) {
+      return true
+    }
+
+    if (this.validity) {
+      this.invalid = false
+      return true
+    }
+
+    this.focus()
+    this.invalid = true
+    this.invalidMessage = this.invalidMessage
+
+    return false
+  }
+
+  handleSelectFocusEvent(e) {
+    e.stopPropagation()
+
+    this.checkValidity()
   }
 
   handleDocumentClickEvent(e) {
@@ -302,7 +395,7 @@ export default class YSelect extends HTMLElement {
         }
       }
     } else {
-      if (value) {
+      if (value || JSON.stringify(value) !== '{}') {
         result = `<span>${value.label}</span>`
       }
     }
@@ -337,7 +430,9 @@ export default class YSelect extends HTMLElement {
   }
 
   handleDefaultValue(value) {
-    if (!value || !this.slotNodes.length) return
+    if (!value || !this.slotNodes.length) {
+      return
+    }
 
     const find = this.slotNodes.find((v) => v.value === value)
 

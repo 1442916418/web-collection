@@ -17,6 +17,7 @@
 }
 
 :host {
+  position: relative;
   display: inline-block;
   border-width: $border-width;
   border-style: solid;
@@ -24,6 +25,29 @@
   border-color: $border-color-transparent;
   box-sizing: border-box;
   transition: $transition-base;
+
+  &::after {
+    content: attr(msg);
+    margin-top: 0.2rem;
+    position: absolute;
+    top: 0;
+    left: 0;
+    font-size: $font-size-xs;
+    opacity: 0;
+    z-index: -1;
+    transition: $transition-base;
+  }
+}
+
+:host([invalid]) .input {
+  border-color: $pink !important;
+}
+
+:host([invalid])::after {
+  top: 100%;
+  color: $pink;
+  opacity: 1;
+  z-index: 10;
 }
 
 :host([block]) {

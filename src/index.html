@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>y-ui</title>
-    <link rel="stylesheet" href="index.css" id="light" link />
+    <link rel="stylesheet" href="index.css" id="light" />
   </head>
 
   <body>
@@ -298,6 +298,15 @@
             <y-select-option label="枣子" value="jujube"></y-select-option>
           </y-select>
         </section>
+
+        <section>
+          <h3>必填项</h3>
+          <y-select required>
+            <y-select-option label="苹果" value="apple"></y-select-option>
+            <y-select-option label="香蕉" value="banana"></y-select-option>
+            <y-select-option label="枣子" value="jujube"></y-select-option>
+          </y-select>
+        </section>
       </article>
 
       <article>
@@ -420,12 +429,24 @@
         </section>
 
         <section>
-          <h3>组 & 默认值</h3>
+          <h3>组与默认值</h3>
           <y-radio-group name="frame" default-value="Vue">
             <y-radio>Vue</y-radio>
             <y-radio>React</y-radio>
             <y-radio>Svelte</y-radio>
           </y-radio-group>
+        </section>
+
+        <section>
+          <h3>校验</h3>
+
+          <y-radio-group name="frame" required>
+            <y-radio>Vue</y-radio>
+            <y-radio>React</y-radio>
+            <y-radio>Svelte</y-radio>
+          </y-radio-group>
+
+          <y-button onclick="this.previousElementSibling.checkValidity()">校验</y-button>
         </section>
       </article>
 
@@ -617,6 +638,30 @@
           <h3>校验</h3>
 
           <y-input pattern="^1(3|4|5|6|7|8|9)\d{9}$" placeholder="请输入手机号"></y-input>
+        </section>
+
+        <section>
+          <h3>必填项</h3>
+
+          <y-input required placeholder="请输入"></y-input>
+        </section>
+
+        <section>
+          <h3>邮箱</h3>
+
+          <y-input type="email" placeholder="email"></y-input>
+        </section>
+
+        <section>
+          <h3>自定义验证</h3>
+
+          <y-input placeholder="请输入" id="custom-input"></y-input>
+        </section>
+
+        <section>
+          <h3>忽略验证</h3>
+
+          <y-input type="email" placeholder="email" no-validate></y-input>
         </section>
 
         <section>
@@ -895,33 +940,26 @@
     <script src="https://lf1-cdn-tos.bytegoofy.com/obj/iconpark/icons_22707_21.830162fd16961ad209912974a2a2e92b.js"></script>
     <script type="module" src="index.js"></script>
     <script>
-      document.querySelector('#theme').addEventListener('change', function (e) {
-        console.log('theme', e.detail.value)
-        changeTheme(e.detail.value)
-      })
+      inputCustomCheckValidity()
+      handleScroll(4000)
 
-      function changeTheme(type) {
-        if (!type) return
+      function handleScroll(top) {
+        setTimeout(() => {
+          window.scrollTo({ top: top })
+        }, 1000)
+      }
 
-        var headEle = document.querySelector('head')
-        var ele = headEle.querySelector('#' + type)
+      function inputCustomCheckValidity() {
+        var ele = document.querySelector('#custom-input')
 
         if (ele) {
-          var cloneTypeEle = ele.cloneNode(true)
-          headEle.removeChild(ele)
-
-          headEle.appendChild(cloneTypeEle)
-          return
+          ele.customValidity = {
+            method: function (el) {
+              return el.value === '123'
+            },
+            message: '输入错误'
+          }
         }
-
-        var css = 'https://1442916418.github.io/y-ui/css/' + type + '.css'
-        var linkEle = document.createElement('link')
-        linkEle.id = type
-        linkEle.href = css
-        linkEle.rel = 'stylesheet'
-        linkEle.type = 'text/css'
-
-        headEle.appendChild(linkEle)
       }
     </script>
   </body>

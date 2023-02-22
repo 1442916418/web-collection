@@ -107,6 +107,66 @@ export default class YInput extends HTMLElement {
     return this.getAttribute('readonly') !== null
   }
 
+  get noValidate() {
+    return this.getAttribute('no-validate') !== null
+  }
+
+  get validity() {
+    return this.inputEle.checkValidity() && this.customValidity.method(this)
+  }
+
+  get invalid() {
+    return this.getAttribute('invalid') !== null
+  }
+
+  get invalidMessage() {
+    return this.getAttribute('invalid-message')
+  }
+
+  get customValidity() {
+    return (
+      this.$customValidity || {
+        method: () => true
+      }
+    )
+  }
+
+  get required() {
+    return this.getAttribute('required') !== null
+  }
+
+  set required(value) {
+    if (value === null || value === false) {
+      this.removeAttribute('required')
+    } else {
+      this.setAttribute('required', '')
+    }
+  }
+
+  set customValidity(object) {
+    this.$customValidity = object
+  }
+
+  set invalidMessage(value) {
+    this.setAttribute('msg', value)
+  }
+
+  set invalid(value) {
+    if (value === null || value === false) {
+      this.removeAttribute('invalid')
+    } else {
+      this.setAttribute('invalid', '')
+    }
+  }
+
+  set noValidate(value) {
+    if (value === null || value === false) {
+      this.removeAttribute('novalidate')
+    } else {
+      this.setAttribute('novalidate', '')
+    }
+  }
+
   set readonly(value) {
     if (value === null || value === false) {
       this.removeAttribute('readonly')
@@ -142,21 +202,25 @@ export default class YInput extends HTMLElement {
   connectedCallback() {
     this.setAttribute('sign', 'query')
 
+    this.$customValidity = null
     this.timer = 0
     this.isShowPassword = false
 
+    this.formEle = this.closest('y-form')
     this.inputEle = this.shadowRoot.getElementById('input')
     this.slotsEle = this.shadowRoot.querySelectorAll('slot')
 
     this.inputEleInput = (e) => this.handleInputEleInputEvent(e)
     this.inputEleChange = () => this.handleInputEleChangeEvent()
     this.inputEleKeydown = (e) => this.handleInputEleKeydownEvent(e)
+    this.inputEleFocus = () => this.handleInputEleFocusEvent()
     this.suffixEleClick = () => {}
     this.suffixEleChange = () => {}
 
     this.inputEle.addEventListener('input', this.inputEleInput)
     this.inputEle.addEventListener('change', this.inputEleChange)
     this.inputEle.addEventListener('keydown', this.inputEleKeydown)
+    this.inputEle.addEventListener('focus', this.inputEleFocus)
 
     if (!this.isTextarea) {
       this.suffixEle = this.shadowRoot.getElementById(this.suffixId)
@@ -170,6 +234,7 @@ export default class YInput extends HTMLElement {
 
     this.handleSlots()
 
+    this.required = this.required
     this.disabled = this.disabled
     this.pattern = this.pattern
     this.readonly = this.readonly
@@ -179,6 +244,7 @@ export default class YInput extends HTMLElement {
     this.inputEle.removeEventListener('input', this.inputEleInput)
     this.inputEle.removeEventListener('change', this.inputEleChange)
     this.inputEle.removeEventListener('keydown', this.inputEleKeydown)
+    this.inputEle.removeEventListener('focus', this.inputEleFocus)
 
     if (!this.isTextarea) {
       this.suffixEle.removeEventListener('click', this.suffixEleClick)
@@ -231,6 +297,40 @@ export default class YInput extends HTMLElement {
     }
   }
 
+  checkValidity() {
+    this.invalidMessage = ''
+
+    if (this.noValidate || this.disabled || (this.formEle && this.formEle.noValidate)) {
+      return true
+    }
+
+    if (this.validity) {
+      this.invalid = false
+      return true
+    }
+
+    this.inputEle.focus()
+    this.invalid = true
+
+    if (this.inputEle.validity.valueMissing) {
+      this.invalidMessage = this.inputEle.validationMessage
+    } else {
+      if (!this.customValidity.method(this)) {
+        this.invalidMessage = this.customValidity.message
+      } else {
+        this.invalidMessage = this.invalidMessage || this.inputEle.validationMessage
+      }
+    }
+
+    return false
+  }
+
+  reset() {
+    this.inputEle.value = this.defaultValue
+    this.invalidMessage = ''
+    this.invalid = false
+  }
+
   handleSlots() {
     if (this.slotsEle.length) {
       this.slotsEle.forEach((slot) => {
@@ -252,8 +352,14 @@ export default class YInput extends HTMLElement {
     }
   }
 
+  handleInputEleFocusEvent() {
+    this.checkValidity()
+  }
+
   handleInputEleInputEvent(e) {
     e.stopPropagation()
+
+    this.checkValidity()
 
     if (this.debounce) {
       this.timer && clearTimeout(this.timer)

@@ -36,10 +36,20 @@ class YRadioGroup extends HTMLElement {
     return this.value !== ''
   }
 
-  set value(value) {
-    this.elements.forEach((el) => {
-      el.checked = value === el.value
-    })
+  get noValidate() {
+    return this.getAttribute('no-validate') !== null
+  }
+
+  get invalid() {
+    return this.getAttribute('invalid') !== null
+  }
+
+  get invalidMessage() {
+    return this.getAttribute('invalid-message') || '请选择一项'
+  }
+
+  get required() {
+    return this.getAttribute('required') !== null
   }
 
   set required(value) {
@@ -50,6 +60,32 @@ class YRadioGroup extends HTMLElement {
     }
   }
 
+  set invalidMessage(value) {
+    this.setAttribute('msg', value)
+  }
+
+  set invalid(value) {
+    if (value === null || value === false) {
+      this.removeAttribute('invalid')
+    } else {
+      this.setAttribute('invalid', '')
+    }
+  }
+
+  set noValidate(value) {
+    if (value === null || value === false) {
+      this.removeAttribute('novalidate')
+    } else {
+      this.setAttribute('novalidate', '')
+    }
+  }
+
+  set value(value) {
+    this.elements.forEach((el) => {
+      el.checked = value === el.value
+    })
+  }
+
   set disabled(value) {
     if (value === null || value === false) {
       this.removeAttribute('disabled')
@@ -58,11 +94,8 @@ class YRadioGroup extends HTMLElement {
     }
   }
 
-  reset() {
-    this.value = this.defaultValue
-  }
-
   connectedCallback() {
+    this.formEle = this.closest('y-form')
     this.slotsEle = this.shadowRoot.querySelector('slot')
 
     this.slotchange = () => this.handleSlotsChangeEvent()
@@ -74,6 +107,30 @@ class YRadioGroup extends HTMLElement {
     this.slotsEle.removeEventListener('slotchange', this.radioChange)
   }
 
+  checkValidity() {
+    this.invalidMessage = ''
+
+    if (this.noValidate || this.disabled || (this.formEle && this.formEle.noValidate)) {
+      return true
+    }
+
+    if (this.validity) {
+      this.invalid = false
+      return true
+    }
+
+    this.focus()
+    this.invalid = true
+    this.invalidMessage = this.invalidMessage
+
+    return false
+  }
+
+  reset() {
+    this.value = this.defaultValue
+    this.in
+  }
+
   handleSlotsChangeEvent() {
     this.elements = this.querySelectorAll('y-radio')
     this.value = this.defaultValue
@@ -81,6 +138,7 @@ class YRadioGroup extends HTMLElement {
     this.elements.forEach((el) => {
       el.addEventListener('change', () => {
         if (el.checked) {
+          this.checkValidity()
           this.dispatchEvent(
             new CustomEvent('change', {
               detail: {
