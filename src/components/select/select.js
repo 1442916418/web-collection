@@ -59,9 +59,8 @@ export default class YSelect extends HTMLElement {
   }
 
   get validity() {
-    // TODO: 校验 && checkbox
     if (this.required) {
-      return Array.isArray(this.value) ? this.value.length : JSON.stringify(this.value) === '{}'
+      return Array.isArray(this.value) ? !this.value.length : JSON.stringify(this.value) !== '{}'
     }
 
     return true
@@ -276,8 +275,6 @@ export default class YSelect extends HTMLElement {
 
   checkValidity() {
     this.invalidMessage = ''
-
-    console.log(this.value, this.validity)
 
     if (this.noValidate || this.disabled || (this.formEle && this.formEle.noValidate)) {
       return true

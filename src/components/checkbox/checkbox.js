@@ -1,5 +1,6 @@
 import styles from './styles.js'
 
+// TODO: group
 export default class YCheckbox extends HTMLElement {
   static get observedAttributes() {
     return ['disabled', 'checked', 'size', 'theme', 'circle']
@@ -39,6 +40,54 @@ export default class YCheckbox extends HTMLElement {
     return this.getAttribute('circle') !== null
   }
 
+  get validity() {
+    return this.checked
+  }
+
+  get noValidate() {
+    return this.getAttribute('no-validate') !== null
+  }
+
+  get invalid() {
+    return this.getAttribute('invalid') !== null
+  }
+
+  get invalidMessage() {
+    return this.getAttribute('invalid-message') || this.checkboxEle.validationMessage || '请选择'
+  }
+
+  get required() {
+    return this.getAttribute('required') !== null
+  }
+
+  set required(value) {
+    if (value === null || value === false) {
+      this.removeAttribute('required')
+    } else {
+      this.setAttribute('required', '')
+    }
+  }
+
+  set invalidMessage(value) {
+    this.setAttribute('msg', value)
+  }
+
+  set invalid(value) {
+    if (value === null || value === false) {
+      this.removeAttribute('invalid')
+    } else {
+      this.setAttribute('invalid', '')
+    }
+  }
+
+  set noValidate(value) {
+    if (value === null || value === false) {
+      this.removeAttribute('novalidate')
+    } else {
+      this.setAttribute('novalidate', '')
+    }
+  }
+
   set circle(value) {
     this.setAttribute('circle', value)
     this.labelEle.setAttribute('circle', value)
@@ -68,6 +117,7 @@ export default class YCheckbox extends HTMLElement {
   connectedCallback() {
     this.setAttribute('sign', 'query')
 
+    this.formEle = this.closest('y-form')
     this.checkboxEle = this.shadowRoot.getElementById('checkbox')
     this.labelEle = this.shadowRoot.getElementById('label')
 
@@ -130,12 +180,39 @@ export default class YCheckbox extends HTMLElement {
     }
   }
 
+  checkValidity() {
+    this.invalidMessage = ''
+
+    if (this.noValidate || this.disabled || (this.formEle && this.formEle.noValidate)) {
+      return true
+    }
+
+    if (this.validity) {
+      this.invalid = false
+      return true
+    }
+
+    this.focus()
+    this.invalid = true
+    this.invalidMessage = this.invalidMessage
+
+    return false
+  }
+
+  reset() {
+    this.checked = false
+    this.invalidMessage = ''
+    this.invalid = false
+  }
+
   focus() {
     this.checkboxEle.focus()
   }
 
   handleCheckboxChangeEvent() {
     this.checked = this.checkboxEle.checked
+
+    this.checkValidity()
 
     this.dispatchEvent(
       new CustomEvent('change', {

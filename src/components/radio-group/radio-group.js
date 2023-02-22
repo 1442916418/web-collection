@@ -128,7 +128,8 @@ class YRadioGroup extends HTMLElement {
 
   reset() {
     this.value = this.defaultValue
-    this.in
+    this.invalidMessage = ''
+    this.invalid = false
   }
 
   handleSlotsChangeEvent() {

@@ -1,22 +1,46 @@
 /*! -checkbox */
 
 :host {
+  position: relative;
   display: inline-flex;
   -webkit-tap-highlight-color: transparent;
+
+  &::after {
+    content: attr(msg);
+    margin-top: 0.2rem;
+    position: absolute;
+    top: 0;
+    left: 0;
+    font-size: $font-size-xs;
+    opacity: 0;
+    z-index: -1;
+    transition: $transition-base;
+  }
 }
+
+:host([invalid])::after {
+  top: 100%;
+  color: $pink;
+  opacity: 1;
+  z-index: 10;
+}
+
 :host([disabled]) {
   pointer-events: none;
   opacity: 0.6;
 }
+
 :host([disabled]) label {
   pointer-events: all;
   cursor: not-allowed;
 }
+
 .checkbox {
   position: absolute;
   opacity: 0;
   visibility: hidden;
 }
+
 label {
   position: relative;
   padding-left: $checkbox-label-pl;
