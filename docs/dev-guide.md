@@ -10,13 +10,7 @@ npm i
 
 ## 网站预览
 
-使用 `serve` 启动，需要全局安装 [serve](https://www.npmjs.com/package/serve)
-
-```shell
-npm run serve
-```
-
-或使用 `docsify` 启动，需要全局安装 [docsify](https://docsify.js.org)(推荐)
+使用 `docsify` 启动，需要全局安装 [docsify](https://docsify.js.org)(推荐)
 
 ```shell
 npm run docs
@@ -27,7 +21,7 @@ npm run docs
 1. 编译 `sass`
 
     ```shell
-    gulp
+    npm run css
     ```
 
 2. 配置 `css` 到组件中
@@ -36,7 +30,7 @@ npm run docs
     npm run build
     ```
 
-3. 启动，使用网站预览方法二选一即可
+3. 启动，同 **网站预览**  
 
 ## 添加新组件
 

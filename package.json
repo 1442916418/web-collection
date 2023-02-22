@@ -4,6 +4,7 @@
   "description": "基于 web-components 的拟物风格组件库",
   "main": "src/index.js",
   "scripts": {
+    "css": "gulp",
     "serve": "serve src",
     "docs": "docsify serve docs",
     "build": "cross-env RUN_TYPE=BUILD nodemon --watch .temp/css/neumorphism.css run.js",

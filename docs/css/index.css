@@ -1,0 +1,20 @@
+.tips-dir-container {
+  padding: 50px;
+  display: grid;
+  grid-template-columns: repeat(5, auto);
+  grid-template-rows: repeat(5, auto);
+  row-gap: 1rem;
+}
+.tips-dir-container y-button {
+  width: 150px;
+}
+y-button,
+y-select,
+y-switch,
+y-checkbox {
+  margin-right: 0.75rem;
+}
+y-img {
+  width: 200px;
+  height: 200px;
+}
