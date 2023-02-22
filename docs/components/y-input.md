@@ -75,7 +75,23 @@
 
 ## 自定义验证  
 
-<y-input placeholder="请输入" id="custom-input"></y-input>
+<y-input placeholder="请输入123" id="custom-input"></y-input>
+
+<script>
+function inputCustomCheckValidity() {
+  var ele = document.querySelector('#custom-input')
+
+  if (ele) {
+    ele.customValidity = {
+      method: function (el) {
+        return el.value === '123'
+      },
+      message: '输入错误'
+    }
+  }
+}
+inputCustomCheckValidity()
+</script>
 
 ## 忽略验证  
 
