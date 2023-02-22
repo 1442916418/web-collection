@@ -29,7 +29,7 @@
     <!-- Docsify v4 -->
     <script src="//cdn.jsdelivr.net/npm/docsify@4"></script>
     <script src="https://lf1-cdn-tos.bytegoofy.com/obj/iconpark/icons_22707_21.830162fd16961ad209912974a2a2e92b.js"></script>
-    <script type="module" src="https://cdn.jsdelivr.net/npm/@yushuisheng/y-ui/src/index.js"></script>
+    <script type="module" src="https://cdn.jsdelivr.net/npm/@yushuisheng/y-ui@1.0.3/src/index.js"></script>
     <script src="//unpkg.com/docsify-pagination/dist/docsify-pagination.min.js"></script>
     <!-- TODO: ? -->
     <!-- <script type="module" src="https://cdn.jsdelivr.net/npm/@yushuisheng/y-ui"></script> -->
@@ -38,23 +38,13 @@
 
       if (themeEle) {
         themeEle.addEventListener('change', function (e) {
+          console.log('🚀 ~ file: index.html:43 ~ e.detail.value:', e.detail.value)
           changeTheme(e.detail.value)
         })
       }
 
       function changeTheme(type) {
         if (!type) return
-
-        var headEle = document.querySelector('head')
-        var ele = headEle.querySelector('#' + type)
-
-        if (ele) {
-          var cloneTypeEle = ele.cloneNode(true)
-          headEle.removeChild(ele)
-
-          headEle.appendChild(cloneTypeEle)
-          return
-        }
 
         var css = 'https://1442916418.github.io/y-ui/css/' + type + '.css'
         var linkEle = document.createElement('link')
@@ -63,7 +53,7 @@
         linkEle.rel = 'stylesheet'
         linkEle.type = 'text/css'
 
-        headEle.appendChild(linkEle)
+        document.querySelector('head').appendChild(linkEle)
       }
     </script>
   </body>
