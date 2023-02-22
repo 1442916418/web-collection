@@ -34,3 +34,12 @@
   <y-radio>React</y-radio>
   <y-radio>Svelte</y-radio>
 </y-radio-group>
+
+## 校验  
+
+<y-radio-group name="frame" required>
+  <y-radio>Vue</y-radio>
+  <y-radio>React</y-radio>
+  <y-radio>Svelte</y-radio>
+</y-radio-group>
+<y-button onclick="this.previousElementSibling.checkValidity()">校验</y-button>

@@ -51,3 +51,11 @@
   <y-select-option label="香蕉" value="banana"></y-select-option>
   <y-select-option label="枣子" value="jujube"></y-select-option>
 </y-select>
+
+## 必填项
+
+<y-select required>
+  <y-select-option label="苹果" value="apple"></y-select-option>
+  <y-select-option label="香蕉" value="banana"></y-select-option>
+  <y-select-option label="枣子" value="jujube"></y-select-option>
+</y-select>

@@ -28,3 +28,14 @@
 <y-checkbox circle size="large"></y-checkbox>
 <y-checkbox circle></y-checkbox>
 <y-checkbox circle size="small"></y-checkbox>
+
+## 校验  
+
+<y-checkbox-group name="books" required min="2" max="3">
+  <y-checkbox>React</y-checkbox>
+  <y-checkbox>Vue</y-checkbox>
+  <y-checkbox>Angular</y-checkbox>
+  <y-checkbox>Flutter</y-checkbox>
+  <y-checkbox>Swift</y-checkbox>
+</y-checkbox-group>
+<y-button onclick="this.previousElementSibling.checkValidity()">主动校验</y-button>

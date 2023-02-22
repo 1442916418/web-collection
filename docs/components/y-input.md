@@ -65,6 +65,22 @@
 
 <y-input pattern="^1(3|4|5|6|7|8|9)\d{9}$" placeholder="请输入手机号"></y-input>
 
+## 必填项  
+
+<y-input required placeholder="请输入"></y-input>
+
+## 邮箱  
+
+<y-input type="email" placeholder="email"></y-input>
+
+## 自定义验证  
+
+<y-input placeholder="请输入" id="custom-input"></y-input>
+
+## 忽略验证  
+
+<y-input type="email" placeholder="email" no-validate></y-input>
+
 ## 文本框
 
 <y-input type="textarea"></y-input>
