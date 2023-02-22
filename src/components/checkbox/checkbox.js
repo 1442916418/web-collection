@@ -212,7 +212,7 @@ export default class YCheckbox extends HTMLElement {
   handleCheckboxChangeEvent() {
     this.checked = this.checkboxEle.checked
 
-    this.checkValidity()
+    // this.checkValidity()
 
     this.dispatchEvent(
       new CustomEvent('change', {

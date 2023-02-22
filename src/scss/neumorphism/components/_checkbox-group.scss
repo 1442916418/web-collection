@@ -1,0 +1,35 @@
+/*! -checkbox-group */
+
+:host {
+  position: relative;
+  display: inline-block;
+
+  &::after {
+    content: attr(msg);
+    margin-top: 0.2rem;
+    position: absolute;
+    top: 0;
+    left: 0;
+    font-size: $font-size-xs;
+    opacity: 0;
+    z-index: -1;
+    transition: $transition-base;
+  }
+}
+
+:host([invalid])::after {
+  top: 100%;
+  color: $pink;
+  opacity: 1;
+  z-index: 10;
+}
+
+:host([disabled]) {
+  pointer-events: none;
+}
+
+:host([disabled]) ::slotted(y-checkbox) {
+  pointer-events: none;
+  opacity: 0.6;
+}
+/*! checkbox-group- */

@@ -74,9 +74,9 @@ class YRadioGroup extends HTMLElement {
 
   set noValidate(value) {
     if (value === null || value === false) {
-      this.removeAttribute('novalidate')
+      this.removeAttribute('no-validate')
     } else {
-      this.setAttribute('novalidate', '')
+      this.setAttribute('no-validate', '')
     }
   }
 
@@ -104,7 +104,7 @@ class YRadioGroup extends HTMLElement {
   }
 
   disconnectedCallback() {
-    this.slotsEle.removeEventListener('slotchange', this.radioChange)
+    this.slotsEle.removeEventListener('slotchange', this.slotchange)
   }
 
   checkValidity() {
@@ -150,7 +150,6 @@ class YRadioGroup extends HTMLElement {
         }
       })
     })
-    this.init = true
   }
 }
 
