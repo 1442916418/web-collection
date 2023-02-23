@@ -1,6 +1,10 @@
 import styles from './styles.js'
 
 export default class YFormItem extends HTMLElement {
+  static get observedAttributes() {
+    return ['theme']
+  }
+
   constructor() {
     super()
     const shadowRoot = this.attachShadow({ mode: 'open' })
@@ -12,6 +16,18 @@ export default class YFormItem extends HTMLElement {
 
   get legend() {
     return this.getAttribute('legend') || ''
+  }
+
+  get theme() {
+    return this.getAttribute('theme')
+  }
+
+  set theme(value) {
+    if (value) {
+      this.setAttribute('theme', value)
+    } else {
+      this.removeAttribute('theme')
+    }
   }
 
   set legend(value) {
@@ -26,6 +42,8 @@ export default class YFormItem extends HTMLElement {
     this.slotsEleChange = () => this.handleSlotsEleChangeEvent()
 
     this.slotsEle.addEventListener('slotchange', this.slotsEleChange)
+
+    this.handleTheme()
   }
 
   disconnectedCallback() {
@@ -38,6 +56,12 @@ export default class YFormItem extends HTMLElement {
     if (this.inputEle && this.inputEle.required) {
       this.labelsEle.classList.add('is-required')
     }
+  }
+
+  handleTheme() {
+    const theme = window.localStorage.getItem('theme')
+
+    this.theme = theme && theme === 'dark' ? theme : ''
   }
 }
 

@@ -344,3 +344,9 @@ y-img {
   width: 200px;
   height: 200px;
 }
+.theme-fixed {
+  position: fixed;
+  top: 1rem;
+  left: 1rem;
+  border: 1px solid #ccc;
+}

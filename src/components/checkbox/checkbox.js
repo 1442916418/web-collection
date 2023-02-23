@@ -56,6 +56,18 @@ export default class YCheckbox extends HTMLElement {
     return this.getAttribute('invalid-message') || this.checkboxEle.validationMessage || '请选择'
   }
 
+  get theme() {
+    return this.getAttribute('theme')
+  }
+
+  set theme(value) {
+    if (value) {
+      this.setAttribute('theme', value)
+    } else {
+      this.removeAttribute('theme')
+    }
+  }
+
   get required() {
     return this.getAttribute('required') !== null
   }
@@ -133,6 +145,8 @@ export default class YCheckbox extends HTMLElement {
 
     this.disabled = this.disabled
     this.checked = this.checked
+
+    this.handleTheme()
   }
 
   disconnectedCallback() {
@@ -258,6 +272,12 @@ export default class YCheckbox extends HTMLElement {
         })
       )
     }
+  }
+
+  handleTheme() {
+    const theme = window.localStorage.getItem('theme')
+
+    this.theme = theme && theme === 'dark' ? theme : ''
   }
 }
 

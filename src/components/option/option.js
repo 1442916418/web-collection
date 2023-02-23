@@ -2,7 +2,7 @@ import styles from './styles.js'
 
 export default class YSelectOption extends HTMLElement {
   static get observedAttributes() {
-    return ['disabled', 'size', 'label', 'selected', 'value', 'type']
+    return ['disabled', 'size', 'label', 'selected', 'value', 'type', 'theme']
   }
 
   constructor() {
@@ -42,6 +42,18 @@ export default class YSelectOption extends HTMLElement {
     return this.getAttribute('type')
   }
 
+  get theme() {
+    return this.getAttribute('theme')
+  }
+
+  set theme(value) {
+    if (value) {
+      this.setAttribute('theme', value)
+    } else {
+      this.removeAttribute('theme')
+    }
+  }
+
   set type(value) {
     this.setAttribute('type', value)
   }
@@ -70,6 +82,7 @@ export default class YSelectOption extends HTMLElement {
     this.optionEle = this.shadowRoot.getElementById('option')
 
     this.setAttribute('sign', 'query')
+    this.handleTheme()
   }
 
   attributeChangedCallback(name, oldValue, newValue) {
@@ -83,6 +96,12 @@ export default class YSelectOption extends HTMLElement {
 
   focus() {
     this.optionEle.focus()
+  }
+
+  handleTheme() {
+    const theme = window.localStorage.getItem('theme')
+
+    this.theme = theme && theme === 'dark' ? theme : ''
   }
 }
 

@@ -4,7 +4,7 @@ import styles from './styles.js'
 
 export default class YSlider extends HTMLElement {
   static get observedAttributes() {
-    return ['min', 'max', 'step', 'disabled', 'is-tips', 'suffix', 'theme-type']
+    return ['min', 'max', 'step', 'disabled', 'is-tips', 'suffix', 'theme']
   }
 
   constructor() {
@@ -59,8 +59,18 @@ export default class YSlider extends HTMLElement {
     return this.getAttribute('vertical') !== null
   }
 
-  get themeType() {
-    return this.getAttribute('theme-type')
+  get theme() {
+    return this.getAttribute('theme')
+  }
+
+  set theme(value) {
+    if (value) {
+      this.sliderEle && this.sliderEle.setAttribute('theme', value)
+      this.sliderContainerEle && this.sliderContainerEle.setAttribute('type', value)
+    } else {
+      this.sliderEle && this.sliderEle.removeAttribute('theme')
+      this.sliderContainerEle && this.sliderContainerEle.removeAttribute('type')
+    }
   }
 
   set disabled(value) {
@@ -118,14 +128,6 @@ export default class YSlider extends HTMLElement {
     this.sliderEle = this.shadowRoot.getElementById('slider')
     this.sliderContainerEle = this.shadowRoot.getElementById('slider-container')
 
-    if (this.themeType) {
-      this.sliderEle.setAttribute('theme-type', this.themeType)
-      this.sliderContainerEle.setAttribute('type', this.themeType)
-    } else {
-      this.sliderEle.removeAttribute('theme-type')
-      this.sliderContainerEle.removeAttribute('type')
-    }
-
     this.handleVerticalStyles()
 
     this.sliderInput = (e) => this.handleSliderClickEvent(e)
@@ -137,6 +139,7 @@ export default class YSlider extends HTMLElement {
     this.addEventListener('wheel', this.shadowRootWheel, true)
 
     this.setAttribute('sign', 'query')
+    this.handleTheme()
   }
 
   disconnectedCallback() {
@@ -228,6 +231,12 @@ export default class YSlider extends HTMLElement {
         })
       )
     }
+  }
+
+  handleTheme() {
+    const theme = window.localStorage.getItem('theme')
+
+    this.theme = theme && theme === 'dark' ? theme : ''
   }
 }
 

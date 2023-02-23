@@ -36,12 +36,12 @@
       box-shadow: box-shadow($type);
     }
   } @else {
-    input[theme-theme='#{$type}'] {
+    input[theme='#{$type}'] {
       background: none !important;
       box-shadow: box-shadow('#{$type}-inset') !important;
     }
     // 轨道
-    input[theme-theme='#{$type}']::-webkit-slider-runnable-track {
+    input[theme='#{$type}']::-webkit-slider-runnable-track {
       height: 100% !important;
       // 已滚动轨道 & 未滚动轨道
       background: linear-gradient(
@@ -51,34 +51,34 @@
       ) !important;
       border-radius: $border-radius !important;
     }
-    input[theme-theme='#{$type}']::-webkit-slider-runnable-track {
+    input[theme='#{$type}']::-webkit-slider-runnable-track {
       background: linear-gradient(
         to right,
         color-yiq($background) calc(100% * var(--percent)),
         rgba(0, 0, 0, 0.1) 0%
       ) !important;
     }
-    input[theme-theme='#{$type}']::-moz-range-progress {
+    input[theme='#{$type}']::-moz-range-progress {
       background: $background !important;
     }
-    input[theme-theme='#{$type}']::-webkit-slider-thumb {
+    input[theme='#{$type}']::-webkit-slider-thumb {
       margin-top: -($slider-range-thumb-height / 3.5) !important;
       border-color: $background !important;
       background: $background !important;
       box-shadow: box-shadow($type) !important;
     }
-    input[theme-theme='#{$type}']::-moz-range-thumb {
+    input[theme='#{$type}']::-moz-range-thumb {
       border-color: $background !important;
       background: $background !important;
       box-shadow: box-shadow($type) !important;
     }
-    input[theme-theme='#{$type}']::-webkit-slider-thumb:active,
-    input[theme-theme='#{$type}']:focus::-webkit-slider-thumb {
+    input[theme='#{$type}']::-webkit-slider-thumb:active,
+    input[theme='#{$type}']:focus::-webkit-slider-thumb {
       background: $background !important;
       box-shadow: box-shadow($type) !important;
     }
-    input[theme-theme='#{$type}']::-moz-range-thumb:active,
-    input[theme-theme='#{$type}']:focus::-moz-range-thumb {
+    input[theme='#{$type}']::-moz-range-thumb:active,
+    input[theme='#{$type}']:focus::-moz-range-thumb {
       background: $background !important;
       box-shadow: box-shadow($type) !important;
     }

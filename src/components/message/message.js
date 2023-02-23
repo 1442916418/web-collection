@@ -47,7 +47,11 @@ class YMessage extends HTMLElement {
   }
 
   set theme(value) {
-    this.setAttribute('theme', value)
+    if (value) {
+      this.setAttribute('theme', value)
+    } else {
+      this.removeAttribute('theme')
+    }
   }
 
   set icon(value) {
@@ -132,8 +136,12 @@ if (!messageContent) {
 export default {
   info: function (text = '', duration, onclose) {
     const message = new YMessage()
+    const theme = window.localStorage.getItem('theme')
+
     message.timer && clearTimeout(message.timer)
     messageContent.appendChild(message)
+
+    message.theme = theme && theme === 'dark' ? theme : ''
     message.type = 'info'
     message.textContent = text
     message.show = true
@@ -145,8 +153,12 @@ export default {
   },
   success: function (text = '', duration, onclose) {
     const message = new YMessage()
+    const theme = window.localStorage.getItem('theme')
+
     message.timer && clearTimeout(message.timer)
     messageContent.appendChild(message)
+
+    message.theme = theme && theme === 'dark' ? theme : ''
     message.type = 'success'
     message.textContent = text
     message.show = true
@@ -158,8 +170,12 @@ export default {
   },
   danger: function (text = '', duration, onclose) {
     const message = new YMessage()
+    const theme = window.localStorage.getItem('theme')
+
     message.timer && clearTimeout(message.timer)
     messageContent.appendChild(message)
+
+    message.theme = theme && theme === 'dark' ? theme : ''
     message.type = 'danger'
     message.textContent = text
     message.show = true
@@ -171,8 +187,12 @@ export default {
   },
   warning: function (text = '', duration, onclose) {
     const message = new YMessage()
+    const theme = window.localStorage.getItem('theme')
+
     message.timer && clearTimeout(message.timer)
     messageContent.appendChild(message)
+
+    message.theme = theme && theme === 'dark' ? theme : ''
     message.type = 'warning'
     message.textContent = text
     message.show = true
@@ -184,8 +204,12 @@ export default {
   },
   show: function ({ text, duration, onclose, icon }) {
     const message = new YMessage()
+    const theme = window.localStorage.getItem('theme')
+
     message.timer && clearTimeout(message.timer)
     messageContent.appendChild(message)
+
+    message.theme = theme && theme === 'dark' ? theme : ''
     message.icon = icon
     message.textContent = text || ''
     message.show = true

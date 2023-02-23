@@ -3,7 +3,7 @@ import styles from './styles.js'
 // https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/Input
 export default class YInput extends HTMLElement {
   static get observedAttributes() {
-    return ['disabled', 'pattern', 'required', 'readonly', 'placeholder', 'rows']
+    return ['disabled', 'pattern', 'required', 'readonly', 'placeholder', 'rows', 'theme']
   }
 
   constructor() {
@@ -135,6 +135,18 @@ export default class YInput extends HTMLElement {
     return this.getAttribute('required') !== null
   }
 
+  get theme() {
+    return this.getAttribute('theme')
+  }
+
+  set theme(value) {
+    if (value) {
+      this.setAttribute('theme', value)
+    } else {
+      this.removeAttribute('theme')
+    }
+  }
+
   set required(value) {
     if (value === null || value === false) {
       this.removeAttribute('required')
@@ -238,6 +250,7 @@ export default class YInput extends HTMLElement {
     this.disabled = this.disabled
     this.pattern = this.pattern
     this.readonly = this.readonly
+    this.handleTheme()
   }
 
   disconnectedCallback() {
@@ -469,6 +482,12 @@ export default class YInput extends HTMLElement {
     }
 
     return icon
+  }
+
+  handleTheme() {
+    const theme = window.localStorage.getItem('theme')
+
+    this.theme = theme && theme === 'dark' ? theme : ''
   }
 }
 

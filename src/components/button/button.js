@@ -3,7 +3,7 @@ import styles from './styles.js'
 export default class YButton extends HTMLElement {
   /** 监听属性变化 */
   static get observedAttributes() {
-    return ['disabled', 'icon', 'loading', 'href', 'type']
+    return ['disabled', 'icon', 'loading', 'href', 'type', 'theme']
   }
 
   constructor() {
@@ -62,6 +62,18 @@ export default class YButton extends HTMLElement {
     return this.getAttribute('loading') !== null
   }
 
+  get theme() {
+    return this.getAttribute('theme')
+  }
+
+  set theme(value) {
+    if (value) {
+      this.setAttribute('theme', value)
+    } else {
+      this.removeAttribute('theme')
+    }
+  }
+
   set icon(value) {
     this.setAttribute('icon', value)
   }
@@ -105,6 +117,7 @@ export default class YButton extends HTMLElement {
     this.loading = this.loading
 
     this.setAttribute('sign', 'query')
+    this.handleTheme()
   }
 
   disconnectedCallback() {
@@ -160,6 +173,12 @@ export default class YButton extends HTMLElement {
     this.loadLoadingIconEle.setAttribute('name', 'loading-four')
     this.loadLoadingIconEle.style.color = 'inherit'
     this.loadLoadingIconEle.style.marginRight = '0.55rem'
+  }
+
+  handleTheme() {
+    const theme = window.localStorage.getItem('theme')
+
+    this.theme = theme && theme === 'dark' ? theme : ''
   }
 }
 

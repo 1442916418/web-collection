@@ -17,7 +17,12 @@
     "type": "git",
     "url": "git+https://github.com/1442916418/y-ui.git"
   },
-  "keywords": [],
+  "keywords": [
+    "Web Components",
+    "Neumorphism UI",
+    "Light Theme",
+    "Dark Theme"
+  ],
   "author": "yushuisheng",
   "license": "ISC",
   "bugs": {

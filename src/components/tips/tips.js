@@ -1,6 +1,10 @@
 import styles from './styles.js'
 
 export default class YTips extends HTMLElement {
+  static get observedAttributes() {
+    return ['theme']
+  }
+
   constructor() {
     super()
     const shadowRoot = this.attachShadow({ mode: 'open' })
@@ -30,6 +34,18 @@ export default class YTips extends HTMLElement {
 
   get show() {
     return this.getAttribute('show') !== null
+  }
+
+  get theme() {
+    return this.getAttribute('theme')
+  }
+
+  set theme(value) {
+    if (value) {
+      this.setAttribute('theme', value)
+    } else {
+      this.removeAttribute('theme')
+    }
   }
 
   set dir(value) {
@@ -82,6 +98,13 @@ export default class YTips extends HTMLElement {
     }
 
     this.setAttribute('sign', 'query')
+    this.handleTheme()
+  }
+
+  handleTheme() {
+    const theme = window.localStorage.getItem('theme')
+
+    this.theme = theme && theme === 'dark' ? theme : ''
   }
 }
 

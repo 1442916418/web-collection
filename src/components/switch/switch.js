@@ -34,6 +34,20 @@ export default class YSwitch extends HTMLElement {
     return this.getAttribute('size')
   }
 
+  get theme() {
+    return this.getAttribute('theme')
+  }
+
+  set theme(value) {
+    if (this.labelEle) {
+      if (value) {
+        this.labelEle.setAttribute('theme', value)
+      } else {
+        this.labelEle.removeAttribute('theme')
+      }
+    }
+  }
+
   set size(value) {
     this.setAttribute('size', value)
     this.labelEle.setAttribute('size', value)
@@ -73,6 +87,8 @@ export default class YSwitch extends HTMLElement {
 
     this.disabled = this.disabled
     this.checked = this.checked
+
+    this.handleTheme()
   }
 
   disconnectedCallback() {
@@ -164,6 +180,12 @@ export default class YSwitch extends HTMLElement {
         })
       )
     }
+  }
+
+  handleTheme() {
+    const theme = window.localStorage.getItem('theme')
+
+    this.theme = theme && theme === 'dark' ? theme : ''
   }
 }
 

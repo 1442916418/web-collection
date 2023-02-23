@@ -38,6 +38,20 @@ export default class YRadio extends HTMLElement {
     return this.getAttribute('value')
   }
 
+  get theme() {
+    return this.getAttribute('theme')
+  }
+
+  set theme(value) {
+    if (this.labelEle) {
+      if (value) {
+        this.labelEle.setAttribute('theme', value)
+      } else {
+        this.labelEle.removeAttribute('theme')
+      }
+    }
+  }
+
   set value(value) {
     this.setAttribute('value', value)
   }
@@ -77,6 +91,8 @@ export default class YRadio extends HTMLElement {
 
     this.disabled = this.disabled
     this.checked = this.checked
+
+    this.handleTheme()
   }
 
   disconnectedCallback() {
@@ -99,7 +115,7 @@ export default class YRadio extends HTMLElement {
       }
     }
     if (name === 'theme' && this.labelEle) {
-      if (newValue === null) {
+      if (newValue === null || newValue !== 'dark') {
         this.labelEle.removeAttribute('theme')
       } else {
         this.labelEle.setAttribute('theme', newValue)
@@ -138,6 +154,12 @@ export default class YRadio extends HTMLElement {
         }
       })
     )
+  }
+
+  handleTheme() {
+    const theme = window.localStorage.getItem('theme')
+
+    this.theme = theme && theme === 'dark' ? theme : ''
   }
 }
 

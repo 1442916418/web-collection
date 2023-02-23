@@ -14,3 +14,4 @@
   * [input](components/y-input.md)
   * [img](components/y-img.md)
   * [rate](components/y-rate.md)
+  * [form](components/y-form.md)

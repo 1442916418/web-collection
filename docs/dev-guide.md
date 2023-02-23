@@ -10,7 +10,7 @@ npm i
 
 ## 网站预览
 
-使用 `docsify` 启动，需要全局安装 [docsify](https://docsify.js.org)(推荐)
+使用 `docsify` 启动，需要全局安装 [docsify](https://docsify.js.org)  
 
 ```shell
 npm run docs
@@ -18,19 +18,23 @@ npm run docs
 
 ## 本地开发
 
-1. 编译 `sass`
+1.编译 `sass`
 
-    ```shell
-    npm run css
-    ```
+```shell
+npm run css
+```
 
-2. 配置 `css` 到组件中
+2.配置 `css` 到组件中
 
-    ```shell
-    npm run build
-    ```
+```shell
+npm run build
+```
 
-3. 启动，同 **网站预览**  
+3.启动，需要全局安装 [serve](https://www.npmjs.com/package/serve)
+
+```shell
+npm run serve
+```
 
 ## 添加新组件
 

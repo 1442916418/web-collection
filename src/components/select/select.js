@@ -2,7 +2,7 @@ import styles from './styles.js'
 
 export default class YSelect extends HTMLElement {
   static get observedAttributes() {
-    return ['disabled', 'multiple', 'name', 'size', 'placeholder', 'default-value', 'type']
+    return ['disabled', 'multiple', 'name', 'size', 'placeholder', 'default-value', 'type', 'theme']
   }
 
   constructor() {
@@ -80,6 +80,18 @@ export default class YSelect extends HTMLElement {
 
   get required() {
     return this.getAttribute('required') !== null
+  }
+
+  get theme() {
+    return this.getAttribute('theme')
+  }
+
+  set theme(value) {
+    if (value) {
+      this.setAttribute('theme', value)
+    } else {
+      this.removeAttribute('theme')
+    }
   }
 
   set type(value) {
@@ -243,6 +255,7 @@ export default class YSelect extends HTMLElement {
 
     this.handleDefaultValue(this.defaultValue)
     this.setAttribute('sign', 'query')
+    this.handleTheme()
   }
 
   disconnectedCallback() {
@@ -436,6 +449,12 @@ export default class YSelect extends HTMLElement {
     if (find) {
       this.value = { label: find.label, value: find.value }
     }
+  }
+
+  handleTheme() {
+    const theme = window.localStorage.getItem('theme')
+
+    this.theme = theme && theme === 'dark' ? theme : ''
   }
 }
 

@@ -36,6 +36,14 @@ export default class YTab extends HTMLElement {
     return this.getAttribute('size')
   }
 
+  set theme(value) {
+    if (value) {
+      this.setAttribute('theme', value)
+    } else {
+      this.removeAttribute('theme')
+    }
+  }
+
   set size(value) {
     this.setAttribute('size', value)
   }
@@ -61,6 +69,8 @@ export default class YTab extends HTMLElement {
     this.slotsEle.addEventListener('slotchange', this.slotsChange)
     this.navEle.addEventListener('click', this.navClick)
     this.navEle.addEventListener('keydown', this.navKeydown)
+
+    this.handleTheme()
   }
 
   attributeChangedCallback(name, oldValue, newValue) {
@@ -213,6 +223,12 @@ export default class YTab extends HTMLElement {
     if (index < 0 && cur.previousElementSibling) {
       this.activeKey = cur.previousElementSibling.dataset.key
     }
+  }
+
+  handleTheme() {
+    const theme = window.localStorage.getItem('theme')
+
+    this.theme = theme && theme === 'dark' ? theme : ''
   }
 }
 

@@ -68,7 +68,7 @@ class YDialog extends HTMLElement {
   }
 
   set theme(value) {
-    this.handleTheme(value)
+    this.handleSetTheme(value)
   }
 
   set size(value) {
@@ -133,6 +133,8 @@ class YDialog extends HTMLElement {
     if (this.portal && this.portal !== this.parentNode) {
       this.portal.appendChild(this)
     }
+
+    this.handleTheme()
   }
 
   disconnectedCallback() {
@@ -242,8 +244,8 @@ class YDialog extends HTMLElement {
     }
   }
 
-  handleTheme(value) {
-    if (!value || value === 'null') {
+  handleSetTheme(value) {
+    if (!value || value === 'light') {
       this.removeAttribute('theme')
       this.btnCloseEle && this.btnCloseEle.removeAttribute('theme')
       this.btnCancelEle && this.btnCancelEle.removeAttribute('theme')
@@ -254,6 +256,12 @@ class YDialog extends HTMLElement {
       this.btnCancelEle && this.btnCancelEle.setAttribute('theme', value)
       this.btnSubmitEle && this.btnSubmitEle.setAttribute('theme', value)
     }
+  }
+
+  handleTheme() {
+    const theme = window.localStorage.getItem('theme')
+
+    this.theme = theme && theme === 'dark' ? theme : ''
   }
 }
 
@@ -272,7 +280,7 @@ export default {
     if (typeof arguments[0] === 'object') {
       const { title, confirmText, content, ok, size, theme } = arguments[0]
       dialog.size = size || ''
-      dialog.theme = theme ? theme : !storeTheme || storeTheme === 'null' ? '' : storeTheme
+      dialog.theme = theme ? theme : !storeTheme || storeTheme === 'light' ? '' : storeTheme
       dialog.title = title || 'Alert'
       dialog['confirm-text'] = confirmText || '确 定'
       dialog.onsubmit = ok || null
@@ -283,7 +291,7 @@ export default {
       dialog.innerHTML = arguments[0] || ''
       dialog.onsubmit = arguments[1] || null
       dialog.size = arguments[2] || ''
-      dialog.theme = arguments[3] ? arguments[3] : !storeTheme || storeTheme === 'null' ? '' : storeTheme
+      dialog.theme = arguments[3] ? arguments[3] : !storeTheme || storeTheme === 'light' ? '' : storeTheme
     }
 
     dialog.open = true
@@ -301,7 +309,7 @@ export default {
     if (typeof arguments[0] === 'object') {
       const { title, confirmText, content, ok, size, theme } = arguments[0]
       dialog.size = size || ''
-      dialog.theme = theme ? theme : !storeTheme || storeTheme === 'null' ? '' : storeTheme
+      dialog.theme = theme ? theme : !storeTheme || storeTheme === 'light' ? '' : storeTheme
       dialog.title = title || 'Info'
       dialog['confirm-text'] = confirmText || '知道了'
       dialog.onsubmit = ok || null
@@ -312,7 +320,7 @@ export default {
       dialog.innerHTML = arguments[0] || ''
       dialog.onsubmit = arguments[1] || null
       dialog.size = arguments[2] || ''
-      dialog.theme = arguments[3] ? arguments[3] : !storeTheme || storeTheme === 'null' ? '' : storeTheme
+      dialog.theme = arguments[3] ? arguments[3] : !storeTheme || storeTheme === 'light' ? '' : storeTheme
     }
 
     dialog.open = true
@@ -330,7 +338,7 @@ export default {
     if (typeof arguments[0] === 'object') {
       const { title, confirmText, content, ok, size, theme } = arguments[0]
       dialog.size = size || ''
-      dialog.theme = theme ? theme : !storeTheme || storeTheme === 'null' ? '' : storeTheme
+      dialog.theme = theme ? theme : !storeTheme || storeTheme === 'light' ? '' : storeTheme
       dialog.title = title || 'Success'
       dialog['confirm-text'] = confirmText || '知道了'
       dialog.onsubmit = ok || null
@@ -341,7 +349,7 @@ export default {
       dialog.innerHTML = arguments[0] || ''
       dialog.onsubmit = arguments[1] || null
       dialog.size = arguments[2] || ''
-      dialog.theme = arguments[3] ? arguments[3] : !storeTheme || storeTheme === 'null' ? '' : storeTheme
+      dialog.theme = arguments[3] ? arguments[3] : !storeTheme || storeTheme === 'light' ? '' : storeTheme
     }
 
     dialog.open = true
@@ -359,7 +367,7 @@ export default {
     if (typeof arguments[0] === 'object') {
       const { title, confirmText, content, ok, size, theme } = arguments[0]
       dialog.size = size || ''
-      dialog.theme = theme ? theme : !storeTheme || storeTheme === 'null' ? '' : storeTheme
+      dialog.theme = theme ? theme : !storeTheme || storeTheme === 'light' ? '' : storeTheme
       dialog.title = title || 'Danger'
       dialog['confirm-text'] = confirmText || '知道了'
       dialog.onsubmit = ok || null
@@ -370,7 +378,7 @@ export default {
       dialog.innerHTML = arguments[0] || ''
       dialog.onsubmit = arguments[1] || null
       dialog.size = arguments[2] || ''
-      dialog.theme = arguments[3] ? arguments[3] : !storeTheme || storeTheme === 'null' ? '' : storeTheme
+      dialog.theme = arguments[3] ? arguments[3] : !storeTheme || storeTheme === 'light' ? '' : storeTheme
     }
     dialog.open = true
 
@@ -387,7 +395,7 @@ export default {
     if (typeof arguments[0] === 'object') {
       const { title, confirmText, content, ok, size, theme } = arguments[0]
       dialog.size = size || ''
-      dialog.theme = theme ? theme : !storeTheme || storeTheme === 'null' ? '' : storeTheme
+      dialog.theme = theme ? theme : !storeTheme || storeTheme === 'light' ? '' : storeTheme
       dialog.title = title || 'Warning'
       dialog['confirm-text'] = confirmText || '知道了'
       dialog.onsubmit = ok || null
@@ -398,7 +406,7 @@ export default {
       dialog.innerHTML = arguments[0] || ''
       dialog.onsubmit = arguments[1] || null
       dialog.size = arguments[2] || ''
-      dialog.theme = arguments[3] ? arguments[3] : !storeTheme || storeTheme === 'null' ? '' : storeTheme
+      dialog.theme = arguments[3] ? arguments[3] : !storeTheme || storeTheme === 'light' ? '' : storeTheme
     }
 
     dialog.open = true
@@ -416,7 +424,7 @@ export default {
     if (typeof arguments[0] === 'object') {
       const { type, title, content, confirmText, cancelText, ok, cancel, size, theme } = arguments[0]
       dialog.size = size || ''
-      dialog.theme = theme ? theme : !storeTheme || storeTheme === 'null' ? '' : storeTheme
+      dialog.theme = theme ? theme : !storeTheme || storeTheme === 'light' ? '' : storeTheme
       dialog.type = type || 'confirm'
       dialog.title = title || 'Confirm'
       dialog['confirm-text'] = confirmText || '确 定'
@@ -433,7 +441,7 @@ export default {
       dialog.onsubmit = arguments[1] || null
       dialog.oncancel = arguments[2] || null
       dialog.size = arguments[2] || ''
-      dialog.theme = arguments[3] ? arguments[3] : !storeTheme || storeTheme === 'null' ? '' : storeTheme
+      dialog.theme = arguments[3] ? arguments[3] : !storeTheme || storeTheme === 'light' ? '' : storeTheme
     }
 
     dialog.open = true
