@@ -1,0 +1,29 @@
+/*! -form */
+
+:host {
+  display: block;
+}
+
+form {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  grid-gap: $form-gap;
+  align-items: center;
+  justify-items: end;
+}
+
+:host([mode-type='full']) form {
+  grid-template-columns: 1fr;
+  justify-items: start;
+}
+
+:host([mode-type='none']) form {
+  display: contents;
+}
+
+:host(:not([model-type='full'])) ::slotted(:not(y-form-item)) {
+  justify-self: stretch;
+  grid-column: span 2;
+}
+
+/*! form- */

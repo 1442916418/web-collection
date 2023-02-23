@@ -8,7 +8,7 @@
     "serve": "serve src",
     "docs": "docsify serve docs",
     "build": "cross-env RUN_TYPE=BUILD nodemon --watch .temp/css/neumorphism.css run.js",
-    "new": "cross-env RUN_TYPE=NEW FILE_NAME=checkbox-group node run.js",
+    "new": "cross-env RUN_TYPE=NEW FILE_NAME=form-item node run.js",
     "release:patch": "npm version patch && npm publish",
     "release:minor": "npm version minor && npm publish",
     "release:major": "npm version major && npm publish"

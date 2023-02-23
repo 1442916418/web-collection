@@ -1,0 +1,13 @@
+@mixin form-item-variant($type, $background) {
+  $--color: color-yiq($background);
+
+  @if $type == 'primary' {
+    label {
+      color: $--color;
+    }
+  } @else {
+    :host([theme='#{$type}']) label {
+      color: $--color;
+    }
+  }
+}

@@ -1,6 +1,7 @@
 import styles from './styles.js'
 
 // TODO: 主题！！！
+// TODO: css 变量，各个组件初始化主题
 export default class YTheme extends HTMLElement {
   static get observedAttributes() {
     return ['dev']

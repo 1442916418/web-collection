@@ -1,0 +1,19 @@
+/*! -form-item */
+
+:host {
+  display: contents;
+}
+
+label.is-required:not(:empty)::before {
+  content: '*';
+  color: $pink;
+}
+
+.form-item {
+  justify-self: stretch;
+}
+
+@each $color, $value in $theme-colors {
+  @include form-item-variant($color, $value);
+}
+/*! form-item- */
