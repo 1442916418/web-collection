@@ -45,7 +45,6 @@ jspm_packages/
 
 # Output of 'npm pack'
 *.tgz
-*.zip
 
 # Yarn Integrity file
 .yarn-integrity
@@ -113,4 +112,4 @@ server/environment
 .temp
 
 # Styles
-src/components/**/styles.js
+ui-library/y-ui/src/components/**/styles.js
