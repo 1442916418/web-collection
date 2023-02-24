@@ -446,6 +446,10 @@
     {
       "packageName": "@yushuisheng/y-ui",
       "projectFolder": "ui-library/y-ui"
+    },
+    {
+      "packageName": "@yushuisheng/y-css",
+      "projectFolder": "ui-library/y-css"
     }
   ]
 }

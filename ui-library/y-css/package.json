@@ -1,0 +1,48 @@
+{
+  "name": "@yushuisheng/y-css",
+  "version": "1.0.0",
+  "description": "CSS 库",
+  "main": "src/index.js",
+  "scripts": {
+    "css": "gulp",
+    "release:patch": "npm version patch && npm publish",
+    "release:minor": "npm version minor && npm publish",
+    "release:major": "npm version major && npm publish"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/1442916418/ui-collection.git"
+  },
+  "keywords": [
+    "CSS"
+  ],
+  "author": "yushuisheng",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/1442916418/ui-collection/issues"
+  },
+  "homepage": "https://github.com/1442916418/ui-collection#readme",
+  "files": [],
+  "devDependencies": {
+    "browser-sync": "^2.27.4",
+    "cross-env": "^7.0.3",
+    "del": "^6.0.0",
+    "gulp": "^4.0.2",
+    "gulp-autoprefixer": "^8.0.0",
+    "gulp-clean-css": "^4.3.0",
+    "gulp-cssbeautify": "^3.0.0",
+    "gulp-file-include": "^2.3.0",
+    "gulp-header": "^2.0.9",
+    "gulp-htmlmin": "^5.0.1",
+    "gulp-npm-dist": "^1.0.3",
+    "gulp-plumber": "^1.2.1",
+    "gulp-rename": "^2.0.0",
+    "gulp-sass": "^5.0.0",
+    "gulp-sourcemaps": "^3.0.0",
+    "gulp-uglify": "^3.0.2",
+    "gulp-wait": "^0.0.2",
+    "merge-stream": "^2.0.0",
+    "node-sass": "^6.0.1",
+    "nodemon": "^2.0.20"
+  }
+}
