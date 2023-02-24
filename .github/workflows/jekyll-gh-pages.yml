@@ -1,0 +1,17 @@
+name: docs
+
+on:
+  # 在默认分支为目标的推送上运行
+  push:
+    branches: ["main"]
+
+jobs:
+  bump:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@master
+    - uses: tool3/docsify-action@master
+      with:
+        dir: ui-library/y-ui/docs
+        branch: main
+        github_token: ${{ secrets.GP_TOKEN }}
