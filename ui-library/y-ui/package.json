@@ -15,7 +15,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/1442916418/y-ui.git"
+    "url": "git+https://github.com/1442916418/ui-collection.git"
   },
   "keywords": [
     "Web Components",
@@ -26,9 +26,9 @@
   "author": "yushuisheng",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/1442916418/y-ui/issues"
+    "url": "https://github.com/1442916418/ui-collection/issues"
   },
-  "homepage": "https://github.com/1442916418/y-ui#readme",
+  "homepage": "https://github.com/1442916418/ui-collection#readme",
   "files": [
     "src/index.js",
     "src/components"
