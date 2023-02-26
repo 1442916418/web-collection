@@ -1,30 +1,20 @@
-// Global settings
-$enable-caret: true;
-$enable-rounded: true;
-$enable-shadows: true;
-$enable-gradients: false;
-$enable-transitions: true;
-$enable-grid-classes: true;
-$enable-print-styles: true;
-
-// Color scheme
 $default: #262833;
 $primary: #e6e7ee;
 $secondary: #2d4cc8;
 
-// Generic colors
-$blue: #0056b3;
+// 通用颜色
+$blue: #409eff;
 $indigo: #6610f2;
 $purple: #6f42c1;
 $pink: #e83e8c;
-$red: #a91e2c;
+$red: #f56c6c;
 $orange: #fd7e14;
-$yellow: #f0b400;
-$green: #18634b;
+$yellow: #e6a23c;
+$green: #67c23a;
 $teal: #0056b3;
 $cyan: #17a2b8;
 
-// Shades of grey
+// 灰色
 $white: #ecf0f3;
 $gray-100: #f3f7fa;
 $gray-200: #fafbfe;
@@ -54,17 +44,18 @@ $grays: map-merge(
   $grays
 );
 
-// Main color variables
+// 主要颜色变量
 $success: $green;
-$info: $teal;
+$info: #909399;
 $warning: $yellow;
 $danger: $red;
 $gray: $gray-900;
 $light: $gray-400;
 $soft: $gray-300;
 $dark: $dark;
+$confirm: $blue;
 
-// Theme colors
+// 主题色
 $theme-colors: ();
 $theme-colors: map-merge(
   (
@@ -77,31 +68,20 @@ $theme-colors: map-merge(
 $icon-types: ();
 $icon-types: map-merge(
   (
-    'info': #909399,
-    'success': #67c23a,
-    'danger': #f56c6c,
-    'warning': #e6a23c,
-    'confirm': #409eff
+    'info': $info,
+    'success': $success,
+    'danger': $danger,
+    'warning': $warning,
+    'confirm': $confirm
   ),
   $icon-types
 );
 
-$yiq-contrasted-threshold: 200;
-$yiq-text-dark: $dark;
-
 $line-height-base: 1.5 !default;
 
-// Image Path
-$path--rel: '/img';
-
-// Body
-$body-bg: $soft;
-$body-color: $gray-900;
-
-// Shadows
+// 阴影
 $shadow-inset: inset 2px 2px 5px #b8b9be, inset -3px -3px 7px #ffffff;
 $shadow-dark-inset: inset 2px 2px 5px #14151e, inset -3px -3px 7px #4e5378;
-$box-shadow-soft: 6px 6px 12px #b8b9be, -6px -6px 12px #ffffff;
 $box-shadow-primary: 3px 3px 6px #b8b9be, -3px -3px 6px #ffffff;
 $box-shadow-dark: 3px 3px 6px #14151e, -3px -3px 6px #4e5378;
 
@@ -116,46 +96,28 @@ $theme-box-shadow: map-merge(
   $theme-box-shadow
 );
 
-// Sections
-$section-colors: ();
-$section-colors: map-merge(
-  (
-    'primary': $primary,
-    'secondary': $secondary,
-    'gray': $gray-400,
-    'white': $white,
-    'dark': $dark,
-    'black': $black
-  ),
-  $section-colors
-);
-
-// Links
-$link-color: $dark;
-$link-decoration: none;
-$link-hover-color: $black;
-$link-hover-decoration: none;
-
-// Grid breakpoints
+// 网格断点
 $grid-breakpoints: (
-  xs: 0,
-  sm: 576px,
+  sm: 640px,
   md: 768px,
-  lg: 992px,
-  xl: 1200px
+  lg: 1024px,
+  xl: 1280px,
+  xxl: 1536px
 );
 
-// Grid containers
+// 网格区域
 //
-// Define the maximum width of `.container` for different screen sizes.
+// 为不同的屏幕大小定义 .container 的最大宽度
+// https://www.tailwindcss.cn/docs/responsive-design
 $container-max-widths: (
-  sm: 540px,
-  md: 720px,
-  lg: 960px,
-  xl: 1140px
+  sm: 610px,
+  md: 730px,
+  lg: 990px,
+  xl: 1250px,
+  xxl: 1500px
 );
 
-// Spacing
+// 间隔
 $spacer: 1rem;
 
 $spacers: ();
@@ -187,12 +149,15 @@ $spacers: map-merge(
     ),
     'xl': (
       $spacer * 8
+    ),
+    'xxl': (
+      $spacer * 10
     )
   ),
   $spacers
 );
 
-// This variable affects the `.h-*` and `.w-*` classes.
+// 此变量影响 .h-* 和 .w-* 类
 
 $sizes: ();
 $sizes: map-merge(
@@ -209,18 +174,21 @@ $sizes: map-merge(
 // Components
 
 $border-width: 0.0625rem;
+$border-width-sm: 0.125rem;
 $border-width-md: 0.125rem;
 $border-width-lg: 0.25rem;
 $border-width-xl: 0.375rem;
+$border-width-xxl: 0.5rem;
 $border-color-white: $white;
 $border-color: $gray-200;
 $border-color-transparent: transparent;
 
 $border-radius: 0.55rem;
-$border-radius-xl: 0.95rem;
-$border-radius-lg: 0.3rem;
-$border-radius-md: 0.2rem;
 $border-radius-sm: 0.1rem;
+$border-radius-md: 0.2rem;
+$border-radius-lg: 0.3rem;
+$border-radius-xl: 0.95rem;
+$border-radius-xxl: 0.95rem;
 $border-radius-pill: 2rem;
 $circle-radius: 50%;
 $organic-radius: 63% 37% 30% 70% / 50% 45% 55% 50%;
@@ -252,17 +220,14 @@ $icon-size-sm: 1.75rem;
 $icon-size-lg: 3rem;
 
 // Fonts
-$fontawesome-webfonts-path: '../vendor/font-awesome/webfonts';
-$font-family-base: 'Nunito Sans', sans-serif;
-$font-family-headers: 'Nunito Sans', sans-serif;
-$font-awesome-5: 'Font Awesome 5 Free';
-$font-size-base: 1rem; // Assumes the browser default, typically `16px`
-$font-size-xxl: ($font-size-base * 2);
-$font-size-xl: ($font-size-base * 1.5);
-$font-size-lg: ($font-size-base * 1.25);
+//
+// 假定浏览器默认值，通常为 16px
+$font-size-base: 1rem;
 $font-size-sm: ($font-size-base * 0.875);
-$font-size-xs: ($font-size-base * 0.75);
 $font-size-md: $font-size-base * 0.1 !default;
+$font-size-lg: ($font-size-base * 1.25);
+$font-size-xl: ($font-size-base * 1.5);
+$font-size-xxl: ($font-size-base * 2);
 
 $font-weight-light: 300;
 $font-weight-normal: 400;
@@ -272,7 +237,7 @@ $font-weight-bolder: 700;
 $font-weight-base: $font-weight-light;
 $shape-height-base: 1.5;
 
-$h1-font-size: $font-size-base * 2.5; //2.1875rem
+$h1-font-size: $font-size-base * 2.5;
 $h2-font-size: $font-size-base * 2;
 $h3-font-size: $font-size-base * 1.75;
 $h4-font-size: $font-size-base * 1.5;
@@ -299,66 +264,6 @@ $heading-section-letter-spacing: 0.025em;
 $heading-section-font-size: 1.375rem;
 $heading-section-font-weight: $font-weight-bold;
 $heading-section-text-transform: uppercase;
-
-// Inputs
-
-$input-btn-padding-y: 0.55rem;
-$input-btn-padding-x: 0.75rem;
-$input-btn-line-height: 1.5;
-
-$input-btn-focus-width: 0;
-$input-btn-focus-color: rgba($component-active-bg, 1);
-$input-btn-focus-box-shadow: none;
-
-$input-btn-padding-y-sm: 0.45rem;
-$input-btn-padding-x-sm: 0.5rem;
-$input-btn-line-height-sm: 1.5;
-
-$input-btn-padding-y-lg: 0.875rem;
-$input-btn-padding-x-lg: 1rem;
-$input-btn-line-height-lg: 1.5;
-
-$input-font-size-sm: 0.875rem;
-$input-font-size: 1rem;
-$input-font-size-lg: 1.25rem;
-
-$input-bg: $primary;
-
-// Buttons
-$btn-gap: 0.25rem;
-
-$btn-loading-margin-y: $input-btn-padding-y;
-
-$btn-padding-y: $input-btn-padding-y;
-$btn-padding-x: $input-btn-padding-x + 0.2;
-$btn-line-height: $input-btn-line-height;
-
-$btn-padding-y-sm: $input-btn-padding-y-sm;
-$btn-padding-x-sm: $input-btn-padding-x-sm;
-$btn-line-height-sm: $input-btn-line-height-sm;
-
-$btn-padding-y-lg: $input-btn-padding-y-lg;
-$btn-padding-x-lg: $input-btn-padding-x-lg;
-$btn-line-height-lg: $input-btn-line-height-lg;
-
-$btn-border-width: $border-width;
-
-$btn-font-size: $font-size-base;
-$btn-font-weight: $font-weight-normal;
-$btn-text-transform: uppercase;
-$btn-letter-spacing: 0.025em;
-$btn-focus-width: $border-width;
-$btn-focus-box-shadow: $shadow-inset;
-$btn-active-box-shadow: $shadow-inset;
-
-$btn-link-disabled-color: $gray-600 !default;
-
-$btn-transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out, border-color 0.15s ease-in-out,
-  box-shadow 0.15s ease-in-out !default;
-
-// Customize the light and dark text colors for use in our YIQ color contrast function.
-$yiq-text-dark: $gray-900 !default;
-$yiq-text-light: $white !default;
 
 // Theme sizes
 $theme-sizes: ();
