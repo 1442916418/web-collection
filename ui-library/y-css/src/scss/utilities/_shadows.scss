@@ -3,9 +3,7 @@
  */
 
 [class*='shadow'] {
-  @if $enable-transitions {
-    transition: $transition-base;
-  }
+  transition: $transition-base;
 }
 
 // stylelint-disable declaration-no-important

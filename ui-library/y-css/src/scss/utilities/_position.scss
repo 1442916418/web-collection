@@ -2,7 +2,10 @@
  * = Spacing
  */
 
-@each $size, $value in $spacers {
+@for $i from 0 through 10 {
+  $size: $i;
+  $value: $spacer * $i;
+
   .top-#{$size} {
     top: $value;
   }

@@ -1,83 +1,84 @@
-/**
- * = Spacing grids
- */
+// stylelint-disable declaration-no-important
 
-.row.row-grid > [class*='col-'] + [class*='col-'] {
-  margin-top: 3rem;
-}
+// Margin and Padding
 
 @each $breakpoint in map-keys($grid-breakpoints) {
   @include media-breakpoint-up($breakpoint) {
-    .row.row-grid > [class*='col-#{$breakpoint}-'] + [class*='col-#{$breakpoint}-'] {
-      margin-top: 0;
-    }
-  }
-}
+    $infix: breakpoint-infix($breakpoint, $grid-breakpoints);
 
-.row-grid + .row-grid {
-  margin-top: 3rem;
-}
+    @each $prop, $abbrev in (margin: m, padding: p) {
+      @for $i from 0 through 10 {
+        $size: $i;
+        $length: $spacer * $i;
 
-// Negative margins and paddings
-@media (min-width: 992px) {
-  [class*='mt--'],
-  [class*='mr--'],
-  [class*='mb--'],
-  [class*='ml--'] {
-    position: relative;
-    z-index: 5;
-  }
+        .#{$abbrev}#{$infix}-#{$size} {
+          #{$prop}: $length !important;
+        }
+        .#{$abbrev}t#{$infix}-#{$size},
+        .#{$abbrev}y#{$infix}-#{$size} {
+          #{$prop}-top: $length !important;
+        }
+        .#{$abbrev}r#{$infix}-#{$size},
+        .#{$abbrev}x#{$infix}-#{$size} {
+          #{$prop}-right: $length !important;
+        }
+        .#{$abbrev}b#{$infix}-#{$size},
+        .#{$abbrev}y#{$infix}-#{$size} {
+          #{$prop}-bottom: $length !important;
+        }
+        .#{$abbrev}l#{$infix}-#{$size},
+        .#{$abbrev}x#{$infix}-#{$size} {
+          #{$prop}-left: $length !important;
+        }
+      }
+    }
 
-  // change this value to update the generated classes
-  // if you add 20, classes will be .mt-20, pl-40, pb-20 and so on
-  $mp-increment: 50;
-  $nr-increments: 13;
+    @for $i from 0 through 10 {
+      $size: $i;
+      $length: $spacer * $i;
 
-  // Negative margins in pixels
-  @for $nr from 1 to $nr-increments {
-    .mt--#{$nr*$mp-increment} {
-      margin-top: -#{$nr * $mp-increment}px !important;
+      @if $size != 0 {
+        .m#{$infix}-n#{$size} {
+          margin: -$length !important;
+        }
+        .mt#{$infix}-n#{$size},
+        .my#{$infix}-n#{$size} {
+          margin-top: -$length !important;
+        }
+        .mr#{$infix}-n#{$size},
+        .mx#{$infix}-n#{$size} {
+          margin-right: -$length !important;
+        }
+        .mb#{$infix}-n#{$size},
+        .my#{$infix}-n#{$size} {
+          margin-bottom: -$length !important;
+        }
+        .ml#{$infix}-n#{$size},
+        .mx#{$infix}-n#{$size} {
+          margin-left: -$length !important;
+        }
+      }
     }
-    .mr--#{$nr*$mp-increment} {
-      margin-right: -#{$nr * $mp-increment}px !important;
-    }
-    .mb--#{$nr*$mp-increment} {
-      margin-bottom: -#{$nr * $mp-increment}px !important;
-    }
-    .ml--#{$nr*$mp-increment} {
-      margin-left: -#{$nr * $mp-increment}px !important;
-    }
-  }
 
-  // Margins in pixels
-  @for $nr from 1 to $nr-increments {
-    .mt-#{$nr*$mp-increment} {
-      margin-top: #{$nr * $mp-increment}px !important;
+    // Some special margin utils
+    .m#{$infix}-auto {
+      margin: auto !important;
     }
-    .mr-#{$nr*$mp-increment} {
-      margin-right: #{$nr * $mp-increment}px !important;
+    .mt#{$infix}-auto,
+    .my#{$infix}-auto {
+      margin-top: auto !important;
     }
-    .mb-#{$nr*$mp-increment} {
-      margin-bottom: #{$nr * $mp-increment}px !important;
+    .mr#{$infix}-auto,
+    .mx#{$infix}-auto {
+      margin-right: auto !important;
     }
-    .ml-#{$nr*$mp-increment} {
-      margin-left: #{$nr * $mp-increment}px !important;
+    .mb#{$infix}-auto,
+    .my#{$infix}-auto {
+      margin-bottom: auto !important;
     }
-  }
-
-  // Paddings in pixels
-  @for $nr from 1 to $nr-increments {
-    .pt-#{$nr*$mp-increment} {
-      padding-top: #{$nr * $mp-increment}px !important;
-    }
-    .pr-#{$nr*$mp-increment} {
-      padding-right: #{$nr * $mp-increment}px !important;
-    }
-    .pb-#{$nr*$mp-increment} {
-      padding-bottom: #{$nr * $mp-increment}px !important;
-    }
-    .pl-#{$nr*$mp-increment} {
-      padding-left: #{$nr * $mp-increment}px !important;
+    .ml#{$infix}-auto,
+    .mx#{$infix}-auto {
+      margin-left: auto !important;
     }
   }
 }

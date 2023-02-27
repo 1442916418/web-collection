@@ -1,0 +1,13 @@
+{
+  "version": "2.0.0",
+  "tasks": [
+    {
+      "type": "npm",
+      "script": "css",
+      "path": "ui-library/y-css",
+      "problemMatcher": [],
+      "label": "npm: css - ui-library/y-css",
+      "detail": "gulp"
+    }
+  ]
+}

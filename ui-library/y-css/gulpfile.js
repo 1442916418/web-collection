@@ -33,19 +33,21 @@ const paths = {
 }
 
 gulp.task('scss', function () {
-  return gulp
-    .src([paths.src.scss + '/**/*.scss'])
-    .pipe(wait(500))
-    .pipe(sass().on('error', sass.logError))
-    .pipe(
-      autoprefixer({
-        cascade: true,
-        overrideBrowserslist: ['> 1%']
-      })
-    )
-    .pipe(cleanCss())
-    .pipe(gulp.dest(paths.temp.css))
-    .pipe(browserSync.stream())
+  return (
+    gulp
+      .src([paths.src.scss + '/**/*.scss'])
+      .pipe(wait(500))
+      .pipe(sass().on('error', sass.logError))
+      .pipe(
+        autoprefixer({
+          cascade: true,
+          overrideBrowserslist: ['> 1%']
+        })
+      )
+      // .pipe(cleanCss())
+      .pipe(gulp.dest(paths.temp.css))
+      .pipe(browserSync.stream())
+  )
 })
 
 gulp.task(

@@ -1,27 +1,3 @@
-// Retrieve color Sass maps
-
-@function section-color($key: 'primary') {
-  @return map-get($section-colors, $key);
-}
-
-// Lines colors
-
-@function shapes-primary-color($key: 'step-1-gradient-bg') {
-  @return map-get($shapes-primary-colors, $key);
-}
-
-@function shapes-default-color($key: 'step-1-gradient-bg') {
-  @return map-get($shapes-default-colors, $key);
-}
-
-@function lines-light-color($key: 'step-1-gradient-bg') {
-  @return map-get($shapes-light-colors, $key);
-}
-
-@function shapes-dark-color($key: 'step-1-gradient-bg') {
-  @return map-get($shapes-dark-colors, $key);
-}
-
 // Bootstrap functions
 //
 // Utility mixins and functions for evaluating source code across our variables, maps, and mixins.
@@ -54,34 +30,15 @@
   }
 }
 
-// Replace `$search` with `$replace` in `$string`
-// Used on our SVG icon backgrounds for custom forms.
-//
-// @author Hugo Giraudel
-// @param {String} $string - Initial string
-// @param {String} $search - Substring to replace
-// @param {String} $replace ('') - New value
-// @return {String} - Updated string
-@function str-replace($string, $search, $replace: '') {
-  $index: str-index($string, $search);
-
-  @if $index {
-    @return str-slice($string, 1, $index - 1) + $replace +
-      str-replace(str-slice($string, $index + str-length($search)), $search, $replace);
-  }
-
-  @return $string;
-}
-
-// Color contrast
-@function color-yiq($color, $dark: $yiq-text-dark, $light: $yiq-text-light) {
+// 颜色对比
+@function color-contrast($color, $dark: $yiq-text-dark, $light: $yiq-text-light) {
   $r: red($color);
   $g: green($color);
   $b: blue($color);
 
   $yiq: (($r * 299) + ($g * 587) + ($b * 114)) / 1000;
 
-  @if ($yiq >= $yiq-contrasted-threshold) {
+  @if ($yiq >= $contrasted-threshold) {
     @return $dark;
   } @else {
     @return $light;
