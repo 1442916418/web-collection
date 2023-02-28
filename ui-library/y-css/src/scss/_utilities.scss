@@ -1,3 +1,4 @@
+@import 'utilities/display';
 @import 'utilities/floating';
 @import 'utilities/helper';
 @import 'utilities/position';
@@ -5,5 +6,7 @@
 @import 'utilities/spacing';
 @import 'utilities/shadows';
 @import 'utilities/text';
-@import 'utilities/transform';
-@import 'utilities/animations';
+// @import 'utilities/transform';
+// @import 'utilities/animations';
+@import 'utilities/flex';
+@import 'utilities/grid';

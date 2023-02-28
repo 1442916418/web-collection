@@ -141,7 +141,6 @@ $grid-breakpoints: (
 // 网格区域
 //
 // 为不同的屏幕大小定义 .container 的最大宽度
-// https://www.tailwindcss.cn/docs/responsive-design
 $container-max-widths: (
   sm: 540px,
   md: 720px,
@@ -165,6 +164,13 @@ $sizes: map-merge(
   ),
   $sizes
 );
+
+// Grid columns
+//
+// Set the number of columns and specify the width of the gutters.
+
+$grid-columns: 12 !default;
+$grid-gutter-width: 1.5rem !default;
 
 // Components
 

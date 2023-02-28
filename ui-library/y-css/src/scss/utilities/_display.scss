@@ -1,0 +1,9 @@
+//
+// Utilities for common `display` values
+//
+
+@each $value in $displays {
+  .#{$value} {
+    display: $value !important;
+  }
+}

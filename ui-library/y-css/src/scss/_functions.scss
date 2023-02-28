@@ -80,3 +80,21 @@
 @function box-shadow($key: 'primary') {
   @return map-get($theme-box-shadow, $key);
 }
+
+@function spacer-value($infix, $value, $default-spacer: $spacer) {
+  @if $value == 0 {
+    @return 0;
+  }
+
+  @if $infix == '' {
+    @return ($default-spacer * 0.5) * $value;
+  } @else if $infix == '-sm' {
+    @return ($default-spacer * 1) * $value;
+  } @else if $infix == '-md' {
+    @return ($default-spacer * 1.5) * $value;
+  } @else if $infix == '-lg' {
+    @return ($default-spacer * 2) * $value;
+  } @else if $infix == '-xl' {
+    @return ($default-spacer * 2.5) * $value;
+  }
+}

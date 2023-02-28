@@ -1,5 +1,3 @@
-// stylelint-disable declaration-no-important
-
 // Margin and Padding
 
 @each $breakpoint in map-keys($grid-breakpoints) {
@@ -8,53 +6,51 @@
 
     @each $prop, $abbrev in (margin: m, padding: p) {
       @for $i from 0 through 10 {
-        $size: $i;
-        $length: $spacer * $i;
+        $length: spacer-value($infix, $i);
 
-        .#{$abbrev}#{$infix}-#{$size} {
+        .#{$abbrev}#{$infix}-#{$i} {
           #{$prop}: $length !important;
         }
-        .#{$abbrev}t#{$infix}-#{$size},
-        .#{$abbrev}y#{$infix}-#{$size} {
+        .#{$abbrev}t#{$infix}-#{$i},
+        .#{$abbrev}y#{$infix}-#{$i} {
           #{$prop}-top: $length !important;
         }
-        .#{$abbrev}r#{$infix}-#{$size},
-        .#{$abbrev}x#{$infix}-#{$size} {
+        .#{$abbrev}r#{$infix}-#{$i},
+        .#{$abbrev}x#{$infix}-#{$i} {
           #{$prop}-right: $length !important;
         }
-        .#{$abbrev}b#{$infix}-#{$size},
-        .#{$abbrev}y#{$infix}-#{$size} {
+        .#{$abbrev}b#{$infix}-#{$i},
+        .#{$abbrev}y#{$infix}-#{$i} {
           #{$prop}-bottom: $length !important;
         }
-        .#{$abbrev}l#{$infix}-#{$size},
-        .#{$abbrev}x#{$infix}-#{$size} {
+        .#{$abbrev}l#{$infix}-#{$i},
+        .#{$abbrev}x#{$infix}-#{$i} {
           #{$prop}-left: $length !important;
         }
       }
     }
 
     @for $i from 0 through 10 {
-      $size: $i;
-      $length: $spacer * $i;
+      $length: spacer-value($infix, $i);
 
-      @if $size != 0 {
-        .m#{$infix}-n#{$size} {
+      @if $i != 0 {
+        .m#{$infix}-n#{$i} {
           margin: -$length !important;
         }
-        .mt#{$infix}-n#{$size},
-        .my#{$infix}-n#{$size} {
+        .mt#{$infix}-n#{$i},
+        .my#{$infix}-n#{$i} {
           margin-top: -$length !important;
         }
-        .mr#{$infix}-n#{$size},
-        .mx#{$infix}-n#{$size} {
+        .mr#{$infix}-n#{$i},
+        .mx#{$infix}-n#{$i} {
           margin-right: -$length !important;
         }
-        .mb#{$infix}-n#{$size},
-        .my#{$infix}-n#{$size} {
+        .mb#{$infix}-n#{$i},
+        .my#{$infix}-n#{$i} {
           margin-bottom: -$length !important;
         }
-        .ml#{$infix}-n#{$size},
-        .mx#{$infix}-n#{$size} {
+        .ml#{$infix}-n#{$i},
+        .mx#{$infix}-n#{$i} {
           margin-left: -$length !important;
         }
       }
