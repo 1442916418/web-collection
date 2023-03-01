@@ -2,36 +2,58 @@
  * = Text utility classes
  */
 
+// Alignment
+
+.text-justify {
+  text-align: justify !important;
+}
+.text-wrap {
+  white-space: normal !important;
+}
+.text-nowrap {
+  white-space: nowrap !important;
+}
+.text-truncate {
+  @include text-truncate;
+}
+
 .text-underline {
   text-decoration: underline !important;
 }
 .text-through {
   text-decoration: line-through !important;
 }
+.text-decoration-none {
+  text-decoration: none !important;
+}
 
 // Display responsive styles
-@each $breakpoint in map-keys($grid-breakpoints) {
-  @include media-breakpoint-up($breakpoint) {
-    .display-1-#{$breakpoint} {
-      font-size: $display1-size;
-    }
-    .display-2-#{$breakpoint} {
-      font-size: $display2-size;
-    }
-    .display-3-#{$breakpoint} {
-      font-size: $display3-size;
-    }
-    .display-4-#{$breakpoint} {
-      font-size: $display4-size;
-    }
-  }
+.display-1 {
+  @include font-size($display1-size);
+  font-weight: $display1-weight;
+  line-height: $display-line-height;
+}
+.display-2 {
+  @include font-size($display2-size);
+  font-weight: $display2-weight;
+  line-height: $display-line-height;
+}
+.display-3 {
+  @include font-size($display3-size);
+  font-weight: $display3-weight;
+  line-height: $display-line-height;
+}
+.display-4 {
+  @include font-size($display4-size);
+  font-weight: $display4-weight;
+  line-height: $display-line-height;
 }
 
 // Line heights
 // from lh-100 to lh-300
 @for $nr from 0 to 21 {
   .lh-#{100 + $nr*10} {
-    line-height: #{1 + $nr/10};
+    line-height: #{1 + $nr/10} !important;
   }
 }
 
@@ -46,33 +68,60 @@
   letter-spacing: 0.125rem;
 }
 
-// Responsive alignment
-@each $breakpoint in map-keys($grid-breakpoints) {
-  @include media-breakpoint-up($breakpoint) {
-    $infix: breakpoint-infix($breakpoint, $grid-breakpoints);
-
-    .text#{$infix}-left {
-      text-align: left !important;
-    }
-    .text#{$infix}-right {
-      text-align: right !important;
-    }
-    .text#{$infix}-center {
-      text-align: center !important;
-    }
-  }
+// Alignment
+.text-left {
+  text-align: left !important;
+}
+.text-right {
+  text-align: right !important;
+}
+.text-center {
+  text-align: center !important;
 }
 
 // Transformation
-.text-body {
-  color: $body-color !important;
+
+.text-lowercase {
+  text-transform: lowercase !important;
+}
+.text-uppercase {
+  text-transform: uppercase !important;
+}
+.text-capitalize {
+  text-transform: capitalize !important;
 }
 
-.text-black-50 {
-  color: rgba($black, 0.5) !important;
+// Weight and italics
+
+.font-weight-light {
+  font-weight: $font-weight-light !important;
 }
-.text-white-50 {
-  color: rgba($white, 0.5) !important;
+.font-weight-lighter {
+  font-weight: $font-weight-lighter !important;
+}
+.font-weight-normal {
+  font-weight: $font-weight-normal !important;
+}
+.font-weight-bold {
+  font-weight: $font-weight-bold !important;
+}
+.font-weight-bolder {
+  font-weight: $font-weight-bolder !important;
+}
+.font-italic {
+  font-style: italic !important;
+}
+
+@each $color, $value in $grays {
+  @include text-emphasis-variant('.text-grays-#{$color}', $value);
+}
+
+@each $color, $value in $theme-colors {
+  @include text-emphasis-variant('.text-#{$color}', $value);
+}
+
+@each $color, $value in $all-colors {
+  @include text-emphasis-variant('.text-#{$color}', $value);
 }
 
 .list-style-none {

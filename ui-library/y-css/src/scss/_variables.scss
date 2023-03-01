@@ -15,7 +15,7 @@ $teal: #0056b3;
 $cyan: #17a2b8;
 
 // 灰色
-$white: #ecf0f3;
+$white: #ffffff;
 $gray-100: #f3f7fa;
 $gray-200: #fafbfe;
 $gray-300: #e6e7ee;
@@ -97,6 +97,9 @@ $colors: map-merge(
   $colors
 );
 
+$all-colors: () !default;
+$all-colors: map-merge($icon-types, $colors);
+
 $line-height-base: 1.5 !default;
 
 $contrasted-threshold: 200;
@@ -124,7 +127,8 @@ $theme-box-shadow: map-merge(
     'dark': $box-shadow-dark,
     'dark-inset': $shadow-dark-inset,
     'primary': $box-shadow-primary,
-    'primary-inset': $shadow-inset
+    'primary-inset': $shadow-inset,
+    'soft': $box-shadow-soft
   ),
   $theme-box-shadow
 );
@@ -198,6 +202,8 @@ $border-radius-pill: 2rem;
 $circle-radius: 50%;
 $organic-radius: 63% 37% 30% 70% / 50% 45% 55% 50%;
 
+$rounded-pill: 50rem !default;
+
 $component-active-color: $white;
 $component-active-bg: theme-color('primary');
 $component-active-border-color: theme-color('primary');
@@ -234,10 +240,11 @@ $font-size-md: $font-size-base * 0.1 !default;
 $font-size-lg: ($font-size-base * 1.25);
 $font-size-xl: ($font-size-base * 1.5);
 
+$font-weight-lighter: lighter;
 $font-weight-light: 300;
 $font-weight-normal: 400;
 $font-weight-bold: 600;
-$font-weight-bolder: 700;
+$font-weight-bolder: bolder;
 
 $font-weight-base: $font-weight-light;
 $shape-height-base: 1.5;

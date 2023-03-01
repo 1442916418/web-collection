@@ -2,15 +2,10 @@ const autoprefixer = require('gulp-autoprefixer')
 const browserSync = require('browser-sync').create()
 const cleanCss = require('gulp-clean-css')
 const del = require('del')
-const htmlmin = require('gulp-htmlmin')
-const cssbeautify = require('gulp-cssbeautify')
 const gulp = require('gulp')
-const npmDist = require('gulp-npm-dist')
 const sass = require('gulp-sass')(require('node-sass'))
 const wait = require('gulp-wait')
-const sourcemaps = require('gulp-sourcemaps')
-const fileinclude = require('gulp-file-include')
-const childProcess = require('child_process')
+const gulpReplace = require('gulp-replace')
 
 const paths = {
   base: {
@@ -29,10 +24,33 @@ const paths = {
     html: './.temp/html',
     assets: './.temp/assets',
     vendor: './.temp/vendor'
+  },
+  dist: {
+    base: './dist'
   }
 }
 
 gulp.task('scss', function () {
+  return gulp
+    .src([paths.src.scss + '/**/*.scss'])
+    .pipe(wait(500))
+    .pipe(sass().on('error', sass.logError))
+    .pipe(
+      autoprefixer({
+        cascade: true,
+        overrideBrowserslist: ['> 1%']
+      })
+    )
+    .pipe(cleanCss())
+    .pipe(gulp.dest(paths.temp.css))
+    .pipe(browserSync.stream())
+})
+
+gulp.task('clean:dist', function () {
+  return del([paths.dist.base])
+})
+
+gulp.task('dist:css', function () {
   return (
     gulp
       .src([paths.src.scss + '/**/*.scss'])
@@ -44,20 +62,19 @@ gulp.task('scss', function () {
           overrideBrowserslist: ['> 1%']
         })
       )
-      // .pipe(cleanCss())
-      .pipe(gulp.dest(paths.temp.css))
-      .pipe(browserSync.stream())
+      .pipe(cleanCss())
+      // TODO: 去除 !important ???
+      .pipe(gulpReplace('!important', ''))
+      .pipe(gulp.dest(paths.dist.base))
   )
 })
 
 gulp.task(
   'serve',
   gulp.series('scss', function () {
-    // browserSync.init({
-    //   server: paths.temp.base
-    // })
     gulp.watch([paths.src.scss + '/**/*.scss'], gulp.series('scss'))
   })
 )
 
 gulp.task('default', gulp.series('serve'))
+gulp.task('build', gulp.series('clean:dist', 'dist:css'))

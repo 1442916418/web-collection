@@ -6,10 +6,8 @@
   transition: $transition-base;
 }
 
-// stylelint-disable declaration-no-important
-.shadow-soft {
-  box-shadow: $box-shadow-soft !important;
-}
-.shadow-inset {
-  box-shadow: $shadow-inset !important;
+@each $type, $value in $theme-box-shadow {
+  .box-shadow-#{$type} {
+    box-shadow: $value !important;
+  }
 }

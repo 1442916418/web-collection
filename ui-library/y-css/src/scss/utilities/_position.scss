@@ -7,22 +7,22 @@
   $value: $spacer * $i;
 
   .top-#{$size} {
-    top: $value;
+    top: $value !important;
   }
   .right-#{$size} {
-    right: $value;
+    right: $value !important;
   }
   .bottom-#{$size} {
-    bottom: $value;
+    bottom: $value !important;
   }
   .left-#{$size} {
-    left: $value;
+    left: $value !important;
   }
 }
 
 .center-vertical-absolute,
 .center-horizontal-absolute {
-  position: absolute;
+  position: absolute !important;
 }
 
 .center-vertical-absolute {

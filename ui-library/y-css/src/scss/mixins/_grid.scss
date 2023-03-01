@@ -52,16 +52,47 @@
 @mixin make-css-grid($columns: $grid-columns, $breakpoints: $grid-breakpoints) {
   @if $columns > 0 {
     @for $i from 1 through $columns {
-      .g-col-#{$i} {
+      .g-rows-#{$i} {
+        grid-template-rows: repeat($i, minmax(0, 1fr));
+      }
+      .g-cols-#{$i} {
+        grid-template-columns: repeat($i, minmax(0, 1fr));
+      }
+      .g-col-span-#{$i} {
         grid-column: auto / span $i;
+      }
+      .g-row-span-#{$i} {
+        grid-row: auto / span $i;
       }
     }
 
-    // Start with `1` because `0` is and invalid value.
-    // Ends with `$columns - 1` because offsetting by the width of an entire row isn't possible.
-    @for $i from 1 through ($columns - 1) {
-      .g-start-#{$i} {
-        grid-column-start: $i;
+    .g-rows-none {
+      grid-template-rows: none;
+    }
+    .g-cols-none {
+      grid-template-columns: none;
+    }
+    .g-col-auto {
+      grid-column: auto;
+    }
+    .g-row-auto {
+      grid-row: auto;
+    }
+  }
+}
+
+@mixin make-gap($spacer: $spacer) {
+  @each $prop, $abbrev in (column-gap: x, row-gap: y) {
+    @for $i from 0 through 10 {
+      $value: if($i == 0, 0, $i * ($spacer * 0.25));
+
+      @if $abbrev == 'x' {
+        .gap-#{$i} {
+          gap: $value;
+        }
+      }
+      .gap-#{$abbrev}-#{$i} {
+        #{$prop}: $value !important;
       }
     }
   }

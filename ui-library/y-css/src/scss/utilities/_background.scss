@@ -1,0 +1,23 @@
+@each $color, $value in $grays {
+  @include bg-variant('.bg-grays-#{$color}', $value);
+}
+
+@each $color, $value in $theme-colors {
+  @include bg-variant('.bg-#{$color}', $value);
+}
+
+@each $color, $value in $all-colors {
+  @include bg-variant('.bg-#{$color}', $value);
+}
+
+// @each $color, $value in $theme-colors {
+//   @include bg-gradient-variant('.bg-gradient-#{$color}', $value);
+// }
+
+.bg-white {
+  background-color: $white !important;
+}
+
+.bg-transparent {
+  background-color: transparent !important;
+}
