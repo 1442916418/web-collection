@@ -1,5 +1,45 @@
 // Margin and Padding
 
+.m-0 {
+  margin: 0 !important;
+}
+.mt-0,
+.my-0 {
+  margin-top: 0 !important;
+}
+.mr-0,
+.mx-0 {
+  margin-right: 0 !important;
+}
+.mb-0,
+.my-0 {
+  margin-bottom: 0 !important;
+}
+.ml-0,
+.mx-0 {
+  margin-left: 0 !important;
+}
+
+.m-auto {
+  margin: auto !important;
+}
+.mt-auto,
+.my-auto {
+  margin-top: auto !important;
+}
+.mr-auto,
+.mx-auto {
+  margin-right: auto !important;
+}
+.mb-auto,
+.my-auto {
+  margin-bottom: auto !important;
+}
+.ml-auto,
+.mx-auto {
+  margin-left: auto !important;
+}
+
 @each $breakpoint in map-keys($grid-breakpoints) {
   @include media-breakpoint-up($breakpoint) {
     $infix: breakpoint-infix($breakpoint, $grid-breakpoints);
@@ -8,24 +48,26 @@
       @for $i from 0 through 10 {
         $length: spacer-value($infix, $i);
 
-        .#{$abbrev}#{$infix}-#{$i} {
-          #{$prop}: $length !important;
-        }
-        .#{$abbrev}t#{$infix}-#{$i},
-        .#{$abbrev}y#{$infix}-#{$i} {
-          #{$prop}-top: $length !important;
-        }
-        .#{$abbrev}r#{$infix}-#{$i},
-        .#{$abbrev}x#{$infix}-#{$i} {
-          #{$prop}-right: $length !important;
-        }
-        .#{$abbrev}b#{$infix}-#{$i},
-        .#{$abbrev}y#{$infix}-#{$i} {
-          #{$prop}-bottom: $length !important;
-        }
-        .#{$abbrev}l#{$infix}-#{$i},
-        .#{$abbrev}x#{$infix}-#{$i} {
-          #{$prop}-left: $length !important;
+        @if $i != 0 {
+          .#{$abbrev}-#{$i} {
+            #{$prop}: $length !important;
+          }
+          .#{$abbrev}t-#{$i},
+          .#{$abbrev}y-#{$i} {
+            #{$prop}-top: $length !important;
+          }
+          .#{$abbrev}r-#{$i},
+          .#{$abbrev}x-#{$i} {
+            #{$prop}-right: $length !important;
+          }
+          .#{$abbrev}b-#{$i},
+          .#{$abbrev}y-#{$i} {
+            #{$prop}-bottom: $length !important;
+          }
+          .#{$abbrev}l-#{$i},
+          .#{$abbrev}x-#{$i} {
+            #{$prop}-left: $length !important;
+          }
         }
       }
     }
@@ -34,47 +76,26 @@
       $length: spacer-value($infix, $i);
 
       @if $i != 0 {
-        .m#{$infix}-n#{$i} {
+        .m-n#{$i} {
           margin: -$length !important;
         }
-        .mt#{$infix}-n#{$i},
-        .my#{$infix}-n#{$i} {
+        .mt-n#{$i},
+        .my-n#{$i} {
           margin-top: -$length !important;
         }
-        .mr#{$infix}-n#{$i},
-        .mx#{$infix}-n#{$i} {
+        .mr-n#{$i},
+        .mx-n#{$i} {
           margin-right: -$length !important;
         }
-        .mb#{$infix}-n#{$i},
-        .my#{$infix}-n#{$i} {
+        .mb-n#{$i},
+        .my-n#{$i} {
           margin-bottom: -$length !important;
         }
-        .ml#{$infix}-n#{$i},
-        .mx#{$infix}-n#{$i} {
+        .ml-n#{$i},
+        .mx-n#{$i} {
           margin-left: -$length !important;
         }
       }
-    }
-
-    // Some special margin utils
-    .m#{$infix}-auto {
-      margin: auto !important;
-    }
-    .mt#{$infix}-auto,
-    .my#{$infix}-auto {
-      margin-top: auto !important;
-    }
-    .mr#{$infix}-auto,
-    .mx#{$infix}-auto {
-      margin-right: auto !important;
-    }
-    .mb#{$infix}-auto,
-    .my#{$infix}-auto {
-      margin-bottom: auto !important;
-    }
-    .ml#{$infix}-auto,
-    .mx#{$infix}-auto {
-      margin-left: auto !important;
     }
   }
 }

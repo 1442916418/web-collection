@@ -2,94 +2,116 @@
 // Border
 //
 
-.border {
-  border: $border-width solid $border-color !important;
-}
-.border-top {
-  border-top: $border-width solid $border-color !important;
-}
-.border-right {
-  border-right: $border-width solid $border-color !important;
-}
-.border-bottom {
-  border-bottom: $border-width solid $border-color !important;
-}
-.border-left {
-  border-left: $border-width solid $border-color !important;
-}
+@each $breakpoint in map-keys($grid-breakpoints) {
+  @include media-breakpoint-up($breakpoint) {
+    $infix: breakpoint-infix($breakpoint, $grid-breakpoints);
+    $--rounded-value: computed-breakpoint-value(
+      $infix,
+      $border-radius,
+      (
+        '': 1,
+        '-sm': 2,
+        '-md': 4,
+        '-lg': 6,
+        '-xl': 8
+      )
+    );
 
-.border-0 {
-  border: 0 !important;
-}
-.border-top-0 {
-  border-top: 0 !important;
-}
-.border-right-0 {
-  border-right: 0 !important;
-}
-.border-bottom-0 {
-  border-bottom: 0 !important;
-}
-.border-left-0 {
-  border-left: 0 !important;
-}
+    // Border radius
+    .rounded {
+      border-radius: $--rounded-value !important;
+    }
 
-@each $color, $value in $theme-colors {
-  .border-color-#{$color} {
-    border-color: $value !important;
+    .rounded-top {
+      border-top-left-radius: $--rounded-value !important;
+      border-top-right-radius: $--rounded-value !important;
+    }
+
+    .rounded-right {
+      border-top-right-radius: $--rounded-value !important;
+      border-bottom-right-radius: $--rounded-value !important;
+    }
+
+    .rounded-bottom {
+      border-bottom-right-radius: $--rounded-value !important;
+      border-bottom-left-radius: $--rounded-value !important;
+    }
+
+    .rounded-left {
+      border-top-left-radius: $--rounded-value !important;
+      border-bottom-left-radius: $--rounded-value !important;
+    }
+
+    // Border width
+    @for $i from 0 through 10 {
+      $--border-width: computed-breakpoint-echo-value(
+        $infix,
+        $i,
+        $border-width,
+        (
+          '': 1,
+          '-sm': 2,
+          '-md': 3,
+          '-lg': 4,
+          '-xl': 5
+        )
+      );
+
+      .border-#{$i} {
+        border-width: $--border-width !important;
+      }
+      .border-top-#{$i} {
+        border-top-width: $--border-width !important;
+      }
+      .border-right-#{$i} {
+        border-right-width: $--border-width !important;
+      }
+      .border-bottom-#{$i} {
+        border-bottom-width: $--border-width !important;
+      }
+      .border-left-#{$i} {
+        border-left-width: $--border-width !important;
+      }
+    }
   }
-}
-
-@each $color, $value in $all-colors {
-  .border-color-#{$color} {
-    border-color: $value !important;
-  }
-}
-
-//
-// Border-radius
-//
-
-.rounded-sm {
-  border-radius: $border-radius-sm !important;
-}
-
-.rounded {
-  border-radius: $border-radius !important;
-}
-
-.rounded-top {
-  border-top-left-radius: $border-radius !important;
-  border-top-right-radius: $border-radius !important;
-}
-
-.rounded-right {
-  border-top-right-radius: $border-radius !important;
-  border-bottom-right-radius: $border-radius !important;
-}
-
-.rounded-bottom {
-  border-bottom-right-radius: $border-radius !important;
-  border-bottom-left-radius: $border-radius !important;
-}
-
-.rounded-left {
-  border-top-left-radius: $border-radius !important;
-  border-bottom-left-radius: $border-radius !important;
-}
-
-.rounded-lg {
-  border-radius: $border-radius-lg !important;
 }
 
 .rounded-circle {
   border-radius: $circle-radius !important;
 }
 
-.rounded-pill {
-  border-radius: $rounded-pill !important;
-}
-
 .rounded-0 {
   border-radius: 0 !important;
+}
+
+// Border style
+@each $type in $border-styles {
+  .border-#{$type} {
+    border-style: $type !important;
+  }
+  .border-top-#{$type} {
+    border-top-style: $type !important;
+  }
+  .border-right-#{$type} {
+    border-right-style: $type !important;
+  }
+  .border-bottom-#{$type} {
+    border-bottom-style: $type !important;
+  }
+  .border-left-#{$type} {
+    border-left-style: $type !important;
+  }
+}
+
+// Border color
+@each $color, $value in $theme-colors {
+  .border-#{$color} {
+    border-color: $value !important;
+  }
+}
+
+@each $color, $value in $all-colors {
+  .border-#{$color} {
+    border-color: $value !important;
+  }
 }

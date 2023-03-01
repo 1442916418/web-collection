@@ -81,6 +81,7 @@
   @return map-get($theme-box-shadow, $key);
 }
 
+// Spacing
 @function spacer-value($infix, $value, $default-spacer: $spacer) {
   @if $value == 0 {
     @return 0;
@@ -96,5 +97,56 @@
     @return ($default-spacer * 2) * $value;
   } @else if $infix == '-xl' {
     @return ($default-spacer * 2.5) * $value;
+  }
+}
+
+// 计算断点对应的值
+//
+// $infix - 断点类型
+// $value - 默认值
+// $step-map - 断点对应的步进值
+@function computed-breakpoint-value($infix, $value, $step-map) {
+  @if $value == 0 {
+    @return 0;
+  }
+
+  $step: map-get($step-map, $infix);
+
+  @if $infix == '' {
+    @return ($value * $step);
+  } @else if $infix == '-sm' {
+    @return ($value * $step);
+  } @else if $infix == '-md' {
+    @return ($value * $step);
+  } @else if $infix == '-lg' {
+    @return ($value * $step);
+  } @else if $infix == '-xl' {
+    @return ($value * $step);
+  }
+}
+
+// 计算断点对应的值(循环)
+//
+// $infix - 断点类型
+// $index - 下标
+// $value - 默认值
+// $step-map - 断点对应的步进值
+@function computed-breakpoint-echo-value($infix, $index, $value, $step-map) {
+  @if $index == 0 {
+    @return 0;
+  }
+
+  $step: map-get($step-map, $infix);
+
+  @if $infix == '' {
+    @return ($value * $step) * $index;
+  } @else if $infix == '-sm' {
+    @return ($value * $step) * $index;
+  } @else if $infix == '-md' {
+    @return ($value * $step) * $index;
+  } @else if $infix == '-lg' {
+    @return ($value * $step) * $index;
+  } @else if $infix == '-xl' {
+    @return ($value * $step) * $index;
   }
 }

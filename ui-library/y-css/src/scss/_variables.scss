@@ -185,22 +185,12 @@ $link-hover-color: $black;
 $link-hover-decoration: none;
 
 $border-width: 0.0625rem;
-$border-width-sm: 0.125rem;
-$border-width-md: 0.125rem;
-$border-width-lg: 0.25rem;
-$border-width-xl: 0.375rem;
 $border-color-white: $white;
 $border-color: $gray-200;
 $border-color-transparent: transparent;
 
-$border-radius: 0.55rem;
-$border-radius-sm: 0.1rem;
-$border-radius-md: 0.2rem;
-$border-radius-lg: 0.3rem;
-$border-radius-xl: 0.95rem;
-$border-radius-pill: 2rem;
+$border-radius: 0.5rem;
 $circle-radius: 50%;
-$organic-radius: 63% 37% 30% 70% / 50% 45% 55% 50%;
 
 $rounded-pill: 50rem !default;
 
@@ -360,3 +350,4 @@ $theme-sizes: map-merge(
 $displays: none, inline, inline-block, block, table, table-row, table-cell, flex, inline-flex !default;
 $overflows: auto, hidden !default;
 $positions: static, relative, absolute, fixed, sticky !default;
+$border-styles: none, hidden, dotted, dashed, solid, double, groove, ridge, inset, outset !default;

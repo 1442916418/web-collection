@@ -41,7 +41,6 @@ gulp.task('scss', function () {
         overrideBrowserslist: ['> 1%']
       })
     )
-    .pipe(cleanCss())
     .pipe(gulp.dest(paths.temp.css))
     .pipe(browserSync.stream())
 })

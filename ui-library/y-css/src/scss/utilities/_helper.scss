@@ -28,20 +28,3 @@
     z-index: #{$nr} !important;
   }
 }
-
-// Border widths
-.bw-md {
-  border-width: $border-width-md !important;
-}
-.bw-lg {
-  border-width: $border-width-lg !important;
-}
-.bw-xl {
-  border-width: $border-width-xl !important;
-}
-
-//Rounded xl fix
-
-.rounded-xl {
-  border-radius: $border-radius-xl !important;
-}
