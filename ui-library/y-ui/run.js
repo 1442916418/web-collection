@@ -297,3 +297,7 @@ if (runType === 'BUILD') {
 if (runType === 'NEW' && name) {
   new NewComponent(name)
 }
+
+module.exports = {
+  Utils
+}
