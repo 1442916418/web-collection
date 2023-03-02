@@ -1,0 +1,20 @@
+{
+  "name": "y-css-snippets",
+  "displayName": "y-css-snippets",
+  "description": "自定义 CSS ",
+  "version": "0.0.1",
+  "engines": {
+    "vscode": "^1.76.0"
+  },
+  "categories": [
+    "Snippets"
+  ],
+  "contributes": {
+    "snippets": [
+      {
+        "language": "html",
+        "path": "./snippets/snippets.code-snippets"
+      }
+    ]
+  }
+}
