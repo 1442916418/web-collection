@@ -2,22 +2,10 @@
 * = Helper classes
 */
 
-// Overflows
-.overflow-visible {
-  overflow: visible !important;
-}
-
 // Opacity classes
 @for $nr from 0 to 10 {
   .opacity-#{$nr} {
     opacity: #{$nr/10} !important;
-  }
-}
-
-// Fill opacity classes
-@for $nr from 0 to 10 {
-  .fill-opacity-#{$nr} {
-    fill-opacity: #{$nr/10} !important;
   }
 }
 

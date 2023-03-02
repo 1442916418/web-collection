@@ -32,10 +32,6 @@
 // Common styles for small and large grid columns
 @include make-grid-columns();
 
-.grid {
-  display: grid;
-  // gap: $grid-gutter-width;
-
-  @include make-css-grid();
-  @include make-gap();
-}
+// Grid rows & cols & gap
+@include make-css-grid();
+@include make-gap();

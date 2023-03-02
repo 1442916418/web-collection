@@ -52,30 +52,30 @@
 @mixin make-css-grid($columns: $grid-columns, $breakpoints: $grid-breakpoints) {
   @if $columns > 0 {
     @for $i from 1 through $columns {
-      .g-rows-#{$i} {
+      .grid-rows-#{$i} {
         grid-template-rows: repeat($i, minmax(0, 1fr));
       }
-      .g-cols-#{$i} {
+      .grid-cols-#{$i} {
         grid-template-columns: repeat($i, minmax(0, 1fr));
       }
-      .g-col-span-#{$i} {
+      .grid-col-span-#{$i} {
         grid-column: auto / span $i;
       }
-      .g-row-span-#{$i} {
+      .grid-row-span-#{$i} {
         grid-row: auto / span $i;
       }
     }
 
-    .g-rows-none {
+    .grid-rows-none {
       grid-template-rows: none;
     }
-    .g-cols-none {
+    .grid-cols-none {
       grid-template-columns: none;
     }
-    .g-col-auto {
+    .grid-col-auto {
       grid-column: auto;
     }
-    .g-row-auto {
+    .grid-row-auto {
       grid-row: auto;
     }
   }

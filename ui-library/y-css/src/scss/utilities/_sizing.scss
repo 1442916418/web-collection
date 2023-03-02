@@ -2,15 +2,26 @@
  * = Sizing
  */
 
-// Height values in vh
 .h-100vh {
   height: 100vh !important;
 }
 
+// width and height(%)
 @each $prop, $abbrev in (width: w, height: h) {
   @each $size, $length in $sizes {
     .#{$abbrev}-#{$size} {
       #{$prop}: $length !important;
+    }
+  }
+}
+
+// width and height(rem)
+@each $prop, $abbrev in (width: w, height: h) {
+  @for $i from 0 through 10 {
+    $value: if($i == 0, 0, $i * 1rem);
+
+    .#{$abbrev}-#{$i} {
+      #{$prop}: $value !important;
     }
   }
 }

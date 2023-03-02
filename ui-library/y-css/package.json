@@ -6,6 +6,7 @@
   "scripts": {
     "css": "gulp",
     "build": "gulp build",
+    "docs": "docsify serve docs",
     "release:patch": "npm run build && npm version patch && npm publish",
     "release:minor": "npm run build && npm version minor && npm publish",
     "release:major": "npm run build && npm version major && npm publish"

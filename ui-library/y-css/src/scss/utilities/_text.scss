@@ -50,21 +50,20 @@
 }
 
 // Line heights
-// from lh-100 to lh-300
-@for $nr from 0 to 21 {
-  .lh-#{100 + $nr*10} {
-    line-height: #{1 + $nr/10} !important;
+@for $n from 0 through 5 {
+  .leading-#{$n} {
+    line-height: $n !important;
   }
 }
 
 // Letter spacings
-.ls-1 {
+.spacings-1 {
   letter-spacing: 0.0625rem;
 }
-.ls-2 {
+.spacings-2 {
   letter-spacing: 0.09375rem;
 }
-.ls-3 {
+.spacings-3 {
   letter-spacing: 0.125rem;
 }
 
@@ -77,6 +76,15 @@
 }
 .text-center {
   text-align: center !important;
+}
+
+// Text font size
+@for $n from 1 through 10 {
+  $value: $font-size-base * ($n / 2);
+
+  .text-#{$n} {
+    font-size: $value !important;
+  }
 }
 
 // Transformation
