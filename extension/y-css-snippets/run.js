@@ -1,5 +1,3 @@
-const fs = require('fs')
-
 const { Utils } = require('../../ui-library/y-ui/run.js')
 
 const entry = '../../ui-library/y-css/dist/index.css'
@@ -21,20 +19,48 @@ Utils.handleOpenAndReadFile(entry, (data) => {
    *   .mt-10,.my-10{margin-top:10px}
    */
   const list = data.match(/\.([\w\.\,\-]*)\{([\s\S]*?)\}/gi)
-  const snippets = {}
+  const reg = /\,/g
+  const prefixReg = /^\.[\w\.\,\-]*/i
+  const valueReg = /(?<=\{)([\s\S]*?)(?=\})/gi
+
+  const snippets = new Map()
+
+  const handleSnippets = (prefix, values) => {
+    if (!prefix) return
+
+    const name = prefix.substring(1)
+
+    if (!snippets.has(name)) {
+      snippets.set(name, {
+        prefix: prefix,
+        body: name,
+        description: values
+      })
+    }
+  }
 
   list.forEach((item) => {
-    const prefix = item.match(/^\.[\w\.\,\-]*/i)[0] || ''
-    const values = item.match(/(?<=\{)([\s\S]*?)(?=\})/gi)[0] || ''
+    const prefix = item.match(prefixReg)[0] || ''
+    const values = item.match(valueReg)[0] || ''
 
-    snippets[prefix] = {
-      prefix: prefix,
-      body: prefix,
-      description: values
+    if (prefix && values) {
+      if (reg.test(prefix)) {
+        const prefixList = prefix.split(',')
+
+        prefixList.forEach((pre) => {
+          handleSnippets(pre, values)
+        })
+      } else {
+        handleSnippets(prefix, values)
+      }
     }
   })
 
-  if (snippets) {
-    Utils.handleWriteFile({ path: output, content: JSON.stringify(snippets, null, 2) })
+  if (snippets.size) {
+    Utils.handleWriteFile({ path: output, content: JSON.stringify(Object.fromEntries(snippets), null, 2) })
+
+    setTimeout(() => {
+      snippets.clear()
+    })
   }
 })

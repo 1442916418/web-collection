@@ -3,12 +3,21 @@
   "displayName": "y-css-snippets",
   "description": "自定义 CSS ",
   "version": "0.0.1",
+  "publisher": "yss",
   "engines": {
     "vscode": "^1.76.0"
   },
   "categories": [
     "Snippets"
   ],
+  "scripts": {
+    "build": "node run.js",
+    "package": "vsce package"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/1442916418/ui-collection.git"
+  },
   "contributes": {
     "snippets": [
       {

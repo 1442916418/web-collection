@@ -113,3 +113,6 @@ server/environment
 
 # Styles
 ui-library/y-ui/src/components/**/styles.js
+
+# vsix
+**.vsix
