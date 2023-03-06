@@ -5,6 +5,17 @@ importers:
   .:
     specifiers: {}
 
+  ../../extension/y-css-snippets:
+    specifiers: {}
+
+  ../../js-library/y-js:
+    specifiers:
+      gulp: ^4.0.2
+      gulp-uglify: ^3.0.2
+    devDependencies:
+      gulp: 4.0.2
+      gulp-uglify: 3.0.2
+
   ../../ui-library/y-css:
     specifiers:
       browser-sync: ^2.27.4

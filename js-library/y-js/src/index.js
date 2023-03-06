@@ -7,12 +7,12 @@
   } else if (typeof exports === 'object') {
     module.exports = factory()
   } else {
-    global.myLibrary = factory()
+    global.$ = factory()
   }
 })(this, function () {
   'use strict'
 
-  var myLibrary = {}
+  var $ = {}
 
   /**
    * 获取元素
@@ -20,7 +20,7 @@
    * @param {Object} context 上下文
    * @returns {Object} 元素
    */
-  myLibrary.getElement = function (selector, context) {
+  $.getElement = function (selector, context) {
     context = context || document
     return context.querySelector(selector)
   }
@@ -31,7 +31,7 @@
    * @param {Object} context 上下文
    * @returns {Object} 元素集合
    */
-  myLibrary.getElements = function (selector, context) {
+  $.getElements = function (selector, context) {
     context = context || document
     return context.querySelectorAll(selector)
   }
@@ -42,7 +42,7 @@
    * @param {String} eventType 事件类型
    * @param {Function} callback 回调函数
    */
-  myLibrary.addEvent = function (element, eventType, callback) {
+  $.addEvent = function (element, eventType, callback) {
     if (element.addEventListener) {
       element.addEventListener(eventType, callback, false)
     } else if (element.attachEvent) {
@@ -58,7 +58,7 @@
    * @param {String} eventType 事件类型
    * @param {Function} callback 回调函数
    */
-  myLibrary.removeEvent = function (element, eventType, callback) {
+  $.removeEvent = function (element, eventType, callback) {
     if (element.removeEventListener) {
       element.removeEventListener(eventType, callback, false)
     } else if (element.detachEvent) {
@@ -74,7 +74,7 @@
    * @param {String} property 属性
    * @returns {String} 元素样式
    */
-  myLibrary.getStyle = function (element, property) {
+  $.getStyle = function (element, property) {
     if (getComputedStyle) {
       return getComputedStyle(element, null)[property]
     } else {
@@ -87,8 +87,8 @@
    * @param {Object} element 元素
    * @param {String} className 类名
    */
-  myLibrary.addClass = function (element, className) {
-    if (!myLibrary.hasClass(element, className)) {
+  $.addClass = function (element, className) {
+    if (!$.hasClass(element, className)) {
       element.className += ' ' + className
     }
   }
@@ -98,8 +98,8 @@
    * @param {Object} element 元素
    * @param {String} className 类名
    */
-  myLibrary.removeClass = function (element, className) {
-    if (myLibrary.hasClass(element, className)) {
+  $.removeClass = function (element, className) {
+    if ($.hasClass(element, className)) {
       var reg = new RegExp('(\\s|^)' + className + '(\\s|$)')
       element.className = element.className.replace(reg, ' ')
     }
@@ -111,10 +111,57 @@
    * @param {String} className 类名
    * @returns {Boolean} 是否包含类名
    */
-  myLibrary.hasClass = function (element, className) {
+  $.hasClass = function (element, className) {
     var reg = new RegExp('(\\s|^)' + className + '(\\s|$)')
     return element.className.match(reg)
   }
 
-  return myLibrary
+  /**
+   * 请求
+   * @param {String} path 路径
+   * @param {String} method 请求方法(默认 GET)
+   * @param {Object | String} data 请求参数(默认为空)
+   * @returns JSON 数据
+   */
+  $.requests = function (path, method, data) {
+    if (!path) {
+      throw new Error('$.requests path is undefined.')
+    }
+
+    method = method || 'GET'
+    method = method.toUpperCase()
+
+    data = data || {}
+
+    var requestHeader = {
+      headers: {
+        'content-type': 'application/json'
+      },
+      method
+    }
+
+    if (method === 'GET') {
+      if (typeof data !== 'string') {
+        var esc = encodeURIComponent
+
+        var queryParams = Object.keys(data)
+          .map(function (k) {
+            return esc(k) + '=' + esc(data[k])
+          })
+          .join('&')
+
+        if (queryParams) {
+          path += '?' + queryParams
+        }
+      }
+    } else {
+      requestHeader.body = JSON.stringify(data)
+    }
+
+    return fetch(path, requestHeader).then(function (response) {
+      return response.json()
+    })
+  }
+
+  return $
 })

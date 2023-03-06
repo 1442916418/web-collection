@@ -1,15 +1,29 @@
 {
   "name": "@yushuisheng/y-js",
-  "version": "1.0.0",
+  "version": "1.0.2",
   "description": "Custom js library.",
   "main": "src/index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "build": "gulp build",
+    "release:patch": "npm run build && npm version patch && npm publish",
+    "release:minor": "npm run build && npm version minor && npm publish",
+    "release:major": "npm run build && npm version major && npm publish"
   },
   "keywords": [
     "JavaScript",
     "js"
   ],
   "author": "yss",
-  "license": "ISC"
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/1442916418/web-collection/issues"
+  },
+  "homepage": "https://github.com/1442916418/web-collection#readme",
+  "files": [
+    "dist"
+  ],
+  "devDependencies": {
+    "gulp": "^4.0.2",
+    "gulp-uglify": "^3.0.2"
+  }
 }

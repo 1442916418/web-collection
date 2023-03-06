@@ -454,6 +454,10 @@
     {
       "packageName": "y-css-snippets",
       "projectFolder": "extension/y-css-snippets"
+    },
+    {
+      "packageName": "@yushuisheng/y-js",
+      "projectFolder": "js-library/y-js"
     }
   ]
 }
