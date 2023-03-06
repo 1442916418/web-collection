@@ -44,7 +44,7 @@ Utils.handleOpenAndReadFile(entry, (data) => {
     const values = item.match(valueReg)[0] || ''
 
     if (prefix && values) {
-      if (reg.test(prefix)) {
+      if (prefix.includes(',')) {
         const prefixList = prefix.split(',')
 
         prefixList.forEach((pre) => {

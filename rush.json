@@ -450,6 +450,10 @@
     {
       "packageName": "@yushuisheng/y-css",
       "projectFolder": "ui-library/y-css"
+    },
+    {
+      "packageName": "y-css-snippets",
+      "projectFolder": "extension/y-css-snippets"
     }
   ]
 }

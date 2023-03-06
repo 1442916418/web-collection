@@ -2,7 +2,7 @@
   "name": "y-css-snippets",
   "displayName": "y-css-snippets",
   "description": "自定义 CSS ",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "publisher": "yss",
   "engines": {
     "vscode": "^1.76.0"

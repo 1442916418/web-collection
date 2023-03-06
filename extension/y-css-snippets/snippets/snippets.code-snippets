@@ -594,9 +594,14 @@
     "body": "my-0",
     "description": "margin-top:0"
   },
-  "mr-0,.mx-0": {
-    "prefix": ".mr-0,.mx-0",
-    "body": "mr-0,.mx-0",
+  "mr-0": {
+    "prefix": ".mr-0",
+    "body": "mr-0",
+    "description": "margin-right:0"
+  },
+  "mx-0": {
+    "prefix": ".mx-0",
+    "body": "mx-0",
     "description": "margin-right:0"
   },
   "mb-0": {
@@ -604,9 +609,9 @@
     "body": "mb-0",
     "description": "margin-bottom:0"
   },
-  "ml-0,.mx-0": {
-    "prefix": ".ml-0,.mx-0",
-    "body": "ml-0,.mx-0",
+  "ml-0": {
+    "prefix": ".ml-0",
+    "body": "ml-0",
     "description": "margin-left:0"
   },
   "m-auto": {
@@ -624,9 +629,14 @@
     "body": "my-auto",
     "description": "margin-top:auto"
   },
-  "mr-auto,.mx-auto": {
-    "prefix": ".mr-auto,.mx-auto",
-    "body": "mr-auto,.mx-auto",
+  "mr-auto": {
+    "prefix": ".mr-auto",
+    "body": "mr-auto",
+    "description": "margin-right:auto"
+  },
+  "mx-auto": {
+    "prefix": ".mx-auto",
+    "body": "mx-auto",
     "description": "margin-right:auto"
   },
   "mb-auto": {
@@ -634,9 +644,9 @@
     "body": "mb-auto",
     "description": "margin-bottom:auto"
   },
-  "ml-auto,.mx-auto": {
-    "prefix": ".ml-auto,.mx-auto",
-    "body": "ml-auto,.mx-auto",
+  "ml-auto": {
+    "prefix": ".ml-auto",
+    "body": "ml-auto",
     "description": "margin-left:auto"
   },
   "m-1": {
@@ -654,9 +664,14 @@
     "body": "my-1",
     "description": "margin-top:.5rem"
   },
-  "mr-1,.mx-1": {
-    "prefix": ".mr-1,.mx-1",
-    "body": "mr-1,.mx-1",
+  "mr-1": {
+    "prefix": ".mr-1",
+    "body": "mr-1",
+    "description": "margin-right:.5rem"
+  },
+  "mx-1": {
+    "prefix": ".mx-1",
+    "body": "mx-1",
     "description": "margin-right:.5rem"
   },
   "mb-1": {
@@ -664,9 +679,9 @@
     "body": "mb-1",
     "description": "margin-bottom:.5rem"
   },
-  "ml-1,.mx-1": {
-    "prefix": ".ml-1,.mx-1",
-    "body": "ml-1,.mx-1",
+  "ml-1": {
+    "prefix": ".ml-1",
+    "body": "ml-1",
     "description": "margin-left:.5rem"
   },
   "m-2": {
@@ -684,9 +699,14 @@
     "body": "my-2",
     "description": "margin-top:1rem"
   },
-  "mr-2,.mx-2": {
-    "prefix": ".mr-2,.mx-2",
-    "body": "mr-2,.mx-2",
+  "mr-2": {
+    "prefix": ".mr-2",
+    "body": "mr-2",
+    "description": "margin-right:1rem"
+  },
+  "mx-2": {
+    "prefix": ".mx-2",
+    "body": "mx-2",
     "description": "margin-right:1rem"
   },
   "mb-2": {
@@ -694,9 +714,9 @@
     "body": "mb-2",
     "description": "margin-bottom:1rem"
   },
-  "ml-2,.mx-2": {
-    "prefix": ".ml-2,.mx-2",
-    "body": "ml-2,.mx-2",
+  "ml-2": {
+    "prefix": ".ml-2",
+    "body": "ml-2",
     "description": "margin-left:1rem"
   },
   "m-3": {
@@ -714,9 +734,14 @@
     "body": "my-3",
     "description": "margin-top:1.5rem"
   },
-  "mr-3,.mx-3": {
-    "prefix": ".mr-3,.mx-3",
-    "body": "mr-3,.mx-3",
+  "mr-3": {
+    "prefix": ".mr-3",
+    "body": "mr-3",
+    "description": "margin-right:1.5rem"
+  },
+  "mx-3": {
+    "prefix": ".mx-3",
+    "body": "mx-3",
     "description": "margin-right:1.5rem"
   },
   "mb-3": {
@@ -724,9 +749,9 @@
     "body": "mb-3",
     "description": "margin-bottom:1.5rem"
   },
-  "ml-3,.mx-3": {
-    "prefix": ".ml-3,.mx-3",
-    "body": "ml-3,.mx-3",
+  "ml-3": {
+    "prefix": ".ml-3",
+    "body": "ml-3",
     "description": "margin-left:1.5rem"
   },
   "m-4": {
@@ -744,9 +769,14 @@
     "body": "my-4",
     "description": "margin-top:2rem"
   },
-  "mr-4,.mx-4": {
-    "prefix": ".mr-4,.mx-4",
-    "body": "mr-4,.mx-4",
+  "mr-4": {
+    "prefix": ".mr-4",
+    "body": "mr-4",
+    "description": "margin-right:2rem"
+  },
+  "mx-4": {
+    "prefix": ".mx-4",
+    "body": "mx-4",
     "description": "margin-right:2rem"
   },
   "mb-4": {
@@ -754,9 +784,9 @@
     "body": "mb-4",
     "description": "margin-bottom:2rem"
   },
-  "ml-4,.mx-4": {
-    "prefix": ".ml-4,.mx-4",
-    "body": "ml-4,.mx-4",
+  "ml-4": {
+    "prefix": ".ml-4",
+    "body": "ml-4",
     "description": "margin-left:2rem"
   },
   "m-5": {
@@ -774,9 +804,14 @@
     "body": "my-5",
     "description": "margin-top:2.5rem"
   },
-  "mr-5,.mx-5": {
-    "prefix": ".mr-5,.mx-5",
-    "body": "mr-5,.mx-5",
+  "mr-5": {
+    "prefix": ".mr-5",
+    "body": "mr-5",
+    "description": "margin-right:2.5rem"
+  },
+  "mx-5": {
+    "prefix": ".mx-5",
+    "body": "mx-5",
     "description": "margin-right:2.5rem"
   },
   "mb-5": {
@@ -784,9 +819,9 @@
     "body": "mb-5",
     "description": "margin-bottom:2.5rem"
   },
-  "ml-5,.mx-5": {
-    "prefix": ".ml-5,.mx-5",
-    "body": "ml-5,.mx-5",
+  "ml-5": {
+    "prefix": ".ml-5",
+    "body": "ml-5",
     "description": "margin-left:2.5rem"
   },
   "m-6": {
@@ -804,9 +839,14 @@
     "body": "my-6",
     "description": "margin-top:3rem"
   },
-  "mr-6,.mx-6": {
-    "prefix": ".mr-6,.mx-6",
-    "body": "mr-6,.mx-6",
+  "mr-6": {
+    "prefix": ".mr-6",
+    "body": "mr-6",
+    "description": "margin-right:3rem"
+  },
+  "mx-6": {
+    "prefix": ".mx-6",
+    "body": "mx-6",
     "description": "margin-right:3rem"
   },
   "mb-6": {
@@ -814,9 +854,9 @@
     "body": "mb-6",
     "description": "margin-bottom:3rem"
   },
-  "ml-6,.mx-6": {
-    "prefix": ".ml-6,.mx-6",
-    "body": "ml-6,.mx-6",
+  "ml-6": {
+    "prefix": ".ml-6",
+    "body": "ml-6",
     "description": "margin-left:3rem"
   },
   "m-7": {
@@ -834,9 +874,14 @@
     "body": "my-7",
     "description": "margin-top:3.5rem"
   },
-  "mr-7,.mx-7": {
-    "prefix": ".mr-7,.mx-7",
-    "body": "mr-7,.mx-7",
+  "mr-7": {
+    "prefix": ".mr-7",
+    "body": "mr-7",
+    "description": "margin-right:3.5rem"
+  },
+  "mx-7": {
+    "prefix": ".mx-7",
+    "body": "mx-7",
     "description": "margin-right:3.5rem"
   },
   "mb-7": {
@@ -844,9 +889,9 @@
     "body": "mb-7",
     "description": "margin-bottom:3.5rem"
   },
-  "ml-7,.mx-7": {
-    "prefix": ".ml-7,.mx-7",
-    "body": "ml-7,.mx-7",
+  "ml-7": {
+    "prefix": ".ml-7",
+    "body": "ml-7",
     "description": "margin-left:3.5rem"
   },
   "m-8": {
@@ -864,9 +909,14 @@
     "body": "my-8",
     "description": "margin-top:4rem"
   },
-  "mr-8,.mx-8": {
-    "prefix": ".mr-8,.mx-8",
-    "body": "mr-8,.mx-8",
+  "mr-8": {
+    "prefix": ".mr-8",
+    "body": "mr-8",
+    "description": "margin-right:4rem"
+  },
+  "mx-8": {
+    "prefix": ".mx-8",
+    "body": "mx-8",
     "description": "margin-right:4rem"
   },
   "mb-8": {
@@ -874,9 +924,9 @@
     "body": "mb-8",
     "description": "margin-bottom:4rem"
   },
-  "ml-8,.mx-8": {
-    "prefix": ".ml-8,.mx-8",
-    "body": "ml-8,.mx-8",
+  "ml-8": {
+    "prefix": ".ml-8",
+    "body": "ml-8",
     "description": "margin-left:4rem"
   },
   "m-9": {
@@ -894,9 +944,14 @@
     "body": "my-9",
     "description": "margin-top:4.5rem"
   },
-  "mr-9,.mx-9": {
-    "prefix": ".mr-9,.mx-9",
-    "body": "mr-9,.mx-9",
+  "mr-9": {
+    "prefix": ".mr-9",
+    "body": "mr-9",
+    "description": "margin-right:4.5rem"
+  },
+  "mx-9": {
+    "prefix": ".mx-9",
+    "body": "mx-9",
     "description": "margin-right:4.5rem"
   },
   "mb-9": {
@@ -904,9 +959,9 @@
     "body": "mb-9",
     "description": "margin-bottom:4.5rem"
   },
-  "ml-9,.mx-9": {
-    "prefix": ".ml-9,.mx-9",
-    "body": "ml-9,.mx-9",
+  "ml-9": {
+    "prefix": ".ml-9",
+    "body": "ml-9",
     "description": "margin-left:4.5rem"
   },
   "m-10": {
@@ -924,9 +979,14 @@
     "body": "my-10",
     "description": "margin-top:5rem"
   },
-  "mr-10,.mx-10": {
-    "prefix": ".mr-10,.mx-10",
-    "body": "mr-10,.mx-10",
+  "mr-10": {
+    "prefix": ".mr-10",
+    "body": "mr-10",
+    "description": "margin-right:5rem"
+  },
+  "mx-10": {
+    "prefix": ".mx-10",
+    "body": "mx-10",
     "description": "margin-right:5rem"
   },
   "mb-10": {
@@ -934,9 +994,9 @@
     "body": "mb-10",
     "description": "margin-bottom:5rem"
   },
-  "ml-10,.mx-10": {
-    "prefix": ".ml-10,.mx-10",
-    "body": "ml-10,.mx-10",
+  "ml-10": {
+    "prefix": ".ml-10",
+    "body": "ml-10",
     "description": "margin-left:5rem"
   },
   "p-1": {
@@ -954,9 +1014,14 @@
     "body": "py-1",
     "description": "padding-top:.5rem"
   },
-  "pr-1,.px-1": {
-    "prefix": ".pr-1,.px-1",
-    "body": "pr-1,.px-1",
+  "pr-1": {
+    "prefix": ".pr-1",
+    "body": "pr-1",
+    "description": "padding-right:.5rem"
+  },
+  "px-1": {
+    "prefix": ".px-1",
+    "body": "px-1",
     "description": "padding-right:.5rem"
   },
   "pb-1": {
@@ -964,9 +1029,9 @@
     "body": "pb-1",
     "description": "padding-bottom:.5rem"
   },
-  "pl-1,.px-1": {
-    "prefix": ".pl-1,.px-1",
-    "body": "pl-1,.px-1",
+  "pl-1": {
+    "prefix": ".pl-1",
+    "body": "pl-1",
     "description": "padding-left:.5rem"
   },
   "p-2": {
@@ -984,9 +1049,14 @@
     "body": "py-2",
     "description": "padding-top:1rem"
   },
-  "pr-2,.px-2": {
-    "prefix": ".pr-2,.px-2",
-    "body": "pr-2,.px-2",
+  "pr-2": {
+    "prefix": ".pr-2",
+    "body": "pr-2",
+    "description": "padding-right:1rem"
+  },
+  "px-2": {
+    "prefix": ".px-2",
+    "body": "px-2",
     "description": "padding-right:1rem"
   },
   "pb-2": {
@@ -994,9 +1064,9 @@
     "body": "pb-2",
     "description": "padding-bottom:1rem"
   },
-  "pl-2,.px-2": {
-    "prefix": ".pl-2,.px-2",
-    "body": "pl-2,.px-2",
+  "pl-2": {
+    "prefix": ".pl-2",
+    "body": "pl-2",
     "description": "padding-left:1rem"
   },
   "p-3": {
@@ -1014,9 +1084,14 @@
     "body": "py-3",
     "description": "padding-top:1.5rem"
   },
-  "pr-3,.px-3": {
-    "prefix": ".pr-3,.px-3",
-    "body": "pr-3,.px-3",
+  "pr-3": {
+    "prefix": ".pr-3",
+    "body": "pr-3",
+    "description": "padding-right:1.5rem"
+  },
+  "px-3": {
+    "prefix": ".px-3",
+    "body": "px-3",
     "description": "padding-right:1.5rem"
   },
   "pb-3": {
@@ -1024,9 +1099,9 @@
     "body": "pb-3",
     "description": "padding-bottom:1.5rem"
   },
-  "pl-3,.px-3": {
-    "prefix": ".pl-3,.px-3",
-    "body": "pl-3,.px-3",
+  "pl-3": {
+    "prefix": ".pl-3",
+    "body": "pl-3",
     "description": "padding-left:1.5rem"
   },
   "p-4": {
@@ -1044,9 +1119,14 @@
     "body": "py-4",
     "description": "padding-top:2rem"
   },
-  "pr-4,.px-4": {
-    "prefix": ".pr-4,.px-4",
-    "body": "pr-4,.px-4",
+  "pr-4": {
+    "prefix": ".pr-4",
+    "body": "pr-4",
+    "description": "padding-right:2rem"
+  },
+  "px-4": {
+    "prefix": ".px-4",
+    "body": "px-4",
     "description": "padding-right:2rem"
   },
   "pb-4": {
@@ -1054,9 +1134,9 @@
     "body": "pb-4",
     "description": "padding-bottom:2rem"
   },
-  "pl-4,.px-4": {
-    "prefix": ".pl-4,.px-4",
-    "body": "pl-4,.px-4",
+  "pl-4": {
+    "prefix": ".pl-4",
+    "body": "pl-4",
     "description": "padding-left:2rem"
   },
   "p-5": {
@@ -1074,9 +1154,14 @@
     "body": "py-5",
     "description": "padding-top:2.5rem"
   },
-  "pr-5,.px-5": {
-    "prefix": ".pr-5,.px-5",
-    "body": "pr-5,.px-5",
+  "pr-5": {
+    "prefix": ".pr-5",
+    "body": "pr-5",
+    "description": "padding-right:2.5rem"
+  },
+  "px-5": {
+    "prefix": ".px-5",
+    "body": "px-5",
     "description": "padding-right:2.5rem"
   },
   "pb-5": {
@@ -1084,9 +1169,9 @@
     "body": "pb-5",
     "description": "padding-bottom:2.5rem"
   },
-  "pl-5,.px-5": {
-    "prefix": ".pl-5,.px-5",
-    "body": "pl-5,.px-5",
+  "pl-5": {
+    "prefix": ".pl-5",
+    "body": "pl-5",
     "description": "padding-left:2.5rem"
   },
   "p-6": {
@@ -1104,9 +1189,14 @@
     "body": "py-6",
     "description": "padding-top:3rem"
   },
-  "pr-6,.px-6": {
-    "prefix": ".pr-6,.px-6",
-    "body": "pr-6,.px-6",
+  "pr-6": {
+    "prefix": ".pr-6",
+    "body": "pr-6",
+    "description": "padding-right:3rem"
+  },
+  "px-6": {
+    "prefix": ".px-6",
+    "body": "px-6",
     "description": "padding-right:3rem"
   },
   "pb-6": {
@@ -1114,9 +1204,9 @@
     "body": "pb-6",
     "description": "padding-bottom:3rem"
   },
-  "pl-6,.px-6": {
-    "prefix": ".pl-6,.px-6",
-    "body": "pl-6,.px-6",
+  "pl-6": {
+    "prefix": ".pl-6",
+    "body": "pl-6",
     "description": "padding-left:3rem"
   },
   "p-7": {
@@ -1134,9 +1224,14 @@
     "body": "py-7",
     "description": "padding-top:3.5rem"
   },
-  "pr-7,.px-7": {
-    "prefix": ".pr-7,.px-7",
-    "body": "pr-7,.px-7",
+  "pr-7": {
+    "prefix": ".pr-7",
+    "body": "pr-7",
+    "description": "padding-right:3.5rem"
+  },
+  "px-7": {
+    "prefix": ".px-7",
+    "body": "px-7",
     "description": "padding-right:3.5rem"
   },
   "pb-7": {
@@ -1144,9 +1239,9 @@
     "body": "pb-7",
     "description": "padding-bottom:3.5rem"
   },
-  "pl-7,.px-7": {
-    "prefix": ".pl-7,.px-7",
-    "body": "pl-7,.px-7",
+  "pl-7": {
+    "prefix": ".pl-7",
+    "body": "pl-7",
     "description": "padding-left:3.5rem"
   },
   "p-8": {
@@ -1164,9 +1259,14 @@
     "body": "py-8",
     "description": "padding-top:4rem"
   },
-  "pr-8,.px-8": {
-    "prefix": ".pr-8,.px-8",
-    "body": "pr-8,.px-8",
+  "pr-8": {
+    "prefix": ".pr-8",
+    "body": "pr-8",
+    "description": "padding-right:4rem"
+  },
+  "px-8": {
+    "prefix": ".px-8",
+    "body": "px-8",
     "description": "padding-right:4rem"
   },
   "pb-8": {
@@ -1174,9 +1274,9 @@
     "body": "pb-8",
     "description": "padding-bottom:4rem"
   },
-  "pl-8,.px-8": {
-    "prefix": ".pl-8,.px-8",
-    "body": "pl-8,.px-8",
+  "pl-8": {
+    "prefix": ".pl-8",
+    "body": "pl-8",
     "description": "padding-left:4rem"
   },
   "p-9": {
@@ -1194,9 +1294,14 @@
     "body": "py-9",
     "description": "padding-top:4.5rem"
   },
-  "pr-9,.px-9": {
-    "prefix": ".pr-9,.px-9",
-    "body": "pr-9,.px-9",
+  "pr-9": {
+    "prefix": ".pr-9",
+    "body": "pr-9",
+    "description": "padding-right:4.5rem"
+  },
+  "px-9": {
+    "prefix": ".px-9",
+    "body": "px-9",
     "description": "padding-right:4.5rem"
   },
   "pb-9": {
@@ -1204,9 +1309,9 @@
     "body": "pb-9",
     "description": "padding-bottom:4.5rem"
   },
-  "pl-9,.px-9": {
-    "prefix": ".pl-9,.px-9",
-    "body": "pl-9,.px-9",
+  "pl-9": {
+    "prefix": ".pl-9",
+    "body": "pl-9",
     "description": "padding-left:4.5rem"
   },
   "p-10": {
@@ -1224,9 +1329,14 @@
     "body": "py-10",
     "description": "padding-top:5rem"
   },
-  "pr-10,.px-10": {
-    "prefix": ".pr-10,.px-10",
-    "body": "pr-10,.px-10",
+  "pr-10": {
+    "prefix": ".pr-10",
+    "body": "pr-10",
+    "description": "padding-right:5rem"
+  },
+  "px-10": {
+    "prefix": ".px-10",
+    "body": "px-10",
     "description": "padding-right:5rem"
   },
   "pb-10": {
@@ -1234,9 +1344,9 @@
     "body": "pb-10",
     "description": "padding-bottom:5rem"
   },
-  "pl-10,.px-10": {
-    "prefix": ".pl-10,.px-10",
-    "body": "pl-10,.px-10",
+  "pl-10": {
+    "prefix": ".pl-10",
+    "body": "pl-10",
     "description": "padding-left:5rem"
   },
   "m-n1": {
@@ -1254,9 +1364,14 @@
     "body": "my-n1",
     "description": "margin-top:-.5rem"
   },
-  "mr-n1,.mx-n1": {
-    "prefix": ".mr-n1,.mx-n1",
-    "body": "mr-n1,.mx-n1",
+  "mr-n1": {
+    "prefix": ".mr-n1",
+    "body": "mr-n1",
+    "description": "margin-right:-.5rem"
+  },
+  "mx-n1": {
+    "prefix": ".mx-n1",
+    "body": "mx-n1",
     "description": "margin-right:-.5rem"
   },
   "mb-n1": {
@@ -1264,9 +1379,9 @@
     "body": "mb-n1",
     "description": "margin-bottom:-.5rem"
   },
-  "ml-n1,.mx-n1": {
-    "prefix": ".ml-n1,.mx-n1",
-    "body": "ml-n1,.mx-n1",
+  "ml-n1": {
+    "prefix": ".ml-n1",
+    "body": "ml-n1",
     "description": "margin-left:-.5rem"
   },
   "m-n2": {
@@ -1284,9 +1399,14 @@
     "body": "my-n2",
     "description": "margin-top:-1rem"
   },
-  "mr-n2,.mx-n2": {
-    "prefix": ".mr-n2,.mx-n2",
-    "body": "mr-n2,.mx-n2",
+  "mr-n2": {
+    "prefix": ".mr-n2",
+    "body": "mr-n2",
+    "description": "margin-right:-1rem"
+  },
+  "mx-n2": {
+    "prefix": ".mx-n2",
+    "body": "mx-n2",
     "description": "margin-right:-1rem"
   },
   "mb-n2": {
@@ -1294,9 +1414,9 @@
     "body": "mb-n2",
     "description": "margin-bottom:-1rem"
   },
-  "ml-n2,.mx-n2": {
-    "prefix": ".ml-n2,.mx-n2",
-    "body": "ml-n2,.mx-n2",
+  "ml-n2": {
+    "prefix": ".ml-n2",
+    "body": "ml-n2",
     "description": "margin-left:-1rem"
   },
   "m-n3": {
@@ -1314,9 +1434,14 @@
     "body": "my-n3",
     "description": "margin-top:-1.5rem"
   },
-  "mr-n3,.mx-n3": {
-    "prefix": ".mr-n3,.mx-n3",
-    "body": "mr-n3,.mx-n3",
+  "mr-n3": {
+    "prefix": ".mr-n3",
+    "body": "mr-n3",
+    "description": "margin-right:-1.5rem"
+  },
+  "mx-n3": {
+    "prefix": ".mx-n3",
+    "body": "mx-n3",
     "description": "margin-right:-1.5rem"
   },
   "mb-n3": {
@@ -1324,9 +1449,9 @@
     "body": "mb-n3",
     "description": "margin-bottom:-1.5rem"
   },
-  "ml-n3,.mx-n3": {
-    "prefix": ".ml-n3,.mx-n3",
-    "body": "ml-n3,.mx-n3",
+  "ml-n3": {
+    "prefix": ".ml-n3",
+    "body": "ml-n3",
     "description": "margin-left:-1.5rem"
   },
   "m-n4": {
@@ -1344,9 +1469,14 @@
     "body": "my-n4",
     "description": "margin-top:-2rem"
   },
-  "mr-n4,.mx-n4": {
-    "prefix": ".mr-n4,.mx-n4",
-    "body": "mr-n4,.mx-n4",
+  "mr-n4": {
+    "prefix": ".mr-n4",
+    "body": "mr-n4",
+    "description": "margin-right:-2rem"
+  },
+  "mx-n4": {
+    "prefix": ".mx-n4",
+    "body": "mx-n4",
     "description": "margin-right:-2rem"
   },
   "mb-n4": {
@@ -1354,9 +1484,9 @@
     "body": "mb-n4",
     "description": "margin-bottom:-2rem"
   },
-  "ml-n4,.mx-n4": {
-    "prefix": ".ml-n4,.mx-n4",
-    "body": "ml-n4,.mx-n4",
+  "ml-n4": {
+    "prefix": ".ml-n4",
+    "body": "ml-n4",
     "description": "margin-left:-2rem"
   },
   "m-n5": {
@@ -1374,9 +1504,14 @@
     "body": "my-n5",
     "description": "margin-top:-2.5rem"
   },
-  "mr-n5,.mx-n5": {
-    "prefix": ".mr-n5,.mx-n5",
-    "body": "mr-n5,.mx-n5",
+  "mr-n5": {
+    "prefix": ".mr-n5",
+    "body": "mr-n5",
+    "description": "margin-right:-2.5rem"
+  },
+  "mx-n5": {
+    "prefix": ".mx-n5",
+    "body": "mx-n5",
     "description": "margin-right:-2.5rem"
   },
   "mb-n5": {
@@ -1384,9 +1519,9 @@
     "body": "mb-n5",
     "description": "margin-bottom:-2.5rem"
   },
-  "ml-n5,.mx-n5": {
-    "prefix": ".ml-n5,.mx-n5",
-    "body": "ml-n5,.mx-n5",
+  "ml-n5": {
+    "prefix": ".ml-n5",
+    "body": "ml-n5",
     "description": "margin-left:-2.5rem"
   },
   "m-n6": {
@@ -1404,9 +1539,14 @@
     "body": "my-n6",
     "description": "margin-top:-3rem"
   },
-  "mr-n6,.mx-n6": {
-    "prefix": ".mr-n6,.mx-n6",
-    "body": "mr-n6,.mx-n6",
+  "mr-n6": {
+    "prefix": ".mr-n6",
+    "body": "mr-n6",
+    "description": "margin-right:-3rem"
+  },
+  "mx-n6": {
+    "prefix": ".mx-n6",
+    "body": "mx-n6",
     "description": "margin-right:-3rem"
   },
   "mb-n6": {
@@ -1414,9 +1554,9 @@
     "body": "mb-n6",
     "description": "margin-bottom:-3rem"
   },
-  "ml-n6,.mx-n6": {
-    "prefix": ".ml-n6,.mx-n6",
-    "body": "ml-n6,.mx-n6",
+  "ml-n6": {
+    "prefix": ".ml-n6",
+    "body": "ml-n6",
     "description": "margin-left:-3rem"
   },
   "m-n7": {
@@ -1434,9 +1574,14 @@
     "body": "my-n7",
     "description": "margin-top:-3.5rem"
   },
-  "mr-n7,.mx-n7": {
-    "prefix": ".mr-n7,.mx-n7",
-    "body": "mr-n7,.mx-n7",
+  "mr-n7": {
+    "prefix": ".mr-n7",
+    "body": "mr-n7",
+    "description": "margin-right:-3.5rem"
+  },
+  "mx-n7": {
+    "prefix": ".mx-n7",
+    "body": "mx-n7",
     "description": "margin-right:-3.5rem"
   },
   "mb-n7": {
@@ -1444,9 +1589,9 @@
     "body": "mb-n7",
     "description": "margin-bottom:-3.5rem"
   },
-  "ml-n7,.mx-n7": {
-    "prefix": ".ml-n7,.mx-n7",
-    "body": "ml-n7,.mx-n7",
+  "ml-n7": {
+    "prefix": ".ml-n7",
+    "body": "ml-n7",
     "description": "margin-left:-3.5rem"
   },
   "m-n8": {
@@ -1464,9 +1609,14 @@
     "body": "my-n8",
     "description": "margin-top:-4rem"
   },
-  "mr-n8,.mx-n8": {
-    "prefix": ".mr-n8,.mx-n8",
-    "body": "mr-n8,.mx-n8",
+  "mr-n8": {
+    "prefix": ".mr-n8",
+    "body": "mr-n8",
+    "description": "margin-right:-4rem"
+  },
+  "mx-n8": {
+    "prefix": ".mx-n8",
+    "body": "mx-n8",
     "description": "margin-right:-4rem"
   },
   "mb-n8": {
@@ -1474,9 +1624,9 @@
     "body": "mb-n8",
     "description": "margin-bottom:-4rem"
   },
-  "ml-n8,.mx-n8": {
-    "prefix": ".ml-n8,.mx-n8",
-    "body": "ml-n8,.mx-n8",
+  "ml-n8": {
+    "prefix": ".ml-n8",
+    "body": "ml-n8",
     "description": "margin-left:-4rem"
   },
   "m-n9": {
@@ -1494,9 +1644,14 @@
     "body": "my-n9",
     "description": "margin-top:-4.5rem"
   },
-  "mr-n9,.mx-n9": {
-    "prefix": ".mr-n9,.mx-n9",
-    "body": "mr-n9,.mx-n9",
+  "mr-n9": {
+    "prefix": ".mr-n9",
+    "body": "mr-n9",
+    "description": "margin-right:-4.5rem"
+  },
+  "mx-n9": {
+    "prefix": ".mx-n9",
+    "body": "mx-n9",
     "description": "margin-right:-4.5rem"
   },
   "mb-n9": {
@@ -1504,9 +1659,9 @@
     "body": "mb-n9",
     "description": "margin-bottom:-4.5rem"
   },
-  "ml-n9,.mx-n9": {
-    "prefix": ".ml-n9,.mx-n9",
-    "body": "ml-n9,.mx-n9",
+  "ml-n9": {
+    "prefix": ".ml-n9",
+    "body": "ml-n9",
     "description": "margin-left:-4.5rem"
   },
   "m-n10": {
@@ -1524,9 +1679,14 @@
     "body": "my-n10",
     "description": "margin-top:-5rem"
   },
-  "mr-n10,.mx-n10": {
-    "prefix": ".mr-n10,.mx-n10",
-    "body": "mr-n10,.mx-n10",
+  "mr-n10": {
+    "prefix": ".mr-n10",
+    "body": "mr-n10",
+    "description": "margin-right:-5rem"
+  },
+  "mx-n10": {
+    "prefix": ".mx-n10",
+    "body": "mx-n10",
     "description": "margin-right:-5rem"
   },
   "mb-n10": {
@@ -1534,9 +1694,9 @@
     "body": "mb-n10",
     "description": "margin-bottom:-5rem"
   },
-  "ml-n10,.mx-n10": {
-    "prefix": ".ml-n10,.mx-n10",
-    "body": "ml-n10,.mx-n10",
+  "ml-n10": {
+    "prefix": ".ml-n10",
+    "body": "ml-n10",
     "description": "margin-left:-5rem"
   },
   "box-shadow-dark": {
