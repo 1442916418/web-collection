@@ -11,17 +11,18 @@ const wait = require('gulp-wait')
 const sourcemaps = require('gulp-sourcemaps')
 const fileinclude = require('gulp-file-include')
 const childProcess = require('child_process')
+const gulpUglify = require('gulp-uglify')
 
 const paths = {
   base: {
-    base: './',
-    node: './node_modules'
+    base: './'
   },
   src: {
     base: './src/',
     css: './src/css',
     scss: './src/scss',
-    node_modules: './node_modules/'
+    index: './src/index.js',
+    components: './src/components/**/*.js'
   },
   temp: {
     base: './.temp/',
@@ -29,6 +30,10 @@ const paths = {
     html: './.temp/html',
     assets: './.temp/assets',
     vendor: './.temp/vendor'
+  },
+  build: {
+    base: './dist/',
+    components: './dist/components/'
   }
 }
 
@@ -58,4 +63,17 @@ gulp.task(
   })
 )
 
+gulp.task('clean:dist', function () {
+  return del([paths.build.base])
+})
+
+gulp.task('copy:index', function () {
+  return gulp.src([paths.src.index]).pipe(gulpUglify()).pipe(gulp.dest(paths.build.base))
+})
+
+gulp.task('copy:components', function () {
+  return gulp.src([paths.src.components]).pipe(gulpUglify()).pipe(gulp.dest(paths.build.components))
+})
+
 gulp.task('default', gulp.series('serve'))
+gulp.task('build', gulp.series('clean:dist', 'copy:index', 'copy:components'))

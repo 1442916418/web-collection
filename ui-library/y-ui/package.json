@@ -1,17 +1,18 @@
 {
   "name": "@yushuisheng/y-ui",
-  "version": "1.0.5",
+  "version": "1.0.6",
   "description": "基于 web-components 的拟物风格组件库",
-  "main": "src/index.js",
+  "main": "dist/index.js",
   "scripts": {
     "css": "gulp",
+    "build:css": "cross-env RUN_TYPE=BUILD nodemon --watch .temp/css/neumorphism.css run.js",
     "serve": "serve src",
+    "build": "gulp build",
     "docs": "docsify serve docs",
-    "build": "cross-env RUN_TYPE=BUILD nodemon --watch .temp/css/neumorphism.css run.js",
     "new": "cross-env RUN_TYPE=NEW FILE_NAME=form-item node run.js",
-    "release:patch": "npm version patch && npm publish",
-    "release:minor": "npm version minor && npm publish",
-    "release:major": "npm version major && npm publish"
+    "release:patch": "npm run build && npm version patch && npm publish",
+    "release:minor": "npm run build && npm version minor && npm publish",
+    "release:major": "npm run build && npm version major && npm publish"
   },
   "repository": {
     "type": "git",
@@ -30,8 +31,7 @@
   },
   "homepage": "https://github.com/1442916418/web-collection#readme",
   "files": [
-    "src/index.js",
-    "src/components"
+    "dist"
   ],
   "devDependencies": {
     "browser-sync": "^2.27.4",

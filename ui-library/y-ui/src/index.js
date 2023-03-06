@@ -1,4 +1,5 @@
 import './components/button/button.js'
+import './components/button-group/button-group.js'
 import './components/tips/tips.js'
 import './components/slider/slider.js'
 import './components/select/select.js'

@@ -1,0 +1,26 @@
+/*! -button-group */
+
+:host {
+  display: inline-flex;
+}
+::slotted(y-button:not(:first-of-type):not(:last-of-type)) {
+  border-radius: 0;
+}
+::slotted(y-button) {
+  margin: 0 !important;
+}
+::slotted(y-button:not(:first-of-type)) {
+  margin-left: -1px !important;
+}
+::slotted(y-button[type]:not([type='dashed']):not(:first-of-type)) {
+  margin-left: 1px !important;
+}
+::slotted(y-button:first-of-type) {
+  border-top-right-radius: 0;
+  border-bottom-right-radius: 0px;
+}
+::slotted(y-button:last-of-type) {
+  border-top-left-radius: 0;
+  border-bottom-left-radius: 0;
+}
+/*! button-group- */
