@@ -846,3 +846,13 @@ input[type='search'] {
   border-color: #4f4f4f;
   color: #c8c8c8;
 }
+.demo,
+.demo_preview,
+.demo_button {
+  background: #262833;
+}
+.demo_preview_content {
+  padding: 0.5rem;
+  width: 100% !important;
+  overflow: hidden;
+}

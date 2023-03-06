@@ -2,12 +2,15 @@
 
 ## 展示
 
-<y-tips tips="Tips default">
+```html preview
+<y-tips tips="Tips default" style="margin-top: 45px;">
   <y-button>Tips default</y-button>
 </y-tips>
+```
 
 ## 方向
 
+```html preview
 <div class="tips-dir-container">
   <span></span>
   <y-tips dir="tl" tips="some tips">
@@ -59,9 +62,12 @@
   </y-tips>
   <span></span>
 </div>
+```
 
 ## 前缀与后缀
 
+```html preview
+<p style="margin-top: 45px;"></p>
 <y-tips tips="11" suffix="km/h">
   <y-button>Tips 后缀</y-button>
 </y-tips>
@@ -69,3 +75,4 @@
 <y-tips tips="11" prefix="K">
   <y-button>Tips 前缀</y-button>
 </y-tips>
+```

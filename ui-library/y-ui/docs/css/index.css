@@ -13,6 +13,7 @@ y-select,
 y-switch,
 y-checkbox {
   margin-right: 0.75rem;
+  margin-bottom: 0.5rem;
 }
 y-img {
   width: 200px;
