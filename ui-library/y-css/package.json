@@ -1,8 +1,8 @@
 {
   "name": "@yushuisheng/y-css",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "CSS 库",
-  "main": "src/index.js",
+  "main": "dist/index.css",
   "scripts": {
     "css": "gulp",
     "build": "gulp build",
