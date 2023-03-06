@@ -13,7 +13,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/1442916418/ui-collection.git"
+    "url": "git+https://github.com/1442916418/web-collection.git"
   },
   "keywords": [
     "CSS"
@@ -21,9 +21,9 @@
   "author": "yushuisheng",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/1442916418/ui-collection/issues"
+    "url": "https://github.com/1442916418/web-collection/issues"
   },
-  "homepage": "https://github.com/1442916418/ui-collection#readme",
+  "homepage": "https://github.com/1442916418/web-collection#readme",
   "files": [
     "dist"
   ],

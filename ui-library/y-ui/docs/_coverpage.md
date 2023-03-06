@@ -8,5 +8,5 @@
 * 类原生 ---------------------------- 一个组件就像使用一个 `div` 标签一样。
 * 无障碍 ------------------------------------------------------------- 支持键盘访问。
 
-[GitHub](https://github.com/1442916418/ui-collection)
+[GitHub](https://github.com/1442916418/web-collection)
 [Get Started](README.md)
