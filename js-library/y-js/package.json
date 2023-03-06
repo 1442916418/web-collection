@@ -1,8 +1,8 @@
 {
   "name": "@yushuisheng/y-js",
-  "version": "1.0.2",
+  "version": "1.0.4",
   "description": "Custom js library.",
-  "main": "src/index.js",
+  "main": "dist/index.js",
   "scripts": {
     "build": "gulp build",
     "release:patch": "npm run build && npm version patch && npm publish",
