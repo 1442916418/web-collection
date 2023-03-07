@@ -2,35 +2,34 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <title>y-css</title>
+    <title>web-collection</title>
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
     <meta name="description" content="Description" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0" />
     <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/docsify-demo@latest/dist/index.min.css" />
+    <link rel="stylesheet" href="assets/styles/light.css" id="light" />
+    <link rel="stylesheet" href="assets/styles/index.css" />
     <link rel="stylesheet" href="https://unpkg.com/@yushuisheng/y-css" />
-    <link rel="stylesheet" href="//unpkg.com/docsify/lib/themes/vue.css" />
-    <style>
-      .demo_preview_content {
-        width: 100% !important;
-      }
-    </style>
   </head>
 
   <body>
-    <div id="app" data-app>加载中...</div>
+    <div id="app" data-app>Loading...</div>
     <script>
       window.$docsify = {
-        name: 'y-css',
+        name: 'web-collection',
         repo: 'https://github.com/1442916418/web-collection',
         el: '#app',
         loadSidebar: true,
         subMaxLevel: 2,
-        coverpage: true
+        coverpage: true,
+        executeScript: true,
+        auto2top: true,
+        loadNavbar: true
       }
     </script>
-    <!-- Docsify v4 -->
     <script src="//cdn.jsdelivr.net/npm/docsify@4"></script>
-    <script src="//unpkg.com/docsify-pagination/dist/docsify-pagination.min.js"></script>
     <script src="//cdn.jsdelivr.net/npm/docsify-demo@latest/dist/index.min.js"></script>
+    <script src="//unpkg.com/docsify-pagination/dist/docsify-pagination.min.js"></script>
+    <script src="//cdn.jsdelivr.net/npm/docsify/lib/plugins/external-script.min.js"></script>
   </body>
 </html>

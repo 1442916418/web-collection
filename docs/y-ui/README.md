@@ -10,3 +10,6 @@
 
 [GitHub](https://github.com/1442916418/web-collection)
 [Get Started](README.md)
+
+<script src="https://lf1-cdn-tos.bytegoofy.com/obj/iconpark/icons_22707_21.830162fd16961ad209912974a2a2e92b.js"></script>
+<script type="module" src="https://unpkg.com/@yushuisheng/y-ui"></script>

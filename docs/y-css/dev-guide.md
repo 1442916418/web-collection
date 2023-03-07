@@ -1,22 +1,8 @@
 # 开发指南
 
-## 启动项目
+## 项目
 
-使用 **y-ui** 文件夹
-
-安装所有依赖
-
-```shell
-npm i
-```
-
-## 网站预览
-
-使用 `docsify` 启动，需要全局安装 [docsify](https://docsify.js.org)  
-
-```shell
-npm run docs
-```
+打开 **ui-library/y-css** 文件夹
 
 ## 本地开发
 
