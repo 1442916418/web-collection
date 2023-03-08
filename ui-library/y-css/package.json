@@ -1,6 +1,6 @@
 {
   "name": "@yushuisheng/y-css",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "description": "CSS 库",
   "main": "dist/index.css",
   "scripts": {
