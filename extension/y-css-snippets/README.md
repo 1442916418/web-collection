@@ -6,6 +6,10 @@
 
 ## Release Notes
 
+### 0.0.4
+
+更新扩展支持语言
+
 ### 0.0.3
 
 **border**、**width**、**height**、**margin**、**padding** 类样式修改
