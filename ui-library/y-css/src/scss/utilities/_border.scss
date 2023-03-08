@@ -2,86 +2,97 @@
 // Border
 //
 
-@each $breakpoint in map-keys($grid-breakpoints) {
-  @include media-breakpoint-up($breakpoint) {
-    $infix: breakpoint-infix($breakpoint, $grid-breakpoints);
-    $--rounded-value: computed-breakpoint-value(
-      $infix,
-      $border-radius,
-      (
-        '': 1,
-        '-sm': 2,
-        '-md': 4,
-        '-lg': 6,
-        '-xl': 8
-      )
-    );
-
-    // Border radius
-    .rounded {
-      border-radius: $--rounded-value !important;
-    }
-
-    .rounded-top {
-      border-top-left-radius: $--rounded-value !important;
-      border-top-right-radius: $--rounded-value !important;
-    }
-
-    .rounded-right {
-      border-top-right-radius: $--rounded-value !important;
-      border-bottom-right-radius: $--rounded-value !important;
-    }
-
-    .rounded-bottom {
-      border-bottom-right-radius: $--rounded-value !important;
-      border-bottom-left-radius: $--rounded-value !important;
-    }
-
-    .rounded-left {
-      border-top-left-radius: $--rounded-value !important;
-      border-bottom-left-radius: $--rounded-value !important;
-    }
-
-    // Border width
-    @for $i from 0 through 10 {
-      $--border-width: computed-breakpoint-echo-value(
-        $infix,
-        $i,
-        $border-width,
-        (
-          '': 1,
-          '-sm': 2,
-          '-md': 3,
-          '-lg': 4,
-          '-xl': 5
-        )
-      );
-
-      .border-#{$i} {
-        border-width: $--border-width !important;
-      }
-      .border-top-#{$i} {
-        border-top-width: $--border-width !important;
-      }
-      .border-right-#{$i} {
-        border-right-width: $--border-width !important;
-      }
-      .border-bottom-#{$i} {
-        border-bottom-width: $--border-width !important;
-      }
-      .border-left-#{$i} {
-        border-left-width: $--border-width !important;
-      }
-    }
-  }
-}
-
+// Border radius
 .rounded-circle {
   border-radius: $circle-radius !important;
 }
 
-.rounded-0 {
+.rounded-t-circle {
+  border-top-left-radius: $circle-radius !important;
+  border-top-right-radius: $circle-radius !important;
+}
+
+.rounded-r-circle {
+  border-top-right-radius: $circle-radius !important;
+  border-bottom-right-radius: $circle-radius !important;
+}
+
+.rounded-b-circle {
+  border-bottom-right-radius: $circle-radius !important;
+  border-bottom-left-radius: $circle-radius !important;
+}
+
+.rounded-l-circle {
+  border-top-left-radius: $circle-radius !important;
+  border-bottom-left-radius: $circle-radius !important;
+}
+
+.rounded-none {
   border-radius: 0 !important;
+}
+
+@each $breakpoint in map-keys($grid-breakpoints) {
+  $infix: '-#{$breakpoint}';
+
+  $value: computed-breakpoint-value(
+    $infix,
+    $border-radius,
+    (
+      '': 1,
+      '-xs': 1,
+      '-sm': 2,
+      '-md': 4,
+      '-lg': 6,
+      '-xl': 8
+    )
+  );
+
+  .rounded#{$infix} {
+    border-radius: $value !important;
+  }
+
+  .rounded-t#{$infix} {
+    border-top-left-radius: $value !important;
+    border-top-right-radius: $value !important;
+  }
+
+  .rounded-r#{$infix} {
+    border-top-right-radius: $value !important;
+    border-bottom-right-radius: $value !important;
+  }
+
+  .rounded-b#{$infix} {
+    border-bottom-right-radius: $value !important;
+    border-bottom-left-radius: $value !important;
+  }
+
+  .rounded-l#{$infix} {
+    border-top-left-radius: $value !important;
+    border-bottom-left-radius: $value !important;
+  }
+}
+
+// Border width
+@for $i from 1 through 10 {
+  @if ($i == 1 or $i % 2 == 0) {
+    $size: $border-width * $i;
+
+    .border-#{$i} {
+      border-width: $size !important;
+    }
+    .border-t-#{$i} {
+      border-top-width: $size !important;
+    }
+    .border-r-#{$i} {
+      border-right-width: $size !important;
+    }
+    .border-b-#{$i} {
+      border-bottom-width: $size !important;
+    }
+    .border-l-#{$i} {
+      border-left-width: $size !important;
+    }
+  }
 }
 
 // Border style

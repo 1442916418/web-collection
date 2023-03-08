@@ -40,15 +40,24 @@
   margin-left: auto !important;
 }
 
+$space-step-map: (
+  '': 0.25,
+  '-xs': 0.25,
+  '-sm': 0.5,
+  '-md': 0.75,
+  '-lg': 1,
+  '-xl': 1.25
+);
+
 @each $breakpoint in map-keys($grid-breakpoints) {
   @include media-breakpoint-up($breakpoint) {
     $infix: breakpoint-infix($breakpoint, $grid-breakpoints);
 
     @each $prop, $abbrev in (margin: m, padding: p) {
       @for $i from 0 through 10 {
-        $length: spacer-value($infix, $i);
-
         @if $i != 0 {
+          $length: computed-breakpoint-echo-value($infix, $i, $spacer, $space-step-map);
+
           .#{$abbrev}-#{$i} {
             #{$prop}: $length !important;
           }
@@ -73,9 +82,9 @@
     }
 
     @for $i from 0 through 10 {
-      $length: spacer-value($infix, $i);
-
       @if $i != 0 {
+        $length: computed-breakpoint-echo-value($infix, $i, $spacer, $space-step-map);
+
         .m-n#{$i} {
           margin: -$length !important;
         }

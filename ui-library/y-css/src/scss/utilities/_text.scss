@@ -79,12 +79,36 @@
 }
 
 // Text font size
-@for $n from 1 through 10 {
-  $value: $font-size-base * ($n / 2);
+@each $breakpoint in map-keys($grid-breakpoints) {
+  $infix: '-#{$breakpoint}';
 
-  .text-#{$n} {
+  $value: computed-breakpoint-value(
+    $infix,
+    $font-size-base,
+    (
+      '-xs': 0.75,
+      '-sm': 0.875,
+      '-md': 2,
+      '-lg': 3,
+      '-xl': 4
+    )
+  );
+
+  .text#{$infix} {
     font-size: $value !important;
   }
+}
+
+@each $breakpoint, $value in $common-breakpoints {
+  $value: $font-size-base * $value;
+
+  .text-#{$breakpoint} {
+    font-size: $value !important;
+  }
+}
+
+.text-base {
+  font-size: $font-size-base !important;
 }
 
 // Transformation
@@ -133,7 +157,7 @@
 }
 
 .list-style-none {
-  margin: 0px;
-  padding: 0px;
+  margin: 0;
+  padding: 0;
   list-style: none;
 }

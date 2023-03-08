@@ -142,6 +142,18 @@ $grid-breakpoints: (
   xl: 1200px
 ) !default;
 
+// 公共断点
+$common-breakpoints: (
+  2xl: 2,
+  3xl: 3,
+  4xl: 4,
+  5xl: 5,
+  6xl: 6,
+  7xl: 7,
+  8xl: 8,
+  9xl: 9
+) !default;
+
 // 网格区域
 //
 // 为不同的屏幕大小定义 .container 的最大宽度
@@ -184,7 +196,7 @@ $link-decoration: none;
 $link-hover-color: $black;
 $link-hover-decoration: none;
 
-$border-width: 0.0625rem;
+$border-width: 1px;
 $border-color-white: $white;
 $border-color: $gray-200;
 $border-color-transparent: transparent;

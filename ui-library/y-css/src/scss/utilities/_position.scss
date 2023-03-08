@@ -4,7 +4,7 @@
 
 @for $i from 0 through 10 {
   $size: $i;
-  $value: $spacer * $i;
+  $value: if($i == 0, 0, $spacer * $i);
 
   .top-#{$size} {
     top: $value !important;

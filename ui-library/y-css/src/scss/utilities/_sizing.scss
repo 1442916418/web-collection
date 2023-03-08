@@ -19,9 +19,16 @@
 @each $prop, $abbrev in (width: w, height: h) {
   @for $i from 0 through 10 {
     $value: if($i == 0, 0, $i * 1rem);
+    $decimal-value: if($i == 0, 0, ($i / 2) * 1);
 
     .#{$abbrev}-#{$i} {
       #{$prop}: $value !important;
+    }
+
+    @if $i != 0 and $decimal-value % 1 != 0 {
+      .#{$abbrev}-#{$decimal-value} {
+        #{$prop}: $decimal-value * 1rem !important;
+      }
     }
   }
 }

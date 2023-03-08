@@ -19,6 +19,7 @@
 *::before,
 *::after {
   box-sizing: border-box; // 1
+  border: 0 solid;
 }
 
 html {
