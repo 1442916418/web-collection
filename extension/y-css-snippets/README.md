@@ -6,6 +6,10 @@
 
 ## Release Notes
 
+### 0.0.3
+
+**border**、**width**、**height**、**margin**、**padding** 类样式修改
+
 ### 0.0.2
 
 修复类拼接 BUG
